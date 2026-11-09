@@ -9,6 +9,10 @@
 - **Più immagini insieme**: l'app chiede ogni volta se farne **un'unica animazione** o **immagini separate** (clip ferme o file immagine, secondo il formato di uscita). Nelle animazioni di immagini le **immagini al secondo** si scelgono nella riga, a parte dagli FPS del video (con FPS «Originale» il video resta a «FPS delle sequenze», GIF/WebP/APNG animati seguono le immagini).
 - **Link nel convertitore**: i link diretti a un'immagine (anche senza estensione, riconosciuti dopo «Unsupported URL») si scaricano con curl e diventano immagini singole.
 - **Lingue**: tradotte le frasi che iniziavano con testo in grassetto (istruzioni dell'estensione), i gruppi del menu dei formati e i titoli delle finestre di scelta file e cartelle (Windows e Mac).
+- **Logo e invio dall'estensione**: se DownConvertron è già aperta viene riportata in primo piano (anche se ridotta a icona) invece di aprirne un'altra. Il collegamento `downconvertron://` passa da un piccolo lanciatore invisibile (`apri.js` in `%APPDATA%\DownConvertron`). Prima, con l'HTA aperta col doppio clic (mshta a 32 bit) e il collegamento su mshta a 64 bit, si aprivano due app che leggevano gli stessi appunti.
+- **Download delle immagini su Windows**: corretto «Impossibile trovare il percorso specificato» con l'app aperta in mshta a 32 bit (curl veniva cercato in `Sysnative` da un cmd a 64 bit).
+- **Cartella dell'estensione**: il pulsante Estensione Chrome e la spia COMPONENTI aprono la cartella che la contiene, con `chrome-extension` già selezionata da trascinare intera.
+- **Trascinamento**: il ricevitore tiene un registro (`ricevitore.log`) incluso nel Report debug; le richieste non vengono più riscritte prima di essere lette.
 - Build su Windows: file generati sempre con fine riga LF; `check.py` corretto per Windows PowerShell 5.1.
 
 ## 6.0 — DownConvertron (interna, mai pubblicata)

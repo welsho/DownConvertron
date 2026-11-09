@@ -69,6 +69,18 @@ if pw:
     os.unlink(f.name)
     cs = open(os.path.join(ROOT, 'windows', 'Ricevitore.cs'), encoding='utf-8').read()
     (ok('ricevitore incorporato aggiornato') if cs in ps else bad('ricevitore incorporato non aggiornato (python3 tools/embed.py)'))
+# 4c. lanciatore di downconvertron:// (windows/apri.js): incorporato nell'app e nell'installer
+apri = open(os.path.join(ROOT, 'windows', 'apri.js'), encoding='utf-8').read()
+m = re.search(r'var APRI_JS = (".*?");\n', HTA, re.S)
+(ok('lanciatore incorporato aggiornato') if m and json.loads(m.group(1).replace('<\\/', '</')) == apri else bad('lanciatore incorporato non aggiornato (python3 tools/embed.py)'))
+if os.path.exists(bat):
+    mb = re.search(r"\$APRI_B64 = @'\n(.*?)\n'@", open(bat, encoding='utf-8').read(), re.S)
+    (ok('installer: contiene il lanciatore attuale') if mb and base64.b64decode(re.sub(r'\s', '', mb.group(1))).decode() == apri else bad('installer: lanciatore assente o vecchio'))
+if node:
+    r = subprocess.run([node, '-e', "const a=require('acorn');a.parse(require('fs').readFileSync(process.argv[1],'utf8'),{ecmaVersion:3,allowReserved:true});console.log('OK')",
+                        os.path.join(ROOT, 'windows', 'apri.js')], capture_output=True, text=True,
+                       env=dict(os.environ, NODE_PATH=os.environ.get('NODE_PATH', '') + os.pathsep + os.path.join(ROOT, 'node_modules')))
+    (ok('lanciatore: JScript ES3') if r.stdout.strip() == 'OK' else bad('lanciatore: ' + (r.stdout + r.stderr).strip()[:200]))
 # 5. ricevitore C#
 mcs = shutil.which('mcs')
 # su Windows: il csc.exe del .NET Framework 4 (C# 5, lo stesso che usa l'app sul PC)

@@ -127,8 +127,14 @@ try {
   Set-ItemProperty -Path $k -Name 'URL Protocol' -Value ''
   New-Item -Path ($k + '\DefaultIcon') -Force | Out-Null
   Set-ItemProperty -Path ($k + '\DefaultIcon') -Name '(default)' -Value $icoPath
+  # passa dal lanciatore invisibile: se l'app e' gia' aperta la porta davanti invece di aprirne un'altra
+  # (stesso file e stesso comando che registra l'app, cosi' all'avvio non li riscrive)
+  $apriDir = Join-Path $env:APPDATA 'DownConvertron'
+  New-Item -ItemType Directory -Force -Path $apriDir | Out-Null
+  $apriPath = Join-Path $apriDir 'apri.js'
+  [IO.File]::WriteAllBytes($apriPath, [Convert]::FromBase64String(($APRI_B64 -replace '\s', '')))
   New-Item -Path ($k + '\shell\open\command') -Force | Out-Null
-  Set-ItemProperty -Path ($k + '\shell\open\command') -Name '(default)' -Value ('"' + $mshta + '" "' + $htaPath + '" "%1"')
+  Set-ItemProperty -Path ($k + '\shell\open\command') -Name '(default)' -Value ('"' + (Join-Path $env:SystemRoot 'System32\wscript.exe') + '" //B //nologo "' + $apriPath + '" "' + $htaPath + '" "%1"')
   Say (M '     fatto' '     done' '     完成') 'Green'
 } catch { Say ((M '     ERRORE: ' '     ERROR: ' '     错误：') + $_.Exception.Message) 'Yellow'; $ok = $false }
 
@@ -142,7 +148,8 @@ if ($ok) {
   Say (M '  Installazione completata con avvisi (vedi sopra). Fai uno screenshot di questa finestra.' '  Installation completed with warnings (see above). Take a screenshot of this window.' '  安装完成但有警告（见上方）。请截图此窗口。') 'Yellow'
 }
 '''.replace('__VER__', ver)
-payload = "\n$HTA_B64 = @'\n" + wrap(hta) + "\n'@\n$ICO_B64 = @'\n" + wrap(ico) + "\n'@\n"
+apri = open(os.path.join(ROOT, 'windows', 'apri.js'), 'rb').read()
+payload = "\n$HTA_B64 = @'\n" + wrap(hta) + "\n'@\n$ICO_B64 = @'\n" + wrap(ico) + "\n'@\n$APRI_B64 = @'\n" + wrap(apri) + "\n'@\n"
 out = bat_head + payload + ps          # i payload sono definiti PRIMA del codice che li usa
 assert out.count('#PSSTART#') == 1
 os.makedirs(OUT, exist_ok=True)

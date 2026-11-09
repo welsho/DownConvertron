@@ -29,6 +29,11 @@ ps = open(os.path.join(ROOT, 'windows', 'ricevitore.ps1.in'), encoding='utf-8').
 assert all(ord(c) < 128 for c in ps), 'ricevitore non ASCII'
 s, n = re.subn(r'var DROP_PS = ".*?";\n', lambda m: 'var DROP_PS = ' + json.dumps(ps) + ';\n', s, flags=re.S)
 assert n == 1, n
+# 2b. lanciatore di downconvertron:// (windows/apri.js): porta davanti l'app gia' aperta invece di aprirne un'altra
+apri = open(os.path.join(ROOT, 'windows', 'apri.js'), encoding='utf-8').read()
+assert all(ord(c) < 128 for c in apri), 'apri.js non ASCII'
+s, n = re.subn(r'var APRI_JS = ".*?";\n', lambda m: 'var APRI_JS = ' + json.dumps(apri).replace('</', '<\\/') + ';\n', s, flags=re.S)
+assert n == 1, n
 # 3. traduzioni (i18n/strings.json: frase italiana -> en, zh)
 db = json.load(open(os.path.join(ROOT, 'i18n', 'strings.json'), encoding='utf-8'))
 tr = {'en': {}, 'zh': {}}

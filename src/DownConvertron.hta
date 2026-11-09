@@ -1648,6 +1648,9 @@ function urlContentType(url) {
   tryDelete(cfg); tryDelete(hdr);
   return ct;
 }
+/* percorso da usare DENTRO cmd: l'HTA gira spesso in mshta a 32 bit (SysWOW64) e allora SYSDIR e' Sysnative,
+   ma EXE_CMD e' il cmd a 64 bit, che Sysnative non lo vede ("Impossibile trovare il percorso specificato") */
+function cmdPath(p) { return String(p).replace(/\\Sysnative\\/i, "\\System32\\"); }
 function curlExe() {
   if (window.DCVT_MAC) return findTool("curl") || "/usr/bin/curl";
   var c = SYSDIR + "\\curl.exe";
@@ -1667,7 +1670,7 @@ function runImage(it) {
   } catch (e) { state.lastErr = T("Impossibile preparare il download dell'immagine: {0}", e.message || e); stepDone(false); return; }
   $("pct").innerText = T("Scarico l'immagine...");
   state.killProc = fso.GetFileName(curl).replace(/'/g, ""); state.killTag = baseName(state.files.cfg);
-  runCommand('"' + curl + '" -K "' + state.files.cfg + '"');
+  runCommand('"' + cmdPath(curl) + '" -K "' + state.files.cfg + '"');
 }
 function imgStepDone(it, ok) {
   var SEP = window.DCVT_MAC ? "/" : "\\", good = false;
@@ -3323,7 +3326,7 @@ function cvRunImageDl(it) {
   state.cvStage = "dl"; state.lastErr = "";
   $("pct").innerText = T("Scarico l'immagine...");
   state.killProc = fso.GetFileName(curl).replace(/'/g, ""); state.killTag = baseName(state.files.cfg);
-  runCommand('"' + curl + '" -K "' + state.files.cfg + '"');
+  runCommand('"' + cmdPath(curl) + '" -K "' + state.files.cfg + '"');
 }
 function cvRunDownload(it) {
   if (it.imgLink) { cvRunImageDl(it); return; }
@@ -3741,13 +3744,20 @@ function extApplyMode(h) {
 
 /* ---------- apertura dall'estensione: protocollo downconvertron:// ----------
    Windows: registrato per il tuo utente (HKCU, niente amministratore) e puntato a QUESTA app;
-   Chrome chiede la prima volta se aprire DownConvertron. Mac: lo registra l'app stessa. */
+   Chrome chiede la prima volta se aprire DownConvertron. Mac: lo registra l'app stessa.
+   Il collegamento passa da un lanciatore invisibile (windows/apri.js, incorporato da tools/embed.py):
+   se l'app e' gia' aperta la riporta in primo piano (anche se ridotta a icona) invece di aprirne un'altra. */
+var APRI_JS = "/* DownConvertron - lanciatore del collegamento downconvertron:// (logo e invio dell'estensione Chrome).\n   Se l'app e' gia' aperta la porta in primo piano: i link li legge da sola dagli appunti.\n   Altrimenti la avvia. Gira con wscript //B: nessuna finestra.\n   Argomenti: percorso dell'HTA, link downconvertron://\n   Copyright (C) 2026 Daniele Moretti (Welsho) - GPL-3.0-or-later */\nvar sh = new ActiveXObject(\"WScript.Shell\"), A = WScript.Arguments;\nvar hta = A.length > 0 ? A(0) : \"\", url = A.length > 1 ? A(1) : \"\";\n\n/* processo di DownConvertron gia' aperto (mshta a 32 o 64 bit, installata o no): 0 se non c'e' */\nfunction running() {\n  try {\n    var wmi = GetObject(\"winmgmts:{impersonationLevel=impersonate}!\\\\\\\\.\\\\root\\\\cimv2\");\n    var e = new Enumerator(wmi.ExecQuery(\"SELECT ProcessId, CommandLine FROM Win32_Process WHERE Name = 'mshta.exe'\"));\n    for (; !e.atEnd(); e.moveNext()) {\n      var cl = String(e.item().CommandLine || \"\");\n      if (/[\\\\\\/\"]DownConvertron[^\\\\\\/\"]*\\.hta/i.test(cl)) return e.item().ProcessId;\n    }\n  } catch (x) {}\n  return 0;\n}\n/* lo stesso mshta del doppio clic sui file .hta, cosi' \"una sola istanza\" vale anche dopo */\nfunction mshta() {\n  var def = sh.ExpandEnvironmentStrings(\"%SystemRoot%\") + \"\\\\System32\\\\mshta.exe\", c = \"\", m;\n  try { c = String(sh.RegRead(\"HKCR\\\\htafile\\\\shell\\\\open\\\\command\\\\\")); } catch (x) {}\n  m = /^\\s*\"([^\"]*mshta\\.exe)\"/i.exec(c) || /^\\s*(\\S*mshta\\.exe)/i.exec(c);\n  return m ? sh.ExpandEnvironmentStrings(m[1]) : def;\n}\n\n/* base64 di una stringa in UTF-16LE (per powershell -EncodedCommand: niente problemi di virgolette) */\nfunction b64u16(s) {\n  var K = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/\", b = [], o = \"\", i, n;\n  for (i = 0; i < s.length; i++) { n = s.charCodeAt(i); b.push(n & 255, n >> 8); }\n  for (i = 0; i < b.length; i += 3) {\n    n = (b[i] << 16) | ((b[i + 1] || 0) << 8) | (b[i + 2] || 0);\n    o += K.charAt(n >> 18 & 63) + K.charAt(n >> 12 & 63) + (i + 1 < b.length ? K.charAt(n >> 6 & 63) : \"=\") + (i + 2 < b.length ? K.charAt(n & 63) : \"=\");\n  }\n  return o;\n}\n/* AppActivate non ripristina una finestra ridotta a icona: lo fa ShowWindowAsync (PowerShell nascosto) */\nfunction restore(pid) {\n  var ps = sh.ExpandEnvironmentStrings(\"%SystemRoot%\") + \"\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\";\n  var code = \"$h = (Get-Process -Id \" + pid + \").MainWindowHandle; if ($h -ne 0) { \" +\n    \"$w = Add-Type -Name W -Namespace DCVT -PassThru -MemberDefinition '[DllImport(\\\"user32.dll\\\")] public static extern bool IsIconic(IntPtr h); [DllImport(\\\"user32.dll\\\")] public static extern bool ShowWindowAsync(IntPtr h, int c);'; \" +\n    \"if ($w::IsIconic($h)) { [void]$w::ShowWindowAsync($h, 9) } }\";\n  try { sh.Run('\"' + ps + '\" -NoProfile -NonInteractive -WindowStyle Hidden -EncodedCommand ' + b64u16(code), 0, true); } catch (x) {}\n}\n\nvar pid = running();\nif (pid) {\n  restore(pid);\n  if (!sh.AppActivate(pid)) { WScript.Sleep(300); sh.AppActivate(pid); }\n} else if (hta) {\n  sh.Run('\"' + mshta() + '\" \"' + hta + '\"' + (url ? ' \"' + url + '\"' : \"\"), 1, false);\n}\n";
 function protoRegister() {
   if (window.DCVT_MAC) return;
   try {
     var hta = htaPath(), key = "HKCU\\Software\\Classes\\downconvertron\\";
     if (!hta) return;
-    var cmd = '"' + SYS + '\\System32\\mshta.exe" "' + hta + '" "%1"', cur = "";
+    var apri = DIR_APP + "\\apri.js", old = "";
+    ensureDir(DIR_APP);
+    try { if (fso.FileExists(apri)) old = readUtf8(apri); } catch (e0) {}
+    if (old !== APRI_JS) writeAscii(apri, APRI_JS);
+    var cmd = '"' + SYS + '\\System32\\wscript.exe" //B //nologo "' + apri + '" "' + hta + '" "%1"', cur = "";
     try { cur = sh.RegRead(key + "shell\\open\\command\\"); } catch (e) {}
     if (cur === cmd) return;
     sh.RegWrite(key, "URL:DownConvertron", "REG_SZ");
