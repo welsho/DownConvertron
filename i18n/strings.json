@@ -519,6 +519,10 @@
   "en": "CineForm: editing intermediate (Premiere, After Effects, Resolve) with 12-bit alpha, lighter than ProRes 4444.",
   "zh": "CineForm：剪辑中间格式（Premiere、After Effects、Resolve），带 12 位透明，比 ProRes 4444 小。"
  },
+ "Clip ferma": {
+  "en": "Still clip",
+  "zh": "静帧片段"
+ },
  "Clip troppo lunga per ripetizioni o avanti-indietro (max circa 32.000 fotogrammi): accorciala con il taglio.": {
   "en": "Clip too long for repeats or forward-backward (max about 32,000 frames): shorten it with the trim.",
   "zh": "片段太长，无法重复或正放-倒放（最多约 32,000 帧）：请用剪切缩短。"
@@ -635,6 +639,10 @@
   "en": "To be downloaded from the link, then converted",
   "zh": "先从链接下载，再转换"
  },
+ "Dai video e dalle sequenze viene salvato un solo fotogramma: quello all'inizio del taglio (o il primo).": {
+  "en": "From videos and sequences a single frame is saved: the one at the trim start (or the first).",
+  "zh": "视频和序列只保存一帧：剪切起点处的那一帧（或第一帧）。"
+ },
  "Dividi per capitoli": {
   "en": "Split by chapters",
   "zh": "按章节分割"
@@ -670,6 +678,10 @@
  "Download non riuscito (il file è condiviso con «Chiunque abbia il link»?)": {
   "en": "Download failed (is the file shared with «Anyone with the link»?)",
   "zh": "下载失败（文件是否已共享给“知道链接的任何人”？）"
+ },
+ "Durata della clip ferma in secondi (da 0,1 a 3600)": {
+  "en": "Still clip length in seconds (0.1 to 3600)",
+  "zh": "静帧片段时长（秒，0.1 到 3600）"
  },
  "ENCODER": {
   "en": "ENCODER",
@@ -911,6 +923,10 @@
   "en": "The programs are there and work, but an update did not succeed: you can try again later.",
   "zh": "程序已存在并可用，但更新未成功：可以稍后重试。"
  },
+ "Il cambio contenitore non si applica alle immagini: scegli un altro formato.": {
+  "en": "Container change does not apply to images: choose another format.",
+  "zh": "更换封装不适用于图片：请选择其他格式。"
+ },
  "Il formato": {
   "en": "The format",
   "zh": "格式"
@@ -947,6 +963,38 @@
   "en": "Your ffmpeg lacks the zscale filter (needed for linear EXR): press «Install / update components».",
   "zh": "你的 ffmpeg 缺少 zscale 滤镜（线性 EXR 需要）：点击“安装 / 更新组件”。"
  },
+ "Immagine JPG": {
+  "en": "JPG image",
+  "zh": "JPG 图片"
+ },
+ "Immagine JPG: file leggero e compatibile ovunque, senza trasparenza (lo sfondo trasparente diventa nero).": {
+  "en": "JPG image: a light file that works everywhere, without transparency (transparent background becomes black).",
+  "zh": "JPG 图片：体积小、兼容性最好，不支持透明（透明背景会变成黑色）。"
+ },
+ "Immagine PNG": {
+  "en": "PNG image",
+  "zh": "PNG 图片"
+ },
+ "Immagine PNG: un file senza perdita con trasparenza a 8 bit.": {
+  "en": "PNG image: one lossless file with 8-bit transparency.",
+  "zh": "PNG 图片：一个无损文件，8 位透明。"
+ },
+ "Immagine TIFF": {
+  "en": "TIFF image",
+  "zh": "TIFF 图片"
+ },
+ "Immagine TIFF: un file senza perdita (compressione deflate) con trasparenza.": {
+  "en": "TIFF image: one lossless file (deflate compression) with transparency.",
+  "zh": "TIFF 图片：一个无损文件（deflate 压缩），带透明。"
+ },
+ "Immagine WebP": {
+  "en": "WebP image",
+  "zh": "WebP 图片"
+ },
+ "Immagine WebP: file leggero con trasparenza morbida, per il web.": {
+  "en": "WebP image: a light file with soft transparency, for the web.",
+  "zh": "WebP 图片：体积小，透明边缘柔和，适合网页。"
+ },
  "Immagine non leggibile: {0}": {
   "en": "Unreadable image: {0}",
   "zh": "无法读取图片：{0}"
@@ -958,6 +1006,10 @@
  "Immagini di formati diversi: serve ffmpeg per unirle. Premi «Installa / aggiorna componenti».": {
   "en": "Images in different formats: ffmpeg is needed to join them. Press «Install / update components».",
   "zh": "图片格式不同：需要 ffmpeg 才能合并。请点击“安装 / 更新组件”。"
+ },
+ "Immagini singole: diventano una clip ferma (durata nella riga di ogni immagine).": {
+  "en": "Single images: they become a still clip (length in each image row).",
+  "zh": "单张图片：会变成静帧片段（时长在每张图片的行中设置）。"
  },
  "Importa da .txt": {
   "en": "Import .txt",
@@ -1094,6 +1146,10 @@
  "Italiano": {
   "en": "Italian",
   "zh": "意大利语"
+ },
+ "JPG (senza alfa)": {
+  "en": "JPG (no alpha)",
+  "zh": "JPG（无透明）"
  },
  "L'MP4 non ha il canale alfa:": {
   "en": "MP4 has no alpha channel:",
@@ -1567,6 +1623,10 @@
   "en": "PCM 24-bit (recommended)",
   "zh": "PCM 24 位（推荐）"
  },
+ "PNG + alfa (senza perdita)": {
+  "en": "PNG + alpha (lossless)",
+  "zh": "PNG + 透明（无损）"
+ },
  "PNG/TIFF/EXR/JPG e": {
   "en": "PNG/TIFF/EXR/JPG and",
   "zh": "PNG/TIFF/EXR/JPG 以及"
@@ -1935,6 +1995,10 @@
   "en": "Clear list",
   "zh": "清空列表"
  },
+ "TIFF + alfa (senza perdita)": {
+  "en": "TIFF + alpha (lossless)",
+  "zh": "TIFF + 透明（无损）"
+ },
  "TUTTO": {
   "en": "ALL",
   "zh": "全部"
@@ -1986,6 +2050,10 @@
  "UN ATTIMO...": {
   "en": "ONE MOMENT...",
   "zh": "请稍候..."
+ },
+ "Un'immagine singola esce come un solo file, non come cartella.": {
+  "en": "A single image comes out as one file, not a folder.",
+  "zh": "单张图片输出为一个文件，而不是文件夹。"
  },
  "Usa il chip video del Mac: molto più veloce del normale H.264, a parità di peso la qualità è un po' inferiore.": {
   "en": "Uses the Mac video chip: much faster than regular H.264, at the same size the quality is a bit lower.",
@@ -2071,6 +2139,10 @@
   "en": "WebM only uses VP9/AV1 + Opus: H.264 is not compatible and is ignored. If a video is not available in WebM it gets converted (slower). The cover cannot be embedded in a WebM.",
   "zh": "WebM 只使用 VP9/AV1 + Opus：H.264 不兼容，将被忽略。若视频没有 WebM 版本会进行转换（较慢）。WebM 无法嵌入封面。"
  },
+ "WebP + alfa (leggero)": {
+  "en": "WebP + alpha (light)",
+  "zh": "WebP + 透明（体积小）"
+ },
  "WebP animato": {
   "en": "Animated WebP",
   "zh": "动态 WebP"
@@ -2134,6 +2206,14 @@
  "di {0}": {
   "en": "of {0}",
   "zh": "/ {0}"
+ },
+ "doppi o non trovati": {
+  "en": "duplicates or not found",
+  "zh": "重复或未找到"
+ },
+ "doppi o non trovati).": {
+  "en": "duplicates or not found).",
+  "zh": "重复或未找到）。"
  },
  "doppi, non trovati o immagini singole": {
   "en": "duplicates, not found or single images",
@@ -2246,6 +2326,10 @@
  "il ricevitore si sta avviando, poi rilascia": {
   "en": "the receiver is starting, then drop",
   "zh": "接收器正在启动，稍后再放下"
+ },
+ "immagine {0}": {
+  "en": "{0} image",
+  "zh": "{0} 图片"
  },
  "in H.264 appiattito su nero. Il cambio in MOV invece mantiene la trasparenza.": {
   "en": "to H.264 flattened on black. Changing to MOV instead keeps the transparency.",

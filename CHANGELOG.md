@@ -14,6 +14,8 @@
 - **Estensione**: due pulsanti, «Metti in lista» e «Scarica subito» (con Video o Solo audio l'app avvia il download da sola). Le impostazioni rapide azzerano codec, audio, frequenza e canali alle scelte automatiche: non resta più, per esempio, un «Nessun audio» scelto prima nell'app.
 - **Immagini dall'estensione**: arrivano all'app marcate come immagini e si scaricano anche quando l'URL non ha estensione (X, Unsplash, Google…). L'estensione del file viene dal contenuto (un .jpg che in realtà è WebP diventa .webp); una pagina web al posto dell'immagine dà un errore chiaro. Raccolte anche le immagini non ancora caricate (lazy).
 - **Link incollati a mano**: se yt-dlp risponde «Unsupported URL» e il server dice che è un'immagine, l'app la scarica direttamente.
+- **Convertitore, immagini singole**: un'immagine sola ora entra in lista (prima veniva scartata). Con un'uscita video diventa una clip ferma, con la durata scelta nella sua riga; con un'uscita immagine diventa un file (nuovo gruppo «Immagine singola»: PNG, WebP, TIFF con alfa, JPG; le Sequenze PNG/TIFF/EXR con un'immagine sola danno un file, non una cartella). Dai video, i formati immagine salvano il fotogramma all'inizio del taglio.
+- **Convertitore, foto scelte una per una**: due o più immagini scelte o trascinate sono esattamente quelle, in ordine di nome. Prima foto numerate come IMG_1234 e IMG_1240 diventavano la sequenza di tutta la cartella. Accettati anche .jfif e .avif.
 - Build su Windows: file generati sempre con fine riga LF; `check.py` corretto per Windows PowerShell 5.1.
 - Repository pubblico: build riproducibile (`build.sh`), controlli automatici (`tools/check.py`), release automatica con GitHub Actions.
 

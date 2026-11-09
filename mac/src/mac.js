@@ -85,7 +85,7 @@
 
   /* ---------- scelta di file e cartelle con le finestre del Mac ---------- */
   var MEDIA_EXTS = ["mp4", "m4v", "mov", "qt", "mkv", "webm", "avi", "wmv", "flv", "mpg", "mpeg", "m2ts", "mts", "ts", "3gp", "ogv", "gif", "apng", "png", "mxf", "dv", "vob", "f4v", "asf",
-                    "tif", "tiff", "exr", "jpg", "jpeg", "dpx", "tga", "bmp", "webp"];
+                    "tif", "tiff", "exr", "jpg", "jpeg", "jfif", "dpx", "tga", "bmp", "webp", "avif"];
   cvAddFiles = function () {
     if (state.busy) return;
     var list = M.ipc.sendSync("pick-files", { title: "Scegli i file da convertire", multi: true, filters: [{ name: "Video, animazioni e sequenze", extensions: MEDIA_EXTS }, { name: "Tutti i file", extensions: ["*"] }] });
