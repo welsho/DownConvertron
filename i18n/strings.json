@@ -315,6 +315,10 @@
   "en": "Animation and PNG are lossless: very large files, ideal for editing.",
   "zh": "Animation 和 PNG 是无损的：文件很大，适合剪辑。"
  },
+ "Animazione non creata, immagini aggiunte separate: {0}": {
+  "en": "Animation not created, images added separately: {0}",
+  "zh": "未创建动画，图片已分别添加：{0}"
+ },
  "Animazioni di immagini: immagini al secondo nella riga di ogni animazione.": {
   "en": "Image animations: images per second in the row of each animation.",
   "zh": "图片动画：每秒图片数在每个动画的行中设置。"
@@ -863,9 +867,9 @@
   "en": "Animated GIF (1-bit alpha)",
   "zh": "GIF 动图（1 位透明）"
  },
- "GIF: 15 fotogrammi al secondo e al massimo 480p se non scegli altro; trasparenza a 1 bit (pixel pieni o vuoti), senza audio. Per bordi morbidi usa WebP o APNG.": {
-  "en": "GIF: 15 frames per second and at most 480p unless you choose otherwise; 1-bit transparency (full or empty pixels), no audio. For soft edges use WebP or APNG.",
-  "zh": "GIF：默认每秒 15 帧、最高 480p；1 位透明（像素要么全有要么全无），无音频。要柔和边缘请用 WebP 或 APNG。"
+ "GIF: al massimo 15 fotogrammi al secondo e 480p se non scegli altro; trasparenza a 1 bit (pixel pieni o vuoti), senza audio. Per bordi morbidi usa WebP o APNG.": {
+  "en": "GIF: at most 15 frames per second and 480p unless you choose otherwise; 1-bit transparency (pixels fully on or off), no audio. For soft edges use WebP or APNG.",
+  "zh": "GIF：除非另行选择，最多每秒 15 帧、480p；1 位透明（像素要么全显示要么全透明），无音频。需要柔和边缘请用 WebP 或 APNG。"
  },
  "GIF: solo immagini, a 15 fotogrammi al secondo, senza audio. Adatta a clip brevi: oltre 480p diventa enorme.": {
   "en": "GIF: images only, 15 frames per second, no audio. Good for short clips: above 480p it gets huge.",
@@ -986,6 +990,10 @@
  "Il tuo ffmpeg non ha il filtro zscale (serve all'EXR lineare): premi «Installa / aggiorna componenti».": {
   "en": "Your ffmpeg lacks the zscale filter (needed for linear EXR): press «Install / update components».",
   "zh": "你的 ffmpeg 缺少 zscale 滤镜（线性 EXR 需要）：点击“安装 / 更新组件”。"
+ },
+ "Il tuo ffmpeg non ha il filtro zscale: i file EXR (lineari) uscirebbero troppo scuri. Premi «Installa / aggiorna componenti».": {
+  "en": "Your ffmpeg lacks the zscale filter: EXR files (linear) would come out too dark. Press «Install / update components».",
+  "zh": "你的 ffmpeg 缺少 zscale 滤镜：EXR 文件（线性）会输出得过暗。请点击“安装 / 更新组件”。"
  },
  "Immagine JPG": {
   "en": "JPG image",
@@ -2406,6 +2414,10 @@
  "immagine {0}": {
   "en": "{0} image",
   "zh": "{0} 图片"
+ },
+ "immagini non leggibili": {
+  "en": "unreadable images",
+  "zh": "图片无法读取"
  },
  "in H.264 appiattito su nero. Il cambio in MOV invece mantiene la trasparenza.": {
   "en": "to H.264 flattened on black. Changing to MOV instead keeps the transparency.",

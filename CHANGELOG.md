@@ -9,6 +9,19 @@
 - **Più immagini insieme**: l'app chiede ogni volta se farne **un'unica animazione** o **immagini separate** (clip ferme o file immagine, secondo il formato di uscita). Nelle animazioni di immagini le **immagini al secondo** si scelgono nella riga, a parte dagli FPS del video (con FPS «Originale» il video resta a «FPS delle sequenze», GIF/WebP/APNG animati seguono le immagini).
 - **Link nel convertitore**: i link diretti a un'immagine (anche senza estensione, riconosciuti dopo «Unsupported URL») si scaricano con curl e diventano immagini singole.
 - **Lingue**: tradotte le frasi che iniziavano con testo in grassetto (istruzioni dell'estensione), i gruppi del menu dei formati e i titoli delle finestre di scelta file e cartelle (Windows e Mac).
+- **Convertitore, correzioni dalla revisione** (provate con ffmpeg reale):
+  - sequenze EXR di nuovo funzionanti (ffmpeg ha tolto `-apply_trc`: ora la conversione da lineare a sRGB la fa `zscale`, colori verificati sul grigio 128);
+  - animazioni di immagini scelte una per una salvate **accanto agli originali** con «Nella stessa cartella» (prima finivano nella copia temporanea, cancellata al riavvio);
+  - alfa delle animazioni decisa da **tutte** le immagini, non solo dalla prima (JPG opaco seguito da PNG trasparenti);
+  - **HEVC con alfa** di Apple riconosciuto anche se ffprobe lo dice opaco;
+  - WebP animati in ingresso trattati come video; GIF di un solo fotogramma e AVIF diventano clip ferme; AVIF e JFIF accettati nelle animazioni;
+  - tela con bordi nel formato giusto: PNG/Animazione/APNG restano senza perdita, ProRes e CineForm a 12 bit, EXR in virgola mobile;
+  - foto numerate di misure diverse (verticali e orizzontali) con bordi e centrate, non più stirate;
+  - avanti-indietro senza fotogrammi ripetuti alla svolta e alla giunzione del loop;
+  - GIF con trasparenza senza «fantasma» (fotogrammi interi); GIF e APNG a 10 fps restano a 10 fps;
+  - cambio contenitore bloccato sulle animazioni di immagini (il MOV risultava rotto);
+  - selezionare tutti i fotogrammi di una sequenza e trascinarli dà la sequenza (senza domanda e senza copie);
+  - nomi con `%2B` trascinati dal ricevitore non più decodificati; fotogrammi rinominati con la cartella («X (2)_png»); l'errore di un'animazione non creata resta visibile.
 - **Logo e invio dall'estensione**: se DownConvertron è già aperta viene riportata in primo piano (anche se ridotta a icona) invece di aprirne un'altra. Il collegamento `downconvertron://` passa da un piccolo lanciatore invisibile (`apri.js` in `%APPDATA%\DownConvertron`). Prima, con l'HTA aperta col doppio clic (mshta a 32 bit) e il collegamento su mshta a 64 bit, si aprivano due app che leggevano gli stessi appunti.
 - **Download delle immagini su Windows**: corretto «Impossibile trovare il percorso specificato» con l'app aperta in mshta a 32 bit (curl veniva cercato in `Sysnative` da un cmd a 64 bit).
 - **Cartella dell'estensione**: il pulsante Estensione Chrome e la spia COMPONENTI aprono la cartella che la contiene, con `chrome-extension` già selezionata da trascinare intera.
