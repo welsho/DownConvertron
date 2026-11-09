@@ -1,6 +1,9 @@
 # Changelog
 
 ## 7.0 — DownConvertron
+- **Immagini nel downloader, formato per riga**: ogni immagine in lista ha il suo menu. **Originale** (predefinito) salva il file così com'è sul server, byte per byte, senza ricodifica; **PNG**, **WebP** e **JPG** la convertono con ffmpeg dopo il download. PNG e WebP conservano l'alfa (WebP senza perdita, con perdita solo partendo da un JPG; una GIF animata resta animata in WebP). Con JPG le parti trasparenti diventano bianche e il registro lo avvisa. Se ffmpeg manca o la conversione fallisce, resta l'immagine originale (stato «Parziale» con il motivo).
+- **Estensione, fonte massima**: per ogni immagine si prende la versione più grande dichiarata dalla pagina (`srcset` dell'immagine e delle `<source>` del `<picture>`), non quella che il browser ha scelto per lo schermo.
+- **Estensione, «Salva nei Download»**: un'immagine senza estensione nell'URL prende l'estensione dal tipo dichiarato dal server (un WebP non viene più salvato come .jpg).
 - **Estensione**: due pulsanti, «Metti in lista» e «Scarica subito» (con Video o Solo audio l'app avvia il download da sola). Le impostazioni rapide azzerano codec, audio, frequenza e canali alle scelte automatiche: non resta più, per esempio, un «Nessun audio» scelto prima nell'app.
 - **Immagini dall'estensione**: arrivano all'app marcate come immagini e si scaricano anche quando l'URL non ha estensione (X, Unsplash, Google…). L'estensione del file viene dal contenuto (un .jpg che in realtà è WebP diventa .webp); una pagina web al posto dell'immagine dà un errore chiaro. Raccolte anche le immagini non ancora caricate (lazy).
 - **Link incollati a mano**: se yt-dlp risponde «Unsupported URL» e il server dice che è un'immagine, l'app la scarica direttamente.

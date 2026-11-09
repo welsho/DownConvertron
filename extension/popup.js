@@ -183,16 +183,23 @@ async function raccogli() {
             try { u = new URL(u, document.baseURI).href; } catch (e) { return; }
             if (/^https?:/.test(u) && w >= 200 && h >= 150) img.push([u, String(alt || "").trim().slice(0, 120), Math.round(w), Math.round(h)]);
           };
-          /* da un srcset la voce con il descrittore piu' grande (800w, 2x) */
+          /* da un srcset la voce con il descrittore piu' grande (800w, 2x); i segnaposto data: non contano */
           const migliore = s => {
             let best = "", bn = -1;
-            for (const p of String(s || "").split(/,\s+/)) { const a = p.trim().split(/\s+/), n = parseFloat(a[1]) || 1; if (a[0] && n > bn) { best = a[0]; bn = n; } }
+            for (const p of String(s || "").split(/,\s+/)) { const a = p.trim().split(/\s+/), n = parseFloat(a[1]) || 1; if (a[0] && !/^data:/.test(a[0]) && n > bn) { best = a[0]; bn = n; } }
             return best;
+          };
+          /* fonte massima: la versione piu' grande dichiarata dalla pagina (srcset dell'immagine e delle <source> del <picture>),
+             non quella che il browser ha scelto per lo schermo */
+          const massima = i => {
+            const s = [i.getAttribute("srcset") || ""];
+            if (i.parentElement && i.parentElement.tagName === "PICTURE") for (const so of i.parentElement.querySelectorAll("source[srcset]")) s.push(so.getAttribute("srcset"));
+            return migliore(s.filter(Boolean).join(", "));
           };
           for (const i of document.images) {
             /* immagini lazy: finche' non si caricano c'e' un segnaposto (data:, 1x1) e l'URL vero sta in data-src / data-srcset */
             const lazy = i.getAttribute("data-src") || i.getAttribute("data-lazy-src") || i.getAttribute("data-original") || migliore(i.getAttribute("data-srcset") || i.getAttribute("data-lazy-srcset"));
-            let u = i.currentSrc || i.src;
+            let u = massima(i) || i.currentSrc || i.src;
             if (lazy && (!u || /^data:/.test(u) || i.naturalWidth < 50)) u = lazy;
             /* la misura vera se c'e', altrimenti quella a schermo (o negli attributi) */
             const w = Math.max(i.naturalWidth || 0, i.width || 0, parseInt(i.getAttribute("width"), 10) || 0);
@@ -258,18 +265,32 @@ function nomeImmagine(u, titolo) {
   try { n = new URL(u).pathname.split("/").pop() || ""; } catch (e) {}
   try { n = decodeURIComponent(n); } catch (e) {}
   n = nomeFile(n);
-  const m = n.match(EST_IMG), est = m ? m[0].toLowerCase() : ".jpg";        /* senza estensione nell'URL: .jpg */
+  const m = n.match(EST_IMG), est = m ? m[0].toLowerCase() : "";        /* senza estensione nell'URL: la decide il tipo del file */
   let base = nomeFile(m ? n.slice(0, -m[0].length) : (pulisciNome(titolo) || n.replace(/\.\w{1,5}$/, ""))).slice(0, 100);
   base = base.replace(/[\s.]+$/, "") || t("nomeImg");
   if (/^(con|prn|aux|nul|com\d|lpt\d)$/i.test(base)) base = "_" + base;  /* nomi riservati di Windows */
-  return "DownConvertron/" + base + est;
+  return { base: "DownConvertron/" + base, est };
 }
+/* estensione dal tipo che il server dichiara: un WebP senza estensione nell'URL non diventa .jpg */
+const EST_MIME = { "image/jpeg": ".jpg", "image/jpg": ".jpg", "image/pjpeg": ".jpg", "image/png": ".png", "image/apng": ".png", "image/gif": ".gif", "image/webp": ".webp",
+  "image/avif": ".avif", "image/bmp": ".bmp", "image/tiff": ".tif", "image/svg+xml": ".svg", "image/heic": ".heic", "image/heif": ".heic" };
+const nomiInAttesa = new Map();   /* url -> { base, est } dei download rapidi partiti da qui */
+chrome.downloads.onDeterminingFilename.addListener((item, suggest) => {
+  const n = nomiInAttesa.get(item.url) || nomiInAttesa.get(item.finalUrl);
+  if (!n) { suggest(); return; }
+  nomiInAttesa.delete(item.url); nomiInAttesa.delete(item.finalUrl);
+  const est = EST_MIME[String(item.mime || "").toLowerCase()] || n.est || ".jpg";
+  suggest({ filename: n.base + est, conflictAction: "uniquify" });
+});
 async function scaricaSubito() {
   const sel = voci.immagini.filter(v => v.scelto), nota = document.getElementById("nota");
   let ok = 0, ko = 0, errore = "";
   for (const v of sel) {
-    try { await chrome.downloads.download({ url: v.url, filename: nomeImmagine(v.url, v.titolo), conflictAction: "uniquify", saveAs: false }); ok++; }
-    catch (e) { ko++; errore = e.message || String(e); }
+    const n = nomeImmagine(v.url, v.titolo);
+    nomiInAttesa.set(v.url, n);
+    /* il nome passato qui vale solo se il popup si chiude prima che Chrome conosca il tipo del file */
+    try { await chrome.downloads.download({ url: v.url, filename: n.base + (n.est || ".jpg"), conflictAction: "uniquify", saveAs: false }); ok++; }
+    catch (e) { ko++; errore = e.message || String(e); nomiInAttesa.delete(v.url); }
   }
   registra(t("logScaricate", ok) + (ko ? " / " + ko + " KO: " + errore : ""));
   nota.className = "nota " + (ko ? (ok ? "warn" : "err") : "ok");

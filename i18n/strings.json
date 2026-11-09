@@ -431,6 +431,10 @@
   "en": "Start",
   "zh": "开始"
  },
+ "Avviso: il JPG non ha trasparenza, le parti trasparenti di {0} sono diventate bianche.": {
+  "en": "Warning: JPG has no transparency, the transparent parts of {0} became white.",
+  "zh": "注意：JPG 不支持透明，{0} 的透明部分已变为白色。"
+ },
  "Bassa": {
   "en": "Low",
   "zh": "低"
@@ -631,6 +635,10 @@
   "en": "Conversion cancelled. Unfinished files stay in the list.",
   "zh": "转换已取消。未完成的文件仍在列表中。"
  },
+ "Conversione in {0} non riuscita ({1}).": {
+  "en": "Conversion to {0} failed ({1}).",
+  "zh": "转换为 {0} 失败（{1}）。"
+ },
  "Converti in": {
   "en": "Convert to",
   "zh": "转换为"
@@ -638,6 +646,10 @@
  "Converti in WebM": {
   "en": "Convert to WebM",
   "zh": "转换为 WebM"
+ },
+ "Converto l'immagine in {0}...": {
+  "en": "Converting the image to {0}...",
+  "zh": "正在将图片转换为 {0}..."
  },
  "Copertina nel file": {
   "en": "Cover in the file",
@@ -835,6 +847,10 @@
   "en": "Audio format",
   "zh": "音频格式"
  },
+ "Formato dell'immagine: Originale salva il file così com'è sul server, senza ricodifica.": {
+  "en": "Image format: Original saves the file exactly as it is on the server, without re-encoding.",
+  "zh": "图片格式：“原始”按服务器上的原样保存文件，不重新编码。"
+ },
  "Formato di uscita": {
   "en": "Output format",
   "zh": "输出格式"
@@ -1002,6 +1018,10 @@
  "Il tuo ffmpeg non ha il codec": {
   "en": "Your ffmpeg lacks the codec",
   "zh": "你的 ffmpeg 缺少编码器"
+ },
+ "Il tuo ffmpeg non ha il codec WebP: immagine non convertita.": {
+  "en": "Your ffmpeg has no WebP codec: image not converted.",
+  "zh": "你的 ffmpeg 没有 WebP 编码器：图片未转换。"
  },
  "Il tuo ffmpeg non ha il filtro zscale (serve all'EXR lineare): premi «Installa / aggiorna componenti».": {
   "en": "Your ffmpeg lacks the zscale filter (needed for linear EXR): press «Install / update components».",
@@ -1923,6 +1943,10 @@
   "en": "Save",
   "zh": "保存"
  },
+ "Salvata l'immagine originale: {0}": {
+  "en": "Original image saved: {0}",
+  "zh": "已保存原始图片：{0}"
+ },
  "Salvata: {0}": {
   "en": "Saved: {0}",
   "zh": "已保存：{0}"
@@ -2371,9 +2395,17 @@
   "en": "were already there and were not downloaded again",
   "zh": "个已存在，未重新下载"
  },
+ "ffmpeg non riesce a leggere questa immagine: non convertita in {0}.": {
+  "en": "ffmpeg cannot read this image: not converted to {0}.",
+  "zh": "ffmpeg 无法读取此图片：未转换为 {0}。"
+ },
  "ffmpeg non trovato.": {
   "en": "ffmpeg not found.",
   "zh": "未找到 ffmpeg。"
+ },
+ "ffmpeg non trovato: immagine non convertita in {0}.": {
+  "en": "ffmpeg not found: image not converted to {0}.",
+  "zh": "未找到 ffmpeg：图片未转换为 {0}。"
  },
  "ffmpeg non trovato: premi «Installa / aggiorna componenti» in basso.": {
   "en": "ffmpeg not found: press «Install / update components» at the bottom.",
