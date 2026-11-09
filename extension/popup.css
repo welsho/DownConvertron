@@ -53,3 +53,8 @@ section { margin-top: 8px; }
 .thumb .dim { position: absolute; left: 0; right: 0; bottom: 0; font-size: 8.5px; text-align: center; color: #c8ffd6; background: rgba(3,16,6,0.8); }
 .mini.hot { color: #031006; background: linear-gradient(180deg, #b9ffcb, #39ff6a); }
 .mini:disabled { opacity: 0.45; cursor: default; }
+/* Chrome mostra il popup alto al massimo 600 px e fa scorrere il resto: pulsanti e nota restano fissi in basso */
+.piede { position: sticky; bottom: 0; z-index: 5; margin: 0 -10px -10px; padding: 0 10px 10px; background: linear-gradient(180deg, rgba(13,16,19,0.92), #0d1013 30%); }
+.badge.warn { color: #1a0d02; background: #ff8a1f; }
+.avviso { margin: 0 0 4px; padding: 3px 7px; border-radius: 7px; font-size: 10.5px; line-height: 1.35; color: #ffd2a8; background: #2a1606; border: 1px solid #5a2f0a; }
+.nota.warn { color: #ff8a1f; font-weight: bold; }

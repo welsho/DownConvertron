@@ -41,6 +41,7 @@
 </div>
 <section>
   <div class="sh"><span><span data-t="schede"></span> <b id="nSchede">0</b></span><button class="mini" data-tutti="schede" data-t="tuttiNessuno"></button></div>
+  <div class="avviso" id="avvisoSchede" hidden></div>
   <div class="lista" id="schede"></div>
 </section>
 <section>
@@ -48,11 +49,14 @@
   <div class="lista" id="pagina"></div>
 </section>
 <section>
-  <div class="sh"><span><span data-t="immagini"></span> <b id="nImmagini">0</b></span><span><button class="mini" data-tutti="immagini" data-t="tuttiNessuno"></button> <button class="mini hot" id="scaricaSubito" data-t="scaricaSubito"></button></span></div>
+  <div class="sh"><span><span data-t="immagini"></span> <b id="nImmagini">0</b></span><span><button class="mini" data-tutti="immagini" data-t="tuttiNessuno"></button> <button class="mini hot" id="scaricaSubito" data-t="salvaDownload"></button></span></div>
+  <div class="avviso" id="avvisoImmagini" hidden></div>
   <div class="griglia" id="immagini"></div>
 </section>
+<div class="piede">
 <div class="gobar"><button id="invia" class="go"></button><button id="avvia" class="go hot"></button></div>
 <div class="nota" id="nota"></div>
+</div>
 <script src="lingua.js"></script>
 <script src="testi.js"></script>
 <script src="siti.js"></script>

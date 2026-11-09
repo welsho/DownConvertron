@@ -28,6 +28,12 @@
   - un solo messaggio riassuntivo per invio; reinviare link già in lista ma non scaricati non dà più errore, e «Scarica subito» li avvia;
   - versioni confrontate come numeri (la 10.0 non risulta più vecchia della 7.0);
   - URL con `'`, `|` o parentesi non più tagliati.
+- **Estensione Chrome** (dalla revisione):
+  - canali, schede di un canale, dirette (Twitch e `/@nome/live`), ricerche e pagine come impostazioni o podcast **partono non spuntate**, con l'etichetta arancione «canale / diretta / pagina» e un avviso: un canale scarica tutti i suoi video, una diretta registra finché non la fermi;
+  - immagini non ancora caricate (`data-src`, `data-srcset`) e immagini di sfondo raccolte nella versione più grande; le pagine `/wiki/File:` non contano più come immagini;
+  - il pulsante delle immagini si chiama **Salva nei Download** (non più «Scarica subito», uguale a quello dei video); nomi dei file sempre validi (niente `~`, caratteri invisibili, nomi riservati di Windows) e resoconto «N in download, M non riuscite»;
+  - avviso «Mostrate le prime 200 di N immagini»; le scelte restano quando la lista si aggiorna;
+  - pulsanti e messaggi sempre visibili in fondo al popup anche quando scorre; testo alternativo sulle anteprime.
 - **Download**:
   - fermare una **diretta** tiene la parte registrata come «nome (interrotta).ts» invece di cancellarla;
   - errore 403 di Twitch spiegato (VOD per abbonati, privato o rimosso);
