@@ -1859,6 +1859,10 @@
   "en": "Debug report",
   "zh": "调试报告"
  },
+ "Report di debug salvato e copiato negli appunti: incollalo nella chat con Ctrl+V.": {
+  "en": "Debug report saved and copied to the clipboard: paste it into the chat with Ctrl+V.",
+  "zh": "调试报告已保存并复制到剪贴板：用 Ctrl+V 粘贴到聊天中。"
+ },
  "Ricodifica completa:": {
   "en": "Full re-encoding:",
   "zh": "完全重新编码："
@@ -1982,6 +1986,10 @@
  "Se un download non parte subito, chiudi e riapri DownConvertron.": {
   "en": "If a download does not start right away, close and reopen DownConvertron.",
   "zh": "如果下载没有立即开始，请关闭并重新打开 DownConvertron。"
+ },
+ "Seleziona il file yt-dlp.exe.": {
+  "en": "Select the yt-dlp.exe file.",
+  "zh": "请选择 yt-dlp.exe 文件。"
  },
  "Senza trasparenza": {
   "en": "Without transparency",
@@ -2214,6 +2222,10 @@
  "Vorbis (OGG)": {
   "en": "Vorbis (OGG)",
   "zh": "Vorbis (OGG)"
+ },
+ "Vuoi invece indicare tu dove si trova yt-dlp.exe?": {
+  "en": "Do you want to point to where yt-dlp.exe is yourself instead?",
+  "zh": "要改为由你指定 yt-dlp.exe 的位置吗？"
  },
  "WAV 24 bit": {
   "en": "WAV 24-bit",
@@ -2586,6 +2598,10 @@
  "yt-dlp non trovato: premi «Installa / aggiorna componenti».": {
   "en": "yt-dlp not found: press «Install / update components».",
   "zh": "未找到 yt-dlp：点击“安装 / 更新组件”。"
+ },
+ "yt-dlp {0} è troppo vecchio e ha falle di sicurezza note. Premi «Installa / aggiorna componenti».": {
+  "en": "yt-dlp {0} is too old and has known security flaws. Press «Install / update components».",
+  "zh": "yt-dlp {0} 版本过旧，存在已知安全漏洞。请点击“安装 / 更新组件”。"
  },
  "yt-dlp, ffmpeg e Deno sono installati: controlla gli aggiornamenti": {
   "en": "yt-dlp, ffmpeg and Deno are installed: check for updates",

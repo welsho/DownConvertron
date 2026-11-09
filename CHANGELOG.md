@@ -42,6 +42,8 @@
 - **Download delle immagini su Windows**: corretto «Impossibile trovare il percorso specificato» con l'app aperta in mshta a 32 bit (curl veniva cercato in `Sysnative` da un cmd a 64 bit).
 - **Cartella dell'estensione**: il pulsante Estensione Chrome e la spia COMPONENTI aprono la cartella che la contiene, con `chrome-extension` già selezionata da trascinare intera.
 - **Trascinamento**: il ricevitore tiene un registro (`ricevitore.log`) incluso nel Report debug; le richieste non vengono più riscritte prima di essere lette.
+- **Layout**: lo zoom del mecha non scende più sotto il minimo leggibile per colpa della barra di scorrimento misurata a zoom 1 (0,797 invece di 0,8 su uno schermo 1920×1080).
+- **Lingue**: tradotti gli ultimi messaggi rimasti in italiano (scelta di yt-dlp.exe, yt-dlp troppo vecchio, Report debug).
 - Build su Windows: file generati sempre con fine riga LF; `check.py` corretto per Windows PowerShell 5.1.
 
 ## 6.0 — DownConvertron (interna, mai pubblicata)
