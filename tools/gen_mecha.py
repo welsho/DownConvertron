@@ -146,5 +146,5 @@ def put(src, name, svg):
     return src[:i] + svg + src[j:]
 s = put(s, 'MECHA_FRONTE', front_svg)
 s = put(s, 'MECHA_RETRO', back_svg)
-open(SRC, 'w', encoding='utf-8').write(s)
+open(SRC, 'w', encoding='utf-8', newline='\n').write(s)  # LF anche su Windows
 print('fronte', len(front_svg), 'retro', len(back_svg))

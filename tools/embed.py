@@ -38,7 +38,7 @@ for k, v in db.items():
 blk = '/* I18N_INIZIO (generato da tools/embed.py da i18n/strings.json) */\nvar I18N = ' + json.dumps(tr, ensure_ascii=True, separators=(',', ':')).replace('</', '<\\/') + ';\n/* I18N_FINE */'
 s, n = re.subn(r'/\* I18N_INIZIO.*?/\* I18N_FINE \*/', lambda m: blk, s, flags=re.S)
 assert n == 1, n
-open(HTA, 'w', encoding='utf-8').write(s)
+open(HTA, 'w', encoding='utf-8', newline='\n').write(s)  # LF anche su Windows
 print('traduzioni:', len(tr['en']), 'en,', len(tr['zh']), 'zh')
 
 # 4. mecha dell'overlay

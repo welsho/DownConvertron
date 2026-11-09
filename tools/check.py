@@ -48,11 +48,12 @@ if os.path.exists(bat):
     t = open(bat, encoding='utf-8').read()
     b64 = re.search(r"\$HTA_B64 = @'\n(.*?)\n'@", t, re.S).group(1)
     dec = base64.b64decode(re.sub(r'\s', '', b64)).decode('utf-8')
-    (ok('installer: contiene la sorgente attuale') if dec == HTA else bad('installer non aggiornato (python3 windows/build_installer.py)'))
+    (ok('installer: contiene la sorgente attuale') if dec.replace('\r\n', '\n') == HTA else bad('installer non aggiornato (python3 windows/build_installer.py)'))
     pw = shutil.which('pwsh') or shutil.which('powershell')
     if pw:
         ps = t[t.index('#PSSTART#') + 9:]
-        f = tempfile.NamedTemporaryFile('w', suffix='.ps1', delete=False, encoding='utf-8'); f.write(ps); f.close()
+        # utf-8-sig: senza BOM Windows PowerShell 5.1 legge il file come ANSI e rompe le stringhe in cinese
+        f = tempfile.NamedTemporaryFile('w', suffix='.ps1', delete=False, encoding='utf-8-sig'); f.write(ps); f.close()
         r = subprocess.run([pw, '-NoProfile', '-Command', '$e=$null;$t=$null;[void][System.Management.Automation.Language.Parser]::ParseFile("%s",[ref]$t,[ref]$e); $e.Count' % f.name], capture_output=True, text=True)
         (ok('installer: sintassi PowerShell') if r.stdout.strip() == '0' else bad('installer: errori PowerShell ' + r.stdout + r.stderr))
         os.unlink(f.name)
@@ -62,7 +63,7 @@ else: print('  --  dist/DownConvertron-Setup.bat assente: installer non controll
 pw = shutil.which('pwsh') or shutil.which('powershell')
 if pw:
     ps = json.loads(re.search(r'var DROP_PS = (".*?");\n', HTA, re.S).group(1))
-    f = tempfile.NamedTemporaryFile('w', suffix='.ps1', delete=False, encoding='utf-8'); f.write(ps); f.close()
+    f = tempfile.NamedTemporaryFile('w', suffix='.ps1', delete=False, encoding='utf-8-sig'); f.write(ps); f.close()
     r = subprocess.run([pw, '-NoProfile', '-Command', '$e=$null;$t=$null;[void][System.Management.Automation.Language.Parser]::ParseFile("%s",[ref]$t,[ref]$e); $e.Count' % f.name], capture_output=True, text=True)
     (ok('ricevitore: sintassi PowerShell') if r.stdout.strip() == '0' else bad('ricevitore: errori PowerShell ' + r.stdout + r.stderr))
     os.unlink(f.name)
