@@ -27,9 +27,9 @@ def add(t, where):
 b2 = re.sub(r'<svg.*?</svg>', '', body, flags=re.S)
 b2 = re.sub(r'<(script|style)\b.*?</\1>', '', b2, flags=re.S)
 for m in re.finditer(r'>([^<>]+)<', b2): add(m.group(1), 'html')
-for m in re.finditer(r'\b(title|placeholder)="([^"]+)"', b2): add(m.group(2), 'attr')
-# script: stringhe con lettere (escluse quelle che sembrano codice)
-CODE = re.compile(r'^(-|\[|\^|\\\\|\.|#|%|\$|/|<|\{|[a-z_]+\(|[a-z0-9_]+$|[a-z]+:[a-z]|https?:|file:|chrome:|[A-Z_]+$)')
+for m in re.finditer(r'\b(title|placeholder|label)="([^"]+)"', b2): add(m.group(2), 'attr')   # label: gruppi dei menu
+# script: stringhe con lettere (escluse quelle che sembrano codice; le frasi che iniziano con <b>, <i>, <br> sono testo)
+CODE = re.compile(r'^(-|\[|\^|\\\\|\.|#|%|\$|/|<(?!b>|i>|br)|\{|[a-z_]+\(|[a-z0-9_]+$|[a-z]+:[a-z]|https?:|file:|chrome:|[A-Z_]+$)')
 for m in re.finditer(r'"((?:[^"\\\n]|\\.)*)"', js):
     raw = m.group(1)
     try: t = json.loads('"' + raw + '"')

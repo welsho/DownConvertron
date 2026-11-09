@@ -88,12 +88,12 @@
                     "tif", "tiff", "exr", "jpg", "jpeg", "jfif", "dpx", "tga", "bmp", "webp", "avif"];
   cvAddFiles = function () {
     if (state.busy) return;
-    var list = M.ipc.sendSync("pick-files", { title: "Scegli i file da convertire", multi: true, filters: [{ name: "Video, animazioni e sequenze", extensions: MEDIA_EXTS }, { name: "Tutti i file", extensions: ["*"] }] });
+    var list = M.ipc.sendSync("pick-files", { title: TX("Scegli i file da convertire"), multi: true, filters: [{ name: TX("Video, animazioni e sequenze"), extensions: MEDIA_EXTS }, { name: TX("Tutti i file"), extensions: ["*"] }] });
     if (list && list.length) cvAddPaths(list);
   };
   importTxt = function () {
     if (state.busy) return;
-    var r = M.ipc.sendSync("pick-files", { title: "Scegli il file .txt con i link", multi: false, filters: [{ name: "Testo", extensions: ["txt"] }] });
+    var r = M.ipc.sendSync("pick-files", { title: TX("Scegli il file .txt con i link"), multi: false, filters: [{ name: TX("Testo"), extensions: ["txt"] }] });
     if (r && r[0]) onFilePicked({ value: r[0] });
   };
   /* trascinamento: Electron fornisce il percorso completo di ogni file e cartella */

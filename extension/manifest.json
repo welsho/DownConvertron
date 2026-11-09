@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "DownConvertron - Link Grabber",
   "short_name": "DownConvertron",
-  "version": "6.0",
+  "version": "7.0",
   "description": "Collects video links of the 1700+ sites supported by yt-dlp and the images of the page, sends them to DownConvertron or downloads images right away. designed by Welsho",
   "author": "Daniele Moretti (Welsho)",
   "action": { "default_popup": "popup.html", "default_title": "DownConvertron",

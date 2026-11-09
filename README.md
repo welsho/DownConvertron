@@ -6,7 +6,7 @@
 Trova i B-roll mentre navighi, scaricali nel formato giusto per il montaggio
 e prepara overlay con la trasparenza intatta, pronti per OBS, Premiere, Resolve e i ledwall.
 
-![Versione](https://img.shields.io/badge/versione-6.0-39ff6a?style=flat-square)
+![Versione](https://img.shields.io/badge/versione-7.0-39ff6a?style=flat-square)
 ![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078d4?style=flat-square)
 ![macOS](https://img.shields.io/badge/macOS-Apple%20Silicon-black?style=flat-square)
 ![Lingue](https://img.shields.io/badge/lingue-IT%20%C2%B7%20EN%20%C2%B7%20%E4%B8%AD%E6%96%87-f2c230?style=flat-square)
@@ -34,7 +34,7 @@ Per chi monta video tutti i giorni e perde tempo tra siti, convertitori online e
 | | |
 |---|---|
 | **Scarica** da oltre 1.700 siti (con [yt-dlp](https://github.com/yt-dlp/yt-dlp)) | YouTube, Vimeo, Instagram, TikTok, X, Twitch, Drive… fino a 8K, MP4 · MOV · MKV · WebM · AVI · GIF, oppure solo audio MP3 · M4A · Opus · FLAC · WAV. Playlist, sottotitoli, capitoli, lingua dell'audio, nomi dei file a scelta. **Immagini** dai link diretti (JPG, PNG, WebP, GIF…). |
-| **Converte** senza perdere la trasparenza | WebM VP9 + alfa, ProRes 4444 / XQ, Animazione, PNG, CineForm 12 bit, HAP Alpha / Q, WebP e APNG animati, GIF, sequenze PNG · TIFF · EXR (anche in ingresso), HEVC con alfa sul Mac. Cambio contenitore MP4 ↔ MOV senza ricodifica. **Immagini singole in ordine → video o GIF** (un fotogramma per immagine, misure diverse uniformate). **Una sola immagine → clip ferma** (durata a scelta) **o un'altra immagine** PNG · WebP · TIFF · JPG. |
+| **Converte** senza perdere la trasparenza | WebM VP9 + alfa, ProRes 4444 / XQ, Animazione, PNG, CineForm 12 bit, HAP Alpha / Q, WebP e APNG animati, GIF, sequenze PNG · TIFF · EXR (anche in ingresso), HEVC con alfa sul Mac. Cambio contenitore MP4 ↔ MOV senza ricodifica. **Più immagini → un'animazione o immagini separate** (te lo chiede; immagini al secondo a scelta, a parte dagli FPS del video; misure diverse uniformate). **Una sola immagine → clip ferma** (durata a scelta) **o un'altra immagine** PNG · WebP · TIFF · JPG. |
 | **Ritocca** | Taglio da/a, ripetizioni, avanti-indietro (boomerang), tela verticale / quadrata / 4:5 con bordi trasparenti, chroma key verde/blu, anteprima su scacchiera, normalizzazione EBU R128, tutte le tracce audio a 24 bit. |
 | **Va veloce** | Codifica con la scheda video NVIDIA / Intel / AMD su Windows, con il chip Apple sul Mac (rilevate da sole). |
 | **Estensione Chrome** | Raccoglie i link dei video dalle schede aperte e dalla pagina mentre fai ricerca, con una mini interfaccia *Video / Solo audio*: un clic e sono nella lista (**Metti in lista**) oppure il download parte subito (**Scarica subito**). Elenca anche le **immagini della pagina** con anteprima: le mandi all'app o le scarichi subito. Il logo dell'estensione apre l'app. |
@@ -131,7 +131,7 @@ python3 tools/check.py     # controlli: JScript ES3, id, estensione, installer, 
 - Le parti generate (estensione, ricevitore, mecha, traduzioni) si aggiornano con `python3 tools/embed.py`.
 - Nuovi testi: scrivili in italiano, poi `python3 tools/i18n_extract.py` elenca in `i18n/_da_tradurre.json` quelli che mancano in `i18n/strings.json`.
 - Il **canale alfa non si perde mai**: ogni modifica al convertitore va provata con file trasparenti.
-- Una release parte da sola con un tag: `git tag v6.0 && git push --tags` (vedi `.github/workflows/build.yml`).
+- Una release parte da sola con un tag: `git tag v7.0 && git push --tags` (vedi `.github/workflows/build.yml`).
 
 ## Grazie a
 [yt-dlp](https://github.com/yt-dlp/yt-dlp) · [FFmpeg](https://ffmpeg.org) · [Deno](https://deno.com) · [Electron](https://www.electronjs.org) · [winget](https://github.com/microsoft/winget-cli) · le build ffmpeg per Mac di [Martin Riedl](https://ffmpeg.martin-riedl.de)
@@ -149,7 +149,7 @@ python3 tools/check.py     # controlli: JScript ES3, id, estensione, installer, 
 **DownConvertron** is a mecha-styled desktop app (Windows and macOS Apple Silicon) that **downloads and converts video for creators, streamers and video makers**: grab B-roll while you research, get it in an editing-friendly format, and turn overlays into files that keep their **alpha channel** for OBS, Premiere, Resolve and LED walls. Interface in Italian, English and Simplified Chinese.
 
 **Download** from 1,700+ sites through yt-dlp (up to 8K; MP4, MOV, MKV, WebM, AVI, GIF; audio-only MP3, M4A, Opus, FLAC, WAV; playlists, subtitles, chapters, audio language), plus images from direct links.
-**Convert** without losing transparency: WebM VP9 + alpha, ProRes 4444/XQ, Animation, PNG, CineForm 12-bit, HAP Alpha/Q, animated WebP and APNG, GIF, PNG/TIFF/EXR sequences (in and out), single images in order to video or GIF, one image to a still clip (any length) or to PNG/WebP/TIFF/JPG, HEVC with alpha on Mac, lossless MP4 ↔ MOV remux.
+**Convert** without losing transparency: WebM VP9 + alpha, ProRes 4444/XQ, Animation, PNG, CineForm 12-bit, HAP Alpha/Q, animated WebP and APNG, GIF, PNG/TIFF/EXR sequences (in and out), several images to one animation or to separate images (it asks; images per second independent from the video FPS), one image to a still clip (any length) or to PNG/WebP/TIFF/JPG, HEVC with alpha on Mac, lossless MP4 ↔ MOV remux.
 **Touch up**: trim, repeats, forward-backward loops, vertical/square/4:5 canvas with transparent borders, chroma key, checkerboard preview, EBU R128 loudness, all audio tracks at 24-bit.
 **Fast**: NVIDIA / Intel / AMD encoders on Windows, Apple chip encoders on Mac, detected automatically.
 **Chrome extension**: collects video links from your open tabs and the current page, with a mini *Video / Audio only* setup, and lists the page's images with thumbnails for a quick download; links land in the app's list (**Add to list**) or the download starts right away (**Download now**). Clicking the logo opens the app.

@@ -1,4 +1,4 @@
-# DownConvertron - controlli a ogni push e release automatica quando pubblichi un tag v* (es. v6.0)
+# DownConvertron - controlli a ogni push e release automatica quando pubblichi un tag v* (es. v7.0)
 name: build
 on:
   push:

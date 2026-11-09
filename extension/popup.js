@@ -7,7 +7,7 @@
    e mette i link nella lista dei download. Il download lo avvii tu nell'app.
    Il logo apre DownConvertron con il collegamento downconvertron:// registrato dall'app. */
 "use strict";
-const VERS = "6.0";
+const VERS = "7.0";
 const MARCATORE = "#DCVT-LINKS v2";
 const FILE_DIRETTO = /\.(mp4|m4v|mov|webm|mkv|avi|m3u8|mpd|mp3|m4a|aac|ogg|opus|flac|wav)(\?|#|$)/i;
 const FILE_IMMAGINE = /\.(jpe?g|png|gif|webp|avif|bmp|tiff?|heic|svg)(\?|#|$)/i;

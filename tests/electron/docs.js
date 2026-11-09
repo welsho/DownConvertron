@@ -19,7 +19,7 @@ const L = require('./lib'); const fs = require('fs'); const path = require('path
       logClear(); SYSST.last = {};
       logEvent("app", T("DownConvertron {0} avviata. Cartella dati: {1}", APP_VER, DIR_APP));
       sysRender();
-      logEvent("ext", T("Estensione {0}: {1} link ricevuti, {2} nuovi in lista{3}.", "6.0", 3, 3, " \u2022 " + T("Video {0} {1}", "MOV", "4K (2160p)")), "ok");
+      logEvent("ext", T("Estensione {0}: {1} link ricevuti, {2} nuovi in lista{3}.", "7.0", 3, 3, " \u2022 " + T("Video {0} {1}", "MOV", "4K (2160p)")), "ok");
       logEvent("tool", "[youtube] dQw4w9WgXcQ: Downloading webpage");
       logEvent("tool", "[download] Destination: intro b-roll.mov");
       logEvent("app", T("Completato") + ": intro b-roll", "ok");

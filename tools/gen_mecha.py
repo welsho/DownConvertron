@@ -60,7 +60,7 @@ for (cx, cy) in ((318, 250), (842, 250), (318, 542), (842, 542)):
 # display del retro (messaggi)
 o.append('<rect x="352" y="254" width="456" height="118" rx="12" fill="url(#dzLcdG)" stroke="#000" stroke-width="2.5"/>')
 o.append('<rect x="352" y="254" width="456" height="118" rx="12" fill="none" stroke="#39ff6a" stroke-width="1.2" opacity=".35"/>')
-o.append('<text x="368" y="272" class="dztag">MECHA v6.0 · RETRO</text>')
+o.append('<text x="368" y="272" class="dztag">MECHA v7.0 · RETRO</text>')
 o.append('<text id="dropL1" x="580" y="318" class="dzl1" text-anchor="middle">RILASCIA I FILE</text>')
 o.append('<text id="dropL2" x="580" y="352" class="dzl2" text-anchor="middle">tra le gambe del mecha</text>')
 # griglie laterali dello zaino

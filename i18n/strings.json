@@ -243,6 +243,14 @@
   "en": "<b>How to use it:</b> click the icon, choose <b>Video</b> or <b>Audio only</b> (or keep the app settings), tick the links and press <b>Add to list</b> (you download them here with <b>Download</b>) or, with Video or Audio only, <b>Download now</b> (the download starts by itself). The extension logo opens DownConvertron.",
   "zh": "<b>使用方法：</b>点击图标，选择<b>视频</b>或<b>仅音频</b>（或沿用应用设置），勾选链接后点击<b>加入列表</b>（在这里点击<b>下载</b>开始），或者在视频/仅音频模式下点击<b>立即下载</b>（下载会自动开始）。扩展的图标可打开 DownConvertron。"
  },
+ "<b>Google Drive sul Mac</b>: nel Finder sotto <b>Google Drive</b>.": {
+  "en": "<b>Google Drive on Mac</b>: in the Finder under <b>Google Drive</b>.",
+  "zh": "<b>Mac 上的 Google Drive</b>：在访达的 <b>Google Drive</b> 下。"
+ },
+ "<b>Una volta sola</b>, nella pagina <b>Estensioni</b> di Chrome": {
+  "en": "<b>Only once</b>, on the Chrome <b>Extensions</b> page",
+  "zh": "<b>只需一次</b>，在 Chrome 的<b>扩展程序</b>页面"
+ },
  "AAC (massima compatibilità)": {
   "en": "AAC (maximum compatibility)",
   "zh": "AAC（兼容性最好）"
@@ -306,6 +314,14 @@
  "Animazione e PNG sono senza perdita: file molto grandi, ideali per il montaggio.": {
   "en": "Animation and PNG are lossless: very large files, ideal for editing.",
   "zh": "Animation 和 PNG 是无损的：文件很大，适合剪辑。"
+ },
+ "Animazioni di immagini: immagini al secondo nella riga di ogni animazione.": {
+  "en": "Image animations: images per second in the row of each animation.",
+  "zh": "图片动画：每秒图片数在每个动画的行中设置。"
+ },
+ "Animazioni di immagini: immagini al secondo nella riga, video a": {
+  "en": "Image animations: images per second in the row, video at",
+  "zh": "图片动画：每秒图片数在行中设置，视频为"
  },
  "Annulla": {
   "en": "Cancel",
@@ -599,6 +615,10 @@
   "en": "With H.264 YouTube usually tops out at 1080p: for 2K/4K/8K choose Automatic, VP9 or AV1.",
   "zh": "使用 H.264 时 YouTube 通常最高 1080p：要 2K/4K/8K 请选择自动、VP9 或 AV1。"
  },
+ "Con trasparenza (alfa)": {
+  "en": "With transparency (alpha)",
+  "zh": "带透明（alpha）"
+ },
  "Con «Originale» e «WebM» l'audio viene copiato così com'è: bitrate, frequenza, canali e volume non si applicano.": {
   "en": "With «Original» and «WebM» the audio is copied as is: bitrate, sample rate, channels and volume do not apply.",
   "zh": "选择“原始”和“WebM”时音频按原样复制：码率、采样率、声道和音量设置不生效。"
@@ -659,9 +679,9 @@
   "en": "DownConvertron will use winget, from Microsoft's official «winget» source, to:",
   "zh": "DownConvertron 将通过 Microsoft 官方“winget”源来："
  },
- "DownConvertron v6.0 · designed by": {
-  "en": "DownConvertron v6.0 · designed by",
-  "zh": "DownConvertron v6.0 · designed by"
+ "DownConvertron v7.0 · designed by": {
+  "en": "DownConvertron v7.0 · designed by",
+  "zh": "DownConvertron v7.0 · designed by"
  },
  "DownConvertron {0} avviata. Cartella dati: {1}": {
   "en": "DownConvertron {0} started. Data folder: {1}",
@@ -915,6 +935,10 @@
   "en": "HEVC of the Mac chip",
   "zh": "Mac 芯片 HEVC"
  },
+ "Hai aggiunto {0} immagini.\n\nOK = un'unica animazione (un fotogramma per immagine, immagini al secondo nella riga).\nAnnulla = immagini separate (clip ferme o file immagine, secondo il formato di uscita).": {
+  "en": "You added {0} images.\n\nOK = one single animation (one frame per image, images per second in the row).\nCancel = separate images (still clips or image files, depending on the output format).",
+  "zh": "你添加了 {0} 张图片。\n\n确定 = 合成一个动画（每张图片一帧，每秒图片数在该行设置）。\n取消 = 作为单独的图片（根据输出格式生成静帧片段或图片文件）。"
+ },
  "I file già trasparenti (ProRes 4444, Animazione, PNG, GIF, WebM con alfa) mantengono SEMPRE la trasparenza.": {
   "en": "Already transparent files (ProRes 4444, Animation, PNG, GIF, WebM with alpha) ALWAYS keep their transparency.",
   "zh": "已有透明的文件（ProRes 4444、Animation、PNG、GIF、带透明的 WebM）始终保留透明。"
@@ -1003,6 +1027,14 @@
   "en": "Image not downloaded (expired or protected link?).",
   "zh": "图片未下载（链接过期或受保护？）。"
  },
+ "Immagine singola (file)": {
+  "en": "Single image (file)",
+  "zh": "单张图片（文件）"
+ },
+ "Immagini al secondo": {
+  "en": "Images per second",
+  "zh": "每秒图片数"
+ },
  "Immagini di formati diversi: serve ffmpeg per unirle. Premi «Installa / aggiorna componenti».": {
   "en": "Images in different formats: ffmpeg is needed to join them. Press «Install / update components».",
   "zh": "图片格式不同：需要 ffmpeg 才能合并。请点击“安装 / 更新组件”。"
@@ -1070,6 +1102,10 @@
  "Impossibile salvare il risultato:": {
   "en": "Cannot save the result:",
   "zh": "无法保存结果："
+ },
+ "Impossibile salvare l'immagine:": {
+  "en": "Cannot save the image:",
+  "zh": "无法保存图片："
  },
  "Impossibile salvare l'immagine: {0}": {
   "en": "Cannot save the image: {0}",
@@ -1287,9 +1323,9 @@
   "en": "MISSING COMPONENTS:",
   "zh": "缺少组件："
  },
- "MECHA v6.0": {
-  "en": "MECHA v6.0",
-  "zh": "MECHA v6.0"
+ "MECHA v7.0": {
+  "en": "MECHA v7.0",
+  "zh": "MECHA v7.0"
  },
  "MOV (QuickTime)": {
   "en": "MOV (QuickTime)",
@@ -1330,6 +1366,10 @@
  "MOV HEVC + alfa (Apple)": {
   "en": "MOV HEVC + alpha (Apple)",
   "zh": "MOV HEVC + 透明 (Apple)"
+ },
+ "MOV HEVC + alfa (Apple, chip Mac)": {
+  "en": "MOV HEVC + alpha (Apple, Mac chip)",
+  "zh": "MOV HEVC + 透明（Apple，Mac 芯片）"
  },
  "MOV PNG + alfa (senza perdita)": {
   "en": "MOV PNG + alpha (lossless)",
@@ -1727,6 +1767,10 @@
   "en": "Quality",
   "zh": "画质"
  },
+ "Quante immagini al secondo (da 0,1 a 60). Gli FPS del video si scelgono a parte.": {
+  "en": "How many images per second (0.1 to 60). The video FPS is chosen separately.",
+  "zh": "每秒显示多少张图片（0.1 到 60）。视频帧率另外设置。"
+ },
  "REATTORE": {
   "en": "REACTOR",
   "zh": "反应堆"
@@ -1875,6 +1919,10 @@
   "en": "Choose the files to convert",
   "zh": "选择要转换的文件"
  },
+ "Scegli il file .txt con i link": {
+  "en": "Choose the .txt file with the links",
+  "zh": "选择包含链接的 .txt 文件"
+ },
  "Scegli la cartella con i video da convertire": {
   "en": "Choose the folder with the videos to convert",
   "zh": "选择包含要转换视频的文件夹"
@@ -1902,6 +1950,10 @@
  "Se un download non parte subito, chiudi e riapri DownConvertron.": {
   "en": "If a download does not start right away, close and reopen DownConvertron.",
   "zh": "如果下载没有立即开始，请关闭并重新打开 DownConvertron。"
+ },
+ "Senza trasparenza": {
+  "en": "Without transparency",
+  "zh": "不带透明"
  },
  "Sequenza EXR": {
   "en": "EXR sequence",
@@ -1943,6 +1995,10 @@
   "en": "TIFF sequence: one image per frame (lossless compression), 8-bit alpha.",
   "zh": "TIFF 序列：每帧一张图（无损压缩），8 位透明。"
  },
+ "Sequenze di immagini (cartella)": {
+  "en": "Image sequences (folder)",
+  "zh": "图片序列（文件夹）"
+ },
  "Serve solo per video con limite di età o privati: i link vengono aperti con il tuo account Firefox, quindi usalo solo con liste di cui ti fidi. Non viene ricordato alla riapertura.": {
   "en": "Only needed for age-restricted or private videos: links are opened with your Firefox account, so only use it with lists you trust. It is not remembered when you reopen the app.",
   "zh": "仅用于有年龄限制或私密的视频：链接会用你的 Firefox 账号打开，所以只用于你信任的列表。重新打开应用后不会保留。"
@@ -1966,6 +2022,10 @@
  "Solo audio {0} {1}": {
   "en": "Audio only {0} {1}",
   "zh": "仅音频 {0} {1}"
+ },
+ "Solo cambio contenitore (istantaneo)": {
+  "en": "Container change only (instant)",
+  "zh": "仅更换封装（即时）"
  },
  "Sottotitoli (it, en)": {
   "en": "Subtitles (it, en)",
@@ -2023,6 +2083,10 @@
   "en": "Invalid custom canvas: width and height between 16 and 8192.",
   "zh": "自定义画布无效：宽和高须在 16 到 8192 之间。"
  },
+ "Testo": {
+  "en": "Text",
+  "zh": "文本"
+ },
  "Tolleranza": {
   "en": "Tolerance",
   "zh": "容差"
@@ -2038,6 +2102,10 @@
  "Tutte le tracce audio (non solo la prima), canali originali": {
   "en": "All audio tracks (not only the first), original channels",
   "zh": "所有音轨（不只第一条），原始声道"
+ },
+ "Tutti i file": {
+  "en": "All files",
+  "zh": "所有文件"
  },
  "Tutti i file in lista sono già stati convertiti.": {
   "en": "All the files in the list have already been converted.",
@@ -2098,6 +2166,10 @@
  "Video {0} {1}": {
   "en": "Video {0} {1}",
   "zh": "视频 {0} {1}"
+ },
+ "Video, animazioni e sequenze": {
+  "en": "Videos, animations and sequences",
+  "zh": "视频、动画和序列"
  },
  "Volume (normalizzazione)": {
   "en": "Volume (normalization)",
@@ -2322,6 +2394,10 @@
  "fotogrammi)": {
   "en": "frames)",
   "zh": "帧）"
+ },
+ "fps (o di più se le immagini sono più veloci).": {
+  "en": "fps (or more if the images are faster).",
+  "zh": "fps（若图片更快则更高）。"
  },
  "il ricevitore si sta avviando, poi rilascia": {
   "en": "the receiver is starting, then drop",
