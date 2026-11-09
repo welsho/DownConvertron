@@ -2499,9 +2499,9 @@
   "en": "tracks)",
   "zh": "条音轨）"
  },
- "trascina dentro la pagina la cartella <b>chrome-extension</b> (si apre accanto), oppure premi <b>Carica estensione non pacchettizzata</b>: il percorso &egrave; gi&agrave; negli appunti:": {
-  "en": "drag the <b>chrome-extension</b> folder into the page (it opens alongside), or press <b>Load unpacked</b>: the path is already in the clipboard:",
-  "zh": "把 <b>chrome-extension</b> 文件夹拖进页面（会在旁边打开），或点击<b>加载已解压的扩展程序</b>：路径已在剪贴板中："
+ "trascina dentro la pagina la cartella <b>chrome-extension</b> (si apre accanto la cartella che la contiene, con <b>chrome-extension</b> gi&agrave; selezionata: trascinala intera, senza entrarci), oppure premi <b>Carica estensione non pacchettizzata</b>: il percorso &egrave; gi&agrave; negli appunti:": {
+  "en": "drag the <b>chrome-extension</b> folder into the page (the folder that contains it opens next to Chrome, with <b>chrome-extension</b> already selected: drag it whole, without opening it), or press <b>Load unpacked</b>: the path is already in the clipboard:",
+  "zh": "把 <b>chrome-extension</b> 文件夹拖到页面中（旁边会打开包含它的文件夹，<b>chrome-extension</b> 已被选中：整个拖进去，不要打开它），或点击<b>加载已解压的扩展程序</b>：路径已在剪贴板中："
  },
  "trascinamento": {
   "en": "drag and drop",

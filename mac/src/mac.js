@@ -153,6 +153,7 @@
   M.electron.ipcRenderer.on("proto", function (e, u) { try { protoArgs(u); } catch (x) {} });
   setTimeout(function () { try { var u = M.ipc.sendSync("proto-pending"); if (u) protoArgs(u); } catch (x) {} }, 1500);
   /* file nel cloud (Google Drive, iCloud, Dropbox): niente analisi subito, scaricherebbe il file intero */
+  revealInFolder = function (p) { try { cp.spawn("/usr/bin/open", ["-R", M.P(p)], { detached: true, stdio: "ignore" }).unref(); } catch (e) { DEBUG_ERRORS.push("revealInFolder: " + (e.message || e)); } };
   isLocalFixed = function (p) { return !/\/Library\/(CloudStorage|Mobile Documents)\//.test(M.P(p)); };
   /* immagini: primi byte del file (formato vero) e Content-Type di un link (curl -I, al massimo 15 secondi) */
   fileHead = function (p, n) {

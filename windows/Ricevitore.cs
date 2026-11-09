@@ -79,7 +79,7 @@ namespace DcvtDrop
         string lang = "it";
         IDropTargetHelper shell;
         ComDataObject lastData;
-        int seq;
+        int seq, readFails;
 
         // ---------- avvio ----------
         public static int Run(string dir, int parentPid, string title)
@@ -93,6 +93,7 @@ namespace DcvtDrop
                 if (h == IntPtr.Zero) System.Threading.Thread.Sleep(250);
             }
             if (h == IntPtr.Zero) { WriteText(Path.Combine(dir, "error.txt"), "finestra dell'app non trovata (pid " + parentPid + ")"); return 2; }
+            Log(dir, "avvio: pid " + Process.GetCurrentProcess().Id + ", app pid " + parentPid + ", finestra 0x" + h.ToString("X"));
             Ricevitore f = new Ricevitore(dir, h);
             IntPtr own = f.Handle;                 // crea la finestra (e la registra come destinazione OLE) senza mostrarla
             Application.Run(new ApplicationContext());
@@ -158,13 +159,22 @@ namespace DcvtDrop
         // ---------- ciclo ----------
         void OnTick(object sender, EventArgs e)
         {
-            if (!IsWindow(target) || File.Exists(Path.Combine(dir, "quit.flag"))) { Quit(); return; }
+            if (!IsWindow(target)) { Log(dir, "chiuso: la finestra dell'app non esiste piu'"); Quit(); return; }
+            if (File.Exists(Path.Combine(dir, "quit.flag"))) { Log(dir, "chiuso: richiesta dell'app"); Quit(); return; }
             if (!Directory.Exists(dir)) { try { Directory.CreateDirectory(dir); WriteText(Path.Combine(dir, "ready.flag"), "1"); } catch (Exception) { } }
             string sig = Path.Combine(dir, "show.txt");
             if (File.Exists(sig))
             {
                 string t = ReadText(sig);
-                if (t != null && Arm(t)) TryDelete(sig);
+                if (t == null) { if (++readFails % 30 == 1) Log(dir, "show.txt non leggibile (" + readFails + " tentativi): " + lastReadError); }
+                else
+                {
+                    readFails = 0;
+                    string why = Arm(t);
+                    Log(dir, "richiesta \"" + t.Trim() + "\": " + (why == null ? "mostrato sopra l'app" : why));
+                    TryDelete(sig);                  // presa (anche se scartata): l'app puo' mandarne un'altra
+                    if (File.Exists(sig)) Log(dir, "show.txt non cancellabile");
+                }
             }
             // sicurezza: tasti del mouse rilasciati senza rilascio su di noi -> mi tolgo di mezzo,
             // cosi' l'app sotto non resta mai coperta
@@ -176,13 +186,14 @@ namespace DcvtDrop
             return (GetAsyncKeyState(0x01) & 0x8000) != 0 || (GetAsyncKeyState(0x02) & 0x8000) != 0 || (GetAsyncKeyState(0x04) & 0x8000) != 0;
         }
 
-        bool Arm(string t)
+        // null = mostrato; altrimenti il motivo (finisce nel registro)
+        string Arm(string t)
         {
             string[] v = t.Trim().Split(new char[] { ' ', '\t', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            if (v.Length < 6) return false;
+            if (v.Length < 6) return "scartata: " + v.Length + " valori invece di 6";
             lang = v.Length > 6 ? v[6] : "it";
             double cssW, cssH;
-            if (!double.TryParse(v[0], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out cssW) || cssW <= 0) return false;
+            if (!double.TryParse(v[0], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out cssW) || cssW <= 0) return "scartata: larghezza non valida";
             double.TryParse(v[1], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out cssH);
             double.TryParse(v[2], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out zx);
             double.TryParse(v[3], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out zy);
@@ -190,17 +201,17 @@ namespace DcvtDrop
             double.TryParse(v[5], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out zh);
             // finestra ridotta o non misurabile: non mi mostro e lo dico all'app
             string leave = Path.Combine(dir, "leave.flag");
-            if (IsIconic(target)) { WriteText(leave, "1"); return true; }
+            if (IsIconic(target)) { WriteText(leave, "1"); return "non mostrato: finestra ridotta a icona"; }
             RECT r; POINT o = new POINT();
-            if (!GetClientRect(target, out r) || !ClientToScreen(target, ref o)) { WriteText(leave, "1"); return true; }
+            if (!GetClientRect(target, out r) || !ClientToScreen(target, ref o)) { WriteText(leave, "1"); return "non mostrato: misure della finestra non lette"; }
             int w = r.Right - r.Left, hgt = r.Bottom - r.Top;
-            if (w < 20 || hgt < 20) { WriteText(leave, "1"); return true; }
+            if (w < 20 || hgt < 20) { WriteText(leave, "1"); return "non mostrato: finestra troppo piccola"; }
             ratio = w / cssW;                       // pixel reali per pixel CSS (ridimensionamento di Windows)
             inZone = false;
             armed = true;
             armedAt = DateTime.Now;
-            SetWindowPos(Handle, HWND_TOPMOST, o.X, o.Y, w, hgt, SWP_NOACTIVATE | SWP_SHOWWINDOW);
-            return true;
+            if (!SetWindowPos(Handle, HWND_TOPMOST, o.X, o.Y, w, hgt, SWP_NOACTIVATE | SWP_SHOWWINDOW)) return "SetWindowPos fallito (errore " + Marshal.GetLastWin32Error() + ")";
+            return null;
         }
 
         void Disarm(bool left)
@@ -338,9 +349,27 @@ namespace DcvtDrop
             }
             return false;
         }
+        // lettura che non impedisce all'app di cancellare o sostituire il file
+        static string lastReadError = "";
         static string ReadText(string path)
         {
-            try { return File.ReadAllText(path); } catch (Exception) { return null; }
+            try
+            {
+                using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
+                using (StreamReader sr = new StreamReader(fs, Encoding.UTF8)) return sr.ReadToEnd();
+            }
+            catch (Exception e) { lastReadError = e.GetType().Name + ": " + e.Message; return null; }
+        }
+        // registro del ricevitore (finisce nel Report debug dell'app), al massimo ~64 KB
+        static void Log(string dir, string msg)
+        {
+            try
+            {
+                string p = Path.Combine(dir, "ricevitore.log");
+                if (File.Exists(p) && new FileInfo(p).Length > 65536) File.Delete(p);
+                File.AppendAllText(p, DateTime.Now.ToString("HH:mm:ss.fff") + " " + msg + "\r\n", new UTF8Encoding(false));
+            }
+            catch (Exception) { }
         }
         static void TryDelete(string path)
         {
