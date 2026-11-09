@@ -667,6 +667,18 @@
   "en": "From videos and sequences a single frame is saved: the one at the trim start (or the first).",
   "zh": "视频和序列只保存一帧：剪切起点处的那一帧（或第一帧）。"
  },
+ "Diretta fermata: il file incompleto «{0}» resta nella cartella.": {
+  "en": "Live stream stopped: the incomplete file «{0}» stays in the folder.",
+  "zh": "直播已停止：未完成的文件“{0}”保留在文件夹中。"
+ },
+ "Diretta fermata: nessun file registrato.": {
+  "en": "Live stream stopped: no file recorded.",
+  "zh": "直播已停止：没有录制到文件。"
+ },
+ "Diretta fermata: salvato «{0}» (si apre con VLC; per montarlo convertilo nel Convertitore).": {
+  "en": "Live stream stopped: saved «{0}» (opens in VLC; to edit it, convert it in the Converter).",
+  "zh": "直播已停止：已保存“{0}”（可用 VLC 打开；如需剪辑，请在转换器中转换）。"
+ },
  "Dividi per capitoli": {
   "en": "Split by chapters",
   "zh": "按章节分割"
@@ -950,6 +962,10 @@
  "I programmi ci sono e funzionano, ma un aggiornamento non è andato a buon fine: puoi riprovare più tardi.": {
   "en": "The programs are there and work, but an update did not succeed: you can try again later.",
   "zh": "程序已存在并可用，但更新未成功：可以稍后重试。"
+ },
+ "I {0} link ricevuti sono già in lista e non ancora scaricati: premi Scarica quando vuoi.": {
+  "en": "The {0} links received are already in the list and not yet downloaded: press Download when you want.",
+  "zh": "收到的 {0} 个链接已在列表中且尚未下载：需要时请按“下载”。"
  },
  "Il cambio contenitore non si applica alle immagini: scegli un altro formato.": {
   "en": "Container change does not apply to images: choose another format.",
@@ -1315,6 +1331,10 @@
   "en": "Link not supported by yt-dlp but it is an image ({0}): downloading it directly.",
   "zh": "yt-dlp 不支持该链接，但它是图片（{0}）：直接下载。"
  },
+ "Link ricevuti dall'estensione Chrome: li aggiungo appena finisce il lavoro in corso.": {
+  "en": "Links received from the Chrome extension: I will add them as soon as the current job finishes.",
+  "zh": "已收到来自 Chrome 扩展的链接：当前任务完成后立即添加。"
+ },
  "Live e LED · HAP Alpha": {
   "en": "Live and LED · HAP Alpha",
   "zh": "现场与 LED · HAP Alpha"
@@ -1566,6 +1586,10 @@
  "Nessun file. Usa + File, + Cartella, Incolla file, un link Drive, oppure trascina qui file e cartelle.": {
   "en": "No files. Use + Files, + Folder, Paste files, a Drive link, or drag files and folders here.",
   "zh": "没有文件。使用“+ 文件”“+ 文件夹”“粘贴文件”、Drive 链接，或把文件和文件夹拖到这里。"
+ },
+ "Nessun link nuovo dall'estensione Chrome: {0} già in lista o non validi.": {
+  "en": "No new links from the Chrome extension: {0} already in the list or not valid.",
+  "zh": "没有来自 Chrome 扩展的新链接：{0} 个已在列表中或无效。"
  },
  "Nessun link valido trovato": {
   "en": "No valid link found",
@@ -2626,6 +2650,10 @@
  "• installare": {
   "en": "• install",
   "zh": "• 安装"
+ },
+ "→ Accesso negato da Twitch: VOD riservato agli abbonati, privato o rimosso. Se sei abbonato, entra su Twitch con Firefox e attiva «Usa login di Firefox».": {
+  "en": "→ Access denied by Twitch: subscriber-only, private or removed VOD. If you are a subscriber, log in to Twitch with Firefox and enable «Use Firefox login».",
+  "zh": "→ Twitch 拒绝访问：该 VOD 仅限订阅者、私密或已删除。如果你是订阅者，请用 Firefox 登录 Twitch 并启用“使用 Firefox 登录”。"
  },
  "→ Accesso negato da YouTube: premi «Installa / aggiorna componenti» e riprova.": {
   "en": "→ Access denied by YouTube: press «Install / update components» and try again.",

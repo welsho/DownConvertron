@@ -23,6 +23,16 @@
   - selezionare tutti i fotogrammi di una sequenza e trascinarli dà la sequenza (senza domanda e senza copie);
   - nomi con `%2B` trascinati dal ricevitore non più decodificati; fotogrammi rinominati con la cartella («X (2)_png»); l'errore di un'animazione non creata resta visibile.
 - **Logo e invio dall'estensione**: se DownConvertron è già aperta viene riportata in primo piano (anche se ridotta a icona) invece di aprirne un'altra. Il collegamento `downconvertron://` passa da un piccolo lanciatore invisibile (`apri.js` in `%APPDATA%\DownConvertron`). Prima, con l'HTA aperta col doppio clic (mshta a 32 bit) e il collegamento su mshta a 64 bit, si aprivano due app che leggevano gli stessi appunti.
+- **Dall'estensione all'app** (dalla revisione):
+  - un invio mentre l'app scarica non si perde più: viene preso subito dagli appunti (che tornano link semplici) e aggiunto a fine lavoro;
+  - un solo messaggio riassuntivo per invio; reinviare link già in lista ma non scaricati non dà più errore, e «Scarica subito» li avvia;
+  - versioni confrontate come numeri (la 10.0 non risulta più vecchia della 7.0);
+  - URL con `'`, `|` o parentesi non più tagliati.
+- **Download**:
+  - fermare una **diretta** tiene la parte registrata come «nome (interrotta).ts» invece di cancellarla;
+  - errore 403 di Twitch spiegato (VOD per abbonati, privato o rimosso);
+  - una pagina HTML salvata come immagine viene riconosciuta e scartata;
+  - controllo del tipo di un link più rapido (al massimo 8 secondi) e senza scaricare il file intero quando il server ignora la richiesta parziale.
 - **Download delle immagini su Windows**: corretto «Impossibile trovare il percorso specificato» con l'app aperta in mshta a 32 bit (curl veniva cercato in `Sysnative` da un cmd a 64 bit).
 - **Cartella dell'estensione**: il pulsante Estensione Chrome e la spia COMPONENTI aprono la cartella che la contiene, con `chrome-extension` già selezionata da trascinare intera.
 - **Trascinamento**: il ricevitore tiene un registro (`ricevitore.log`) incluso nel Report debug; le richieste non vengono più riscritte prima di essere lette.
