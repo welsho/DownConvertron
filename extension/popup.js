@@ -62,6 +62,9 @@ function mostraModo() {
   document.getElementById("qVideo").style.display = modo === "video" ? "flex" : "none";
   document.getElementById("qAudio").style.display = modo === "audio" ? "flex" : "none";
   document.getElementById("qApp").style.display = modo === "app" ? "block" : "none";
+  /* "Scarica subito" solo con le impostazioni rapide: con "Come nell'app" i link vanno solo in lista */
+  document.getElementById("avvia").style.display = modo === "app" ? "none" : "";
+  aggiorna();
 }
 function testoScelto(id) { const s = document.getElementById(id); return s.options[s.selectedIndex] ? s.options[s.selectedIndex].text : s.value; }
 function descriviModo() {
@@ -69,8 +72,9 @@ function descriviModo() {
   if (modo === "audio") return t("mAudio") + " \u00b7 " + testoScelto("ap");
   return t("mApp");
 }
-function intestazioni() {
+function intestazioni(avvia) {
   const h = ["#ext=" + VERS, "#lang=" + LANG, "#mode=" + modo];
+  if (avvia && modo !== "app") h.push("#start=1");                  /* l'app avvia il download da sola */
   if (modo === "video") h.push("#quality=" + document.getElementById("vq").value, "#container=" + document.getElementById("vc").value);
   if (modo === "audio") { const [f, q] = document.getElementById("ap").value.split("|"); h.push("#afmt=" + f, "#aq=" + (q || "")); }
   let l = [];
@@ -108,9 +112,10 @@ function disegna(chiave) {
 function scelti() { return voci.schede.concat(voci.pagina, voci.immagini).filter(v => v.scelto); }
 function aggiorna() {
   const n = new Set(scelti().map(v => v.url)).size;
-  const b = document.getElementById("invia");
-  b.disabled = !n;
-  b.textContent = n ? (n === 1 ? t("inviaUno") : t("invia", n)) : t("nessunoScelto");
+  const b = document.getElementById("invia"), a = document.getElementById("avvia");
+  b.disabled = a.disabled = !n;
+  b.textContent = n ? t("invia", n) : t("nessunoScelto");
+  a.textContent = t("avvia", n);
   const ni = voci.immagini.filter(v => v.scelto).length, q = document.getElementById("scaricaSubito");
   q.disabled = !ni; q.textContent = t("scaricaSubito") + (ni ? " (" + ni + ")" : "");
 }
@@ -123,7 +128,7 @@ async function raccogli() {
     const sito = riconosci(tb.url || "");
     if (!sito || visti.has(tb.url)) continue;
     visti.add(tb.url);
-    voci.schede.push({ url: tb.url, titolo: tb.title || "", sito, scelto: true });
+    voci.schede.push({ url: tb.url, titolo: tb.title || "", sito, scelto: true, img: sito === t("img") });
   }
   voci.pagina = [];
   try {
@@ -138,7 +143,8 @@ async function raccogli() {
           /* immagini grandi (niente icone e loghi piccoli): la versione piu' grande che il browser ha scelto */
           const img = [];
           for (const i of document.images) {
-            const u = i.currentSrc || i.src, w = i.naturalWidth || 0, h = i.naturalHeight || 0;
+            /* immagini non ancora caricate (lazy): naturalWidth e' 0, conta la dimensione a schermo */
+            const u = i.currentSrc || i.src, w = i.naturalWidth || i.width || 0, h = i.naturalHeight || i.height || 0;
             if (u && /^https?:/.test(u) && w >= 200 && h >= 150) img.push([u, (i.alt || i.title || "").trim().slice(0, 120), w, h]);
           }
           return { link: out, img: img };
@@ -150,7 +156,7 @@ async function raccogli() {
       for (const [u, testo, w, h] of ris.img) {
         if (vistiImg.has(u)) continue;
         vistiImg.add(u);
-        voci.immagini.push({ url: u, titolo: testo, sito: t("img"), scelto: false, w, h });
+        voci.immagini.push({ url: u, titolo: testo, sito: t("img"), scelto: false, w, h, img: true });
         if (voci.immagini.length >= 200) break;
       }
       for (const [u, testo] of ris.link) {
@@ -158,7 +164,7 @@ async function raccogli() {
         const sito = riconosci(pulito);
         if (!sito || visti.has(pulito) || /^blob:/.test(u)) continue;
         visti.add(pulito);
-        voci.pagina.push({ url: pulito, titolo: testo, sito, scelto: false });
+        voci.pagina.push({ url: pulito, titolo: testo, sito, scelto: false, img: sito === t("img") });
         if (voci.pagina.length >= 300) break;
       }
     }
@@ -198,22 +204,26 @@ async function scaricaSubito() {
   registra(t("logScaricate", ok));
   if (ok) { nota.className = "nota ok"; nota.textContent = t("scaricate", ok); }
 }
-async function invia() {
+/* avvia = true: "Scarica subito" (l'app mette in lista e avvia il download); false: "Metti in lista" */
+async function invia(avvia) {
   const usaTitoli = document.getElementById("usaTitoli").checked;
   const visti = new Set(), righe = [];
   for (const v of scelti()) {
     if (visti.has(v.url)) continue;
     visti.add(v.url);
     const nome = usaTitoli ? pulisciNome(v.titolo) : "";
-    righe.push(nome ? v.url + " | " + nome : v.url);
+    const riga = nome ? v.url + " | " + nome : v.url;
+    /* le immagini viaggiano marcate: l'app le scarica come immagini anche se l'URL non ha estensione */
+    righe.push(v.img ? "#img=" + riga : riga);
   }
   const nota = document.getElementById("nota");
-  registra(t("logInviati", righe.length, descriviModo()));
+  avvia = avvia === true && modo !== "app";
+  registra(t("logInviati", righe.length, descriviModo()) + (avvia ? " +start" : ""));
   try {
-    await navigator.clipboard.writeText(MARCATORE + "\n" + intestazioni().join("\n") + "\n" + righe.join("\n") + "\n");
+    await navigator.clipboard.writeText(MARCATORE + "\n" + intestazioni(avvia).join("\n") + "\n" + righe.join("\n") + "\n");
     memo("log", "[]");
     nota.className = "nota ok";
-    nota.textContent = t("inviati", righe.length, descriviModo());
+    nota.textContent = t(avvia ? "avviati" : "inviati", righe.length, descriviModo());
     if (document.getElementById("apriDopo").checked) apriApp("send");
   } catch (e) {
     nota.className = "nota err";
@@ -241,7 +251,8 @@ for (const b of document.querySelectorAll("[data-tutti]")) {
   b.onclick = () => { const k = b.dataset.tutti, tutti = !voci[k].every(v => v.scelto); for (const v of voci[k]) v.scelto = tutti; disegna(k); aggiorna(); };
 }
 document.getElementById("logo").onclick = () => { document.getElementById("nota").className = "nota"; document.getElementById("nota").textContent = t("apertura"); apriApp("open"); };
-document.getElementById("invia").onclick = invia;
+document.getElementById("invia").onclick = () => invia(false);
+document.getElementById("avvia").onclick = () => invia(true);
 document.getElementById("scaricaSubito").onclick = scaricaSubito;
 mostraModo();
 raccogli().then(([a, b]) => registra(t("logAperto", a, b)));

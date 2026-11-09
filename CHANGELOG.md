@@ -11,6 +11,10 @@
 - **Spia COMPONENTI** = estensione Chrome davvero installata (letta dalle preferenze dei profili di Chrome); clic = installa. La cartella dell'estensione è sempre pronta, anche usando solo l'HTA.
 - **Immagini**: download dei link diretti a immagini (curl); nel convertitore immagini singole in ordine → video o GIF, un fotogramma ciascuna; l'estensione elenca le immagini della pagina con anteprima e download rapido.
 - Rotazione del mecha fluida (animazione continua); intestazione del registro che non si sovrappone più ai pulsanti.
+- **Estensione**: due pulsanti, «Metti in lista» e «Scarica subito» (con Video o Solo audio l'app avvia il download da sola). Le impostazioni rapide azzerano codec, audio, frequenza e canali alle scelte automatiche: non resta più, per esempio, un «Nessun audio» scelto prima nell'app.
+- **Immagini dall'estensione**: arrivano all'app marcate come immagini e si scaricano anche quando l'URL non ha estensione (X, Unsplash, Google…). L'estensione del file viene dal contenuto (un .jpg che in realtà è WebP diventa .webp); una pagina web al posto dell'immagine dà un errore chiaro. Raccolte anche le immagini non ancora caricate (lazy).
+- **Link incollati a mano**: se yt-dlp risponde «Unsupported URL» e il server dice che è un'immagine, l'app la scarica direttamente.
+- Build su Windows: file generati sempre con fine riga LF; `check.py` corretto per Windows PowerShell 5.1.
 - Repository pubblico: build riproducibile (`build.sh`), controlli automatici (`tools/check.py`), release automatica con GitHub Actions.
 
 ## 5.0 — DownLTransFMecchazzi

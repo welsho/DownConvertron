@@ -154,6 +154,20 @@
   setTimeout(function () { try { var u = M.ipc.sendSync("proto-pending"); if (u) protoArgs(u); } catch (x) {} }, 1500);
   /* file nel cloud (Google Drive, iCloud, Dropbox): niente analisi subito, scaricherebbe il file intero */
   isLocalFixed = function (p) { return !/\/Library\/(CloudStorage|Mobile Documents)\//.test(M.P(p)); };
+  /* immagini: primi byte del file (formato vero) e Content-Type di un link (curl -I, al massimo 15 secondi) */
+  fileHead = function (p, n) {
+    return fs.readFileSync(M.P(p)).slice(0, n).toString("latin1");   /* immagini: file piccoli, lettura intera accettabile */
+  };
+  urlContentType = function (url) {
+    var curl = curlExe(), ct = "";
+    if (!curl) return "";
+    try {
+      var r = cp.spawnSync(curl, ["-sIL", "--max-redirs", "10", "--connect-timeout", "10", "--max-time", "15", "-A", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", String(url)], { encoding: "latin1", timeout: 20000 });
+      var lines = String(r.stdout || "").split(/\r?\n/), i, m;
+      for (i = 0; i < lines.length; i++) if ((m = /^content-type:\s*([^;\s]+)/i.exec(lines[i]))) ct = m[1].toLowerCase();
+    } catch (e) { DEBUG_ERRORS.push("urlContentType: " + (e.message || e)); }
+    return ct;
+  };
 
   /* ---------- componenti: download diretto, niente Homebrew ---------- */
   COMPONENTS[1].why = "unisce audio e video e converte (VP9, Opus, ProRes, HAP, CineForm, WebP, EXR, chip Mac)";

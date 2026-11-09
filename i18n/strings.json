@@ -239,6 +239,10 @@
   "en": ": on those files the background to remove is ignored, so as not to spoil their transparency.",
   "zh": "：这些文件会忽略要去除的背景，以免破坏原有透明。"
  },
+ "<b>Come si usa:</b> clicca l'icona, scegli <b>Video</b> o <b>Solo audio</b> (o lascia le impostazioni dell'app), spunta i link e premi <b>Metti in lista</b> (li scarichi qui con <b>Scarica</b>) oppure, con Video o Solo audio, <b>Scarica subito</b> (il download parte da solo). Il logo dell'estensione apre DownConvertron.": {
+  "en": "<b>How to use it:</b> click the icon, choose <b>Video</b> or <b>Audio only</b> (or keep the app settings), tick the links and press <b>Add to list</b> (you download them here with <b>Download</b>) or, with Video or Audio only, <b>Download now</b> (the download starts by itself). The extension logo opens DownConvertron.",
+  "zh": "<b>使用方法：</b>点击图标，选择<b>视频</b>或<b>仅音频</b>（或沿用应用设置），勾选链接后点击<b>加入列表</b>（在这里点击<b>下载</b>开始），或者在视频/仅音频模式下点击<b>立即下载</b>（下载会自动开始）。扩展的图标可打开 DownConvertron。"
+ },
  "AAC (massima compatibilità)": {
   "en": "AAC (maximum compatibility)",
   "zh": "AAC（兼容性最好）"
@@ -659,6 +663,10 @@
   "en": "Download cancelled. Unfinished links stay in the list: press Download to resume. Any .part files in the folder are partial.",
   "zh": "下载已取消。未完成的链接仍在列表中：点击“下载”继续。文件夹中的 .part 文件是不完整的。"
  },
+ "Download avviato dall'estensione Chrome.": {
+  "en": "Download started from the Chrome extension.",
+  "zh": "已从 Chrome 扩展开始下载。"
+ },
  "Download non riuscito (il file è condiviso con «Chiunque abbia il link»?)": {
   "en": "Download failed (is the file shared with «Anyone with the link»?)",
   "zh": "下载失败（文件是否已共享给“知道链接的任何人”？）"
@@ -910,6 +918,10 @@
  "Il formato scelto non ha trasparenza: lo sfondo esce pieno.": {
   "en": "The chosen format has no transparency: the background comes out solid.",
   "zh": "所选格式不支持透明：背景将为实色。"
+ },
+ "Il link non porta a un'immagine (il server ha risposto con una pagina web o un file sconosciuto).": {
+  "en": "The link does not lead to an image (the server answered with a web page or an unknown file).",
+  "zh": "该链接不是图片（服务器返回了网页或未知文件）。"
  },
  "Il percorso contiene il simbolo %: rinomina il file o la cartella.": {
   "en": "The path contains the % symbol: rename the file or folder.",
@@ -1198,6 +1210,10 @@
  "Link già in lista.": {
   "en": "Link already in the list.",
   "zh": "链接已在列表中。"
+ },
+ "Link non supportato da yt-dlp ma e' un'immagine ({0}): la scarico direttamente.": {
+  "en": "Link not supported by yt-dlp but it is an image ({0}): downloading it directly.",
+  "zh": "yt-dlp 不支持该链接，但它是图片（{0}）：直接下载。"
  },
  "Live e LED · HAP Alpha": {
   "en": "Live and LED · HAP Alpha",

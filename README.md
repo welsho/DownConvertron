@@ -37,12 +37,12 @@ Per chi monta video tutti i giorni e perde tempo tra siti, convertitori online e
 | **Converte** senza perdere la trasparenza | WebM VP9 + alfa, ProRes 4444 / XQ, Animazione, PNG, CineForm 12 bit, HAP Alpha / Q, WebP e APNG animati, GIF, sequenze PNG · TIFF · EXR (anche in ingresso), HEVC con alfa sul Mac. Cambio contenitore MP4 ↔ MOV senza ricodifica. **Immagini singole in ordine → video o GIF** (un fotogramma per immagine, misure diverse uniformate). |
 | **Ritocca** | Taglio da/a, ripetizioni, avanti-indietro (boomerang), tela verticale / quadrata / 4:5 con bordi trasparenti, chroma key verde/blu, anteprima su scacchiera, normalizzazione EBU R128, tutte le tracce audio a 24 bit. |
 | **Va veloce** | Codifica con la scheda video NVIDIA / Intel / AMD su Windows, con il chip Apple sul Mac (rilevate da sole). |
-| **Estensione Chrome** | Raccoglie i link dei video dalle schede aperte e dalla pagina mentre fai ricerca, con una mini interfaccia *Video / Solo audio*: un clic e sono nella lista. Elenca anche le **immagini della pagina** con anteprima: le mandi all'app o le scarichi subito. Il logo dell'estensione apre l'app. |
+| **Estensione Chrome** | Raccoglie i link dei video dalle schede aperte e dalla pagina mentre fai ricerca, con una mini interfaccia *Video / Solo audio*: un clic e sono nella lista (**Metti in lista**) oppure il download parte subito (**Scarica subito**). Elenca anche le **immagini della pagina** con anteprima: le mandi all'app o le scarichi subito. Il logo dell'estensione apre l'app. |
 | **Pensata per lo studio** | Trascini file e cartelle sul mecha (si gira e apre la botola), preset con nome, schermo di stato con il registro completo, spie dei componenti che diventano rosse se qualcosa va aggiornato, interfaccia in italiano, inglese e cinese. |
 
 ## Flussi di lavoro
 
-**1 · Ricerca B-roll in 3 clic.** Apri i video in Chrome mentre cerchi le clip → icona di DownConvertron → *Video · MOV (montaggio) · Full HD* → **Metti in lista** → nell'app premi **Scarica**. I file arrivano in MOV H.264 + AAC copiati senza perdita, pronti per Premiere, Final Cut e Resolve (per il 4K scegli MP4 o MKV: YouTube in H.264 arriva a 1080p).
+**1 · Ricerca B-roll in 3 clic.** Apri i video in Chrome mentre cerchi le clip → icona di DownConvertron → *Video · MOV (montaggio) · Full HD* → **Metti in lista** → nell'app premi **Scarica** (oppure **Scarica subito** e parte da solo). I file arrivano in MOV H.264 + AAC copiati senza perdita, pronti per Premiere, Final Cut e Resolve (per il 4K scegli MP4 o MKV: YouTube in H.264 arriva a 1080p).
 
 **2 · Overlay e alert per lo stream.** Trascina il MOV con alfa sul mecha → *WebM VP9 + alfa* per le browser source di OBS e Streamlabs, *ProRes 4444* per il montaggio, *HAP Alpha* per Resolume e i ledwall. La trasparenza non si perde mai: se il file è già trasparente l'app la mantiene anche quando scegli il chroma key.
 
@@ -152,7 +152,7 @@ python3 tools/check.py     # controlli: JScript ES3, id, estensione, installer, 
 **Convert** without losing transparency: WebM VP9 + alpha, ProRes 4444/XQ, Animation, PNG, CineForm 12-bit, HAP Alpha/Q, animated WebP and APNG, GIF, PNG/TIFF/EXR sequences (in and out), single images in order to video or GIF, HEVC with alpha on Mac, lossless MP4 ↔ MOV remux.
 **Touch up**: trim, repeats, forward-backward loops, vertical/square/4:5 canvas with transparent borders, chroma key, checkerboard preview, EBU R128 loudness, all audio tracks at 24-bit.
 **Fast**: NVIDIA / Intel / AMD encoders on Windows, Apple chip encoders on Mac, detected automatically.
-**Chrome extension**: collects video links from your open tabs and the current page, with a mini *Video / Audio only* setup, and lists the page's images with thumbnails for a quick download; links land in the app's list and you start the download. Clicking the logo opens the app.
+**Chrome extension**: collects video links from your open tabs and the current page, with a mini *Video / Audio only* setup, and lists the page's images with thumbnails for a quick download; links land in the app's list (**Add to list**) or the download starts right away (**Download now**). Clicking the logo opens the app.
 **Studio-friendly**: drag files onto the mecha (it turns around and opens a hatch between its legs), named presets, a status screen with the full log of app, extension and tools, component lights that turn red when something is missing or outdated (COMPONENTS shows whether the Chrome extension is really installed).
 
 ### Install
