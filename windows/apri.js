@@ -47,6 +47,9 @@ function restore(pid) {
 
 var pid = running();
 if (pid) {
+  /* prima subito in primo piano (finestra aperta: nessuna attesa), poi il ripristino se era ridotta a icona:
+     AppActivate risponde "riuscito" anche su una finestra ridotta, senza riaprirla */
+  sh.AppActivate(pid);
   restore(pid);
   if (!sh.AppActivate(pid)) { WScript.Sleep(300); sh.AppActivate(pid); }
 } else if (hta) {

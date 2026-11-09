@@ -1161,6 +1161,23 @@ function parseText(text, asImg, quiet) {
       if (bar < 0 && /\|$/.test(found[0])) bar = line.indexOf(found[0]) + found[0].length - 1;   /* "url| nome" */
       if (bar >= 0) { name = cleanName(line.substring(bar).replace(/^\s*\|/, "")); found[0] = found[0].replace(/\|$/, ""); }
     }
+    /* senza " | ": "url|nome" scritto a mano e "url|url" vanno divisi; "|" resta nell'URL se dopo sembra ancora un URL (/ ? = & %) */
+    if (!name) {
+      var parts2 = [], k, p, cur;
+      for (j = 0; j < found.length; j++) {
+        p = found[j].split("|"); cur = p[0];
+        for (k = 1; k < p.length; k++) {
+          if (/^https?:\/\//i.test(p[k])) { parts2.push(cur); cur = p[k]; }
+          else if (found.length === 1 && p[k] && !/[\/?=&%]/.test(p[k])) {
+            name = cleanName(p.slice(k).join("|") + line.substring(line.indexOf(found[j]) + found[j].length));
+            break;
+          }
+          else cur += "|" + p[k];
+        }
+        parts2.push(cur);
+      }
+      found = parts2;
+    }
     for (j = 0; j < found.length; j++) {
       var u = cleanUrl(found[j]);
       if (!u || seen[u]) { skipped++; if (u && seen[u] && seen[u].status !== "ok") pending++; continue; }
@@ -1616,7 +1633,15 @@ function isImageItem(it) { return !!(it && (it.img || isImageUrl(it.url))); }
 /* primi n byte di un file come stringa (un carattere per byte): binario letto con ADODB e convertito
    in esadecimale con MSXML, cosi' anche i byte 0 e 0x80-0x9F restano esatti. Sul Mac: mac.js */
 function fileHead(path, n) {
-  var st = new ActiveXObject("ADODB.Stream"), b, out = "", i;
+  var st, b, out = "", i, c, ts, s;
+  /* file grandi (dirette di ore, oltre 2 GB): ADODB.Stream li caricherebbe interi ("Out of memory" a 32 bit).
+     FSO in modalita' Unicode legge solo le coppie di byte richieste, senza conversioni (provato su tutti i 256 valori). */
+  if (fso.GetFile(path).Size > 8388608) {
+    ts = fso.OpenTextFile(path, 1, false, -1); s = ts.Read(Math.ceil(n / 2)); ts.Close();
+    for (i = 0; i < s.length; i++) { c = s.charCodeAt(i); out += String.fromCharCode(c & 255, c >> 8); }
+    return out.substring(0, n);
+  }
+  st = new ActiveXObject("ADODB.Stream");
   st.Type = 1; st.Open(); st.LoadFromFile(path); b = st.Read(n); st.Close();
   var el = new ActiveXObject("MSXML2.DOMDocument").createElement("h");
   el.dataType = "bin.hex"; el.nodeTypedValue = b;
@@ -2171,11 +2196,13 @@ function probePackets(sp) {
   return parseInt(t, 10) || 0;
 }
 /* strict: nel dubbio NON c'e' alfa (HEVC normale); senza strict nel dubbio si conserva (GIF, tavolozze) */
-function hasRealAlpha(sp, strict) {
+/* strict (HEVC): 2 fotogrammi rimpiccioliti, veloce anche sui video 4K dell'iPhone; nFrames: quante immagini guardare */
+function hasRealAlpha(sp, strict, nFrames) {
   var ffmpeg = findTool("ffmpeg.exe"); if (!ffmpeg) return !strict;
   var o2 = DIR_TMP + "\\alpha_" + newToken() + ".txt", t2 = "";
+  var n = nFrames || (strict ? 2 : 60), vf = (strict ? "scale=256:-2," : "") + "format=rgba,alphaextract,signalstats,metadata=print:key=lavfi.signalstats.YMIN";
   try {
-    sh.Run('"' + EXE_CMD + '" /d /v:off /s /c ""' + ffmpeg + '" -hide_banner -nostats -nostdin -i "' + sp + '" -frames:v 60 -vf "format=rgba,alphaextract,signalstats,metadata=print:key=lavfi.signalstats.YMIN" -f null - > "' + o2 + '" 2>&1"', 0, true);
+    sh.Run('"' + EXE_CMD + '" /d /v:off /s /c ""' + ffmpeg + '" -hide_banner -nostats -nostdin -i "' + sp + '" -frames:v ' + n + ' -vf "' + vf + '" -f null - > "' + o2 + '" 2>&1"', 0, true);
     if (fso.FileExists(o2)) { var f2 = fso.OpenTextFile(o2, 1, false, 0); t2 = f2.AtEndOfStream ? "" : f2.ReadAll(); f2.Close(); }
   } catch (e) {}
   tryDelete(o2);
@@ -2330,8 +2357,12 @@ function cvProbe(it) {
   if (it.kind === "seq" && it.info.ok) {
     var f = cvRate(it);
     it.info.fps = f; it.info.dur = it.seq.count / f; it.info.seq = true; it.info.audio = false;
-    /* animazione di immagini: basta UNA immagine con trasparenza (non solo la prima) */
-    if (it.seq.list && it.seq.alphaHint) it.info.alpha = true;
+    /* animazione di immagini: basta UNA immagine con trasparenza vera (non solo la prima). Si guardano i pixel di tutte,
+       non l'estensione: PNG opachi su green screen lasciano libero il chroma key. Nel dubbio l'alfa resta. */
+    if (it.seq.list && it.seq.alphaHint) {
+      var sp = safePath(it.seq.pattern);
+      it.info.alpha = sp ? hasRealAlpha(sp, false, Math.min(it.seq.count, 300)) : true;
+    }
   }
   return it.info;
 }
@@ -3585,8 +3616,10 @@ function cvStepDone(ok) {
   /* la cartella ha preso un altro nome («X (2)_png»): anche i fotogrammi dentro lo seguono */
   if (it.outIsDir && it.frameBase && it.outBase !== it.frameBase) {
     try {
-      var fe = new Enumerator(fso.GetFolder(it.outFinal).Files), nb = String(it.outBase).replace(/%/g, "");
-      for (; !fe.atEnd(); fe.moveNext()) { var fn = fe.item().Name; if (fn.indexOf(it.frameBase + "_") === 0) fe.item().Name = nb + fn.substring(it.frameBase.length); }
+      /* prima l'elenco, poi MoveFile: funziona anche sul Mac (lo shim non ha il setter di Name) */
+      var fe = new Enumerator(fso.GetFolder(it.outFinal).Files), nb = String(it.outBase).replace(/%/g, ""), ren = [], ri, SEPR = window.DCVT_MAC ? "/" : "\\";
+      for (; !fe.atEnd(); fe.moveNext()) { var fn = fe.item().Name; if (fn.indexOf(it.frameBase + "_") === 0) ren.push(fn); }
+      for (ri = 0; ri < ren.length; ri++) fso.MoveFile(it.outFinal + SEPR + ren[ri], it.outFinal + SEPR + nb + ren[ri].substring(it.frameBase.length));
     } catch (e3) { DEBUG_ERRORS.push("rinomina fotogrammi: " + (e3.message || e3)); }
   }
   cvCleanItem(it);
@@ -3824,7 +3857,7 @@ function infoClose() { $("infoBox").style.display = "none"; }
    nella mini interfaccia (video / solo audio / come nell'app), qualita', file, e il registro dell'estensione.
    Il resto sono link (eventualmente "link | nome file"). L'app mette i link in lista e applica le
    impostazioni: il download lo avvii tu con Scarica. */
-var EXTST = { lastAt: "", ver: "", pending: [] };   /* pending: invii presi dagli appunti e non ancora aggiunti */
+var EXTST = { lastAt: "", ver: "", pending: [], taken: "" };   /* pending: invii presi dagli appunti e non ancora aggiunti */
 var EXT_VIDEO_Q = { best: 1, "4320": 1, "2160": 1, "1440": 1, "1080": 1, "720": 1, "480": 1, "360": 1 };
 var EXT_CONT = { mp4: 1, mkv: 1, webm: 1, mov: 1 };
 var EXT_AUDIO = { mp3: 1, m4a: 1, opus: 1, wav: 1, flac: 1, best: 1 };
@@ -3838,13 +3871,16 @@ function extPoll() {
   var t = "";
   try { t = window.clipboardData.getData("Text") || ""; } catch (e) { t = ""; }
   var mark = t.indexOf(EXT_MARK) === 0 ? EXT_MARK : (t.indexOf(EXT_MARK_OLD) === 0 ? EXT_MARK_OLD : "");
+  /* appunti occupati: se setData non riesce, il prossimo controllo ritrova lo stesso testo e non va rimesso in coda */
+  var again = mark && t === EXTST.taken;
+  if (!mark) EXTST.taken = "";
   if (mark) {
     /* preso SUBITO dagli appunti, anche durante un download: se poi l'utente copia altro, l'invio non si perde */
-    EXTST.pending.push(t);
+    if (!again) { EXTST.taken = t; EXTST.pending.push(t); }
     var plain = t.substring(mark.length).split(/\r?\n/), keep = [], k;
     for (k = 1; k < plain.length; k++) { var pl = plain[k].replace(/^#img=/, ""); if (/\S/.test(pl) && !/^#\w+=/.test(pl)) keep.push(pl); }
-    try { window.clipboardData.setData("Text", keep.join("\r\n")); } catch (e2) {}   /* niente doppioni: tolgo marcatura e intestazioni */
-    if (state.busy) logEvent("ext", T("Link ricevuti dall'estensione Chrome: li aggiungo appena finisce il lavoro in corso."), "info", true);
+    try { window.clipboardData.setData("Text", keep.join("\r\n")); } catch (e2) {}   /* niente doppioni: tolgo marcatura e intestazioni (riprova se prima non e' riuscito) */
+    if (state.busy && !again) logEvent("ext", T("Link ricevuti dall'estensione Chrome: li aggiungo appena finisce il lavoro in corso."), "info", true);
   }
   if (state.busy || !EXTST.pending.length) return;
   t = EXTST.pending.shift();
@@ -3911,7 +3947,7 @@ function extApplyMode(h) {
    Chrome chiede la prima volta se aprire DownConvertron. Mac: lo registra l'app stessa.
    Il collegamento passa da un lanciatore invisibile (windows/apri.js, incorporato da tools/embed.py):
    se l'app e' gia' aperta la riporta in primo piano (anche se ridotta a icona) invece di aprirne un'altra. */
-var APRI_JS = "/* DownConvertron - lanciatore del collegamento downconvertron:// (logo e invio dell'estensione Chrome).\n   Se l'app e' gia' aperta la porta in primo piano: i link li legge da sola dagli appunti.\n   Altrimenti la avvia. Gira con wscript //B: nessuna finestra.\n   Argomenti: percorso dell'HTA, link downconvertron://\n   Copyright (C) 2026 Daniele Moretti (Welsho) - GPL-3.0-or-later */\nvar sh = new ActiveXObject(\"WScript.Shell\"), A = WScript.Arguments;\nvar hta = A.length > 0 ? A(0) : \"\", url = A.length > 1 ? A(1) : \"\";\n\n/* processo di DownConvertron gia' aperto (mshta a 32 o 64 bit, installata o no): 0 se non c'e' */\nfunction running() {\n  try {\n    var wmi = GetObject(\"winmgmts:{impersonationLevel=impersonate}!\\\\\\\\.\\\\root\\\\cimv2\");\n    var e = new Enumerator(wmi.ExecQuery(\"SELECT ProcessId, CommandLine FROM Win32_Process WHERE Name = 'mshta.exe'\"));\n    for (; !e.atEnd(); e.moveNext()) {\n      var cl = String(e.item().CommandLine || \"\");\n      if (/[\\\\\\/\"]DownConvertron[^\\\\\\/\"]*\\.hta/i.test(cl)) return e.item().ProcessId;\n    }\n  } catch (x) {}\n  return 0;\n}\n/* lo stesso mshta del doppio clic sui file .hta, cosi' \"una sola istanza\" vale anche dopo */\nfunction mshta() {\n  var def = sh.ExpandEnvironmentStrings(\"%SystemRoot%\") + \"\\\\System32\\\\mshta.exe\", c = \"\", m;\n  try { c = String(sh.RegRead(\"HKCR\\\\htafile\\\\shell\\\\open\\\\command\\\\\")); } catch (x) {}\n  m = /^\\s*\"([^\"]*mshta\\.exe)\"/i.exec(c) || /^\\s*(\\S*mshta\\.exe)/i.exec(c);\n  return m ? sh.ExpandEnvironmentStrings(m[1]) : def;\n}\n\n/* base64 di una stringa in UTF-16LE (per powershell -EncodedCommand: niente problemi di virgolette) */\nfunction b64u16(s) {\n  var K = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/\", b = [], o = \"\", i, n;\n  for (i = 0; i < s.length; i++) { n = s.charCodeAt(i); b.push(n & 255, n >> 8); }\n  for (i = 0; i < b.length; i += 3) {\n    n = (b[i] << 16) | ((b[i + 1] || 0) << 8) | (b[i + 2] || 0);\n    o += K.charAt(n >> 18 & 63) + K.charAt(n >> 12 & 63) + (i + 1 < b.length ? K.charAt(n >> 6 & 63) : \"=\") + (i + 2 < b.length ? K.charAt(n & 63) : \"=\");\n  }\n  return o;\n}\n/* AppActivate non ripristina una finestra ridotta a icona: lo fa ShowWindowAsync (PowerShell nascosto) */\nfunction restore(pid) {\n  var ps = sh.ExpandEnvironmentStrings(\"%SystemRoot%\") + \"\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\";\n  var code = \"$h = (Get-Process -Id \" + pid + \").MainWindowHandle; if ($h -ne 0) { \" +\n    \"$w = Add-Type -Name W -Namespace DCVT -PassThru -MemberDefinition '[DllImport(\\\"user32.dll\\\")] public static extern bool IsIconic(IntPtr h); [DllImport(\\\"user32.dll\\\")] public static extern bool ShowWindowAsync(IntPtr h, int c);'; \" +\n    \"if ($w::IsIconic($h)) { [void]$w::ShowWindowAsync($h, 9) } }\";\n  try { sh.Run('\"' + ps + '\" -NoProfile -NonInteractive -WindowStyle Hidden -EncodedCommand ' + b64u16(code), 0, true); } catch (x) {}\n}\n\nvar pid = running();\nif (pid) {\n  restore(pid);\n  if (!sh.AppActivate(pid)) { WScript.Sleep(300); sh.AppActivate(pid); }\n} else if (hta) {\n  sh.Run('\"' + mshta() + '\" \"' + hta + '\"' + (url ? ' \"' + url + '\"' : \"\"), 1, false);\n}\n";
+var APRI_JS = "/* DownConvertron - lanciatore del collegamento downconvertron:// (logo e invio dell'estensione Chrome).\n   Se l'app e' gia' aperta la porta in primo piano: i link li legge da sola dagli appunti.\n   Altrimenti la avvia. Gira con wscript //B: nessuna finestra.\n   Argomenti: percorso dell'HTA, link downconvertron://\n   Copyright (C) 2026 Daniele Moretti (Welsho) - GPL-3.0-or-later */\nvar sh = new ActiveXObject(\"WScript.Shell\"), A = WScript.Arguments;\nvar hta = A.length > 0 ? A(0) : \"\", url = A.length > 1 ? A(1) : \"\";\n\n/* processo di DownConvertron gia' aperto (mshta a 32 o 64 bit, installata o no): 0 se non c'e' */\nfunction running() {\n  try {\n    var wmi = GetObject(\"winmgmts:{impersonationLevel=impersonate}!\\\\\\\\.\\\\root\\\\cimv2\");\n    var e = new Enumerator(wmi.ExecQuery(\"SELECT ProcessId, CommandLine FROM Win32_Process WHERE Name = 'mshta.exe'\"));\n    for (; !e.atEnd(); e.moveNext()) {\n      var cl = String(e.item().CommandLine || \"\");\n      if (/[\\\\\\/\"]DownConvertron[^\\\\\\/\"]*\\.hta/i.test(cl)) return e.item().ProcessId;\n    }\n  } catch (x) {}\n  return 0;\n}\n/* lo stesso mshta del doppio clic sui file .hta, cosi' \"una sola istanza\" vale anche dopo */\nfunction mshta() {\n  var def = sh.ExpandEnvironmentStrings(\"%SystemRoot%\") + \"\\\\System32\\\\mshta.exe\", c = \"\", m;\n  try { c = String(sh.RegRead(\"HKCR\\\\htafile\\\\shell\\\\open\\\\command\\\\\")); } catch (x) {}\n  m = /^\\s*\"([^\"]*mshta\\.exe)\"/i.exec(c) || /^\\s*(\\S*mshta\\.exe)/i.exec(c);\n  return m ? sh.ExpandEnvironmentStrings(m[1]) : def;\n}\n\n/* base64 di una stringa in UTF-16LE (per powershell -EncodedCommand: niente problemi di virgolette) */\nfunction b64u16(s) {\n  var K = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/\", b = [], o = \"\", i, n;\n  for (i = 0; i < s.length; i++) { n = s.charCodeAt(i); b.push(n & 255, n >> 8); }\n  for (i = 0; i < b.length; i += 3) {\n    n = (b[i] << 16) | ((b[i + 1] || 0) << 8) | (b[i + 2] || 0);\n    o += K.charAt(n >> 18 & 63) + K.charAt(n >> 12 & 63) + (i + 1 < b.length ? K.charAt(n >> 6 & 63) : \"=\") + (i + 2 < b.length ? K.charAt(n & 63) : \"=\");\n  }\n  return o;\n}\n/* AppActivate non ripristina una finestra ridotta a icona: lo fa ShowWindowAsync (PowerShell nascosto) */\nfunction restore(pid) {\n  var ps = sh.ExpandEnvironmentStrings(\"%SystemRoot%\") + \"\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\";\n  var code = \"$h = (Get-Process -Id \" + pid + \").MainWindowHandle; if ($h -ne 0) { \" +\n    \"$w = Add-Type -Name W -Namespace DCVT -PassThru -MemberDefinition '[DllImport(\\\"user32.dll\\\")] public static extern bool IsIconic(IntPtr h); [DllImport(\\\"user32.dll\\\")] public static extern bool ShowWindowAsync(IntPtr h, int c);'; \" +\n    \"if ($w::IsIconic($h)) { [void]$w::ShowWindowAsync($h, 9) } }\";\n  try { sh.Run('\"' + ps + '\" -NoProfile -NonInteractive -WindowStyle Hidden -EncodedCommand ' + b64u16(code), 0, true); } catch (x) {}\n}\n\nvar pid = running();\nif (pid) {\n  /* prima subito in primo piano (finestra aperta: nessuna attesa), poi il ripristino se era ridotta a icona:\n     AppActivate risponde \"riuscito\" anche su una finestra ridotta, senza riaprirla */\n  sh.AppActivate(pid);\n  restore(pid);\n  if (!sh.AppActivate(pid)) { WScript.Sleep(300); sh.AppActivate(pid); }\n} else if (hta) {\n  sh.Run('\"' + mshta() + '\" \"' + hta + '\"' + (url ? ' \"' + url + '\"' : \"\"), 1, false);\n}\n";
 function protoRegister() {
   if (window.DCVT_MAC) return;
   try {
@@ -4444,6 +4480,8 @@ function fitToScreen(first) {
     page.style.overflowY = "";
     if (first) vw = screen.availWidth - 40;
     ZOOM = Math.min((vw - 4) / SUIT_W, Math.max(MIN_ZOOM, Math.min(1, (vh - 10 - LOG_MIN) / need)));   /* sotto i piedi resta lo schermo del registro */
+    /* fermo al minimo e ancora piu' alto della finestra: la barra di scorrimento torna e toglie 17 px alla larghezza */
+    if (need * ZOOM > vh - 10 - LOG_MIN + 1) ZOOM = Math.min(ZOOM, (vw - 4 - 17) / SUIT_W);
     root.style.zoom = ZOOM;
     if (first) {
       /* larghezza della finestra = larghezza del mecha + barra di scorrimento e bordi */

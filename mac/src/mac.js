@@ -157,7 +157,10 @@
   isLocalFixed = function (p) { return !/\/Library\/(CloudStorage|Mobile Documents)\//.test(M.P(p)); };
   /* immagini: primi byte del file (formato vero) e Content-Type di un link (curl -I, al massimo 15 secondi) */
   fileHead = function (p, n) {
-    return fs.readFileSync(M.P(p)).slice(0, n).toString("latin1");   /* immagini: file piccoli, lettura intera accettabile */
+    /* solo i primi n byte: anche le dirette interrotte di molti GB */
+    var fd = fs.openSync(M.P(p), "r"), buf = Buffer.alloc(n), got = 0;
+    try { got = fs.readSync(fd, buf, 0, n, 0); } finally { fs.closeSync(fd); }
+    return buf.slice(0, got).toString("latin1");
   };
   urlContentType = function (url) {
     var curl = curlExe(), ct = "";

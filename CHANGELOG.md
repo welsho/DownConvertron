@@ -42,6 +42,14 @@
 - **Download delle immagini su Windows**: corretto «Impossibile trovare il percorso specificato» con l'app aperta in mshta a 32 bit (curl veniva cercato in `Sysnative` da un cmd a 64 bit).
 - **Cartella dell'estensione**: il pulsante Estensione Chrome e la spia COMPONENTI aprono la cartella che la contiene, con `chrome-extension` già selezionata da trascinare intera.
 - **Trascinamento**: il ricevitore tiene un registro (`ricevitore.log`) incluso nel Report debug; le richieste non vengono più riscritte prima di essere lette.
+- **Dalla revisione finale**:
+  - dirette di più di 2 GB interrotte: ora la parte registrata viene salvata (prima il controllo leggeva tutto il file e finiva in «Out of memory»);
+  - «link|nome» scritto senza spazi e due link uniti da `|` di nuovo divisi bene;
+  - animazioni di PNG opachi (green screen): l'alfa si decide dai pixel, non dall'estensione, e il chroma key torna a funzionare;
+  - controllo dell'HEVC con alfa più rapido (circa 0,7 s invece di oltre 4 s su un 4K);
+  - fotogrammi rinominati con la cartella anche sul Mac;
+  - appunti occupati: un invio dell'estensione non viene più messo in coda due volte;
+  - logo dell'estensione: l'app già aperta viene portata subito in primo piano, il ripristino dall'icona arriva dopo.
 - **Layout**: lo zoom del mecha non scende più sotto il minimo leggibile per colpa della barra di scorrimento misurata a zoom 1 (0,797 invece di 0,8 su uno schermo 1920×1080).
 - **Lingue**: tradotti gli ultimi messaggi rimasti in italiano (scelta di yt-dlp.exe, yt-dlp troppo vecchio, Report debug).
 - Build su Windows: file generati sempre con fine riga LF; `check.py` corretto per Windows PowerShell 5.1.
