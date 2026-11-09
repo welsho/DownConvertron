@@ -1,0 +1,23 @@
+{
+  "name": "downconvertron",
+  "version": "6.0.0",
+  "private": true,
+  "description": "DownConvertron - download and convert videos for creators, streamers and video makers (B-roll, overlays with alpha). designed by Welsho",
+  "author": "Daniele Moretti (Welsho)",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "build": "./build.sh",
+    "build:windows": "SKIP_MAC=1 ./build.sh",
+    "check": "python3 tools/check.py",
+    "embed": "python3 tools/embed.py",
+    "i18n": "python3 tools/i18n_extract.py",
+    "test:lang": "python3 mac/build_mac.py && node tests/electron/lang.js build/test-shots",
+    "test:drop": "python3 mac/build_mac.py && node tests/electron/d1.js && node tests/electron/d4.js"
+  },
+  "devDependencies": {
+    "@electron/packager": "18.3.6",
+    "acorn": "^8.14.0",
+    "electron": "33.4.11",
+    "playwright": "1.56.1"
+  }
+}

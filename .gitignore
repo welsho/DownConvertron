@@ -1,0 +1,9 @@
+# DownConvertron
+node_modules/
+build/
+dist/
+i18n/_da_tradurre.json
+tests/electron/out/
+*.log
+.DS_Store
+Thumbs.db

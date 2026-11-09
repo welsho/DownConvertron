@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- DownConvertron - estensione Chrome (designed by Welsho)
+     Copyright (C) 2026 Daniele Moretti (Welsho) - GPL-3.0-or-later -->
+<html>
+<head>
+<meta charset="utf-8">
+<title>DownConvertron</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<header>
+  <button id="logo" class="logo" data-tt="apri"><img src="icon48.png" alt=""></button>
+  <div class="lcd">
+    <div class="tag">MECHA v6.0</div>
+    <div class="ttl">DOWNCONVERTRON</div>
+    <div class="sub" id="stato">...</div>
+  </div>
+</header>
+<section class="quick">
+  <div class="sh"><span data-t="comeScaricare"></span></div>
+  <div class="seg">
+    <button data-m="app" data-t="mApp"></button><button data-m="video" data-t="mVideo"></button><button data-m="audio" data-t="mAudio"></button>
+  </div>
+  <div class="qrow" id="qVideo">
+    <label><span data-t="qualita"></span><select id="vq">
+      <option value="best" data-t="qBest"></option><option value="2160">4K (2160p)</option><option value="1080">Full HD (1080p)</option><option value="720">HD (720p)</option></select></label>
+    <label><span data-t="file"></span><select id="vc">
+      <option value="mp4">MP4</option><option value="mov" data-t="cMov"></option><option value="webm">WebM</option><option value="mkv">MKV</option></select></label>
+  </div>
+  <div class="qrow" id="qAudio">
+    <label class="wide"><span data-t="formato"></span><select id="ap">
+      <option value="mp3|c320" data-t="aMp3"></option><option value="mp3|v0" data-t="aMp3v"></option><option value="m4a|c256" data-t="aM4a"></option>
+      <option value="wav|s16" data-t="aWav"></option><option value="flac|" data-t="aFlac"></option></select></label>
+  </div>
+  <div class="qnote" id="qApp" data-t="notaApp"></div>
+</section>
+<div class="opts">
+  <label><input type="checkbox" id="tutteFinestre"> <span data-t="tutteFinestre"></span></label>
+  <label><input type="checkbox" id="usaTitoli"> <span data-t="usaTitoli"></span></label>
+  <label><input type="checkbox" id="apriDopo"> <span data-t="apriDopo"></span></label>
+</div>
+<section>
+  <div class="sh"><span><span data-t="schede"></span> <b id="nSchede">0</b></span><button class="mini" data-tutti="schede" data-t="tuttiNessuno"></button></div>
+  <div class="lista" id="schede"></div>
+</section>
+<section>
+  <div class="sh"><span><span data-t="pagina"></span> <b id="nPagina">0</b></span><button class="mini" data-tutti="pagina" data-t="tuttiNessuno"></button></div>
+  <div class="lista" id="pagina"></div>
+</section>
+<section>
+  <div class="sh"><span><span data-t="immagini"></span> <b id="nImmagini">0</b></span><span><button class="mini" data-tutti="immagini" data-t="tuttiNessuno"></button> <button class="mini hot" id="scaricaSubito" data-t="scaricaSubito"></button></span></div>
+  <div class="griglia" id="immagini"></div>
+</section>
+<button id="invia" class="go"></button>
+<div class="nota" id="nota"></div>
+<script src="lingua.js"></script>
+<script src="testi.js"></script>
+<script src="siti.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>

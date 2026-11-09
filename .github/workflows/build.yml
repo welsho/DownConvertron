@@ -1,0 +1,49 @@
+# DownConvertron - controlli a ogni push e release automatica quando pubblichi un tag v* (es. v6.0)
+name: build
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Strumenti per i controlli (acorn per JScript ES3, Mono per il ricevitore C#)
+        run: |
+          npm install --no-save acorn@8
+          sudo apt-get update -qq && sudo apt-get install -y -qq mono-mcs
+      - name: Installer Windows
+        run: python3 windows/build_installer.py dist
+      - name: Controlli
+        run: python3 tools/check.py
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: check
+    runs-on: macos-14
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Strumenti di build
+        run: npm install --no-save @electron/packager@18.3.6 acorn@8
+      - name: Build (Windows + Mac Apple Silicon + estensione Chrome)
+        run: ./build.sh
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/DownConvertron-Setup.bat
+            dist/DownConvertron.hta
+            dist/DownConvertron-Mac-AppleSilicon.zip
+            dist/DownConvertron-ChromeExtension.zip
+          body_path: docs/RELEASE.md

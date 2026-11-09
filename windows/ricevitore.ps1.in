@@ -1,0 +1,27 @@
+# DownConvertron - ricevitore del trascinamento (designed by Welsho)
+# Copyright (C) 2026 Daniele Moretti (Welsho) - licenza GPL-3.0-or-later (vedi LICENSE)
+# Avviato dall'app all'apertura, nascosto. Compila una sola volta la parte in C# (ricevitore_N.dll),
+# poi la carica in pochi millisecondi. Si chiude da solo quando chiudi l'app.
+param([string]$Dir, [string]$Lib, [string]$Title)
+$ErrorActionPreference = 'Stop'
+try {
+  New-Item -ItemType Directory -Force -Path $Dir | Out-Null
+  Add-Type -AssemblyName System.Windows.Forms, System.Drawing
+  if (-not ('DcvtDrop.Ricevitore' -as [type])) {
+    if (-not (Test-Path -LiteralPath $Lib)) {
+      $src = @'
+__CSHARP__
+'@
+      Add-Type -TypeDefinition $src -Language CSharp -ReferencedAssemblies System.Windows.Forms, System.Drawing -OutputAssembly $Lib -OutputType Library
+    }
+    if (-not ('DcvtDrop.Ricevitore' -as [type])) { Add-Type -LiteralPath $Lib }
+  }
+  $padre = 0
+  try { $padre = [int](Get-CimInstance Win32_Process -Filter "ProcessId=$PID").ParentProcessId } catch {
+    try { $padre = [int](Get-WmiObject Win32_Process -Filter "ProcessId=$PID").ParentProcessId } catch { }
+  }
+  [void][DcvtDrop.Ricevitore]::Run($Dir, $padre, $Title)
+} catch {
+  try { [IO.File]::WriteAllText((Join-Path $Dir 'error.txt'), ($_ | Out-String)) } catch { }
+  try { if (Test-Path -LiteralPath $Lib) { Remove-Item -LiteralPath $Lib -Force } } catch { }
+}

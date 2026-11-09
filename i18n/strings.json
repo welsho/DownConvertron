@@ -1,0 +1,2486 @@
+{
+ "(Chrome non trovato: aprilo e scrivi <b>chrome://extensions</b> nella barra degli indirizzi)": {
+  "en": "(Chrome not found: open it and type <b>chrome://extensions</b> in the address bar)",
+  "zh": "（未找到 Chrome：请打开它并在地址栏输入 <b>chrome://extensions</b>）"
+ },
+ "(boomerang: la clip torna al punto di partenza, ideale per i loop)": {
+  "en": "(boomerang: the clip returns to its starting point, ideal for loops)",
+  "zh": "（回旋：片段回到起点，适合循环）"
+ },
+ "(codec mancanti:": {
+  "en": "(missing codecs:",
+  "zh": "（缺少编码器："
+ },
+ "(con canale alfa)": {
+  "en": "(with alpha channel)",
+  "zh": "（含透明通道）"
+ },
+ "(controllo aggiornamenti)": {
+  "en": "(checking for updates)",
+  "zh": "（检查更新）"
+ },
+ "(copia senza perdita)": {
+  "en": "(lossless copy)",
+  "zh": "（无损复制）"
+ },
+ "(costante)": {
+  "en": "(constant)",
+  "zh": "（恒定）"
+ },
+ "(già all'ultima versione)": {
+  "en": "(already at the latest version)",
+  "zh": "（已是最新版本）"
+ },
+ "(installato/aggiornato)": {
+  "en": "(installed/updated)",
+  "zh": "（已安装/已更新）"
+ },
+ "(installazione)": {
+  "en": "(installation)",
+  "zh": "（安装）"
+ },
+ "(interrotta:": {
+  "en": "(interrupted:",
+  "zh": "（中断："
+ },
+ "(mancano ancora i codec": {
+  "en": "(codecs still missing",
+  "zh": "（仍缺少编码器"
+ },
+ "(non verificato: interrotto)": {
+  "en": "(not verified: interrupted)",
+  "zh": "（未验证：已中断）"
+ },
+ "(per rifarli con altre impostazioni sposta o rinomina i file vecchi).": {
+  "en": "(to redo them with other settings move or rename the old files).",
+  "zh": "（若要用其他设置重做，请移动或重命名旧文件）。"
+ },
+ "(presente, ma winget ha dato errore": {
+  "en": "(present, but winget gave error",
+  "zh": "（已存在，但 winget 报错"
+ },
+ "(scheda {0})": {
+  "en": "(card {0})",
+  "zh": "（显卡 {0}）"
+ },
+ "(si apre da sola tra un istante; se non compare scrivi <b>chrome://extensions</b> nella barra degli indirizzi)": {
+  "en": "(it opens by itself in a moment; if it does not appear type <b>chrome://extensions</b> in the address bar)",
+  "zh": "（稍后会自动打开；若没有出现，请在地址栏输入 <b>chrome://extensions</b>）"
+ },
+ "(si apre da sola; la prima volta il Mac chiede il permesso di controllare Chrome: premi OK)": {
+  "en": "(it opens by itself; the first time the Mac asks permission to control Chrome: press OK)",
+  "zh": "（会自动打开；第一次 Mac 会请求控制 Chrome 的权限：点击“好”）"
+ },
+ "(winget codice": {
+  "en": "(winget code",
+  "zh": "（winget 代码"
+ },
+ "({0} doppi o non validi ignorati)": {
+  "en": "({0} duplicates or invalid ignored)",
+  "zh": "（已忽略 {0} 个重复或无效链接）"
+ },
+ "({0} già in lista o non validi)": {
+  "en": "({0} already in the list or invalid)",
+  "zh": "（{0} 个已在列表中或无效）"
+ },
+ "): niente Homebrew, niente password, circa 150 MB.\nPuoi interrompere con lo stesso pulsante.\n\nContinuare?": {
+  "en": "): no Homebrew, no password, about 150 MB.\nYou can stop it with the same button.\n\nContinue?",
+  "zh": "）：无需 Homebrew，无需密码，约 150 MB。\n可以用同一个按钮中止。\n\n继续吗？"
+ },
+ "+ Cartella": {
+  "en": "+ Folder",
+  "zh": "+ 文件夹"
+ },
+ "+ File": {
+  "en": "+ Files",
+  "zh": "+ 文件"
+ },
+ ", uscita": {
+  "en": ", output",
+  "zh": "，输出"
+ },
+ "-14 LUFS (YouTube, Spotify, social)": {
+  "en": "-14 LUFS (YouTube, Spotify, social)",
+  "zh": "-14 LUFS（YouTube、Spotify、社交）"
+ },
+ "-16 LUFS (podcast, web)": {
+  "en": "-16 LUFS (podcast, web)",
+  "zh": "-16 LUFS（播客、网页）"
+ },
+ "-23 LUFS (EBU R128, TV)": {
+  "en": "-23 LUFS (EBU R128, TV)",
+  "zh": "-23 LUFS（EBU R128，电视）"
+ },
+ ". In un .txt puoi scrivere": {
+  "en": ". In a .txt you can write",
+  "zh": "。在 .txt 中可以写"
+ },
+ "0 file": {
+  "en": "0 files",
+  "zh": "0 个文件"
+ },
+ "0 link": {
+  "en": "0 links",
+  "zh": "0 个链接"
+ },
+ "1 link aggiunto": {
+  "en": "1 link added",
+  "zh": "已添加 1 个链接"
+ },
+ "1 volta": {
+  "en": "1 time",
+  "zh": "1 次"
+ },
+ "1 · File da convertire": {
+  "en": "1 · Files to convert",
+  "zh": "1 · 要转换的文件"
+ },
+ "1 · Link": {
+  "en": "1 · Links",
+  "zh": "1 · 链接"
+ },
+ "10 volte": {
+  "en": "10 times",
+  "zh": "10 次"
+ },
+ "1080×1080 quadrato": {
+  "en": "1080×1080 square",
+  "zh": "1080×1080 方形"
+ },
+ "1080×1350 post 4:5": {
+  "en": "1080×1350 4:5 post",
+  "zh": "1080×1350 4:5 帖子"
+ },
+ "1080×1920 verticale (storie)": {
+  "en": "1080×1920 vertical (stories)",
+  "zh": "1080×1920 竖屏（快拍）"
+ },
+ "16 bit": {
+  "en": "16-bit",
+  "zh": "16 位"
+ },
+ "1920×1080 orizzontale": {
+  "en": "1920×1080 landscape",
+  "zh": "1920×1080 横屏"
+ },
+ "2 volte": {
+  "en": "2 times",
+  "zh": "2 次"
+ },
+ "2 · Formato": {
+  "en": "2 · Format",
+  "zh": "2 · 格式"
+ },
+ "2 · Formato e ritocchi": {
+  "en": "2 · Format and touch-ups",
+  "zh": "2 · 格式与修饰"
+ },
+ "24 bit": {
+  "en": "24-bit",
+  "zh": "24 位"
+ },
+ "3 volte": {
+  "en": "3 times",
+  "zh": "3 次"
+ },
+ "3 · Salva in": {
+  "en": "3 · Save to",
+  "zh": "3 · 保存到"
+ },
+ "32 bit": {
+  "en": "32-bit",
+  "zh": "32 位"
+ },
+ "32 bit virgola mobile": {
+  "en": "32-bit floating point",
+  "zh": "32 位浮点"
+ },
+ "4 volte": {
+  "en": "4 times",
+  "zh": "4 次"
+ },
+ "5 volte": {
+  "en": "5 times",
+  "zh": "5 次"
+ },
+ ": condiviso con «Chiunque abbia il link». Anche": {
+  "en": ": shared with «Anyone with the link». Also",
+  "zh": "：已设为“知道链接的任何人”。也支持"
+ },
+ ": i file sono in": {
+  "en": ": files are in",
+  "zh": "：文件位于"
+ },
+ ": molto più veloce, a parità di peso la qualità è un po' inferiore.": {
+  "en": ": much faster, at the same size the quality is a bit lower.",
+  "zh": "：快很多，同等大小下画质略低。"
+ },
+ ": nel Finder sotto": {
+  "en": ": in the Finder under",
+  "zh": "：在访达中位于"
+ },
+ ": nessuna trasparenza nel file di uscita. Per mantenerla scegli un formato «Con trasparenza».": {
+  "en": ": no transparency in the output file. To keep it choose a «With transparency» format.",
+  "zh": "：输出文件中没有透明。要保留请选择“带透明”的格式。"
+ },
+ ": premi «Installa / aggiorna componenti» (installa la versione completa).": {
+  "en": ": press «Install / update components» (installs the full version).",
+  "zh": "：点击“安装 / 更新组件”（安装完整版本）。"
+ },
+ ": premi «Installa / aggiorna componenti».": {
+  "en": ": press «Install / update components».",
+  "zh": "：点击“安装 / 更新组件”。"
+ },
+ ": scegli un altro formato.": {
+  "en": ": choose another format.",
+  "zh": "：请选择其他格式。"
+ },
+ ": su quei file lo sfondo da rimuovere viene ignorato, per non rovinare la loro trasparenza.": {
+  "en": ": on those files the background to remove is ignored, so as not to spoil their transparency.",
+  "zh": "：这些文件会忽略要去除的背景，以免破坏原有透明。"
+ },
+ "AAC (massima compatibilità)": {
+  "en": "AAC (maximum compatibility)",
+  "zh": "AAC（兼容性最好）"
+ },
+ "APNG animato": {
+  "en": "Animated APNG",
+  "zh": "动态 APNG"
+ },
+ "APNG animato + alfa (senza perdita)": {
+  "en": "Animated APNG + alpha (lossless)",
+  "zh": "动态 APNG + 透明（无损）"
+ },
+ "APNG: PNG animato senza perdita con trasparenza morbida (browser, Discord, Telegram). File più pesanti del WebP.": {
+  "en": "APNG: lossless animated PNG with soft transparency (browsers, Discord, Telegram). Heavier files than WebP.",
+  "zh": "APNG：无损动态 PNG，带柔和透明（浏览器、Discord、Telegram）。文件比 WebP 大。"
+ },
+ "APP": {
+  "en": "APP",
+  "zh": "应用"
+ },
+ "AVI: formato vecchio, per lettori e programmi datati. Video H.264 copiato senza perdita (fino a 1080p su YouTube), audio convertito in MP3. Niente copertina; i sottotitoli restano file a parte.": {
+  "en": "AVI: old format, for dated players and programs. H.264 video copied losslessly (up to 1080p on YouTube), audio converted to MP3. No cover; subtitles stay separate files.",
+  "zh": "AVI：旧格式，适用于老旧播放器和程序。H.264 视频无损复制（YouTube 最高 1080p），音频转为 MP3。无封面；字幕保存为单独文件。"
+ },
+ "Adattamento": {
+  "en": "Fit",
+  "zh": "适配"
+ },
+ "Aggiungi": {
+  "en": "Add",
+  "zh": "添加"
+ },
+ "Aggiungi almeno un file o un link.": {
+  "en": "Add at least one file or link.",
+  "zh": "请至少添加一个文件或链接。"
+ },
+ "Aggiungi almeno un link.": {
+  "en": "Add at least one link.",
+  "zh": "请至少添加一个链接。"
+ },
+ "Aggiungi link": {
+  "en": "Add link",
+  "zh": "添加链接"
+ },
+ "Alcuni elementi della playlist non sono stati scaricati:": {
+  "en": "Some items of the playlist were not downloaded:",
+  "zh": "播放列表中有些项目未下载："
+ },
+ "Alfa premoltiplicato (MOV da After Effects/Premiere «Premoltiplicato»: toglie l'alone scuro sui bordi)": {
+  "en": "Premultiplied alpha (MOV from After Effects/Premiere «Premultiplied»: removes the dark halo on edges)",
+  "zh": "预乘透明（来自 After Effects/Premiere 的“预乘”MOV：去除边缘暗晕）"
+ },
+ "Alta": {
+  "en": "High",
+  "zh": "高"
+ },
+ "Animazione": {
+  "en": "Animation",
+  "zh": "Animation"
+ },
+ "Animazione e PNG sono senza perdita: file molto grandi, ideali per il montaggio.": {
+  "en": "Animation and PNG are lossless: very large files, ideal for editing.",
+  "zh": "Animation 和 PNG 是无损的：文件很大，适合剪辑。"
+ },
+ "Annulla": {
+  "en": "Cancel",
+  "zh": "取消"
+ },
+ "Annulla installazione": {
+  "en": "Cancel installation",
+  "zh": "取消安装"
+ },
+ "Annullamento...": {
+  "en": "Cancelling...",
+  "zh": "正在取消..."
+ },
+ "Annullato": {
+  "en": "Cancelled",
+  "zh": "已取消"
+ },
+ "Anteprima del risultato su scacchiera": {
+  "en": "Preview of the result on a checkerboard",
+  "zh": "在棋盘格上预览结果"
+ },
+ "Anteprima non disponibile:": {
+  "en": "Preview not available:",
+  "zh": "无法预览："
+ },
+ "Anteprima non riuscita:": {
+  "en": "Preview failed:",
+  "zh": "预览失败："
+ },
+ "Anteprima: {0}": {
+  "en": "Preview: {0}",
+  "zh": "预览：{0}"
+ },
+ "App aperta dal logo dell'estensione Chrome.": {
+  "en": "App opened from the Chrome extension logo.",
+  "zh": "应用已从 Chrome 扩展图标打开。"
+ },
+ "App aperta dall'estensione Chrome per ricevere i link.": {
+  "en": "App opened by the Chrome extension to receive the links.",
+  "zh": "应用已由 Chrome 扩展打开以接收链接。"
+ },
+ "Apri cartella": {
+  "en": "Open folder",
+  "zh": "打开文件夹"
+ },
+ "Attendi la fine del lavoro in corso, poi riprova.": {
+  "en": "Wait for the current job to finish, then try again.",
+  "zh": "请等待当前任务完成后再试。"
+ },
+ "Attendi la fine del lavoro in corso, poi trascina di nuovo.": {
+  "en": "Wait for the current job to finish, then drag again.",
+  "zh": "请等待当前任务完成后再拖入。"
+ },
+ "Attendi la fine del lavoro in corso.": {
+  "en": "Wait for the current job to finish.",
+  "zh": "请等待当前任务完成。"
+ },
+ "Audio": {
+  "en": "Audio",
+  "zh": "音频"
+ },
+ "Audio nel video": {
+  "en": "Audio in the video",
+  "zh": "视频中的音频"
+ },
+ "Automatica (16 bit)": {
+  "en": "Automatic (16-bit)",
+  "zh": "自动（16 位）"
+ },
+ "Automatica (VBR migliore)": {
+  "en": "Automatic (best VBR)",
+  "zh": "自动（最佳 VBR）"
+ },
+ "Automatica (originale se già AAC)": {
+  "en": "Automatic (original if already AAC)",
+  "zh": "自动（若已是 AAC 则保持原样）"
+ },
+ "Automatica (originale se già Opus)": {
+  "en": "Automatic (original if already Opus)",
+  "zh": "自动（若已是 Opus 则保持原样）"
+ },
+ "Automatica (qualità alta)": {
+  "en": "Automatic (high quality)",
+  "zh": "自动（高质量）"
+ },
+ "Automatico (VP9)": {
+  "en": "Automatic (VP9)",
+  "zh": "自动 (VP9)"
+ },
+ "Automatico (migliore)": {
+  "en": "Automatic (best)",
+  "zh": "自动（最佳）"
+ },
+ "Avanti-indietro": {
+  "en": "Forward-backward",
+  "zh": "正放-倒放"
+ },
+ "Avanti-indietro e ripetizioni tengono in memoria tutta la clip (circa": {
+  "en": "Forward-backward and repeats keep the whole clip in memory (about",
+  "zh": "正放-倒放和重复会把整个片段放进内存（约"
+ },
+ "Avvio": {
+  "en": "Start",
+  "zh": "开始"
+ },
+ "Bassa": {
+  "en": "Low",
+  "zh": "低"
+ },
+ "Bianco": {
+  "en": "White",
+  "zh": "白色"
+ },
+ "Bilanciata": {
+  "en": "Balanced",
+  "zh": "均衡"
+ },
+ "Bitrate / qualità": {
+  "en": "Bitrate / quality",
+  "zh": "码率 / 质量"
+ },
+ "Blu (blue screen)": {
+  "en": "Blue (blue screen)",
+  "zh": "蓝色（蓝幕）"
+ },
+ "C'è un lavoro in corso: chiudendo verrà annullato.": {
+  "en": "A job is running: closing will cancel it.",
+  "zh": "正在处理任务：关闭将会取消。"
+ },
+ "CHROME: ULTIMO INVIO ALLE {0}": {
+  "en": "CHROME: LAST SENT AT {0}",
+  "zh": "CHROME：最近发送于 {0}"
+ },
+ "COMPONENTI": {
+  "en": "COMPONENTS",
+  "zh": "组件"
+ },
+ "COMPONENTI: Google Chrome non trovato. Installa Chrome, poi clic qui per aggiungere l'estensione.": {
+  "en": "COMPONENTS: Google Chrome not found. Install Chrome, then click here to add the extension.",
+  "zh": "组件：未找到 Google Chrome。请先安装 Chrome，再点击这里添加扩展。"
+ },
+ "COMPONENTI: controllo l'estensione Chrome...": {
+  "en": "COMPONENTS: checking the Chrome extension...",
+  "zh": "组件：正在检查 Chrome 扩展..."
+ },
+ "COMPONENTI: da sistemare {0}. Clic per installare / aggiornare tutto.": {
+  "en": "COMPONENTS: to fix {0}. Click to install / update everything.",
+  "zh": "组件：需处理 {0}。点击安装 / 更新全部。"
+ },
+ "COMPONENTI: estensione Chrome da aggiornare alla {0}. Clic per aggiornarla.": {
+  "en": "COMPONENTS: Chrome extension needs updating to {0}. Click to update it.",
+  "zh": "组件：Chrome 扩展需要更新到 {0}。点击更新。"
+ },
+ "COMPONENTI: estensione Chrome non installata. Clic per installarla.": {
+  "en": "COMPONENTS: Chrome extension not installed. Click to install it.",
+  "zh": "组件：未安装 Chrome 扩展。点击安装。"
+ },
+ "COMPONENTI: estensione Chrome {0} installata ({1}). Clic per reinstallarla.": {
+  "en": "COMPONENTS: Chrome extension {0} installed ({1}). Click to reinstall it.",
+  "zh": "组件：Chrome 扩展 {0} 已安装（{1}）。点击重新安装。"
+ },
+ "COMPONENTI: tutto a posto. Clic per controllare gli aggiornamenti di yt-dlp, ffmpeg e Deno.": {
+  "en": "COMPONENTS: all good. Click to check for updates of yt-dlp, ffmpeg and Deno.",
+  "zh": "组件：一切正常。点击检查 yt-dlp、ffmpeg 和 Deno 的更新。"
+ },
+ "CONVERTITORE": {
+  "en": "CONVERTER",
+  "zh": "转换器"
+ },
+ "CONVERTITORE: {0} FILE IN LISTA": {
+  "en": "CONVERTER: {0} FILES IN THE LIST",
+  "zh": "转换器：列表中 {0} 个文件"
+ },
+ "COPIA": {
+  "en": "COPY",
+  "zh": "复制"
+ },
+ "Cambia": {
+  "en": "Change",
+  "zh": "更改"
+ },
+ "Cambio contenitore: video e audio copiati senza perdita se compatibili (H.264, H.265, ProRes, AAC...), il resto ricodificato. Qualità, risoluzione e FPS non si applicano.": {
+  "en": "Container change: video and audio copied losslessly if compatible (H.264, H.265, ProRes, AAC...), the rest re-encoded. Quality, resolution and FPS do not apply.",
+  "zh": "更换封装：兼容时视频和音频无损复制（H.264、H.265、ProRes、AAC...），其余重新编码。画质、分辨率和帧率不生效。"
+ },
+ "Cambio contenitore: video e audio vengono copiati senza perdita quando sono compatibili (H.264, H.265, AAC...). Il resto viene ricodificato. Qualità, risoluzione e FPS non si applicano.": {
+  "en": "Container change: video and audio are copied losslessly when compatible (H.264, H.265, AAC...). The rest is re-encoded. Quality, resolution and FPS do not apply.",
+  "zh": "更换封装：兼容时视频和音频无损复制（H.264、H.265、AAC...），其余重新编码。画质、分辨率和帧率不生效。"
+ },
+ "Canali": {
+  "en": "Channels",
+  "zh": "声道"
+ },
+ "Cartella dell'estensione Chrome aggiornata alla {0} (era {1}).": {
+  "en": "Chrome extension folder updated to {0} (was {1}).",
+  "zh": "Chrome 扩展文件夹已更新到 {0}（原为 {1}）。"
+ },
+ "Cartella dell'estensione Chrome pronta: {0}": {
+  "en": "Chrome extension folder ready: {0}",
+  "zh": "Chrome 扩展文件夹已就绪：{0}"
+ },
+ "Cartella di destinazione inesistente:": {
+  "en": "Destination folder does not exist:",
+  "zh": "目标文件夹不存在："
+ },
+ "Chiudi": {
+  "en": "Close",
+  "zh": "关闭"
+ },
+ "CineForm: intermedio da montaggio (Premiere, After Effects, Resolve) con alfa a 12 bit, più leggero di ProRes 4444.": {
+  "en": "CineForm: editing intermediate (Premiere, After Effects, Resolve) with 12-bit alpha, lighter than ProRes 4444.",
+  "zh": "CineForm：剪辑中间格式（Premiere、After Effects、Resolve），带 12 位透明，比 ProRes 4444 小。"
+ },
+ "Clip troppo lunga per ripetizioni o avanti-indietro (max circa 32.000 fotogrammi): accorciala con il taglio.": {
+  "en": "Clip too long for repeats or forward-backward (max about 32,000 frames): shorten it with the trim.",
+  "zh": "片段太长，无法重复或正放-倒放（最多约 32,000 帧）：请用剪切缩短。"
+ },
+ "Codec": {
+  "en": "Codec",
+  "zh": "编码"
+ },
+ "Codifica con la scheda video": {
+  "en": "Encoding with the graphics card",
+  "zh": "使用显卡编码"
+ },
+ "Collegamento con l'estensione Chrome registrato (downconvertron://).": {
+  "en": "Link with the Chrome extension registered (downconvertron://).",
+  "zh": "已注册与 Chrome 扩展的连接 (downconvertron://)。"
+ },
+ "Colore (#RRGGBB)": {
+  "en": "Color (#RRGGBB)",
+  "zh": "颜色 (#RRGGBB)"
+ },
+ "Colore dello sfondo non valido: usa #RRGGBB.": {
+  "en": "Invalid background color: use #RRGGBB.",
+  "zh": "背景颜色无效：请用 #RRGGBB。"
+ },
+ "Colore non valido: scrivilo come #RRGGBB (es. #00FF00).": {
+  "en": "Invalid color: write it as #RRGGBB (e.g. #00FF00).",
+  "zh": "颜色无效：请写成 #RRGGBB（如 #00FF00）。"
+ },
+ "Colore personalizzato": {
+  "en": "Custom color",
+  "zh": "自定义颜色"
+ },
+ "Completato": {
+  "en": "Completed",
+  "zh": "已完成"
+ },
+ "Componente {0} di {1}": {
+  "en": "Component {0} of {1}",
+  "zh": "第 {0} 个组件，共 {1} 个"
+ },
+ "Componenti mancanti": {
+  "en": "Components missing",
+  "zh": "缺少组件"
+ },
+ "Componenti presenti": {
+  "en": "Components present",
+  "zh": "组件已存在"
+ },
+ "Componenti presenti:": {
+  "en": "Components present:",
+  "zh": "组件已存在："
+ },
+ "Componenti pronti": {
+  "en": "Components ready",
+  "zh": "组件已就绪"
+ },
+ "Componenti pronti:": {
+  "en": "Components ready:",
+  "zh": "组件已就绪："
+ },
+ "Componenti: avvio dello scaricamento...": {
+  "en": "Components: starting the download...",
+  "zh": "组件：正在开始下载..."
+ },
+ "Componenti: avvio di winget...": {
+  "en": "Components: starting winget...",
+  "zh": "组件：正在启动 winget..."
+ },
+ "Compositing · Sequenza EXR": {
+  "en": "Compositing · EXR sequence",
+  "zh": "合成 · EXR 序列"
+ },
+ "Con H.264 YouTube arriva di solito al massimo a 1080p: per 2K/4K/8K scegli Automatico, VP9 o AV1.": {
+  "en": "With H.264 YouTube usually tops out at 1080p: for 2K/4K/8K choose Automatic, VP9 or AV1.",
+  "zh": "使用 H.264 时 YouTube 通常最高 1080p：要 2K/4K/8K 请选择自动、VP9 或 AV1。"
+ },
+ "Con «Originale» e «WebM» l'audio viene copiato così com'è: bitrate, frequenza, canali e volume non si applicano.": {
+  "en": "With «Original» and «WebM» the audio is copied as is: bitrate, sample rate, channels and volume do not apply.",
+  "zh": "选择“原始”和“WebM”时音频按原样复制：码率、采样率、声道和音量设置不生效。"
+ },
+ "Conversione annullata. I file non completati restano in lista.": {
+  "en": "Conversion cancelled. Unfinished files stay in the list.",
+  "zh": "转换已取消。未完成的文件仍在列表中。"
+ },
+ "Converti in": {
+  "en": "Convert to",
+  "zh": "转换为"
+ },
+ "Converti in WebM": {
+  "en": "Convert to WebM",
+  "zh": "转换为 WebM"
+ },
+ "Copertina nel file": {
+  "en": "Cover in the file",
+  "zh": "封面嵌入文件"
+ },
+ "Copia i file in Esplora file / Finder (Ctrl+C) e incollali qui (anche Ctrl+V)": {
+  "en": "Copy the files in File Explorer / Finder (Ctrl+C) and paste them here (also Ctrl+V)",
+  "zh": "在文件资源管理器 / 访达中复制文件 (Ctrl+C)，然后粘贴到这里（也可 Ctrl+V）"
+ },
+ "Copia il percorso della cartella": {
+  "en": "Copy the folder path",
+  "zh": "复制文件夹路径"
+ },
+ "Copy All URLs": {
+  "en": "Copy All URLs",
+  "zh": "Copy All URLs"
+ },
+ "DOWNLOAD DA LINK": {
+  "en": "DOWNLOAD FROM LINK",
+  "zh": "从链接下载"
+ },
+ "Da scaricare dal link, poi convertire": {
+  "en": "To be downloaded from the link, then converted",
+  "zh": "先从链接下载，再转换"
+ },
+ "Dividi per capitoli": {
+  "en": "Split by chapters",
+  "zh": "按章节分割"
+ },
+ "Dove salvare i video convertiti": {
+  "en": "Where to save the converted videos",
+  "zh": "转换后的视频保存位置"
+ },
+ "DownConvertron scaricherà le ultime versioni ufficiali per Apple Silicon:": {
+  "en": "DownConvertron will download the latest official versions for Apple Silicon:",
+  "zh": "DownConvertron 将下载适用于 Apple Silicon 的最新官方版本："
+ },
+ "DownConvertron userà winget, dalla sorgente ufficiale «winget» di Microsoft, per:": {
+  "en": "DownConvertron will use winget, from Microsoft's official «winget» source, to:",
+  "zh": "DownConvertron 将通过 Microsoft 官方“winget”源来："
+ },
+ "DownConvertron v6.0 · designed by": {
+  "en": "DownConvertron v6.0 · designed by",
+  "zh": "DownConvertron v6.0 · designed by"
+ },
+ "DownConvertron {0} avviata. Cartella dati: {1}": {
+  "en": "DownConvertron {0} started. Data folder: {1}",
+  "zh": "DownConvertron {0} 已启动。数据文件夹：{1}"
+ },
+ "Download annullato. I link non completati restano in lista: premi Scarica per riprendere. Eventuali file .part nella cartella sono parziali.": {
+  "en": "Download cancelled. Unfinished links stay in the list: press Download to resume. Any .part files in the folder are partial.",
+  "zh": "下载已取消。未完成的链接仍在列表中：点击“下载”继续。文件夹中的 .part 文件是不完整的。"
+ },
+ "Download non riuscito (il file è condiviso con «Chiunque abbia il link»?)": {
+  "en": "Download failed (is the file shared with «Anyone with the link»?)",
+  "zh": "下载失败（文件是否已共享给“知道链接的任何人”？）"
+ },
+ "ENCODER": {
+  "en": "ENCODER",
+  "zh": "编码器"
+ },
+ "ENCODER GPU {0}: {1}": {
+  "en": "GPU ENCODER {0}: {1}",
+  "zh": "GPU 编码器 {0}：{1}"
+ },
+ "ENCODER: a ffmpeg mancano i codec {0}. Clic per installare la versione completa.": {
+  "en": "ENCODER: ffmpeg lacks the codecs {0}. Click to install the full version.",
+  "zh": "编码器：ffmpeg 缺少编码器 {0}。点击安装完整版本。"
+ },
+ "ENCODER: ffmpeg o ffprobe mancano. Clic per installarli.": {
+  "en": "ENCODER: ffmpeg or ffprobe are missing. Click to install them.",
+  "zh": "编码器：缺少 ffmpeg 或 ffprobe。点击安装。"
+ },
+ "ENCODER: ffmpeg pronto con tutti i codec. Clic per controllare gli aggiornamenti.": {
+  "en": "ENCODER: ffmpeg ready with all codecs. Click to check for updates.",
+  "zh": "编码器：ffmpeg 已就绪，编码器齐全。点击检查更新。"
+ },
+ "ERRORI": {
+  "en": "ERRORS",
+  "zh": "错误"
+ },
+ "ESTENSIONE": {
+  "en": "EXTENSION",
+  "zh": "扩展"
+ },
+ "Elemento {0} di {1}": {
+  "en": "Item {0} of {1}",
+  "zh": "第 {0} 项，共 {1} 项"
+ },
+ "Elimina": {
+  "en": "Delete",
+  "zh": "删除"
+ },
+ "Eliminare il preset «": {
+  "en": "Delete the preset «",
+  "zh": "删除预设“"
+ },
+ "Errore": {
+  "en": "Error",
+  "zh": "错误"
+ },
+ "Errore interno (riga": {
+  "en": "Internal error (line",
+  "zh": "内部错误（行"
+ },
+ "Errore sconosciuto. Ultime righe:": {
+  "en": "Unknown error. Last lines:",
+  "zh": "未知错误。最后几行："
+ },
+ "Esiste già un preset «": {
+  "en": "A preset «",
+  "zh": "已存在预设“"
+ },
+ "Estensione Chrome": {
+  "en": "Chrome extension",
+  "zh": "Chrome 扩展"
+ },
+ "Estensione preparata solo in parte (": {
+  "en": "Extension prepared only partly (",
+  "zh": "扩展只准备了一部分（"
+ },
+ "Estensione {0}: {1} link ricevuti, {2} nuovi in lista{3}.": {
+  "en": "Extension {0}: {1} links received, {2} new in the list{3}.",
+  "zh": "扩展 {0}：收到 {1} 个链接，{2} 个新加入列表{3}。"
+ },
+ "FLAC (senza perdita)": {
+  "en": "FLAC (lossless)",
+  "zh": "FLAC（无损）"
+ },
+ "FPS delle sequenze": {
+  "en": "Sequence FPS",
+  "zh": "序列帧率"
+ },
+ "Fatto": {
+  "en": "Done",
+  "zh": "完成"
+ },
+ "Fatto!": {
+  "en": "Done!",
+  "zh": "完成！"
+ },
+ "File": {
+  "en": "File",
+  "zh": "文件"
+ },
+ "File non leggibile": {
+  "en": "Unreadable file",
+  "zh": "无法读取的文件"
+ },
+ "File non leggibile da ffmpeg.": {
+  "en": "File not readable by ffmpeg.",
+  "zh": "ffmpeg 无法读取该文件。"
+ },
+ "File troppo grande (massimo 5 MB).": {
+  "en": "File too large (5 MB maximum).",
+  "zh": "文件太大（最大 5 MB）。"
+ },
+ "File {0} di {1}": {
+  "en": "File {0} of {1}",
+  "zh": "第 {0} 个文件，共 {1} 个"
+ },
+ "Fine del taglio non valida: scrivi ad esempio 0:10 oppure 10": {
+  "en": "Invalid trim end: write for example 0:10 or 10",
+  "zh": "剪切终点无效：例如写 0:10 或 10"
+ },
+ "Formato": {
+  "en": "Format",
+  "zh": "格式"
+ },
+ "Formato audio": {
+  "en": "Audio format",
+  "zh": "音频格式"
+ },
+ "Formato di uscita": {
+  "en": "Output format",
+  "zh": "输出格式"
+ },
+ "Forza il canale alfa": {
+  "en": "Force the alpha channel",
+  "zh": "强制透明通道"
+ },
+ "Fotogramma a": {
+  "en": "Frame at",
+  "zh": "帧位置"
+ },
+ "Francese": {
+  "en": "French",
+  "zh": "法语"
+ },
+ "Frequenza": {
+  "en": "Sample rate",
+  "zh": "采样率"
+ },
+ "Full HD (1080p)": {
+  "en": "Full HD (1080p)",
+  "zh": "全高清 (1080p)"
+ },
+ "G:\\Il mio Drive": {
+  "en": "G:\\My Drive",
+  "zh": "G:\\我的云端硬盘"
+ },
+ "GB a questa risoluzione): accorciala con il taglio o riduci la risoluzione.": {
+  "en": "GB at this resolution): shorten it with the trim or reduce the resolution.",
+  "zh": "GB，按此分辨率）：请用剪切缩短或降低分辨率。"
+ },
+ "GIF (solo immagini)": {
+  "en": "GIF (images only)",
+  "zh": "GIF（仅图像）"
+ },
+ "GIF animata": {
+  "en": "Animated GIF",
+  "zh": "GIF 动图"
+ },
+ "GIF animata (alfa a 1 bit)": {
+  "en": "Animated GIF (1-bit alpha)",
+  "zh": "GIF 动图（1 位透明）"
+ },
+ "GIF: 15 fotogrammi al secondo e al massimo 480p se non scegli altro; trasparenza a 1 bit (pixel pieni o vuoti), senza audio. Per bordi morbidi usa WebP o APNG.": {
+  "en": "GIF: 15 frames per second and at most 480p unless you choose otherwise; 1-bit transparency (full or empty pixels), no audio. For soft edges use WebP or APNG.",
+  "zh": "GIF：默认每秒 15 帧、最高 480p；1 位透明（像素要么全有要么全无），无音频。要柔和边缘请用 WebP 或 APNG。"
+ },
+ "GIF: solo immagini, a 15 fotogrammi al secondo, senza audio. Adatta a clip brevi: oltre 480p diventa enorme.": {
+  "en": "GIF: images only, 15 frames per second, no audio. Good for short clips: above 480p it gets huge.",
+  "zh": "GIF：仅图像，每秒 15 帧，无音频。适合短片：超过 480p 会非常大。"
+ },
+ "Giapponese": {
+  "en": "Japanese",
+  "zh": "日语"
+ },
+ "Già presente nella cartella (o nell'archivio): non riscaricato. Per rifarlo con altre impostazioni sposta o rinomina il file vecchio.": {
+  "en": "Already in the folder (or in the archive): not downloaded again. To redo it with other settings move or rename the old file.",
+  "zh": "已在文件夹（或下载记录）中：未重新下载。若要用其他设置重做，请移动或重命名旧文件。"
+ },
+ "Già presente: {0}": {
+  "en": "Already present: {0}",
+  "zh": "已存在：{0}"
+ },
+ "Già scaricato in precedenza: saltato": {
+  "en": "Already downloaded before: skipped",
+  "zh": "之前已下载：已跳过"
+ },
+ "Gli appunti sono vuoti o non contengono testo.": {
+  "en": "The clipboard is empty or contains no text.",
+  "zh": "剪贴板为空或没有文本。"
+ },
+ "Google Drive sul Mac": {
+  "en": "Google Drive on the Mac",
+  "zh": "Mac 上的 Google Drive"
+ },
+ "Google Drive sul PC": {
+  "en": "Google Drive on the PC",
+  "zh": "电脑上的 Google Drive"
+ },
+ "H.264 (copiato senza perdita)": {
+  "en": "H.264 (copied losslessly)",
+  "zh": "H.264（无损复制）"
+ },
+ "H.264 (massima compatibilità)": {
+  "en": "H.264 (maximum compatibility)",
+  "zh": "H.264（兼容性最好）"
+ },
+ "H.264 del chip Mac": {
+  "en": "H.264 of the Mac chip",
+  "zh": "Mac 芯片 H.264"
+ },
+ "HAP Alpha: per Resolume, TouchDesigner, MadMapper, millumin e ledwall. Decodifica leggerissima, file grandi.": {
+  "en": "HAP Alpha: for Resolume, TouchDesigner, MadMapper, Millumin and LED walls. Very light decoding, large files.",
+  "zh": "HAP Alpha：适用于 Resolume、TouchDesigner、MadMapper、Millumin 和 LED 屏。解码极轻，文件较大。"
+ },
+ "HAP Q: qualità superiore ad HAP, senza alfa. Per software live e ledwall.": {
+  "en": "HAP Q: higher quality than HAP, no alpha. For live software and LED walls.",
+  "zh": "HAP Q：质量高于 HAP，无透明。用于现场软件和 LED 屏。"
+ },
+ "HAP: il più leggero da riprodurre, senza alfa. Per software live e ledwall.": {
+  "en": "HAP: the lightest to play, no alpha. For live software and LED walls.",
+  "zh": "HAP：播放最轻量，无透明。用于现场软件和 LED 屏。"
+ },
+ "HD (720p)": {
+  "en": "HD (720p)",
+  "zh": "高清 (720p)"
+ },
+ "HEVC con alfa: il formato trasparente di Apple (Final Cut, Motion, Safari, iPhone). Codificato dal chip del Mac: veloce e leggero.": {
+  "en": "HEVC with alpha: Apple's transparent format (Final Cut, Motion, Safari, iPhone). Encoded by the Mac chip: fast and light.",
+  "zh": "带透明的 HEVC：Apple 的透明格式（Final Cut、Motion、Safari、iPhone）。由 Mac 芯片编码：快速且小巧。"
+ },
+ "HEVC del chip Mac": {
+  "en": "HEVC of the Mac chip",
+  "zh": "Mac 芯片 HEVC"
+ },
+ "I file già trasparenti (ProRes 4444, Animazione, PNG, GIF, WebM con alfa) mantengono SEMPRE la trasparenza.": {
+  "en": "Already transparent files (ProRes 4444, Animation, PNG, GIF, WebM with alpha) ALWAYS keep their transparency.",
+  "zh": "已有透明的文件（ProRes 4444、Animation、PNG、GIF、带透明的 WebM）始终保留透明。"
+ },
+ "I programmi ci sono e funzionano, ma un aggiornamento non è andato a buon fine: puoi riprovare più tardi.": {
+  "en": "The programs are there and work, but an update did not succeed: you can try again later.",
+  "zh": "程序已存在并可用，但更新未成功：可以稍后重试。"
+ },
+ "Il formato": {
+  "en": "The format",
+  "zh": "格式"
+ },
+ "Il formato scelto non ha trasparenza: lo sfondo esce pieno.": {
+  "en": "The chosen format has no transparency: the background comes out solid.",
+  "zh": "所选格式不支持透明：背景将为实色。"
+ },
+ "Il percorso contiene il simbolo %: rinomina il file o la cartella.": {
+  "en": "The path contains the % symbol: rename the file or folder.",
+  "zh": "路径中含有 % 符号：请重命名文件或文件夹。"
+ },
+ "Il processo non è partito (bloccato da antivirus o criteri di sistema?).": {
+  "en": "The process did not start (blocked by antivirus or system policies?).",
+  "zh": "进程未能启动（被杀毒软件或系统策略阻止？）。"
+ },
+ "Il ricevitore del trascinamento non parte su questo PC (dettagli nel Report debug): usa «+ File» oppure copia i file in Esplora file e premi «Incolla file».": {
+  "en": "The drag receiver does not start on this PC (details in the Debug report): use «+ Files» or copy the files in File Explorer and press «Paste files».",
+  "zh": "拖放接收器无法在此电脑上启动（详情见调试报告）：请用“+ 文件”，或在文件资源管理器中复制文件后点击“粘贴文件”。"
+ },
+ "Il ricevitore del trascinamento si stava avviando: trascina di nuovo i file.": {
+  "en": "The drag receiver was starting: drag the files again.",
+  "zh": "拖放接收器刚才在启动：请再次拖入文件。"
+ },
+ "Il tuo ffmpeg non ha il codec": {
+  "en": "Your ffmpeg lacks the codec",
+  "zh": "你的 ffmpeg 缺少编码器"
+ },
+ "Il tuo ffmpeg non ha il filtro zscale (serve all'EXR lineare): premi «Installa / aggiorna componenti».": {
+  "en": "Your ffmpeg lacks the zscale filter (needed for linear EXR): press «Install / update components».",
+  "zh": "你的 ffmpeg 缺少 zscale 滤镜（线性 EXR 需要）：点击“安装 / 更新组件”。"
+ },
+ "Immagine non leggibile: {0}": {
+  "en": "Unreadable image: {0}",
+  "zh": "无法读取图片：{0}"
+ },
+ "Immagine non scaricata (link scaduto o protetto?).": {
+  "en": "Image not downloaded (expired or protected link?).",
+  "zh": "图片未下载（链接过期或受保护？）。"
+ },
+ "Immagini di formati diversi: serve ffmpeg per unirle. Premi «Installa / aggiorna componenti».": {
+  "en": "Images in different formats: ffmpeg is needed to join them. Press «Install / update components».",
+  "zh": "图片格式不同：需要 ffmpeg 才能合并。请点击“安装 / 更新组件”。"
+ },
+ "Importa da .txt": {
+  "en": "Import .txt",
+  "zh": "导入 .txt"
+ },
+ "Impossibile aprire la finestra di scelta:": {
+  "en": "Cannot open the selection window:",
+  "zh": "无法打开选择窗口："
+ },
+ "Impossibile avviare": {
+  "en": "Cannot start",
+  "zh": "无法启动"
+ },
+ "Impossibile avviare il processo.": {
+  "en": "Cannot start the process.",
+  "zh": "无法启动进程。"
+ },
+ "Impossibile creare il file di log:": {
+  "en": "Cannot create the log file:",
+  "zh": "无法创建日志文件："
+ },
+ "Impossibile creare la cartella dei fotogrammi:": {
+  "en": "Cannot create the frames folder:",
+  "zh": "无法创建帧文件夹："
+ },
+ "Impossibile leggere gli appunti:": {
+  "en": "Cannot read the clipboard:",
+  "zh": "无法读取剪贴板："
+ },
+ "Impossibile leggere il file scelto.": {
+  "en": "Cannot read the selected file.",
+  "zh": "无法读取所选文件。"
+ },
+ "Impossibile leggere la cartella:": {
+  "en": "Cannot read the folder:",
+  "zh": "无法读取文件夹："
+ },
+ "Impossibile preparare i file temporanei (": {
+  "en": "Cannot prepare the temporary files (",
+  "zh": "无法准备临时文件（"
+ },
+ "Impossibile preparare il download dell'immagine: {0}": {
+  "en": "Cannot prepare the image download: {0}",
+  "zh": "无法准备图片下载：{0}"
+ },
+ "Impossibile preparare il download:": {
+  "en": "Cannot prepare the download:",
+  "zh": "无法准备下载："
+ },
+ "Impossibile preparare l'estensione:": {
+  "en": "Cannot prepare the extension:",
+  "zh": "无法准备扩展："
+ },
+ "Impossibile preparare lo scaricamento:": {
+  "en": "Cannot prepare the download:",
+  "zh": "无法准备下载："
+ },
+ "Impossibile salvare il risultato:": {
+  "en": "Cannot save the result:",
+  "zh": "无法保存结果："
+ },
+ "Impossibile salvare l'immagine: {0}": {
+  "en": "Cannot save the image: {0}",
+  "zh": "无法保存图片：{0}"
+ },
+ "In attesa": {
+  "en": "Waiting",
+  "zh": "等待中"
+ },
+ "In corso": {
+  "en": "Running",
+  "zh": "进行中"
+ },
+ "In preparazione...": {
+  "en": "Preparing...",
+  "zh": "准备中..."
+ },
+ "In una cartella a scelta": {
+  "en": "In a folder of your choice",
+  "zh": "在你选择的文件夹"
+ },
+ "Incolla dagli appunti": {
+  "en": "Paste from clipboard",
+  "zh": "从剪贴板粘贴"
+ },
+ "Incolla file": {
+  "en": "Paste files",
+  "zh": "粘贴文件"
+ },
+ "Incolla un link valido (https://...).": {
+  "en": "Paste a valid link (https://...).",
+  "zh": "请粘贴有效链接 (https://...)。"
+ },
+ "Incolla uno o più link e premi Invio": {
+  "en": "Paste one or more links and press Enter",
+  "zh": "粘贴一个或多个链接后按回车"
+ },
+ "Inglese": {
+  "en": "English",
+  "zh": "英语"
+ },
+ "Inizio del taglio non valido: scrivi ad esempio 0:02.5 oppure 2.5": {
+  "en": "Invalid trim start: write for example 0:02.5 or 2.5",
+  "zh": "剪切起点无效：例如写 0:02.5 或 2.5"
+ },
+ "Installa / aggiorna componenti": {
+  "en": "Install / update components",
+  "zh": "安装 / 更新组件"
+ },
+ "Installa l'estensione che manda qui i link delle schede aperte": {
+  "en": "Install the extension that sends the links of your open tabs here",
+  "zh": "安装可把已打开标签页的链接发送到这里的扩展"
+ },
+ "Installazione annullata.": {
+  "en": "Installation cancelled.",
+  "zh": "安装已取消。"
+ },
+ "Installazione componenti...": {
+  "en": "Installing components...",
+  "zh": "正在安装组件..."
+ },
+ "Installazione interrotta dopo 15 minuti senza risposta da winget (forse è in corso un'altra installazione o un aggiornamento di Windows).": {
+  "en": "Installation stopped after 15 minutes without an answer from winget (maybe another installation or a Windows update is running).",
+  "zh": "安装在 15 分钟内未收到 winget 响应，已中止（可能有其他安装或 Windows 更新正在进行）。"
+ },
+ "Installazione non completa:": {
+  "en": "Installation not complete:",
+  "zh": "安装未完成："
+ },
+ "Intero, bordi trasparenti": {
+  "en": "Whole, transparent borders",
+  "zh": "完整，透明边框"
+ },
+ "Italiano": {
+  "en": "Italian",
+  "zh": "意大利语"
+ },
+ "L'MP4 non ha il canale alfa:": {
+  "en": "MP4 has no alpha channel:",
+  "zh": "MP4 没有透明通道："
+ },
+ "L'estensione Chrome e' alla versione {0}: premi «Estensione Chrome» per aggiornarla alla {1}.": {
+  "en": "The Chrome extension is at version {0}: press «Chrome extension» to update it to {1}.",
+  "zh": "Chrome 扩展版本为 {0}：点击“Chrome 扩展”更新到 {1}。"
+ },
+ "L'estensione riconosce gli oltre 1.700 siti di yt-dlp; legge le schede solo quando la apri e non invia nulla in rete.": {
+  "en": "The extension recognizes the 1,700+ sites of yt-dlp; it reads the tabs only when you open it and sends nothing over the network.",
+  "zh": "扩展可识别 yt-dlp 支持的 1700 多个网站；只在你打开它时读取标签页，不会向网络发送任何内容。"
+ },
+ "L'installazione dei componenti è in corso: se chiudi continuerà in background, ma non vedrai l'esito.": {
+  "en": "Components are being installed: if you close it will continue in the background, but you will not see the result.",
+  "zh": "正在安装组件：关闭后会在后台继续，但你看不到结果。"
+ },
+ "LINGUA: {0}": {
+  "en": "LANGUAGE: {0}",
+  "zh": "语言：{0}"
+ },
+ "LINK": {
+  "en": "LINK",
+  "zh": "连接"
+ },
+ "LINK OFFLINE": {
+  "en": "LINK OFFLINE",
+  "zh": "连接离线"
+ },
+ "LINK ONLINE": {
+  "en": "LINK ONLINE",
+  "zh": "连接在线"
+ },
+ "LINK: Deno manca (serve per leggere YouTube). Clic per installarlo.": {
+  "en": "LINK: Deno is missing (needed to read YouTube). Click to install it.",
+  "zh": "连接：缺少 Deno（读取 YouTube 需要）。点击安装。"
+ },
+ "LINK: Deno presente e connessione attiva. Clic per controllare gli aggiornamenti.": {
+  "en": "LINK: Deno present and connection active. Click to check for updates.",
+  "zh": "连接：Deno 已就绪，网络正常。点击检查更新。"
+ },
+ "LINK: controllo la connessione...": {
+  "en": "LINK: checking the connection...",
+  "zh": "连接：正在检查网络..."
+ },
+ "LINK: nessuna connessione a internet. Clic per riprovare.": {
+  "en": "LINK: no internet connection. Click to try again.",
+  "zh": "连接：没有网络连接。点击重试。"
+ },
+ "LISTA: {0} LINK IN ATTESA": {
+  "en": "LIST: {0} LINKS WAITING",
+  "zh": "列表：{0} 个链接等待中"
+ },
+ "La cartella di destinazione non esiste più: scegline un'altra.": {
+  "en": "The destination folder no longer exists: choose another one.",
+  "zh": "目标文件夹已不存在：请另选一个。"
+ },
+ "La cartella di destinazione non esiste: scegline un'altra.": {
+  "en": "The destination folder does not exist: choose another one.",
+  "zh": "目标文件夹不存在：请另选一个。"
+ },
+ "La fine del taglio deve venire dopo l'inizio.": {
+  "en": "The trim end must come after the start.",
+  "zh": "剪切终点必须在起点之后。"
+ },
+ "La scheda video non risulta più disponibile per": {
+  "en": "The graphics card is no longer available for",
+  "zh": "显卡已不可用于"
+ },
+ "Larg × Alt": {
+  "en": "W × H",
+  "zh": "宽 × 高"
+ },
+ "Lavoro in corso": {
+  "en": "Work in progress",
+  "zh": "正在处理"
+ },
+ "Le sequenze di immagini non hanno audio: l'audio dei file viene tolto.": {
+  "en": "Image sequences have no audio: the audio of the files is removed.",
+  "zh": "图像序列没有音频：文件的音频将被去除。"
+ },
+ "Le zone a scacchi saranno trasparenti nel file finale.": {
+  "en": "Checkered areas will be transparent in the final file.",
+  "zh": "棋盘格区域在最终文件中是透明的。"
+ },
+ "Leggera (web)": {
+  "en": "Light (web)",
+  "zh": "轻量（网页）"
+ },
+ "Lenta (qualità migliore)": {
+  "en": "Slow (better quality)",
+  "zh": "慢（质量更好）"
+ },
+ "Lingua audio": {
+  "en": "Audio language",
+  "zh": "音频语言"
+ },
+ "Lingua audio «": {
+  "en": "Audio language «",
+  "zh": "音频语言“"
+ },
+ "Lingua: italiano": {
+  "en": "Language: English",
+  "zh": "语言：简体中文"
+ },
+ "Link Drive": {
+  "en": "Drive link",
+  "zh": "Drive 链接"
+ },
+ "Link Google Drive (o altro link) da scaricare e convertire": {
+  "en": "Google Drive link (or another link) to download and convert",
+  "zh": "要下载并转换的 Google Drive 链接（或其他链接）"
+ },
+ "Link già in lista.": {
+  "en": "Link already in the list.",
+  "zh": "链接已在列表中。"
+ },
+ "Live e LED · HAP Alpha": {
+  "en": "Live and LED · HAP Alpha",
+  "zh": "现场与 LED · HAP Alpha"
+ },
+ "Loop avanti-indietro · WebM": {
+  "en": "Forward-backward loop · WebM",
+  "zh": "正放-倒放循环 · WebM"
+ },
+ "M4A (AAC)": {
+  "en": "M4A (AAC)",
+  "zh": "M4A (AAC)"
+ },
+ "MANCANO COMPONENTI:": {
+  "en": "MISSING COMPONENTS:",
+  "zh": "缺少组件："
+ },
+ "MECHA v6.0": {
+  "en": "MECHA v6.0",
+  "zh": "MECHA v6.0"
+ },
+ "MOV (QuickTime)": {
+  "en": "MOV (QuickTime)",
+  "zh": "MOV (QuickTime)"
+ },
+ "MOV (cambio contenitore)": {
+  "en": "MOV (container change)",
+  "zh": "MOV（更换封装）"
+ },
+ "MOV Animazione": {
+  "en": "MOV Animation",
+  "zh": "MOV Animation"
+ },
+ "MOV Animazione + alfa (senza perdita)": {
+  "en": "MOV Animation + alpha (lossless)",
+  "zh": "MOV Animation + 透明（无损）"
+ },
+ "MOV CineForm + alfa (montaggio, 12 bit)": {
+  "en": "MOV CineForm + alpha (editing, 12-bit)",
+  "zh": "MOV CineForm + 透明（剪辑，12 位）"
+ },
+ "MOV H.264 (Apple, Final Cut)": {
+  "en": "MOV H.264 (Apple, Final Cut)",
+  "zh": "MOV H.264（Apple、Final Cut）"
+ },
+ "MOV HAP (live, il più leggero)": {
+  "en": "MOV HAP (live, the lightest)",
+  "zh": "MOV HAP（现场，最轻量）"
+ },
+ "MOV HAP Alpha (live, ledwall)": {
+  "en": "MOV HAP Alpha (live, LED walls)",
+  "zh": "MOV HAP Alpha（现场、LED 屏）"
+ },
+ "MOV HAP Q (live, ledwall)": {
+  "en": "MOV HAP Q (live, LED walls)",
+  "zh": "MOV HAP Q（现场、LED 屏）"
+ },
+ "MOV HEVC + alfa (Apple)": {
+  "en": "MOV HEVC + alpha (Apple)",
+  "zh": "MOV HEVC + 透明 (Apple)"
+ },
+ "MOV PNG + alfa (senza perdita)": {
+  "en": "MOV PNG + alpha (lossless)",
+  "zh": "MOV PNG + 透明（无损）"
+ },
+ "MOV ProRes 422": {
+  "en": "MOV ProRes 422",
+  "zh": "MOV ProRes 422"
+ },
+ "MOV ProRes 422 HQ": {
+  "en": "MOV ProRes 422 HQ",
+  "zh": "MOV ProRes 422 HQ"
+ },
+ "MOV ProRes 422 LT": {
+  "en": "MOV ProRes 422 LT",
+  "zh": "MOV ProRes 422 LT"
+ },
+ "MOV ProRes 422 Proxy": {
+  "en": "MOV ProRes 422 Proxy",
+  "zh": "MOV ProRes 422 Proxy"
+ },
+ "MOV ProRes 4444 + alfa": {
+  "en": "MOV ProRes 4444 + alpha",
+  "zh": "MOV ProRes 4444 + 透明"
+ },
+ "MOV ProRes 4444 XQ + alfa": {
+  "en": "MOV ProRes 4444 XQ + alpha",
+  "zh": "MOV ProRes 4444 XQ + 透明"
+ },
+ "MOV ← da MP4/MKV senza ricodifica": {
+  "en": "MOV ← from MP4/MKV without re-encoding",
+  "zh": "MOV ← 从 MP4/MKV 不重新编码"
+ },
+ "MOV: H.264 + AAC copiati senza perdita (su YouTube l'H.264 arriva al massimo a 1080p). Se un video non esiste in H.264 viene convertito (più lento). I sottotitoli restano file a parte.": {
+  "en": "MOV: H.264 + AAC copied losslessly (on YouTube H.264 goes up to 1080p). If a video is not available in H.264 it gets converted (slower). Subtitles stay separate files.",
+  "zh": "MOV：H.264 + AAC 无损复制（YouTube 的 H.264 最高 1080p）。若视频没有 H.264 版本会进行转换（较慢）。字幕保存为单独文件。"
+ },
+ "MP3 (lo standard dell'AVI)": {
+  "en": "MP3 (the AVI standard)",
+  "zh": "MP3（AVI 标准）"
+ },
+ "MP4 (cambio contenitore)": {
+  "en": "MP4 (container change)",
+  "zh": "MP4（更换封装）"
+ },
+ "MP4 AV1 veloce": {
+  "en": "MP4 AV1 fast",
+  "zh": "MP4 AV1 快速"
+ },
+ "MP4 H.264 (compatibile ovunque)": {
+  "en": "MP4 H.264 (plays everywhere)",
+  "zh": "MP4 H.264（到处可播放）"
+ },
+ "MP4 H.264 veloce": {
+  "en": "MP4 H.264 fast",
+  "zh": "MP4 H.264 快速"
+ },
+ "MP4 H.264 veloce (chip Mac)": {
+  "en": "MP4 H.264 fast (Mac chip)",
+  "zh": "MP4 H.264 快速（Mac 芯片）"
+ },
+ "MP4 H.265 / HEVC (più leggero)": {
+  "en": "MP4 H.265 / HEVC (lighter)",
+  "zh": "MP4 H.265 / HEVC（更小）"
+ },
+ "MP4 H.265 veloce": {
+  "en": "MP4 H.265 fast",
+  "zh": "MP4 H.265 快速"
+ },
+ "MP4 H.265 veloce (chip Mac)": {
+  "en": "MP4 H.265 fast (Mac chip)",
+  "zh": "MP4 H.265 快速（Mac 芯片）"
+ },
+ "MP4 ← da MOV/MKV senza ricodifica": {
+  "en": "MP4 ← from MOV/MKV without re-encoding",
+  "zh": "MP4 ← 从 MOV/MKV 不重新编码"
+ },
+ "Mancano:": {
+  "en": "Missing:",
+  "zh": "缺少："
+ },
+ "Massima (file grande)": {
+  "en": "Maximum (large file)",
+  "zh": "最高（大文件）"
+ },
+ "Massima disponibile": {
+  "en": "Best available",
+  "zh": "最高可用"
+ },
+ "Max 1080p": {
+  "en": "Max 1080p",
+  "zh": "最大 1080p"
+ },
+ "Max 1440p": {
+  "en": "Max 1440p",
+  "zh": "最大 1440p"
+ },
+ "Max 480p": {
+  "en": "Max 480p",
+  "zh": "最大 480p"
+ },
+ "Max 4K": {
+  "en": "Max 4K",
+  "zh": "最大 4K"
+ },
+ "Max 720p": {
+  "en": "Max 720p",
+  "zh": "最大 720p"
+ },
+ "Media": {
+  "en": "Medium",
+  "zh": "中"
+ },
+ "Metadati (titolo, autore)": {
+  "en": "Metadata (title, author)",
+  "zh": "元数据（标题、作者）"
+ },
+ "Migliore (automatico)": {
+  "en": "Best (automatic)",
+  "zh": "最佳（自动）"
+ },
+ "Mono": {
+  "en": "Mono",
+  "zh": "单声道"
+ },
+ "Montaggio con alfa · ProRes 4444": {
+  "en": "Editing with alpha · ProRes 4444",
+  "zh": "带透明剪辑 · ProRes 4444"
+ },
+ "Montaggio leggero · ProRes 422 Proxy": {
+  "en": "Light editing · ProRes 422 Proxy",
+  "zh": "轻量剪辑 · ProRes 422 Proxy"
+ },
+ "NON DISPONIBILE": {
+  "en": "NOT AVAILABLE",
+  "zh": "不可用"
+ },
+ "NON trovato": {
+  "en": "NOT found",
+  "zh": "未找到"
+ },
+ "Negli appunti non ci sono file: selezionali in Esplora file, premi Ctrl+C e poi «Incolla file».": {
+  "en": "No files in the clipboard: select them in File Explorer, press Ctrl+C and then «Paste files».",
+  "zh": "剪贴板中没有文件：在文件资源管理器中选中文件，按 Ctrl+C，再点击“粘贴文件”。"
+ },
+ "Negli appunti non ci sono file: selezionali nel Finder, premi Cmd+C e poi «Incolla file».": {
+  "en": "No files in the clipboard: select them in the Finder, press Cmd+C and then «Paste files».",
+  "zh": "剪贴板中没有文件：在访达中选中文件，按 Cmd+C，再点击“粘贴文件”。"
+ },
+ "Nel cambio contenitore chroma key, tela, ripetizioni e avanti-indietro non si applicano: scegli un formato normale.": {
+  "en": "When changing container, chroma key, canvas, repeats and forward-backward do not apply: choose a normal format.",
+  "zh": "更换封装时，抠像、画布、重复和正放-倒放都不生效：请选择普通格式。"
+ },
+ "Nel cambio contenitore il taglio parte dal fotogramma chiave più vicino (può anticipare di qualche frame).": {
+  "en": "When changing container the trim starts from the nearest keyframe (it may start a few frames early).",
+  "zh": "更换封装时剪切从最近的关键帧开始（可能提前几帧）。"
+ },
+ "Nella stessa cartella del file originale": {
+  "en": "In the same folder as the original file",
+  "zh": "与原文件在同一文件夹"
+ },
+ "Nero": {
+  "en": "Black",
+  "zh": "黑色"
+ },
+ "Nessun audio": {
+  "en": "No audio",
+  "zh": "无音频"
+ },
+ "Nessun audio (la GIF non ha audio)": {
+  "en": "No audio (GIFs have no audio)",
+  "zh": "无音频（GIF 没有声音）"
+ },
+ "Nessun audio (video muto)": {
+  "en": "No audio (muted video)",
+  "zh": "无音频（静音视频）"
+ },
+ "Nessun file nuovo aggiunto (": {
+  "en": "No new file added (",
+  "zh": "未添加新文件（"
+ },
+ "Nessun file scaricato (playlist vuota o senza video disponibili).": {
+  "en": "No file downloaded (empty playlist or no videos available).",
+  "zh": "没有下载任何文件（播放列表为空或没有可用视频）。"
+ },
+ "Nessun file. Usa + File, + Cartella, Incolla file, un link Drive, oppure trascina qui file e cartelle.": {
+  "en": "No files. Use + Files, + Folder, Paste files, a Drive link, or drag files and folders here.",
+  "zh": "没有文件。使用“+ 文件”“+ 文件夹”“粘贴文件”、Drive 链接，或把文件和文件夹拖到这里。"
+ },
+ "Nessun link valido trovato": {
+  "en": "No valid link found",
+  "zh": "未找到有效链接"
+ },
+ "Nessun link. Incollane uno sopra o importa una lista.": {
+  "en": "No links. Paste one above or import a list.",
+  "zh": "没有链接。在上方粘贴或导入列表。"
+ },
+ "Nessun video o sequenza di immagini in quella cartella.": {
+  "en": "No video or image sequence in that folder.",
+  "zh": "该文件夹中没有视频或图像序列。"
+ },
+ "Nessuna (misura del video)": {
+  "en": "None (video size)",
+  "zh": "无（视频尺寸）"
+ },
+ "Nessuna connessione a internet: controllo di nuovo...": {
+  "en": "No internet connection: checking again...",
+  "zh": "没有网络连接：正在重新检查..."
+ },
+ "Nessuna traccia video leggibile": {
+  "en": "No readable video track",
+  "zh": "没有可读取的视频轨"
+ },
+ "Nessuna voce in questa sezione.": {
+  "en": "No entries in this section.",
+  "zh": "此分类暂无记录。"
+ },
+ "Nessuno (formato senza audio)": {
+  "en": "None (format without audio)",
+  "zh": "无（格式不含音频）"
+ },
+ "Nessuno (mantieni l'originale)": {
+  "en": "None (keep the original)",
+  "zh": "无（保留原样）"
+ },
+ "Niente da convertire in quello che hai trascinato.": {
+  "en": "Nothing to convert in what you dragged.",
+  "zh": "拖入的内容中没有可转换的文件。"
+ },
+ "Nome comune (es. Logo)": {
+  "en": "Common name (e.g. Logo)",
+  "zh": "统一名称（如：Logo）"
+ },
+ "Nome comune (es. Vacanze)": {
+  "en": "Common name (e.g. Holidays)",
+  "zh": "统一名称（如：假期）"
+ },
+ "Nome del file (vuoto = nome originale)": {
+  "en": "File name (empty = original name)",
+  "zh": "文件名（留空 = 原名称）"
+ },
+ "Nome file (vuoto = titolo originale)": {
+  "en": "File name (empty = original title)",
+  "zh": "文件名（留空 = 原标题）"
+ },
+ "Nome nuovo preset": {
+  "en": "New preset name",
+  "zh": "新预设名称"
+ },
+ "Non riesco a copiare il registro: {0}": {
+  "en": "Cannot copy the log: {0}",
+  "zh": "无法复制日志：{0}"
+ },
+ "Non riesco a salvare il registro: {0}": {
+  "en": "Cannot save the log: {0}",
+  "zh": "无法保存日志：{0}"
+ },
+ "Numera tutti": {
+  "en": "Number all",
+  "zh": "全部编号"
+ },
+ "Opus": {
+  "en": "Opus",
+  "zh": "Opus"
+ },
+ "Opus (automatico)": {
+  "en": "Opus (automatic)",
+  "zh": "Opus（自动）"
+ },
+ "Opus (più leggero)": {
+  "en": "Opus (lighter)",
+  "zh": "Opus（更小）"
+ },
+ "Originale": {
+  "en": "Original",
+  "zh": "原始"
+ },
+ "Originale (nessuna conversione)": {
+  "en": "Original (no conversion)",
+  "zh": "原始（不转换）"
+ },
+ "Originali": {
+  "en": "Original",
+  "zh": "原始"
+ },
+ "PCM 16 bit": {
+  "en": "PCM 16-bit",
+  "zh": "PCM 16 位"
+ },
+ "PCM 24 bit (consigliato)": {
+  "en": "PCM 24-bit (recommended)",
+  "zh": "PCM 24 位（推荐）"
+ },
+ "PNG/TIFF/EXR/JPG e": {
+  "en": "PNG/TIFF/EXR/JPG and",
+  "zh": "PNG/TIFF/EXR/JPG 以及"
+ },
+ "PRONTO • {0}": {
+  "en": "READY • {0}",
+  "zh": "就绪 • {0}"
+ },
+ "PULISCI": {
+  "en": "CLEAR",
+  "zh": "清空"
+ },
+ "Parziale": {
+  "en": "Partial",
+  "zh": "部分完成"
+ },
+ "Per funzionare DownConvertron ha bisogno di:": {
+  "en": "DownConvertron needs these to work:",
+  "zh": "DownConvertron 需要以下组件才能运行："
+ },
+ "Per funzionare DownConvertron ha bisogno di: {0}.": {
+  "en": "DownConvertron needs these to work: {0}.",
+  "zh": "DownConvertron 需要以下组件才能运行：{0}。"
+ },
+ "Percorso copiato: incollalo nella finestra di Chrome.": {
+  "en": "Path copied: paste it in the Chrome window.",
+  "zh": "路径已复制：请粘贴到 Chrome 窗口中。"
+ },
+ "Percorso non utilizzabile per l'anteprima.": {
+  "en": "Path not usable for the preview.",
+  "zh": "该路径无法用于预览。"
+ },
+ "Personalizzata…": {
+  "en": "Custom…",
+  "zh": "自定义…"
+ },
+ "Playlist: {0} di {1}": {
+  "en": "Playlist: {0} of {1}",
+  "zh": "播放列表：{0} / {1}"
+ },
+ "Portoghese": {
+  "en": "Portuguese",
+  "zh": "葡萄牙语"
+ },
+ "PowerShell non trovato": {
+  "en": "PowerShell not found",
+  "zh": "未找到 PowerShell"
+ },
+ "PowerShell non trovato: usa + File.": {
+  "en": "PowerShell not found: use + Files.",
+  "zh": "未找到 PowerShell：请用“+ 文件”。"
+ },
+ "Premi «Installa / aggiorna componenti» in basso (una volta sola).": {
+  "en": "Press «Install / update components» at the bottom (only once).",
+  "zh": "点击下方“安装 / 更新组件”（只需一次）。"
+ },
+ "Premi «Report debug» in basso e incolla il report a chi ti assiste.": {
+  "en": "Press «Debug report» at the bottom and paste the report to whoever is helping you.",
+  "zh": "点击下方“调试报告”，把报告粘贴给帮助你的人。"
+ },
+ "Premoltiplicato: usalo solo se il file è stato esportato «Premoltiplicato (con nero)». Con alfa «Diretto/Straight» lascialo spento.": {
+  "en": "Premultiplied: use it only if the file was exported «Premultiplied (with black)». With «Straight» alpha leave it off.",
+  "zh": "预乘：仅当文件以“预乘（黑色）”导出时使用。直接 (Straight) 透明请关闭。"
+ },
+ "Preset applicato:": {
+  "en": "Preset applied:",
+  "zh": "已应用预设："
+ },
+ "Preset eliminato.": {
+  "en": "Preset deleted.",
+  "zh": "预设已删除。"
+ },
+ "Preset «": {
+  "en": "Preset «",
+  "zh": "预设“"
+ },
+ "Preset: impostazioni salvate con un nome": {
+  "en": "Presets: settings saved with a name",
+  "zh": "预设：带名称保存的设置"
+ },
+ "Preset…": {
+  "en": "Presets…",
+  "zh": "预设…"
+ },
+ "Primo errore:": {
+  "en": "First error:",
+  "zh": "第一个错误："
+ },
+ "ProRes: la qualità dipende dal profilo scelto (il menu Qualità non si applica). Audio non compresso.": {
+  "en": "ProRes: quality depends on the chosen profile (the Quality menu does not apply). Uncompressed audio.",
+  "zh": "ProRes：画质取决于所选配置（画质菜单不生效）。音频不压缩。"
+ },
+ "Profondità di bit": {
+  "en": "Bit depth",
+  "zh": "位深"
+ },
+ "Qualità": {
+  "en": "Quality",
+  "zh": "画质"
+ },
+ "REATTORE": {
+  "en": "REACTOR",
+  "zh": "反应堆"
+ },
+ "REATTORE yt-dlp {0}": {
+  "en": "REACTOR yt-dlp {0}",
+  "zh": "反应堆 yt-dlp {0}"
+ },
+ "REATTORE: controllo la versione di yt-dlp...": {
+  "en": "REACTOR: checking the yt-dlp version...",
+  "zh": "反应堆：正在检查 yt-dlp 版本..."
+ },
+ "REATTORE: yt-dlp manca. Clic per installarlo.": {
+  "en": "REACTOR: yt-dlp is missing. Click to install it.",
+  "zh": "反应堆：缺少 yt-dlp。点击安装。"
+ },
+ "REATTORE: yt-dlp non parte. Clic per reinstallarlo.": {
+  "en": "REACTOR: yt-dlp does not start. Click to reinstall it.",
+  "zh": "反应堆：yt-dlp 无法启动。点击重新安装。"
+ },
+ "REATTORE: yt-dlp {0} da aggiornare ({1} giorni). Clic per aggiornarlo.": {
+  "en": "REACTOR: yt-dlp {0} needs updating ({1} days). Click to update it.",
+  "zh": "反应堆：yt-dlp {0} 需要更新（{1} 天）。点击更新。"
+ },
+ "REATTORE: yt-dlp {0}, aggiornato ({1} giorni). Clic per controllare gli aggiornamenti.": {
+  "en": "REACTOR: yt-dlp {0}, up to date ({1} days). Click to check for updates.",
+  "zh": "反应堆：yt-dlp {0}，已是新版（{1} 天）。点击检查更新。"
+ },
+ "REGISTRO": {
+  "en": "LOG",
+  "zh": "日志"
+ },
+ "REGISTRO DI SISTEMA": {
+  "en": "SYSTEM LOG",
+  "zh": "系统日志"
+ },
+ "RILASCIA I FILE": {
+  "en": "DROP THE FILES",
+  "zh": "放下文件"
+ },
+ "RILASCIA IL LINK": {
+  "en": "DROP THE LINK",
+  "zh": "放下链接"
+ },
+ "Registro copiato negli appunti ({0} righe).": {
+  "en": "Log copied to the clipboard ({0} lines).",
+  "zh": "日志已复制到剪贴板（{0} 行）。"
+ },
+ "Registro salvato: {0}": {
+  "en": "Log saved: {0}",
+  "zh": "日志已保存：{0}"
+ },
+ "Report debug": {
+  "en": "Debug report",
+  "zh": "调试报告"
+ },
+ "Ricodifica completa:": {
+  "en": "Full re-encoding:",
+  "zh": "完全重新编码："
+ },
+ "Riempi, ritaglia i bordi": {
+  "en": "Fill, crop the edges",
+  "zh": "填满，裁掉边缘"
+ },
+ "Rimuovi": {
+  "en": "Remove",
+  "zh": "移除"
+ },
+ "Ripetizioni": {
+  "en": "Repeats",
+  "zh": "重复"
+ },
+ "Riprova; se continua, premi «Report debug» e incollami il testo.": {
+  "en": "Try again; if it keeps happening, press «Debug report» and paste me the text.",
+  "zh": "请重试；若仍出现，请点击“调试报告”并把文本发给我。"
+ },
+ "Risoluzione": {
+  "en": "Resolution",
+  "zh": "分辨率"
+ },
+ "Ritocchi": {
+  "en": "Touch-ups",
+  "zh": "修饰"
+ },
+ "SALVA": {
+  "en": "SAVE",
+  "zh": "保存"
+ },
+ "SCARICA": {
+  "en": "DOWNLOAD",
+  "zh": "下载"
+ },
+ "SISTEMI ONLINE": {
+  "en": "SYSTEMS ONLINE",
+  "zh": "系统在线"
+ },
+ "SPIE: TUTTO VERDE": {
+  "en": "LIGHTS: ALL GREEN",
+  "zh": "指示灯：全部正常"
+ },
+ "SPIE: {0} DA SISTEMARE": {
+  "en": "LIGHTS: {0} TO FIX",
+  "zh": "指示灯：{0} 个需处理"
+ },
+ "STRUMENTI": {
+  "en": "TOOLS",
+  "zh": "工具"
+ },
+ "Salta quelli già scaricati": {
+  "en": "Skip already downloaded",
+  "zh": "跳过已下载的"
+ },
+ "Salva": {
+  "en": "Save",
+  "zh": "保存"
+ },
+ "Salvata: {0}": {
+  "en": "Saved: {0}",
+  "zh": "已保存：{0}"
+ },
+ "Salvato:": {
+  "en": "Saved:",
+  "zh": "已保存："
+ },
+ "Scarica": {
+  "en": "Download",
+  "zh": "下载"
+ },
+ "Scarica intere playlist": {
+  "en": "Download whole playlists",
+  "zh": "下载整个播放列表"
+ },
+ "Scarico il file originale...": {
+  "en": "Downloading the original file...",
+  "zh": "正在下载原始文件..."
+ },
+ "Scarico l'immagine...": {
+  "en": "Downloading the image...",
+  "zh": "正在下载图片..."
+ },
+ "Scegli dove salvare i file": {
+  "en": "Choose where to save the files",
+  "zh": "选择文件保存位置"
+ },
+ "Scegli i file da convertire": {
+  "en": "Choose the files to convert",
+  "zh": "选择要转换的文件"
+ },
+ "Scegli la cartella con i video da convertire": {
+  "en": "Choose the folder with the videos to convert",
+  "zh": "选择包含要转换视频的文件夹"
+ },
+ "Scegli nel menu un tuo preset da eliminare (quelli con la stella sono di serie).": {
+  "en": "Choose one of your presets in the menu to delete (the starred ones are built in).",
+  "zh": "在菜单中选择要删除的自定义预设（带星号的是内置预设）。"
+ },
+ "Schede del browser: copia tutti i link con un'estensione come": {
+  "en": "Browser tabs: copy all the links with an extension like",
+  "zh": "浏览器标签页：用类似以下的扩展复制所有链接"
+ },
+ "Scrivi prima un nome comune (es. Logo).": {
+  "en": "First type a common name (e.g. Logo).",
+  "zh": "请先输入统一名称（如：Logo）。"
+ },
+ "Scrivi prima un nome comune (es. Vacanze).": {
+  "en": "First type a common name (e.g. Holidays).",
+  "zh": "请先输入统一名称（如：假期）。"
+ },
+ "Scrivi un nome per il preset (es. «Cliente X verticale»).": {
+  "en": "Type a name for the preset (e.g. «Client X vertical»).",
+  "zh": "请输入预设名称（如“客户 X 竖屏”）。"
+ },
+ "Se un download non parte subito, chiudi e riapri DownConvertron.": {
+  "en": "If a download does not start right away, close and reopen DownConvertron.",
+  "zh": "如果下载没有立即开始，请关闭并重新打开 DownConvertron。"
+ },
+ "Sequenza EXR": {
+  "en": "EXR sequence",
+  "zh": "EXR 序列"
+ },
+ "Sequenza EXR + alfa (lineare, compositing)": {
+  "en": "EXR sequence + alpha (linear, compositing)",
+  "zh": "EXR 序列 + 透明（线性，合成）"
+ },
+ "Sequenza EXR: mezza precisione, colori convertiti in lineare e alfa premoltiplicato come si aspettano Nuke, After Effects e Resolve.": {
+  "en": "EXR sequence: half precision, colors converted to linear and premultiplied alpha as Nuke, After Effects and Resolve expect.",
+  "zh": "EXR 序列：半精度，颜色转为线性、透明预乘，符合 Nuke、After Effects 和 Resolve 的要求。"
+ },
+ "Sequenza PNG": {
+  "en": "PNG sequence",
+  "zh": "PNG 序列"
+ },
+ "Sequenza PNG + alfa": {
+  "en": "PNG sequence + alpha",
+  "zh": "PNG 序列 + 透明"
+ },
+ "Sequenza PNG con alfa": {
+  "en": "PNG sequence with alpha",
+  "zh": "带透明 PNG 序列"
+ },
+ "Sequenza PNG: un'immagine per fotogramma in una cartella, alfa a 8 bit, senza perdita.": {
+  "en": "PNG sequence: one image per frame in a folder, 8-bit alpha, lossless.",
+  "zh": "PNG 序列：每帧一张图放在文件夹中，8 位透明，无损。"
+ },
+ "Sequenza TIFF": {
+  "en": "TIFF sequence",
+  "zh": "TIFF 序列"
+ },
+ "Sequenza TIFF + alfa": {
+  "en": "TIFF sequence + alpha",
+  "zh": "TIFF 序列 + 透明"
+ },
+ "Sequenza TIFF: un'immagine per fotogramma (compressione senza perdita), alfa a 8 bit.": {
+  "en": "TIFF sequence: one image per frame (lossless compression), 8-bit alpha.",
+  "zh": "TIFF 序列：每帧一张图（无损压缩），8 位透明。"
+ },
+ "Serve solo per video con limite di età o privati: i link vengono aperti con il tuo account Firefox, quindi usalo solo con liste di cui ti fidi. Non viene ricordato alla riapertura.": {
+  "en": "Only needed for age-restricted or private videos: links are opened with your Firefox account, so only use it with lists you trust. It is not remembered when you reopen the app.",
+  "zh": "仅用于有年龄限制或私密的视频：链接会用你的 Firefox 账号打开，所以只用于你信任的列表。重新打开应用后不会保留。"
+ },
+ "Sfondo da rendere trasparente": {
+  "en": "Background to make transparent",
+  "zh": "要变透明的背景"
+ },
+ "Sfondo rimosso con il chroma key.": {
+  "en": "Background removed with chroma key.",
+  "zh": "已用抠像去除背景。"
+ },
+ "Social verticale 1080×1920 · MP4": {
+  "en": "Vertical social 1080×1920 · MP4",
+  "zh": "竖屏社交 1080×1920 · MP4"
+ },
+ "Solo audio": {
+  "en": "Audio only",
+  "zh": "仅音频"
+ },
+ "Solo audio {0} {1}": {
+  "en": "Audio only {0} {1}",
+  "zh": "仅音频 {0} {1}"
+ },
+ "Sottotitoli (it, en)": {
+  "en": "Subtitles (it, en)",
+  "zh": "字幕 (it, en)"
+ },
+ "Spagnolo": {
+  "en": "Spanish",
+  "zh": "西班牙语"
+ },
+ "Stereo": {
+  "en": "Stereo",
+  "zh": "立体声"
+ },
+ "Sticker web · WebP animato": {
+  "en": "Web sticker · Animated WebP",
+  "zh": "网页贴纸 · 动态 WebP"
+ },
+ "Su questo PC manca winget («Programma di installazione app» di Microsoft). Si apre ora la pagina ufficiale https://aka.ms/getwinget: installalo, poi premi di nuovo «Installa / aggiorna componenti».": {
+  "en": "winget is missing on this PC (Microsoft «App Installer»). The official page https://aka.ms/getwinget opens now: install it, then press «Install / update components» again.",
+  "zh": "此电脑缺少 winget（Microsoft“应用安装程序”）。现在将打开官方页面 https://aka.ms/getwinget：安装后再次点击“安装 / 更新组件”。"
+ },
+ "Svuota": {
+  "en": "Clear",
+  "zh": "清空"
+ },
+ "Svuota lista": {
+  "en": "Clear list",
+  "zh": "清空列表"
+ },
+ "TUTTO": {
+  "en": "ALL",
+  "zh": "全部"
+ },
+ "Taglia da": {
+  "en": "Trim from",
+  "zh": "剪切起点"
+ },
+ "Tedesco": {
+  "en": "German",
+  "zh": "德语"
+ },
+ "Tela": {
+  "en": "Canvas",
+  "zh": "画布"
+ },
+ "Tela con bordi: questo formato non ha trasparenza, i bordi saranno neri.": {
+  "en": "Canvas with borders: this format has no transparency, the borders will be black.",
+  "zh": "带边框的画布：此格式没有透明，边框将为黑色。"
+ },
+ "Tela personalizzata non valida: larghezza e altezza tra 16 e 8192.": {
+  "en": "Invalid custom canvas: width and height between 16 and 8192.",
+  "zh": "自定义画布无效：宽和高须在 16 到 8192 之间。"
+ },
+ "Tolleranza": {
+  "en": "Tolerance",
+  "zh": "容差"
+ },
+ "Tracce audio multiple: verranno mantenute tutte.": {
+  "en": "Multiple audio tracks: all of them will be kept.",
+  "zh": "多条音轨：全部保留。"
+ },
+ "Trasparenza": {
+  "en": "Transparency",
+  "zh": "透明"
+ },
+ "Tutte le tracce audio (non solo la prima), canali originali": {
+  "en": "All audio tracks (not only the first), original channels",
+  "zh": "所有音轨（不只第一条），原始声道"
+ },
+ "Tutti i file in lista sono già stati convertiti.": {
+  "en": "All the files in the list have already been converted.",
+  "zh": "列表中的文件都已转换。"
+ },
+ "Tutti i link in lista sono già stati scaricati.": {
+  "en": "All the links in the list have already been downloaded.",
+  "zh": "列表中的链接都已下载。"
+ },
+ "UN ATTIMO...": {
+  "en": "ONE MOMENT...",
+  "zh": "请稍候..."
+ },
+ "Usa il chip video del Mac: molto più veloce del normale H.264, a parità di peso la qualità è un po' inferiore.": {
+  "en": "Uses the Mac video chip: much faster than regular H.264, at the same size the quality is a bit lower.",
+  "zh": "使用 Mac 视频芯片：比普通 H.264 快很多，同等大小下画质略低。"
+ },
+ "Usa il chip video del Mac: molto più veloce del normale H.265, a parità di peso la qualità è un po' inferiore.": {
+  "en": "Uses the Mac video chip: much faster than regular H.265, at the same size the quality is a bit lower.",
+  "zh": "使用 Mac 视频芯片：比普通 H.265 快很多，同等大小下画质略低。"
+ },
+ "Usa login di Firefox": {
+  "en": "Use Firefox login",
+  "zh": "使用 Firefox 登录"
+ },
+ "Vanno nella cartella di DownConvertron (": {
+  "en": "They go into the DownConvertron folder (",
+  "zh": "它们会放在 DownConvertron 文件夹中（"
+ },
+ "Veloce": {
+  "en": "Fast",
+  "zh": "快"
+ },
+ "Velocità": {
+  "en": "Speed",
+  "zh": "速度"
+ },
+ "Verde (green screen)": {
+  "en": "Green (green screen)",
+  "zh": "绿色（绿幕）"
+ },
+ "Verranno accettate automaticamente le condizioni d'uso dei pacchetti e della sorgente winget.\nL'installazione è per il tuo utente quando il pacchetto lo consente. Può richiedere qualche minuto e, raramente, Windows può chiedere un permesso.\nPuoi interromperla con lo stesso pulsante.\n\nContinuare?": {
+  "en": "The terms of use of the packages and of the winget source will be accepted automatically.\nThe installation is for your user when the package allows it. It may take a few minutes and, rarely, Windows may ask for permission.\nYou can stop it with the same button.\n\nContinue?",
+  "zh": "将自动接受软件包和 winget 源的使用条款。\n在软件包允许时只为你的用户安装。可能需要几分钟，Windows 偶尔会请求权限。\n可以用同一个按钮中止。\n\n继续吗？"
+ },
+ "Verrà analizzato alla conversione": {
+  "en": "Will be analyzed at conversion",
+  "zh": "转换时分析"
+ },
+ "Video": {
+  "en": "Video",
+  "zh": "视频"
+ },
+ "Video {0} {1}": {
+  "en": "Video {0} {1}",
+  "zh": "视频 {0} {1}"
+ },
+ "Volume (normalizzazione)": {
+  "en": "Volume (normalization)",
+  "zh": "音量（标准化）"
+ },
+ "Volume uniforme": {
+  "en": "Uniform volume",
+  "zh": "统一音量"
+ },
+ "Vorbis (OGG)": {
+  "en": "Vorbis (OGG)",
+  "zh": "Vorbis (OGG)"
+ },
+ "WAV 24 bit": {
+  "en": "WAV 24-bit",
+  "zh": "WAV 24 位"
+ },
+ "WAV 32 bit": {
+  "en": "WAV 32-bit",
+  "zh": "WAV 32 位"
+ },
+ "WAV virgola mobile": {
+  "en": "WAV floating point",
+  "zh": "WAV 浮点"
+ },
+ "Web trasparente · WebM": {
+  "en": "Transparent web · WebM",
+  "zh": "透明网页 · WebM"
+ },
+ "WebM (Opus originale, senza conversione)": {
+  "en": "WebM (original Opus, no conversion)",
+  "zh": "WebM（原始 Opus，不转换）"
+ },
+ "WebM VP9 + alfa (web)": {
+  "en": "WebM VP9 + alpha (web)",
+  "zh": "WebM VP9 + 透明 (网页)"
+ },
+ "WebM usa solo VP9/AV1 + Opus: H.264 non è compatibile e viene ignorato. Se un video non esiste in WebM viene convertito (più lento). La copertina non si può inserire in un WebM.": {
+  "en": "WebM only uses VP9/AV1 + Opus: H.264 is not compatible and is ignored. If a video is not available in WebM it gets converted (slower). The cover cannot be embedded in a WebM.",
+  "zh": "WebM 只使用 VP9/AV1 + Opus：H.264 不兼容，将被忽略。若视频没有 WebM 版本会进行转换（较慢）。WebM 无法嵌入封面。"
+ },
+ "WebP animato": {
+  "en": "Animated WebP",
+  "zh": "动态 WebP"
+ },
+ "WebP animato + alfa (web, leggero)": {
+  "en": "Animated WebP + alpha (web, light)",
+  "zh": "动态 WebP + 透明（网页，轻量）"
+ },
+ "WebP animato: trasparenza morbida, molto più leggero della GIF, si apre in tutti i browser. Senza audio.": {
+  "en": "Animated WebP: soft transparency, much lighter than GIF, opens in every browser. No audio.",
+  "zh": "动态 WebP：柔和透明，比 GIF 小得多，所有浏览器都能打开。无音频。"
+ },
+ "accanto agli originali": {
+  "en": "next to the originals",
+  "zh": "在原文件旁边"
+ },
+ "anche sui video opachi (di solito non serve)": {
+  "en": "also on opaque videos (usually not needed)",
+  "zh": "不透明视频也加（通常不需要）"
+ },
+ "attiva <b>Modalit&agrave; sviluppatore</b> in alto a destra;": {
+  "en": "turn on <b>Developer mode</b> at the top right;",
+  "zh": "打开右上角的<b>开发者模式</b>；"
+ },
+ "c'è un lavoro in corso: trascina dopo": {
+  "en": "a job is running: drag later",
+  "zh": "正在处理任务：请稍后再拖入"
+ },
+ "completati": {
+  "en": "completed",
+  "zh": "完成"
+ },
+ "con alfa": {
+  "en": "with alpha",
+  "zh": "含透明"
+ },
+ "con errori.": {
+  "en": "with errors.",
+  "zh": "个出错。"
+ },
+ "con errori. Passa il mouse sull'etichetta per il dettaglio.": {
+  "en": "with errors. Hover the label for details.",
+  "zh": "出错。将鼠标悬停在标签上查看详情。"
+ },
+ "conversione non riuscita": {
+  "en": "conversion failed",
+  "zh": "转换失败"
+ },
+ "convertiti,": {
+  "en": "converted,",
+  "zh": "个已转换，"
+ },
+ "curl non trovato: per scaricare le immagini serve Windows 10 (1803) o successivo.": {
+  "en": "curl not found: downloading images needs Windows 10 (1803) or later.",
+  "zh": "未找到 curl：下载图片需要 Windows 10 (1803) 或更高版本。"
+ },
+ "di file e cartelle.": {
+  "en": "of files and folders.",
+  "zh": "文件和文件夹。"
+ },
+ "di {0}": {
+  "en": "of {0}",
+  "zh": "/ {0}"
+ },
+ "doppi, non trovati o immagini singole": {
+  "en": "duplicates, not found or single images",
+  "zh": "个重复、未找到或单张图片"
+ },
+ "doppi, non trovati o immagini singole).": {
+  "en": "duplicates, not found or single images).",
+  "zh": "个重复、未找到或单张图片）。"
+ },
+ "e premi": {
+  "en": "and press",
+  "zh": "然后点击"
+ },
+ "elementi": {
+  "en": "items",
+  "zh": "个项目"
+ },
+ "elementi aggiunti": {
+  "en": "items added",
+  "zh": "个项目已添加"
+ },
+ "elementi scaricati": {
+  "en": "items downloaded",
+  "zh": "个项目已下载"
+ },
+ "elemento aggiunto": {
+  "en": "item added",
+  "zh": "个项目已添加"
+ },
+ "elemento scaricato": {
+  "en": "item downloaded",
+  "zh": "个项目已下载"
+ },
+ "era già presente e non è stato riscaricato": {
+  "en": "was already there and was not downloaded again",
+  "zh": "个已存在，未重新下载"
+ },
+ "erano già presenti e non sono stati riscaricati": {
+  "en": "were already there and were not downloaded again",
+  "zh": "个已存在，未重新下载"
+ },
+ "ffmpeg non trovato.": {
+  "en": "ffmpeg not found.",
+  "zh": "未找到 ffmpeg。"
+ },
+ "ffmpeg non trovato: premi «Installa / aggiorna componenti» in basso.": {
+  "en": "ffmpeg not found: press «Install / update components» at the bottom.",
+  "zh": "未找到 ffmpeg：点击下方“安装 / 更新组件”。"
+ },
+ "ffprobe non trovato: premi «Installa / aggiorna componenti»": {
+  "en": "ffprobe not found: press «Install / update components»",
+  "zh": "未找到 ffprobe：点击“安装 / 更新组件”"
+ },
+ "file creati": {
+  "en": "files created",
+  "zh": "个文件已生成"
+ },
+ "file creato": {
+  "en": "file created",
+  "zh": "个文件已生成"
+ },
+ "file non ancora scaricato": {
+  "en": "file not downloaded yet",
+  "zh": "文件尚未下载"
+ },
+ "file sono già trasparenti": {
+  "en": "files are already transparent",
+  "zh": "个文件已经是透明的"
+ },
+ "file trasparente verrà appiattito": {
+  "en": "transparent file will be flattened",
+  "zh": "个透明文件将被拼合"
+ },
+ "file trasparente verrà convertito": {
+  "en": "transparent file will be converted",
+  "zh": "个透明文件将被转换"
+ },
+ "file trasparenti verranno appiattiti": {
+  "en": "transparent files will be flattened",
+  "zh": "个透明文件将被拼合"
+ },
+ "file trasparenti verranno convertiti": {
+  "en": "transparent files will be converted",
+  "zh": "个透明文件将被转换"
+ },
+ "file è già trasparente": {
+  "en": "file is already transparent",
+  "zh": "个文件已经是透明的"
+ },
+ "file) in": {
+  "en": "files) in",
+  "zh": "个文件）位于"
+ },
+ "fine (es. 0:10)": {
+  "en": "end (e.g. 0:10)",
+  "zh": "结束（如 0:10）"
+ },
+ "fissa l'icona: pezzo di puzzle in alto a destra &rarr; puntina accanto a <b>DownConvertron</b>.": {
+  "en": "pin the icon: puzzle piece at the top right &rarr; pin next to <b>DownConvertron</b>.",
+  "zh": "固定图标：右上角拼图图标 &rarr; 点击 <b>DownConvertron</b> 旁的图钉。"
+ },
+ "fotogrammi": {
+  "en": "frames",
+  "zh": "帧"
+ },
+ "fotogrammi)": {
+  "en": "frames)",
+  "zh": "帧）"
+ },
+ "il ricevitore si sta avviando, poi rilascia": {
+  "en": "the receiver is starting, then drop",
+  "zh": "接收器正在启动，稍后再放下"
+ },
+ "in H.264 appiattito su nero. Il cambio in MOV invece mantiene la trasparenza.": {
+  "en": "to H.264 flattened on black. Changing to MOV instead keeps the transparency.",
+  "zh": "为黑底的 H.264。改用 MOV 则可保留透明。"
+ },
+ "incollalo con Ctrl+V nella barra in alto, Invio, poi <b>Seleziona cartella</b>:": {
+  "en": "paste it with Ctrl+V in the bar at the top, Enter, then <b>Select Folder</b>:",
+  "zh": "用 Ctrl+V 粘贴到顶部地址栏，回车，然后点<b>选择文件夹</b>："
+ },
+ "inizio (es. 0:02.5)": {
+  "en": "start (e.g. 0:02.5)",
+  "zh": "开始（如 0:02.5）"
+ },
+ "kbps (costante)": {
+  "en": "kbps (constant)",
+  "zh": "kbps（恒定）"
+ },
+ "kbps (massimo possibile a questa frequenza)": {
+  "en": "kbps (the most possible at this sample rate)",
+  "zh": "kbps（此采样率下的最大值）"
+ },
+ "link | nome file": {
+  "en": "link | file name",
+  "zh": "链接 | 文件名"
+ },
+ "lo sfondo rimosso verrà appiattito": {
+  "en": "the removed background will be flattened",
+  "zh": "去除的背景将被拼合"
+ },
+ "mancanti dopo il n.": {
+  "en": "missing after no.",
+  "zh": "缺失，位于编号之后"
+ },
+ "non contiene audio: l'audio dei file viene tolto.": {
+  "en": "has no audio: the audio of the files is removed.",
+  "zh": "不含音频：文件的音频将被去除。"
+ },
+ "non ha il canale alfa:": {
+  "en": "has no alpha channel:",
+  "zh": "没有透明通道："
+ },
+ "parziali": {
+  "en": "partial",
+  "zh": "部分完成"
+ },
+ "per nominare ogni video.": {
+  "en": "to name each video.",
+  "zh": "来为每个视频命名。"
+ },
+ "premi Cmd+Shift+G, incolla con Cmd+V, Invio, poi <b>Seleziona</b>:": {
+  "en": "press Cmd+Shift+G, paste with Cmd+V, Enter, then <b>Select</b>:",
+  "zh": "按 Cmd+Shift+G，用 Cmd+V 粘贴，回车，然后点<b>选择</b>："
+ },
+ "registro": {
+  "en": "log",
+  "zh": "日志"
+ },
+ "scarica i video": {
+  "en": "downloads the videos",
+  "zh": "下载视频"
+ },
+ "sequenza": {
+  "en": "sequence",
+  "zh": "序列"
+ },
+ "sequenza di immagini": {
+  "en": "image sequence",
+  "zh": "个图像序列"
+ },
+ "sequenze": {
+  "en": "sequences",
+  "zh": "序列"
+ },
+ "sequenze di immagini": {
+  "en": "image sequences",
+  "zh": "个图像序列"
+ },
+ "serve a yt-dlp per leggere YouTube": {
+  "en": "needed by yt-dlp to read YouTube",
+  "zh": "yt-dlp 读取 YouTube 需要它"
+ },
+ "su nero. Per tenere la trasparenza scegli un formato «Con trasparenza».": {
+  "en": "on black. To keep the transparency choose a «With transparency» format.",
+  "zh": "到黑底。要保留透明请选择“带透明”的格式。"
+ },
+ "tra le gambe del mecha · anche cartelle e più file": {
+  "en": "between the mecha's legs · folders and multiple files too",
+  "zh": "放到机甲双腿之间 · 也支持文件夹和多个文件"
+ },
+ "tracce)": {
+  "en": "tracks)",
+  "zh": "条音轨）"
+ },
+ "trascina dentro la pagina la cartella <b>chrome-extension</b> (si apre accanto), oppure premi <b>Carica estensione non pacchettizzata</b>: il percorso &egrave; gi&agrave; negli appunti:": {
+  "en": "drag the <b>chrome-extension</b> folder into the page (it opens alongside), or press <b>Load unpacked</b>: the path is already in the clipboard:",
+  "zh": "把 <b>chrome-extension</b> 文件夹拖进页面（会在旁边打开），或点击<b>加载已解压的扩展程序</b>：路径已在剪贴板中："
+ },
+ "trascinamento": {
+  "en": "drag and drop",
+  "zh": "拖放"
+ },
+ "unisce audio e video e converte (VP9, Opus, ProRes)": {
+  "en": "merges audio and video and converts (VP9, Opus, ProRes)",
+  "zh": "合并音视频并转换（VP9、Opus、ProRes）"
+ },
+ "unisce audio e video e converte (VP9, Opus, ProRes, HAP, CineForm, WebP, EXR, chip Mac)": {
+  "en": "merges audio and video and converts (VP9, Opus, ProRes, HAP, CineForm, WebP, EXR, Mac chip)",
+  "zh": "合并音视频并转换（VP9、Opus、ProRes、HAP、CineForm、WebP、EXR、Mac 芯片）"
+ },
+ "usa «+ File» o «Incolla file» (dettagli nel Report debug)": {
+  "en": "use «+ Files» or «Paste files» (details in the Debug report)",
+  "zh": "请用“+ 文件”或“粘贴文件”（详情见调试报告）"
+ },
+ "va nella lista dei download": {
+  "en": "it goes to the download list",
+  "zh": "将加入下载列表"
+ },
+ "veloce": {
+  "en": "fast",
+  "zh": "快速"
+ },
+ "velocità {0}": {
+  "en": "speed {0}",
+  "zh": "速度 {0}"
+ },
+ "volume uniforme": {
+  "en": "uniform volume",
+  "zh": "统一音量"
+ },
+ "yt-dlp e Deno da GitHub, ffmpeg dalle build per Mac di Martin Riedl (ffmpeg.martin-riedl.de). Ogni file viene controllato con la sua impronta SHA-256 quando è pubblicata.": {
+  "en": "yt-dlp and Deno from GitHub, ffmpeg from Martin Riedl's Mac builds (ffmpeg.martin-riedl.de). Every file is checked against its SHA-256 fingerprint when one is published.",
+  "zh": "yt-dlp 和 Deno 来自 GitHub，ffmpeg 来自 Martin Riedl 的 Mac 版本 (ffmpeg.martin-riedl.de)。若有公布的 SHA-256 指纹，每个文件都会校验。"
+ },
+ "yt-dlp impostato:": {
+  "en": "yt-dlp set:",
+  "zh": "已设置 yt-dlp："
+ },
+ "yt-dlp non trovato.": {
+  "en": "yt-dlp not found.",
+  "zh": "未找到 yt-dlp。"
+ },
+ "yt-dlp non trovato: premi «Installa / aggiorna componenti».": {
+  "en": "yt-dlp not found: press «Install / update components».",
+  "zh": "未找到 yt-dlp：点击“安装 / 更新组件”。"
+ },
+ "yt-dlp, ffmpeg e Deno sono installati: controlla gli aggiornamenti": {
+  "en": "yt-dlp, ffmpeg and Deno are installed: check for updates",
+  "zh": "yt-dlp、ffmpeg 和 Deno 已安装：检查更新"
+ },
+ "{0} file": {
+  "en": "{0} files",
+  "zh": "{0} 个文件"
+ },
+ "{0} immagini singole": {
+  "en": "{0} single images",
+  "zh": "{0} 张单独图片"
+ },
+ "{0} link": {
+  "en": "{0} links",
+  "zh": "{0} 个链接"
+ },
+ "{0} link aggiunti": {
+  "en": "{0} links added",
+  "zh": "已添加 {0} 个链接"
+ },
+ "{0} link ricevuti dall'estensione Chrome{1}: controlla e premi Scarica quando vuoi.": {
+  "en": "{0} links received from the Chrome extension{1}: check them and press Download when you want.",
+  "zh": "已从 Chrome 扩展收到 {0} 个链接{1}：检查后随时点击“下载”。"
+ },
+ "· (HEVC: se era «HEVC con alfa» Apple la trasparenza potrebbe non essere letta: esporta in ProRes 4444)": {
+  "en": "· (HEVC: if it was Apple «HEVC with alpha» the transparency might not be read: export to ProRes 4444)",
+  "zh": "·（HEVC：若是 Apple 的“带透明 HEVC”，透明可能无法读取：请导出为 ProRes 4444）"
+ },
+ "· HDR: i colori potrebbero risultare più spenti": {
+  "en": "· HDR: colors may look duller",
+  "zh": "· HDR：颜色可能偏暗淡"
+ },
+ "· audio": {
+  "en": "· audio",
+  "zh": "· 音频"
+ },
+ "» non disponibile: è stata scaricata la traccia originale.": {
+  "en": "» not available: the original track was downloaded.",
+  "zh": "”不可用：已下载原始音轨。"
+ },
+ "» salvato.": {
+  "en": "» saved.",
+  "zh": "”已保存。"
+ },
+ "»: sostituirlo con le impostazioni attuali?": {
+  "en": "» already exists: replace it with the current settings?",
+  "zh": "”：用当前设置替换吗？"
+ },
+ "è troppo vecchio e ha falle di sicurezza note. Premi «Installa / aggiorna componenti».": {
+  "en": "is too old and has known security flaws. Press «Install / update components».",
+  "zh": "版本太旧，存在已知安全漏洞。请点击“安装 / 更新组件”。"
+ },
+ "— mancano i codec": {
+  "en": "— missing codecs",
+  "zh": "— 缺少编码器"
+ },
+ "• aggiornare": {
+  "en": "• update",
+  "zh": "• 更新"
+ },
+ "• installare": {
+  "en": "• install",
+  "zh": "• 安装"
+ },
+ "→ Accesso negato da YouTube: premi «Installa / aggiorna componenti» e riprova.": {
+  "en": "→ Access denied by YouTube: press «Install / update components» and try again.",
+  "zh": "→ YouTube 拒绝访问：点击“安装 / 更新组件”后重试。"
+ },
+ "→ Il video non contiene la traccia richiesta.": {
+  "en": "→ The video does not contain the requested track.",
+  "zh": "→ 视频不含所需的音轨。"
+ },
+ "→ Manca ffmpeg: premi «Installa / aggiorna componenti», poi riprova.": {
+  "en": "→ ffmpeg is missing: press «Install / update components», then try again.",
+  "zh": "→ 缺少 ffmpeg：点击“安装 / 更新组件”，然后重试。"
+ },
+ "→ Premi «Installa / aggiorna componenti» (installa Deno e aggiorna yt-dlp), poi riprova.": {
+  "en": "→ Press «Install / update components» (installs Deno and updates yt-dlp), then try again.",
+  "zh": "→ 点击“安装 / 更新组件”（安装 Deno 并更新 yt-dlp），然后重试。"
+ },
+ "→ Sito o link non supportato.": {
+  "en": "→ Site or link not supported.",
+  "zh": "→ 不支持该网站或链接。"
+ },
+ "→ YouTube chiede l'accesso: entra su YouTube con Firefox e attiva «Usa login di Firefox».": {
+  "en": "→ YouTube asks you to sign in: sign in to YouTube with Firefox and enable «Use Firefox login».",
+  "zh": "→ YouTube 需要登录：用 Firefox 登录 YouTube 并启用“使用 Firefox 登录”。"
+ },
+ "→ ffmpeg non è riuscito a creare questo formato con queste impostazioni: prova qualità/codec «Automatico» o un altro formato. Se si ripete premi «Report debug».": {
+  "en": "→ ffmpeg could not create this format with these settings: try «Automatic» quality/codec or another format. If it happens again press «Debug report».",
+  "zh": "→ ffmpeg 无法用这些设置生成该格式：试试“自动”画质/编码或换一种格式。若再次出现请点击“调试报告”。"
+ },
+ "→ yt-dlp troppo vecchio per queste opzioni: premi «Installa / aggiorna componenti».": {
+  "en": "→ yt-dlp too old for these options: press «Install / update components».",
+  "zh": "→ yt-dlp 版本太旧，不支持这些选项：点击“安装 / 更新组件”。"
+ },
+ "↓ Scarica da link": {
+  "en": "↓ Download from link",
+  "zh": "↓ 从链接下载"
+ },
+ "↻ Converti video": {
+  "en": "↻ Convert video",
+  "zh": "↻ 转换视频"
+ },
+ "✔ trasparenza": {
+  "en": "✔ transparency",
+  "zh": "✔ 透明"
+ }
+}

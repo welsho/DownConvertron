@@ -1,0 +1,41 @@
+DOWNCONVERTRON 6.0 per Mac / for Mac / 适用于 Mac  (Apple Silicon: M1, M2, M3, M4)  -  designed by Welsho
+
+=== ITALIANO ===
+INSTALLAZIONE (una volta sola)
+1. Trascina DownConvertron.app nella cartella Applicazioni.
+   (Se avevi DownLTransFMecchazzi o Mecchazzi puoi cestinarle: impostazioni e componenti vengono ripresi.)
+2. Apri l'app con un doppio clic. Il Mac dira' che non puo' verificare lo sviluppatore: premi "Fine".
+3. Impostazioni di Sistema > Privacy e sicurezza > in basso "Apri comunque", poi conferma.
+   Se compare "e' danneggiato", nel Terminale incolla:
+       xattr -dr com.apple.quarantine /Applications/DownConvertron.app
+PRIMO AVVIO: premi "Installa / aggiorna componenti" (yt-dlp, ffmpeg e Deno, circa 150 MB,
+in ~/Library/Application Support/DownConvertron/bin). Niente Homebrew, niente password.
+ESTENSIONE CHROME: premi "Estensione Chrome" in basso nell'app: Chrome si apre sulla pagina Estensioni
+(la prima volta il Mac chiede il permesso di controllare Chrome: premi OK), poi segui i 3 passaggi.
+LINGUA: IT / EN / 中文 nello slot sotto le fessure del casco del mecha.
+
+=== ENGLISH ===
+INSTALL (once)
+1. Drag DownConvertron.app into the Applications folder.
+2. Double-click it. macOS says it cannot verify the developer: press "Done".
+3. System Settings > Privacy & Security > at the bottom "Open Anyway", then confirm.
+   If it says "is damaged", paste this in Terminal:
+       xattr -dr com.apple.quarantine /Applications/DownConvertron.app
+FIRST RUN: press "Install / update components" (yt-dlp, ffmpeg and Deno, about 150 MB,
+into ~/Library/Application Support/DownConvertron/bin). No Homebrew, no password.
+CHROME EXTENSION: press "Chrome extension" at the bottom of the app and follow the 3 steps.
+LANGUAGE: IT / EN / 中文 in the slot under the mecha's helmet vents.
+
+=== 中文 ===
+安装（只需一次）
+1. 把 DownConvertron.app 拖到“应用程序”文件夹。
+2. 双击打开。macOS 提示无法验证开发者时，点击“完成”。
+3. 系统设置 > 隐私与安全性 > 底部点击“仍要打开”，然后确认。
+   如果提示“已损坏”，在终端中粘贴：
+       xattr -dr com.apple.quarantine /Applications/DownConvertron.app
+首次运行：点击“安装 / 更新组件”（yt-dlp、ffmpeg 和 Deno，约 150 MB，
+位于 ~/Library/Application Support/DownConvertron/bin）。无需 Homebrew，无需密码。
+CHROME 扩展：点击应用底部的“Chrome 扩展”，按 3 个步骤操作。
+语言：在机甲头盔通风口下方的插槽中选择 IT / EN / 中文。
+
+DownConvertron - Copyright (C) 2026 Daniele Moretti (Welsho) - GPL-3.0-or-later - https://www.gnu.org/licenses/gpl-3.0.html
