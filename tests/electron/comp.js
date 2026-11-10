@@ -1,4 +1,5 @@
 // spia COMPONENTI = estensione Chrome: senza Chrome, Chrome senza estensione, estensione installata (profilo finto)
+// Copyright (C) 2026 Daniele Moretti (Welsho) - GPL-3.0-or-later
 const L = require('./lib'); const fs = require('fs'); const path = require('path');
 (async () => {
   const home = process.env.DCVT_TEST_HOME || path.join(L.ROOT, 'build', 'test-home');

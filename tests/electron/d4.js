@@ -1,4 +1,5 @@
 // Mac: percorso HTML5 (nessun ricevitore), overlay + animazione + aggiunta in lista
+// Copyright (C) 2026 Daniele Moretti (Welsho) - GPL-3.0-or-later
 const L = require('./lib'); const fs = require('fs');
 (async () => {
   const { app, w } = await L.open();

@@ -1,4 +1,5 @@
 // immagini singole (misure e formati diversi) -> GIF e MP4, un fotogramma per immagine
+// Copyright (C) 2026 Daniele Moretti (Welsho) - GPL-3.0-or-later
 const L = require('./lib'); const fs = require('fs'); const path = require('path');
 (async () => {
   const { app, w } = await L.open();

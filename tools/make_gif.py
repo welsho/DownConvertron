@@ -1,5 +1,6 @@
 # DownConvertron - GIF della rotazione del mecha per il README (dai fotogrammi di tests/electron/docs.js)
 # Uso: python3 tools/make_gif.py docs/img/_frames docs/img/mecha-rotazione.gif   (serve Pillow)
+# Copyright (C) 2026 Daniele Moretti (Welsho) - GPL-3.0-or-later
 import sys, os, glob
 from PIL import Image
 src, dst = sys.argv[1], sys.argv[2]

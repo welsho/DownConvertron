@@ -1,4 +1,5 @@
 // screenshot dell'app: node shot.js out.png [larghezza altezza] [scheda]
+// Copyright (C) 2026 Daniele Moretti (Welsho) - GPL-3.0-or-later
 const L = require('./lib');
 (async () => {
   const { app, w } = await L.open();

@@ -1,4 +1,5 @@
 // Screenshot per la documentazione (README): app nelle tre lingue con contenuti di esempio,
+// Copyright (C) 2026 Daniele Moretti (Welsho) - GPL-3.0-or-later
 // fotogrammi della rotazione del mecha a 30 fps (poi tools/make_gif.py li unisce nella GIF). Uso: DCVT_TEST_HOME=/Users/creator node docs.js docs/img
 const L = require('./lib'); const fs = require('fs'); const path = require('path');
 (async () => {

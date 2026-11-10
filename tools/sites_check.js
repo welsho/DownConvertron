@@ -1,4 +1,5 @@
 // DownConvertron - verifica delle regole dei siti (dopo tools/gen_sites.py): compilazione in JS,
+// Copyright (C) 2026 Daniele Moretti (Welsho) - GPL-3.0-or-later
 // URL di prova di yt-dlp riconosciuti, falsi positivi su pagine che non sono video.
 const path = require('path'), W = path.join(__dirname, '..', 'build');
 const items = require(path.join(W, 'sites_raw.json')), tests = require(path.join(W, 'tests.json')), fs = require('fs');

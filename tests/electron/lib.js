@@ -1,4 +1,5 @@
 // Avvio dell'app Mac (Electron) su Linux per le prove automatiche.
+// Copyright (C) 2026 Daniele Moretti (Welsho) - GPL-3.0-or-later
 // Variabili: DCVT_ELECTRON (eseguibile electron), DCVT_PLAYWRIGHT (modulo playwright), DCVT_TEST_HOME (cartella home finta)
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..', '..');

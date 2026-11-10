@@ -1,3 +1,4 @@
+// DownConvertron - prova automatica dell'app Electron. Copyright (C) 2026 Daniele Moretti (Welsho) - GPL-3.0-or-later
 const L = require('./lib.js'), fs = require('fs');
 (async () => {
   const { app, w } = await L.open();

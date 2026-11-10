@@ -1,4 +1,5 @@
 // download di immagini da link diretti (curl), anche con il nome scelto e senza yt-dlp in lista
+// Copyright (C) 2026 Daniele Moretti (Welsho) - GPL-3.0-or-later
 // serve le immagini da sé (server http locale sulla porta 8799); le crea con ffmpeg
 const L = require('./lib'); const fs = require('fs'); const path = require('path');
 const http = require('http'); const { execFileSync } = require('child_process');

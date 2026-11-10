@@ -7,3 +7,4 @@ tests/electron/out/
 *.log
 .DS_Store
 Thumbs.db
+*.stackdump

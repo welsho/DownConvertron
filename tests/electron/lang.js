@@ -1,4 +1,5 @@
 // screenshot nelle tre lingue (entrambe le schede) e controllo dei testi rimasti in italiano
+// Copyright (C) 2026 Daniele Moretti (Welsho) - GPL-3.0-or-later
 const L = require('./lib');
 (async () => {
   const { app, w } = await L.open();

@@ -1,4 +1,5 @@
 // fotogrammi della rotazione del mecha (apertura e chiusura dell'overlay di trascinamento)
+// Copyright (C) 2026 Daniele Moretti (Welsho) - GPL-3.0-or-later
 const L = require('./lib'); const fs = require('fs');
 (async () => {
   const { app, w } = await L.open();
