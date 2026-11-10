@@ -101,6 +101,8 @@ function intestazioni(avvia) {
   const h = ["#ext=" + VERS, "#lang=" + LANG, "#mode=" + modo];
   if (avvia) h.push("#start=1");                                    /* l'app avvia il download da sola */
   if (scelti().some(v => v.img)) h.push("#imgfmt=" + document.getElementById("if").value);
+  /* pagina da cui vengono le immagini: l'app la usa come Referer (CDN che rifiutano le immagini chieste da fuori) */
+  if (paginaImmagini && voci.immagini.some(v => v.scelto)) h.push("#ref=" + paginaImmagini);
   if (modo === "video") h.push("#quality=" + document.getElementById("vq").value, "#container=" + document.getElementById("vc").value);
   if (modo === "audio") { const [f, q] = document.getElementById("ap").value.split("|"); h.push("#afmt=" + f, "#aq=" + (q || "")); }
   let l = [];
@@ -154,7 +156,7 @@ function aggiorna() {
   const ni = voci.immagini.filter(v => v.scelto).length, q = document.getElementById("scaricaSubito");
   q.disabled = !ni; q.textContent = t("salvaDownload") + (ni ? " (" + ni + ")" : "");
 }
-let totImmagini = 0;
+let totImmagini = 0, paginaImmagini = "";
 async function raccogli() {
   const tutte = document.getElementById("tutteFinestre").checked;
   /* le scelte fatte restano quando la lista si aggiorna (per esempio con "Tutte le finestre") */
@@ -174,6 +176,7 @@ async function raccogli() {
   voci.pagina = [];
   try {
     const [att] = await chrome.tabs.query({ active: true, currentWindow: true });
+    paginaImmagini = att && /^https?:/.test(att.url || "") ? att.url : "";
     if (att && /^https?:/.test(att.url || "")) {
       const [res] = await chrome.scripting.executeScript({
         target: { tabId: att.id },
