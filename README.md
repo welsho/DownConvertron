@@ -77,6 +77,8 @@ Nell'app premi **Estensione Chrome**: l'app prepara l'estensione, apre Chrome su
 
 L'app prepara da sola la cartella dell'estensione all'avvio (anche se usi solo l'HTA): è sempre pronta da installare.
 
+**Video con limite di età, privati o per abbonati**: nell'estensione accendi **Usa il mio login** (Chrome chiede il permesso la prima volta) e rimanda il link. L'app usa il login di Chrome di quel sito solo se il sito chiede l'accesso, e lo cancella a fine lavoro.
+
 ## In azione
 
 <table>
@@ -99,9 +101,10 @@ L'app prepara da sola la cartella dell'estensione all'avvio (anche se usi solo l
 ## Privacy e sicurezza
 - Nessuna telemetria, nessun account, nessun server: tutto gira sul tuo computer.
 - I componenti arrivano dalle fonti ufficiali: winget (Microsoft) su Windows; GitHub e le build di Martin Riedl, con impronta SHA-256, sul Mac.
-- Su Windows niente diritti di amministratore: l'unica voce di registro è `HKCU\Software\Classes\downconvertron` (serve al logo dell'estensione per aprire l'app).
+- Su Windows niente diritti di amministratore: la voce di registro principale è `HKCU\Software\Classes\downconvertron` (serve al logo dell'estensione per aprire l'app).
 - Nessun dato dell'utente nella riga di comando: link e opzioni passano a yt-dlp tramite file temporanei.
 - L'estensione legge le schede solo quando la apri e non invia nulla in rete: copia i link negli appunti, l'app li riconosce dall'intestazione.
+- **Usa il mio login** è spento di base. Acceso, passa all'app i cookie di Chrome dei soli siti inviati, attraverso un ponte locale che accetta solo questa estensione; l'app li tiene in un file della sua cartella dati solo per quell'invio e li usa solo se il sito chiede l'accesso. Il ponte ha una sola voce di registro, per il tuo utente: `HKCU\Software\Google\Chrome\NativeMessagingHosts\com.welsho.downconvertron`.
 
 ## Per sviluppatori
 
@@ -152,7 +155,7 @@ python3 tools/check.py     # controlli: JScript ES3, id, estensione, installer, 
 **Convert** without losing transparency: WebM VP9 + alpha, ProRes 4444/XQ, Animation, PNG, CineForm 12-bit, HAP Alpha/Q, animated WebP and APNG, GIF, PNG/TIFF/EXR sequences (in and out), several images to one animation or to separate images (it asks; images per second independent from the video FPS), one image to a still clip (any length) or to PNG/WebP/TIFF/JPG, HEVC with alpha on Mac, lossless MP4 ↔ MOV remux.
 **Touch up**: trim, repeats, forward-backward loops, vertical/square/4:5 canvas with transparent borders, chroma key, checkerboard preview, EBU R128 loudness, all audio tracks at 24-bit.
 **Fast**: NVIDIA / Intel / AMD encoders on Windows, Apple chip encoders on Mac, detected automatically.
-**Chrome extension**: collects video links from your open tabs and the current page, with a mini *Video / Audio only* setup, and lists the page's images with thumbnails (lazy-loaded ones too) to send to the app or **Save to Downloads**; links land in the app's list (**Add to list**) or the download starts right away (**Download now**). Channels, live streams and pages that are not a single video start unchecked, with a warning. Clicking the logo opens the app.
+**Chrome extension**: collects video links from your open tabs and the current page, with a mini *Video / Audio only* setup, and lists the page's images with thumbnails (lazy-loaded ones too) to send to the app or **Save to Downloads**; links land in the app's list (**Add to list**) or the download starts right away (**Download now**). Channels, live streams and pages that are not a single video start unchecked, with a warning. Clicking the logo opens the app. For age-restricted, private or members-only videos turn on **Use my login**: the app uses that site's Chrome cookies only if the site asks you to sign in, and deletes them when the job ends (they reach the app through a local native-messaging bridge that accepts only this extension, never through the clipboard).
 **Studio-friendly**: drag files onto the mecha (it turns around and opens a hatch between its legs), named presets, a status screen with the full log of app, extension and tools, component lights that turn red when something is missing or outdated (COMPONENTS shows whether the Chrome extension is really installed).
 
 ### Install

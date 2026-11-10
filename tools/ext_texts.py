@@ -65,6 +65,15 @@ T = {
  "img":          ["Immagine", "Image", "图片"],
  "scaricate":    ["{0} immagini in download nella cartella Download/DownConvertron.", "{0} images downloading to the Downloads/DownConvertron folder.", "{0} 张图片正在下载到“下载/DownConvertron”文件夹。"],
  "logScaricate": ["download rapido di {0} immagini", "quick download of {0} images", "快速下载 {0} 张图片"],
+ "usaLogin":     ["Usa il mio login", "Use my login", "使用我的登录"],
+ "usaLoginTt":   ["Per i video con limite di età, privati o per abbonati: con l'interruttore acceso, a ogni invio l'estensione passa all'app i cookie di Chrome dei siti inviati. L'app li usa solo se il sito chiede l'accesso e li cancella a fine lavoro. Chrome chiede il permesso la prima volta.",
+                  "For age-restricted, private or members-only videos: when on, each time you send links the extension gives the app the Chrome cookies of those sites. The app uses them only if the site asks you to sign in and deletes them when the job ends. Chrome asks for permission the first time.",
+                  "用于有年龄限制、私密或会员专属的视频：开启后，每次发送时扩展会把所发送网站的 Chrome Cookie 交给应用。应用仅在网站要求登录时使用，任务结束后删除。首次使用时 Chrome 会请求权限。"],
+ "loginNegato":  ["Permesso non dato: i link partono senza login.", "Permission not granted: links are sent without login.", "未授予权限：链接将不带登录信息发送。"],
+ "loginNessuno": ["nessun login di Chrome per questi siti", "no Chrome login for these sites", "Chrome 中没有这些网站的登录信息"],
+ "loginInviato": ["login di Chrome passato all'app per {0} siti ({1} cookie)", "Chrome login passed to the app for {0} sites ({1} cookies)", "已将 {0} 个网站的 Chrome 登录信息交给应用（{1} 个 Cookie）"],
+ "loginNoApp":   ["Login non passato: apri una volta DownConvertron 7.0 (registra il ponte con Chrome), poi rimanda. Dettaglio: {0}", "Login not passed: open DownConvertron 7.0 once (it registers the bridge with Chrome), then send again. Details: {0}", "未能传递登录信息：请先打开一次 DownConvertron 7.0（它会向 Chrome 注册桥接程序），然后重新发送。详情：{0}"],
+ "conLogin":     [" (con login)", " (with login)", "（含登录）"],
  "erroreDownload":["Download non riuscito: {0}", "Download failed: {0}", "下载失败：{0}"],
 }
 out = {"it": {}, "en": {}, "zh": {}}

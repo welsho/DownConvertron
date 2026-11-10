@@ -73,6 +73,15 @@ if pw:
 apri = open(os.path.join(ROOT, 'windows', 'apri.js'), encoding='utf-8').read()
 m = re.search(r'var APRI_JS = (".*?");\n', HTA, re.S)
 (ok('lanciatore incorporato aggiornato') if m and json.loads(m.group(1).replace('<\\/', '</')) == apri else bad('lanciatore incorporato non aggiornato (python3 tools/embed.py)'))
+# 4d. «Usa il mio login»: ponte native messaging incorporato e ID dell'estensione uguale ovunque (dalla chiave del manifest)
+import hashlib
+nmh = open(os.path.join(ROOT, 'windows', 'dcvt_host.ps1'), encoding='utf-8').read()
+m = re.search(r'var NMH_PS = (".*?");\n', HTA, re.S)
+(ok('ponte del login incorporato aggiornato') if m and json.loads(m.group(1).replace('<\\/', '</')) == nmh else bad('ponte del login incorporato non aggiornato (python3 tools/embed.py)'))
+man = json.load(open(os.path.join(ROOT, 'extension', 'manifest.json'), encoding='utf-8'))
+eid = ''.join(chr(97 + int(c, 16)) for c in hashlib.sha256(base64.b64decode(man.get('key', ''))).hexdigest()[:32]) if man.get('key') else ''
+ids = [re.search(r'EXT_ID = "([a-p]{32})"', t) for t in (HTA, open(os.path.join(ROOT, 'mac', 'src', 'main.js'), encoding='utf-8').read())]
+(ok('ID estensione %s uguale in manifest, app e Mac' % eid) if eid and all(i and i.group(1) == eid for i in ids) else bad('ID estensione diverso tra manifest (key), HTA e mac/src/main.js'))
 if os.path.exists(bat):
     mb = re.search(r"\$APRI_B64 = @'\n(.*?)\n'@", open(bat, encoding='utf-8').read(), re.S)
     (ok('installer: contiene il lanciatore attuale') if mb and base64.b64decode(re.sub(r'\s', '', mb.group(1))).decode() == apri else bad('installer: lanciatore assente o vecchio'))

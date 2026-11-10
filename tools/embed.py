@@ -34,6 +34,11 @@ apri = open(os.path.join(ROOT, 'windows', 'apri.js'), encoding='utf-8').read()
 assert all(ord(c) < 128 for c in apri), 'apri.js non ASCII'
 s, n = re.subn(r'var APRI_JS = ".*?";\n', lambda m: 'var APRI_JS = ' + json.dumps(apri).replace('</', '<\\/') + ';\n', s, flags=re.S)
 assert n == 1, n
+# 2c. ponte native messaging per «Usa il mio login» dell'estensione (windows/dcvt_host.ps1)
+nmh = open(os.path.join(ROOT, 'windows', 'dcvt_host.ps1'), encoding='utf-8').read()
+assert all(ord(c) < 128 for c in nmh), 'dcvt_host.ps1 non ASCII'
+s, n = re.subn(r'var NMH_PS = ".*?";\n', lambda m: 'var NMH_PS = ' + json.dumps(nmh).replace('</', '<\\/') + ';\n', s, flags=re.S)
+assert n == 1, n
 # 3. traduzioni (i18n/strings.json: frase italiana -> en, zh)
 db = json.load(open(os.path.join(ROOT, 'i18n', 'strings.json'), encoding='utf-8'))
 tr = {'en': {}, 'zh': {}}

@@ -56,6 +56,13 @@ var DCVT_TESTI = {
 "img": "Immagine",
 "scaricate": "{0} immagini in download nella cartella Download/DownConvertron.",
 "logScaricate": "download rapido di {0} immagini",
+"usaLogin": "Usa il mio login",
+"usaLoginTt": "Per i video con limite di et\u00e0, privati o per abbonati: con l'interruttore acceso, a ogni invio l'estensione passa all'app i cookie di Chrome dei siti inviati. L'app li usa solo se il sito chiede l'accesso e li cancella a fine lavoro. Chrome chiede il permesso la prima volta.",
+"loginNegato": "Permesso non dato: i link partono senza login.",
+"loginNessuno": "nessun login di Chrome per questi siti",
+"loginInviato": "login di Chrome passato all'app per {0} siti ({1} cookie)",
+"loginNoApp": "Login non passato: apri una volta DownConvertron 7.0 (registra il ponte con Chrome), poi rimanda. Dettaglio: {0}",
+"conLogin": " (con login)",
 "erroreDownload": "Download non riuscito: {0}"
 },
 "en": {
@@ -114,6 +121,13 @@ var DCVT_TESTI = {
 "img": "Image",
 "scaricate": "{0} images downloading to the Downloads/DownConvertron folder.",
 "logScaricate": "quick download of {0} images",
+"usaLogin": "Use my login",
+"usaLoginTt": "For age-restricted, private or members-only videos: when on, each time you send links the extension gives the app the Chrome cookies of those sites. The app uses them only if the site asks you to sign in and deletes them when the job ends. Chrome asks for permission the first time.",
+"loginNegato": "Permission not granted: links are sent without login.",
+"loginNessuno": "no Chrome login for these sites",
+"loginInviato": "Chrome login passed to the app for {0} sites ({1} cookies)",
+"loginNoApp": "Login not passed: open DownConvertron 7.0 once (it registers the bridge with Chrome), then send again. Details: {0}",
+"conLogin": " (with login)",
 "erroreDownload": "Download failed: {0}"
 },
 "zh": {
@@ -172,6 +186,13 @@ var DCVT_TESTI = {
 "img": "\u56fe\u7247",
 "scaricate": "{0} \u5f20\u56fe\u7247\u6b63\u5728\u4e0b\u8f7d\u5230\u201c\u4e0b\u8f7d/DownConvertron\u201d\u6587\u4ef6\u5939\u3002",
 "logScaricate": "\u5feb\u901f\u4e0b\u8f7d {0} \u5f20\u56fe\u7247",
+"usaLogin": "\u4f7f\u7528\u6211\u7684\u767b\u5f55",
+"usaLoginTt": "\u7528\u4e8e\u6709\u5e74\u9f84\u9650\u5236\u3001\u79c1\u5bc6\u6216\u4f1a\u5458\u4e13\u5c5e\u7684\u89c6\u9891\uff1a\u5f00\u542f\u540e\uff0c\u6bcf\u6b21\u53d1\u9001\u65f6\u6269\u5c55\u4f1a\u628a\u6240\u53d1\u9001\u7f51\u7ad9\u7684 Chrome Cookie \u4ea4\u7ed9\u5e94\u7528\u3002\u5e94\u7528\u4ec5\u5728\u7f51\u7ad9\u8981\u6c42\u767b\u5f55\u65f6\u4f7f\u7528\uff0c\u4efb\u52a1\u7ed3\u675f\u540e\u5220\u9664\u3002\u9996\u6b21\u4f7f\u7528\u65f6 Chrome \u4f1a\u8bf7\u6c42\u6743\u9650\u3002",
+"loginNegato": "\u672a\u6388\u4e88\u6743\u9650\uff1a\u94fe\u63a5\u5c06\u4e0d\u5e26\u767b\u5f55\u4fe1\u606f\u53d1\u9001\u3002",
+"loginNessuno": "Chrome \u4e2d\u6ca1\u6709\u8fd9\u4e9b\u7f51\u7ad9\u7684\u767b\u5f55\u4fe1\u606f",
+"loginInviato": "\u5df2\u5c06 {0} \u4e2a\u7f51\u7ad9\u7684 Chrome \u767b\u5f55\u4fe1\u606f\u4ea4\u7ed9\u5e94\u7528\uff08{1} \u4e2a Cookie\uff09",
+"loginNoApp": "\u672a\u80fd\u4f20\u9012\u767b\u5f55\u4fe1\u606f\uff1a\u8bf7\u5148\u6253\u5f00\u4e00\u6b21 DownConvertron 7.0\uff08\u5b83\u4f1a\u5411 Chrome \u6ce8\u518c\u6865\u63a5\u7a0b\u5e8f\uff09\uff0c\u7136\u540e\u91cd\u65b0\u53d1\u9001\u3002\u8be6\u60c5\uff1a{0}",
+"conLogin": "\uff08\u542b\u767b\u5f55\uff09",
 "erroreDownload": "\u4e0b\u8f7d\u5931\u8d25\uff1a{0}"
 }
 };

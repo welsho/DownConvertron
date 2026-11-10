@@ -97,9 +97,10 @@ function descriviModo() {
    le sole immagini partono sempre, con il loro formato separato */
 function soloImmagini() { const s = scelti(); return s.length > 0 && s.every(v => v.img); }
 function puoAvviare() { return modo !== "app" || soloImmagini(); }
-function intestazioni(avvia) {
+function intestazioni(avvia, login) {
   const h = ["#ext=" + VERS, "#lang=" + LANG, "#mode=" + modo];
   if (avvia) h.push("#start=1");                                    /* l'app avvia il download da sola */
+  if (login) h.push("#cookies=" + login);                           /* solo il nome del file scritto dal ponte, mai i cookie */
   if (scelti().some(v => v.img)) h.push("#imgfmt=" + document.getElementById("if").value);
   /* pagina da cui vengono le immagini: l'app la usa come Referer (CDN che rifiutano le immagini chieste da fuori) */
   if (paginaImmagini && voci.immagini.some(v => v.scelto)) h.push("#ref=" + paginaImmagini);
@@ -322,6 +323,59 @@ async function scaricaSubito() {
   nota.className = "nota " + (ko ? (ok ? "warn" : "err") : "ok");
   nota.textContent = (ok ? t("scaricate", ok) + " " : "") + (ko ? t("nonRiuscite", ko, errore) : "");
 }
+/* ---------- "Usa il mio login" ----------
+   Per i video con limite di eta', privati o per abbonati. Con l'interruttore acceso, a ogni invio leggo i cookie di Chrome
+   dei siti inviati e li passo al ponte native messaging dell'app (registrato da DownConvertron, accetta solo questa
+   estensione), che li scrive in un file della cartella dati; negli appunti viaggia solo il nome del file (token casuale).
+   L'app li usa solo se il sito chiede l'accesso e li cancella a fine lavoro. I permessi (cookie, ponte, tutti i siti) sono
+   opzionali: Chrome li chiede quando accendi l'interruttore e li tolgo quando lo spegni. */
+const PONTE = "com.welsho.downconvertron";
+const PERMESSI_LOGIN = { permissions: ["cookies", "nativeMessaging"], origins: ["<all_urls>"] };
+/* dominio da cui leggere i cookie: www.youtube.com e youtu.be -> youtube.com, foo.bbc.co.uk -> bbc.co.uk */
+function dominioBase(u) {
+  let h;
+  try { h = new URL(u).hostname.toLowerCase(); } catch (e) { return ""; }
+  if (!h || /^[\d.]+$/.test(h) || h.indexOf(".") < 0) return h;
+  if (h === "youtu.be" || /(^|\.)youtube-nocookie\.com$/.test(h)) return "youtube.com";
+  const p = h.split(".");
+  const n = p.length > 2 && p[p.length - 1].length === 2 && /^(co|com|net|org|gov|edu|ac|ne|or)$/.test(p[p.length - 2]) ? 3 : 2;
+  return p.slice(-n).join(".");
+}
+/* cookie in formato Netscape (quello di yt-dlp --cookies e di curl) */
+function rigaNetscape(c) {
+  const pulito = v => String(v).replace(/[\t\r\n]/g, "");
+  const dom = (c.hostOnly ? c.domain.replace(/^\./, "") : (c.domain.charAt(0) === "." ? c.domain : "." + c.domain));
+  return (c.httpOnly ? "#HttpOnly_" : "") + pulito(dom) + "\t" + (c.hostOnly ? "FALSE" : "TRUE") + "\t" + pulito(c.path || "/") + "\t" +
+    (c.secure ? "TRUE" : "FALSE") + "\t" + (c.session || !c.expirationDate ? 0 : Math.floor(c.expirationDate)) + "\t" + pulito(c.name) + "\t" + pulito(c.value);
+}
+/* "" = niente login (spento, nessun cookie, ponte assente: in quel caso lo dico nella nota e nel registro) */
+async function preparaLogin(urls) {
+  if (!document.getElementById("usaLogin").checked) return "";
+  if (!(await chrome.permissions.contains(PERMESSI_LOGIN).catch(() => false))) { mostraLogin(false); registra(t("loginNegato")); return ""; }
+  const domini = [...new Set(urls.map(dominioBase).filter(Boolean))], visti = new Set(), righe = [];
+  for (const d of domini) {
+    for (const c of await chrome.cookies.getAll({ domain: d }).catch(() => [])) {
+      const k = c.domain + "|" + c.path + "|" + c.name;
+      if (!visti.has(k)) { visti.add(k); righe.push(rigaNetscape(c)); }
+    }
+  }
+  if (!righe.length) { registra(t("loginNessuno")); return ""; }
+  const b = new Uint8Array(16); crypto.getRandomValues(b);
+  const token = Array.from(b, x => (x < 16 ? "0" : "") + x.toString(16)).join("");
+  const dati = "# Netscape HTTP Cookie File\n# DownConvertron: login di Chrome, valido solo per questo invio\n" + righe.join("\n") + "\n";
+  try {
+    const r = await chrome.runtime.sendNativeMessage(PONTE, { op: "cookies", token, data: dati });
+    if (!r || !r.ok) throw new Error((r && r.err) || "?");
+  } catch (e) {
+    const msg = t("loginNoApp", e.message || e);
+    registra(msg);
+    return { errore: msg };
+  }
+  registra(t("loginInviato", domini.length, righe.length));
+  return token;
+}
+function mostraLogin(acceso) { document.getElementById("usaLogin").checked = acceso; memo("usaLogin", acceso ? "1" : "0"); }
+
 /* avvia = true: "Scarica subito" (l'app mette in lista e avvia il download); false: "Metti in lista" */
 async function invia(avvia) {
   const usaTitoli = document.getElementById("usaTitoli").checked;
@@ -336,12 +390,17 @@ async function invia(avvia) {
   }
   const nota = document.getElementById("nota");
   avvia = avvia === true && puoAvviare();
-  registra(t("logInviati", righe.length, descriviModo()) + (avvia ? " +start" : ""));
+  /* se il login non passa, i link partono lo stesso (senza) e la nota lo dice */
+  let login = "";
+  try { login = await preparaLogin([...visti]); } catch (e) { login = { errore: t("loginNoApp", e.message || e) }; }
+  const erroreLogin = login && login.errore ? login.errore : "";
+  if (erroreLogin) login = "";
+  registra(t("logInviati", righe.length, descriviModo()) + (avvia ? " +start" : "") + (login ? " +login" : ""));
   try {
-    await navigator.clipboard.writeText(MARCATORE + "\n" + intestazioni(avvia).join("\n") + "\n" + righe.join("\n") + "\n");
+    await navigator.clipboard.writeText(MARCATORE + "\n" + intestazioni(avvia, login).join("\n") + "\n" + righe.join("\n") + "\n");
     memo("log", "[]");
-    nota.className = "nota ok";
-    nota.textContent = t(avvia ? "avviati" : "inviati", righe.length, descriviModo());
+    nota.className = erroreLogin ? "nota warn" : "nota ok";
+    nota.textContent = t(avvia ? "avviati" : "inviati", righe.length, descriviModo()) + (login ? t("conLogin") : "") + (erroreLogin ? " " + erroreLogin : "");
     if (document.getElementById("apriDopo").checked) apriApp("send");
   } catch (e) {
     nota.className = "nota err";
@@ -364,6 +423,21 @@ for (const id of ["tutteFinestre", "usaTitoli", "apriDopo"]) {
   const el = document.getElementById(id), v = memo(id);
   el.checked = v === null ? id === "apriDopo" : v === "1";
   el.onchange = () => { memo(id, el.checked ? "1" : "0"); if (id === "tutteFinestre") raccogli(); };
+}
+/* interruttore del login: i permessi si chiedono qui (serve il clic) e si tolgono quando lo spegni */
+{
+  const el = document.getElementById("usaLogin");
+  el.checked = memo("usaLogin") === "1";
+  /* lo stato vero sono i permessi: se il popup si e' chiuso mentre Chrome chiedeva il permesso, il si' conta lo stesso */
+  chrome.permissions.contains(PERMESSI_LOGIN).then(ok => mostraLogin(!!ok), () => mostraLogin(false));
+  el.onchange = () => {
+    if (el.checked) {
+      chrome.permissions.request(PERMESSI_LOGIN).then(ok => {
+        mostraLogin(!!ok);
+        if (!ok) { const nota = document.getElementById("nota"); nota.className = "nota warn"; nota.textContent = t("loginNegato"); }
+      }, e => { mostraLogin(false); const nota = document.getElementById("nota"); nota.className = "nota err"; nota.textContent = t("loginNegato") + " " + (e.message || e); });
+    } else { mostraLogin(false); chrome.permissions.remove(PERMESSI_LOGIN).catch(() => {}); }
+  };
 }
 for (const b of document.querySelectorAll("[data-tutti]")) {
   b.onclick = () => { const k = b.dataset.tutti, tutti = !voci[k].every(v => v.scelto); for (const v of voci[k]) v.scelto = tutti; disegna(k); aggiorna(); };

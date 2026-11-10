@@ -133,5 +133,27 @@ app.setAsDefaultProtocolClient("downconvertron");
 app.on("open-url", (e, u) => { e.preventDefault(); deliverProto(u); });
 ipcMain.on("proto-pending", (e) => { e.returnValue = pendingProto; pendingProto = ""; });
 app.on("second-instance", (e, argv) => { if (win) { if (win.isMinimized()) win.restore(); win.focus(); } (argv || []).forEach(deliverProto); });
-app.whenReady().then(() => { buildMenu(); createWindow(); });
+/* «Usa il mio login» dell'estensione Chrome: ponte native messaging (dcvt_host.js) registrato per il tuo utente a ogni
+   avvio, cosi' segue l'app anche se la sposti. Chrome lo avvia solo per l'estensione DownConvertron (ID fisso dalla chiave) */
+const EXT_ID = "pebnkaehmjjlhikgbcidlhkjjgonagei", NMH_NAME = "com.welsho.downconvertron";
+function nmhRegister() {
+  try {
+    const fs = require("fs"), sup = app.getPath("appData"), dir = path.join(sup, "DownConvertron", "nmhost");
+    fs.mkdirSync(dir, { recursive: true, mode: 0o700 });
+    const js = path.join(dir, "dcvt_host.js"), sh = path.join(dir, "dcvt_host.sh");
+    const q = (s) => "'" + String(s).replace(/'/g, "'\\''") + "'";
+    fs.writeFileSync(js, fs.readFileSync(path.join(__dirname, "dcvt_host.js")));
+    fs.writeFileSync(sh, "#!/bin/sh\nELECTRON_RUN_AS_NODE=1 exec " + q(process.execPath) + " " + q(js) + "\n", { mode: 0o700 });
+    fs.chmodSync(sh, 0o700);
+    const man = JSON.stringify({ name: NMH_NAME, description: "DownConvertron", path: sh, type: "stdio", allowed_origins: ["chrome-extension://" + EXT_ID + "/"] }, null, 1);
+    /* solo nei Chrome presenti (cartella del profilo gia' esistente) */
+    for (const b of ["Google/Chrome", "Google/Chrome Beta", "Chromium"]) {
+      const base = path.join(sup, b);
+      if (!fs.existsSync(base)) continue;
+      fs.mkdirSync(path.join(base, "NativeMessagingHosts"), { recursive: true });
+      fs.writeFileSync(path.join(base, "NativeMessagingHosts", NMH_NAME + ".json"), man);
+    }
+  } catch (e) { /* senza ponte l'estensione manda i link senza login e lo scrive nel registro */ }
+}
+app.whenReady().then(() => { buildMenu(); createWindow(); nmhRegister(); });
 app.on("window-all-closed", () => app.quit());

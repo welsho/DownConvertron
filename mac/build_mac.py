@@ -31,7 +31,7 @@ s = s.replace('Il percorso contiene il simbolo %', 'Il percorso contiene un cara
 rep('REPORT DEBUG DOWNCONVERTRON v' + ver, 'REPORT DEBUG DOWNCONVERTRON MAC v' + ver)
 shutil.rmtree(OUT, ignore_errors=True); os.makedirs(OUT)
 open(os.path.join(OUT, 'index.html'), 'w', encoding='utf-8').write(s)
-for f in ('main.js', 'shim.js', 'mac.js'): shutil.copy(os.path.join(ROOT, 'mac', 'src', f), os.path.join(OUT, f))
+for f in ('main.js', 'shim.js', 'mac.js', 'dcvt_host.js'): shutil.copy(os.path.join(ROOT, 'mac', 'src', f), os.path.join(OUT, f))
 json.dump({"name": "downconvertron", "productName": "DownConvertron", "version": ver,
            "description": "DownConvertron - download e conversione video per creator (designed by Welsho)",
            "main": "main.js", "author": "Daniele Moretti (Welsho)", "license": "GPL-3.0-or-later"},

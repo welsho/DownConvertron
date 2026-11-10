@@ -1407,6 +1407,18 @@
   "en": "Live and LED · HAP Alpha",
   "zh": "现场与 LED · HAP Alpha"
  },
+ "Login dell'estensione non trovato: i link si scaricano senza.": {
+  "en": "Extension login not found: the links are downloaded without it.",
+  "zh": "未找到扩展的登录信息：链接将不使用登录下载。"
+ },
+ "Login di Chrome cancellato a fine lavoro.": {
+  "en": "Chrome login deleted at the end of the job.",
+  "zh": "任务结束，Chrome 登录信息已删除。"
+ },
+ "Login di Chrome ricevuto: lo uso solo se un sito chiede l'accesso, poi lo cancello.": {
+  "en": "Chrome login received: I use it only if a site asks you to sign in, then I delete it.",
+  "zh": "已收到 Chrome 登录信息：仅在网站要求登录时使用，之后删除。"
+ },
  "Loop avanti-indietro · WebM": {
   "en": "Forward-backward loop · WebM",
   "zh": "正放-倒放循环 · WebM"
@@ -2727,6 +2739,10 @@
   "en": "{0} links received from the Chrome extension{1}: check them and press Download when you want.",
   "zh": "已从 Chrome 扩展收到 {0} 个链接{1}：检查后随时点击“下载”。"
  },
+ "{0}: il sito chiede l'accesso, riprovo con il login di Chrome mandato dall'estensione.": {
+  "en": "{0}: the site asks you to sign in, retrying with the Chrome login sent by the extension.",
+  "zh": "{0}：网站要求登录，正在用扩展发送的 Chrome 登录信息重试。"
+ },
  "· (HEVC: se era «HEVC con alfa» Apple la trasparenza potrebbe non essere letta: esporta in ProRes 4444)": {
   "en": "· (HEVC: if it was Apple «HEVC with alpha» the transparency might not be read: export to ProRes 4444)",
   "zh": "·（HEVC：若是 Apple 的“带透明 HEVC”，透明可能无法读取：请导出为 ProRes 4444）"
@@ -2775,6 +2791,14 @@
   "en": "→ Access denied by YouTube: press «Install / update components» and try again.",
   "zh": "→ YouTube 拒绝访问：点击“安装 / 更新组件”后重试。"
  },
+ "→ Accesso negato dal sito (403): il contenuto potrebbe essere privato o richiedere l'accesso. Prova «Usa login di Firefox» o premi «Installa / aggiorna componenti».": {
+  "en": "→ Access denied by the site (403): the content may be private or require signing in. Try «Use Firefox login» or press «Install / update components».",
+  "zh": "→ 网站拒绝访问 (403)：内容可能是私密的或需要登录。请尝试“使用 Firefox 登录”或点击“安装 / 更新组件”。"
+ },
+ "→ Il sito chiede l'accesso: nell'estensione Chrome accendi «Usa il mio login» e rimanda il link (oppure entra con Firefox e attiva «Usa login di Firefox»).": {
+  "en": "→ The site asks you to sign in: in the Chrome extension turn on «Use my login» and send the link again (or sign in with Firefox and turn on «Use Firefox login»).",
+  "zh": "→ 网站要求登录：在 Chrome 扩展中打开“使用我的登录”并重新发送链接（或用 Firefox 登录并打开“使用 Firefox 登录”）。"
+ },
  "→ Il video non contiene la traccia richiesta.": {
   "en": "→ The video does not contain the requested track.",
   "zh": "→ 视频不含所需的音轨。"
@@ -2790,10 +2814,6 @@
  "→ Sito o link non supportato.": {
   "en": "→ Site or link not supported.",
   "zh": "→ 不支持该网站或链接。"
- },
- "→ YouTube chiede l'accesso: entra su YouTube con Firefox e attiva «Usa login di Firefox».": {
-  "en": "→ YouTube asks you to sign in: sign in to YouTube with Firefox and enable «Use Firefox login».",
-  "zh": "→ YouTube 需要登录：用 Firefox 登录 YouTube 并启用“使用 Firefox 登录”。"
  },
  "→ ffmpeg non è riuscito a creare questo formato con queste impostazioni: prova qualità/codec «Automatico» o un altro formato. Se si ripete premi «Report debug».": {
   "en": "→ ffmpeg could not create this format with these settings: try «Automatic» quality/codec or another format. If it happens again press «Debug report».",
