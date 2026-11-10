@@ -1,0 +1,123 @@
+DownConvertron 7.0 - BETA per Mac Apple Silicon (build del 10/11/2026)
+designed by Welsho - licenza GPL-3.0
+=====================================================================
+
+[English below]
+
+ATTENZIONE: e' la PRIMA build Mac di questa versione e non e' ancora stata
+provata su un Mac vero. Se non parte, la tua segnalazione e' proprio quello
+che serve.
+
+REQUISITI: Mac con chip Apple (M1, M2, M3, M4...), macOS 13 Ventura o
+successivo. I Mac con processore Intel NON sono supportati da questa build.
+
+INSTALLAZIONE
+1. Doppio clic sullo zip (lo apre Utility Archivio). Trascina
+   DownConvertron.app nella cartella Applicazioni.
+2. Apri il Terminale (Applicazioni > Utility > Terminale), scrivi
+       bash
+   (con uno spazio dopo), trascina nella finestra il file
+   "Prepara DownConvertron.command" e premi Invio.
+   Lo script toglie la quarantena del download, firma l'app per questo Mac
+   (firma ad-hoc, non serve un account Apple) e la apre.
+   In alternativa, gli stessi due comandi a mano:
+       xattr -cr /Applications/DownConvertron.app
+       codesign --force --deep -s - /Applications/DownConvertron.app
+3. Primo avvio: premi "Installa / aggiorna componenti" (yt-dlp, ffmpeg e
+   Deno, circa 150 MB, in ~/Library/Application Support/DownConvertron/bin).
+   Niente Homebrew, niente password.
+4. Estensione Chrome: premi "Estensione Chrome" nell'app. La prima volta il
+   Mac chiede il permesso di controllare Chrome: premi OK. Poi in Chrome
+   accendi "Modalita' sviluppatore" e trascina la cartella (una volta sola).
+
+COSA PROVARE
+[ ] 1. L'app si apre? (Se no: vedi "Se non parte" sotto.)
+[ ] 2. Le quattro spie diventano verdi dopo "Installa / aggiorna componenti".
+[ ] 3. Download di un video normale (es. YouTube) e di solo audio.
+[ ] 4. Estensione: "Metti in lista" e "Scarica subito"; il logo apre l'app.
+[ ] 5. NOVITA': video con limite di eta' o privati. Entra nel sito con
+       Chrome, nell'estensione accendi "Usa il mio login" e accetta il
+       permesso, manda il video. Nel registro: "Login di Chrome ricevuto",
+       poi "riprovo con il login...", poi il download completato.
+[ ] 6. Immagini: dall'estensione e dai link; formati PNG, WebP, JPG.
+[ ] 7. Convertitore: video e immagini -> GIF / MP4 / ProRes / WebM, con la
+       trasparenza conservata.
+[ ] 8. Trascinamento di file sul robot dal Finder.
+[ ] 9. Copia (Cmd+C) di file nel Finder e "Incolla file" nell'app.
+[ ] 10. Tutto in una schermata, senza scorrere, anche durante un download.
+[ ] 11. Lingue IT / EN / 中文 (le frasi buffe del robot restano in italiano).
+
+SE NON PARTE
+Mandami l'output di questi comandi nel Terminale:
+    sw_vers
+    uname -m
+    codesign --verify --deep --strict --verbose=2 /Applications/DownConvertron.app
+    /Applications/DownConvertron.app/Contents/MacOS/Electron
+(l'ultimo avvia l'app dal Terminale e mostra gli errori: chiudila con Ctrl+C).
+
+COME SEGNALARE UN PROBLEMA
+- cosa hai fatto, cosa ti aspettavi, cosa e' successo;
+- il link usato (se si puo' condividere);
+- il registro: nello schermo sotto i piedi del robot premi SALVA o COPIA;
+- il file del pulsante "Report debug";
+- modello del Mac e versione di macOS; uno screenshot se e' un problema di
+  aspetto.
+Il registro puo' contenere link e nomi di cartelle: controllalo prima di
+inviarlo. I cookie del login non finiscono mai nel registro.
+
+PRIVACY: nessuna telemetria, nessun account, nessun server. "Usa il mio
+login" e' spento di base; acceso, passa all'app solo i cookie dei siti che
+invii, tramite un ponte locale che accetta solo l'estensione DownConvertron,
+e solo per quell'invio.
+
+DISINSTALLAZIONE: cestina DownConvertron.app. Dati e componenti sono in
+~/Library/Application Support/DownConvertron (cancellala per togliere tutto).
+L'estensione si toglie da chrome://extensions.
+
+
+=====================================================================
+ENGLISH
+=====================================================================
+WARNING: this is the FIRST Mac build of this version and it has not been
+tested on a real Mac yet. If it does not start, your report is exactly what
+is needed.
+
+REQUIREMENTS: Apple silicon Mac (M1, M2, M3, M4...), macOS 13 Ventura or
+later. Intel Macs are NOT supported by this build.
+
+INSTALL
+1. Double-click the zip and drag DownConvertron.app into Applications.
+2. Open Terminal, type   bash   (followed by a space), drag the file
+   "Prepara DownConvertron.command" into the window and press Return.
+   It removes the download quarantine, ad-hoc signs the app for this Mac
+   (no Apple account needed) and opens it. Or run by hand:
+       xattr -cr /Applications/DownConvertron.app
+       codesign --force --deep -s - /Applications/DownConvertron.app
+3. First run: press "Install / update components" (yt-dlp, ffmpeg, Deno,
+   about 150 MB). No Homebrew, no password.
+4. Chrome extension: press "Chrome extension" in the app (allow macOS to
+   control Chrome), turn on "Developer mode" in Chrome and drag the folder.
+5. Language: IT / EN / 中文 in the slot under the helmet.
+
+WHAT TO TEST: the app starts; the four lights turn green; a normal video and
+audio-only download; the extension ("Add to list", "Download now", the logo
+opens the app); NEW: age-restricted or private videos with "Use my login" in
+the extension (the log should show "Chrome login received", "retrying with
+the Chrome login...", then the finished download); images; the converter
+(GIF / MP4 / ProRes / WebM, transparency kept); dragging files from Finder;
+Cmd+C in Finder + "Paste files"; everything on one screen; languages.
+
+IF IT DOES NOT START, send me the output of:
+    sw_vers
+    uname -m
+    codesign --verify --deep --strict --verbose=2 /Applications/DownConvertron.app
+    /Applications/DownConvertron.app/Contents/MacOS/Electron
+(the last one starts the app from Terminal and shows errors; Ctrl+C to quit).
+
+REPORTING: what you did / expected / got, the link (if shareable), the log
+(SAVE or COPY under the robot's feet), the "Report debug" file, Mac model and
+macOS version, a screenshot for visual issues. The log may contain links and
+folder names: check it first. Login cookies never go into the log.
+
+UNINSTALL: trash DownConvertron.app and delete
+~/Library/Application Support/DownConvertron.

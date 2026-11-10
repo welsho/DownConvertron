@@ -126,6 +126,7 @@ npm install
 ./build.sh                 # dist/: installer Windows, HTA, app Mac, estensione
 SKIP_MAC=1 ./build.sh      # solo Windows ed estensione
 python3 tools/check.py     # controlli: JScript ES3, id, estensione, installer, ricevitore C#
+python3 tools/mac_beta_zip.py  # app Mac di prova anche senza Mac (la firma ad-hoc la fa il tester)
 ```
 
 **Regole del progetto**
@@ -166,7 +167,7 @@ python3 tools/check.py     # controlli: JScript ES3, id, estensione, installer, 
 Download only content you have the rights to use (your own, royalty-free, Creative Commons or licensed).
 
 ### Build
-`npm install && ./build.sh` creates everything in `dist/`. `python3 tools/check.py` runs the checks. The single source is `src/DownConvertron.hta` (JScript ES3 for mshta/IE11); the Mac app is generated from it with Electron. Translations live in `i18n/strings.json`. Pushing a `v*` tag builds and publishes a release.
+`npm install && ./build.sh` creates everything in `dist/`. `python3 tools/check.py` runs the checks. The single source is `src/DownConvertron.hta` (JScript ES3 for mshta/IE11); the Mac app is generated from it with Electron. Translations live in `i18n/strings.json`. Pushing a `v*` tag builds and publishes a release. `python3 tools/mac_beta_zip.py` makes a test Mac app without a Mac, straight from the official Electron zip (testers ad-hoc sign it with the included script).
 
 ### License
 [GPL-3.0-or-later](LICENSE) · designed by **Welsho**
