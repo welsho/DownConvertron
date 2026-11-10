@@ -36,12 +36,15 @@ function b64u16(s) {
   }
   return o;
 }
-/* AppActivate non ripristina una finestra ridotta a icona: lo fa ShowWindowAsync (PowerShell nascosto) */
+/* AppActivate non ripristina una finestra ridotta a icona (lo fa ShowWindowAsync) e Windows spesso gli nega il primo
+   piano: SetForegroundWindow con Alt premuto (PowerShell nascosto) lo ottiene */
 function restore(pid) {
   var ps = sh.ExpandEnvironmentStrings("%SystemRoot%") + "\\System32\\WindowsPowerShell\\v1.0\\powershell.exe";
   var code = "$h = (Get-Process -Id " + pid + ").MainWindowHandle; if ($h -ne 0) { " +
-    "$w = Add-Type -Name W -Namespace DCVT -PassThru -MemberDefinition '[DllImport(\"user32.dll\")] public static extern bool IsIconic(IntPtr h); [DllImport(\"user32.dll\")] public static extern bool ShowWindowAsync(IntPtr h, int c);'; " +
-    "if ($w::IsIconic($h)) { [void]$w::ShowWindowAsync($h, 9) } }";
+    "$w = Add-Type -Name W -Namespace DCVT -PassThru -MemberDefinition '[DllImport(\"user32.dll\")] public static extern bool IsIconic(IntPtr h); [DllImport(\"user32.dll\")] public static extern bool ShowWindowAsync(IntPtr h, int c); " +
+    "[DllImport(\"user32.dll\")] public static extern bool SetForegroundWindow(IntPtr h); [DllImport(\"user32.dll\")] public static extern void keybd_event(byte v, byte s, uint f, UIntPtr e);'; " +
+    "if ($w::IsIconic($h)) { [void]$w::ShowWindowAsync($h, 9) }; " +
+    "$w::keybd_event(0x12, 0, 0, [UIntPtr]::Zero); [void]$w::SetForegroundWindow($h); $w::keybd_event(0x12, 0, 2, [UIntPtr]::Zero) }";
   try { sh.Run('"' + ps + '" -NoProfile -NonInteractive -WindowStyle Hidden -EncodedCommand ' + b64u16(code), 0, true); } catch (x) {}
 }
 

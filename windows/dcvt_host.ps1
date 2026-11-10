@@ -36,6 +36,56 @@ try {
     }
     Reply @{ ok = $true; links = @($l) }; exit 0
   }
+  # logo e invio dell'estensione: avvia l'app o la porta in primo piano (senza passare da downconvertron://,
+  # che Chrome blocca se tra il clic e l'apertura passa troppo tempo e che non puo' portare l'app davanti)
+  if ($msg.op -eq 'open') {
+    $link = [string]$msg.url
+    if ($link -notmatch '^downconvertron://[A-Za-z0-9_./?=&%-]*$') { $link = 'downconvertron://open' }
+    $app = Get-CimInstance Win32_Process -Filter "Name = 'mshta.exe'" -ErrorAction SilentlyContinue |
+      Where-Object { [string]$_.CommandLine -match '[\\/"]DownConvertron[^\\/"]*\.hta' } | Select-Object -First 1
+    $how = 'front'; $wait = 2
+    if ($app) { $appId = $app.ProcessId }
+    else {
+      # percorso dell'app: lo scrive DownConvertron a ogni avvio (app.txt accanto a questo script)
+      $hta = ''; $cfg = Join-Path $PSScriptRoot 'app.txt'
+      if (Test-Path -LiteralPath $cfg) { $hta = ([IO.File]::ReadAllText($cfg, (New-Object Text.UTF8Encoding $false))).Trim() }
+      if (-not $hta -or -not (Test-Path -LiteralPath $hta)) { throw 'app non trovata' }
+      # avvio con WMI: il processo nasce fuori dal gruppo di processi del ponte, che Chrome chiude a fine messaggio
+      $cmd = '"' + (Join-Path $env:SystemRoot 'System32\mshta.exe') + '" "' + $hta + '" "' + $link + '"'
+      $r = Invoke-CimMethod -ClassName Win32_Process -MethodName Create -Arguments @{ CommandLine = $cmd }
+      if ($r.ReturnValue -ne 0) { throw ('avvio non riuscito (' + $r.ReturnValue + ')') }
+      $appId = $r.ProcessId; $how = 'start'; $wait = 20
+    }
+    $win = [IntPtr]::Zero; $end = (Get-Date).AddSeconds($wait)
+    do {
+      $pr = Get-Process -Id $appId -ErrorAction SilentlyContinue
+      if ($pr -and $pr.MainWindowHandle -ne [IntPtr]::Zero) { $win = $pr.MainWindowHandle; break }
+      Start-Sleep -Milliseconds 200
+    } while ((Get-Date) -lt $end)
+    $front = $false
+    if ($win -ne [IntPtr]::Zero) {
+      $u = Add-Type -Name W -Namespace DCVT -PassThru -MemberDefinition @'
+[DllImport("user32.dll")] public static extern bool IsIconic(IntPtr h);
+[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr h, int c);
+[DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr h);
+[DllImport("user32.dll")] public static extern bool BringWindowToTop(IntPtr h);
+[DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
+[DllImport("user32.dll")] public static extern void keybd_event(byte vk, byte scan, uint flags, UIntPtr extra);
+'@
+      if ($u::IsIconic($win)) { [void]$u::ShowWindowAsync($win, 9) }
+      # Windows non lascia cambiare il primo piano a un programma in secondo piano, ma lo permette con Alt premuto:
+      # Alt giu', primo piano, Alt su (il rilascio arriva gia' all'app, quindi Chrome non apre il suo menu)
+      for ($k = 0; $k -lt 3 -and -not $front; $k++) {
+        $u::keybd_event(0x12, 0, 0, [UIntPtr]::Zero)
+        [void]$u::SetForegroundWindow($win)
+        $u::keybd_event(0x12, 0, 2, [UIntPtr]::Zero)
+        [void]$u::BringWindowToTop($win)
+        Start-Sleep -Milliseconds 150
+        $front = ($u::GetForegroundWindow() -eq $win)
+      }
+    }
+    Reply @{ ok = $true; how = $how; front = $front }; exit 0
+  }
   if ($msg.op -ne 'cookies') { throw 'operazione sconosciuta' }
   $tok = [string]$msg.token; $data = [string]$msg.data
   if ($tok -notmatch '^[a-z0-9]{16,64}$') { throw 'token non valido' }

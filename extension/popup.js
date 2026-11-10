@@ -263,16 +263,25 @@ async function raccogli() {
   return [voci.schede.length, voci.pagina.length + voci.immagini.length];
 }
 
-/* ---------- apertura dell'app (logo o dopo l'invio) ---------- */
+/* ---------- apertura dell'app (logo o dopo l'invio) ----------
+   Prima il ponte native messaging: avvia l'app o la porta in primo piano, senza la domanda di Chrome.
+   Il collegamento downconvertron:// resta solo come riserva (ponte assente o app vecchia): Chrome lo blocca
+   se dal clic e' passato troppo tempo e Windows non lascia all'app venire davanti. true = aperta dal ponte */
 async function apriApp(motivo) {
   const url = "downconvertron://" + motivo + "?ext=" + VERS;
   registra(t("logApri"));
+  try {
+    const r = await chrome.runtime.sendNativeMessage(PONTE, { op: "open", url });
+    if (r && r.ok) { registra(t(r.how === "front" ? "logDavanti" : "logAvviata") + (r.front === false ? " (" + t("logNonDavanti") + ")" : "")); return true; }
+    throw new Error((r && r.err) || "?");
+  } catch (e) { registra(t("logRiserva", e.message || e)); }
   try {
     const [att] = await chrome.tabs.query({ active: true, currentWindow: true });
     /* sulla scheda attuale la pagina resta dov'e': Chrome chiede solo se aprire l'app */
     if (att && /^https?:/.test(att.url || "")) await chrome.tabs.update(att.id, { url });
     else await chrome.tabs.create({ url });
   } catch (e) { try { await chrome.tabs.create({ url }); } catch (e2) {} }
+  return false;
 }
 
 /* download rapido: le immagini scelte vanno subito nella cartella Download/DownConvertron (senza passare dall'app) */
@@ -328,9 +337,9 @@ async function scaricaSubito() {
    dei siti inviati e li passo al ponte native messaging dell'app (registrato da DownConvertron, accetta solo questa
    estensione), che li scrive in un file della cartella dati; negli appunti viaggia solo il nome del file (token casuale).
    L'app li usa solo se il sito chiede l'accesso e li cancella a fine lavoro. I permessi (cookie, ponte, tutti i siti) sono
-   opzionali: Chrome li chiede quando accendi l'interruttore e li tolgo quando lo spegni. */
+   fissi nel manifest: la richiesta facoltativa di Chrome chiudeva il popup e il login non partiva. Acceso di base. */
 const PONTE = "com.welsho.downconvertron";
-/* il ponte (nativeMessaging) e' un permesso fisso: serve anche a sapere quali link chiedono l'accesso. Facoltativi i cookie */
+/* permessi del login: fissi; se mancano, in Chrome e' ancora caricato il manifest vecchio (va ricaricata) */
 const PERMESSI_LOGIN = { permissions: ["cookies"], origins: ["<all_urls>"] };
 /* dominio da cui leggere i cookie: www.youtube.com e youtu.be -> youtube.com, foo.bbc.co.uk -> bbc.co.uk */
 function dominioBase(u) {
@@ -352,7 +361,7 @@ function rigaNetscape(c) {
 /* "" = niente login (spento, nessun cookie, ponte assente: in quel caso lo dico nella nota e nel registro) */
 async function preparaLogin(urls) {
   if (!document.getElementById("usaLogin").checked) return "";
-  if (!(await chrome.permissions.contains(PERMESSI_LOGIN).catch(() => false))) { mostraLogin(false); registra(t("loginNegato")); return ""; }
+  if (!(await chrome.permissions.contains(PERMESSI_LOGIN).catch(() => false))) { registra(t("loginNegato")); return { errore: t("loginNegato") }; }
   return mandaCookie(urls);
 }
 /* cookie di Chrome dei siti di questi link -> ponte -> token; "" se Chrome non ha cookie, { errore } se il ponte non risponde */
@@ -379,12 +388,11 @@ async function mandaCookie(urls) {
   registra(t("loginInviato", domini.length, righe.length));
   return token;
 }
-function mostraLogin(acceso) { document.getElementById("usaLogin").checked = acceso; memo("usaLogin", acceso ? "1" : "0"); }
 
 /* ---------- "Riprova con il mio login" ----------
    L'app scrive i link finiti in errore perche' il sito chiede l'accesso; qui li chiedo al ponte all'apertura e,
-   se ci sono, mostro il riquadro. Il pulsante chiede il permesso dei cookie (solo la prima volta) e rimanda
-   quei link all'app con il login, da usare subito, e il download riparte da solo. */
+   se ci sono, mostro il riquadro. Il pulsante rimanda quei link all'app con il login, da usare subito, e il
+   download riparte da solo (anche con l'interruttore spento: il clic sul pulsante vale come scelta). */
 let richieste = [];
 async function controllaRichieste() {
   try {
@@ -405,7 +413,7 @@ async function riprovaConLogin() {
   b.disabled = true;
   try {
     let login = "";
-    try { login = await mandaCookie(urls); } catch (e) { login = { errore: t("loginNoApp", e.message || e) }; }
+    try { login = (await chrome.permissions.contains(PERMESSI_LOGIN).catch(() => false)) ? await mandaCookie(urls) : { errore: t("loginNegato") }; } catch (e) { login = { errore: t("loginNoApp", e.message || e) }; }
     if (!login || login.errore) { nota.className = "nota err"; nota.textContent = login && login.errore ? login.errore : t("loginNessunoNota"); return; }
     const h = ["#ext=" + VERS, "#lang=" + LANG, "#mode=app", "#cookies=" + login, "#login=retry"];
     let lg = [];
@@ -421,13 +429,7 @@ async function riprovaConLogin() {
   } catch (e) { nota.className = "nota err"; nota.textContent = t("erroreAppunti", e.message || e); }
   finally { b.disabled = false; }
 }
-document.getElementById("loginRiprova").onclick = () => {
-  /* il permesso va chiesto subito nel clic (Chrome lo vuole dentro il gesto) */
-  chrome.permissions.request(PERMESSI_LOGIN).then(ok => {
-    if (ok) riprovaConLogin();
-    else { const nota = document.getElementById("nota"); nota.className = "nota warn"; nota.textContent = t("loginNegato"); }
-  }, e => { const nota = document.getElementById("nota"); nota.className = "nota err"; nota.textContent = t("loginNegato") + " " + (e.message || e); });
-};
+document.getElementById("loginRiprova").onclick = riprovaConLogin;
 
 /* avvia = true: "Scarica subito" (l'app mette in lista e avvia il download); false: "Metti in lista" */
 async function invia(avvia) {
@@ -477,25 +479,20 @@ for (const id of ["tutteFinestre", "usaTitoli", "apriDopo"]) {
   el.checked = v === null ? id === "apriDopo" : v === "1";
   el.onchange = () => { memo(id, el.checked ? "1" : "0"); if (id === "tutteFinestre") raccogli(); };
 }
-/* interruttore del login: i permessi si chiedono qui (serve il clic) e si tolgono quando lo spegni */
+/* interruttore del login: acceso di base (chiave nuova: il vecchio "spento" veniva spesso dal popup chiuso dalla richiesta dei permessi) */
 {
   const el = document.getElementById("usaLogin");
-  el.checked = memo("usaLogin") === "1";
-  /* acceso solo se l'hai acceso tu e Chrome ha ancora il permesso (il permesso da solo puo' venire da "Riprova") */
-  if (el.checked) chrome.permissions.contains(PERMESSI_LOGIN).then(ok => { if (!ok) mostraLogin(false); }, () => mostraLogin(false));
-  el.onchange = () => {
-    if (el.checked) {
-      chrome.permissions.request(PERMESSI_LOGIN).then(ok => {
-        mostraLogin(!!ok);
-        if (!ok) { const nota = document.getElementById("nota"); nota.className = "nota warn"; nota.textContent = t("loginNegato"); }
-      }, e => { mostraLogin(false); const nota = document.getElementById("nota"); nota.className = "nota err"; nota.textContent = t("loginNegato") + " " + (e.message || e); });
-    } else { mostraLogin(false); chrome.permissions.remove(PERMESSI_LOGIN).catch(() => {}); }
-  };
+  el.checked = memo("usaLogin2") !== "0";
+  el.onchange = () => memo("usaLogin2", el.checked ? "1" : "0");
 }
 for (const b of document.querySelectorAll("[data-tutti]")) {
   b.onclick = () => { const k = b.dataset.tutti, tutti = !voci[k].every(v => v.scelto); for (const v of voci[k]) v.scelto = tutti; disegna(k); aggiorna(); };
 }
-document.getElementById("logo").onclick = () => { document.getElementById("nota").className = "nota"; document.getElementById("nota").textContent = t("apertura"); apriApp("open"); };
+document.getElementById("logo").onclick = () => {
+  const nota = document.getElementById("nota");
+  nota.className = "nota"; nota.textContent = t("apertura");
+  apriApp("open").then(ok => { if (!ok) nota.textContent = t("aperturaProto"); });
+};
 document.getElementById("invia").onclick = () => invia(false);
 document.getElementById("avvia").onclick = () => invia(true);
 document.getElementById("scaricaSubito").onclick = scaricaSubito;

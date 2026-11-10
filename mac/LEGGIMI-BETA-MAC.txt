@@ -37,8 +37,8 @@ COSA PROVARE
 [ ] 4. Estensione: "Metti in lista" e "Scarica subito"; il logo apre l'app.
 [ ] 5. NOVITA': video con limite di eta' o privati. Entra nel sito con
        Chrome e manda il video; quando fallisce apri l'estensione, premi
-       "Riprova con il mio login" nel riquadro arancione e accetta il permesso
-       (solo la prima volta). Il download riparte da solo.
+       "Riprova con il mio login" nel riquadro arancione. Il download
+       riparte da solo ("Usa il mio login" e' acceso di base).
 [ ] 6. Immagini: dall'estensione e dai link; formati PNG, WebP, JPG.
 [ ] 7. Convertitore: video e immagini -> GIF / MP4 / ProRes / WebM, con la
        trasparenza conservata.
@@ -66,7 +66,7 @@ Il registro puo' contenere link e nomi di cartelle: controllalo prima di
 inviarlo. I cookie del login non finiscono mai nel registro.
 
 PRIVACY: nessuna telemetria, nessun account, nessun server. "Usa il mio
-login" e' spento di base; acceso, passa all'app solo i cookie dei siti che
+login" e' acceso di base (si puo' spegnere); acceso, passa all'app solo i cookie dei siti che
 invii, tramite un ponte locale che accetta solo l'estensione DownConvertron,
 e solo per quell'invio.
 

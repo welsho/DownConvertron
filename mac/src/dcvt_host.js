@@ -32,6 +32,14 @@ function handle(msg) {
     } catch (e) { /* nessun file: nessuna richiesta */ }
     return { ok: true, links };
   }
+  /* logo e invio dell'estensione: apre l'app (o la porta davanti) con il suo link, senza la domanda di Chrome.
+     "open" passa da LaunchServices: l'app riceve open-url, si mostra e prende il primo piano (main.js, deliverProto) */
+  if (msg.op === "open") {
+    const link = /^downconvertron:\/\/[\w./?=&%-]*$/.test(String(msg.url || "")) ? String(msg.url) : "downconvertron://open";
+    if (process.platform !== "darwin") throw new Error("solo Mac");
+    require("child_process").spawn("/usr/bin/open", [link], { detached: true, stdio: "ignore" }).unref();
+    return { ok: true, how: "open" };
+  }
   if (msg.op !== "cookies") throw new Error("operazione sconosciuta");
   const tok = String(msg.token || ""), data = String(msg.data || "");
   if (!/^[a-z0-9]{16,64}$/.test(tok)) throw new Error("token non valido");
