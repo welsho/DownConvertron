@@ -1662,7 +1662,11 @@ function runCommand(inner) {
   catch (e) { state.lastErr = "Impossibile avviare il processo."; stepDone(false); return; }
   state.startedAt = new Date().getTime();
   if (state.timer) clearInterval(state.timer);
-  state.timer = setInterval(poll, POLL_MS);
+  /* in mshta un timer fermato dentro il suo stesso giro, se poi nello stesso giro parte un comando che aspetta
+     (probeFile prima di convertire un'immagine, controllo del Content-Type...), riparte da solo: 20 s dopo la fine
+     segnava come errore l'ultimo elemento e continuava all'infinito (provato). Ogni timer controlla di essere quello attivo */
+  var id = setInterval(function () { if (state.timer !== id) { clearInterval(id); return; } poll(); }, POLL_MS);
+  state.timer = id;
 }
 function jobFiles(tag) {
   var t = newToken();

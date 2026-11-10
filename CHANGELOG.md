@@ -1,6 +1,7 @@
 # Changelog
 
 ## 7.0 — DownConvertron
+- **Download e conversioni, errore fantasma dopo la fine**: dopo un'immagine convertita (o un link riconosciuto come immagine dopo «Unsupported URL»), il controllo del processo ripartiva da solo. 20 secondi dopo la fine segnava come errore l'ultimo elemento riuscito («Il processo non è partito»), continuava senza fermarsi e faceva fallire anche le conversioni successive nel convertitore. Ora ogni controllo si ferma se non è più quello attivo.
 - **Immagini SVG**: le semitrasparenze e i bordi sfumati non escono più scuri nelle conversioni in PNG, WebP e JPG (il decoder di ffmpeg dà i colori premoltiplicati: ora vengono riportati ai colori veri).
 - **Immagini protette contro il prelievo da altri siti**: l'estensione manda all'app la pagina da cui vengono le immagini e l'app la usa come Referer, come fa Chrome (indirizzo intero sullo stesso sito, solo il dominio verso altri siti).
 - **App Mac su Electron 45** (prima 33, non più supportato). Gli appunti, che servono a ricevere i link dall'estensione, passano dal processo principale come richiede Electron 44+. **Serve macOS 13 Ventura o successivo.** Il messaggio del permesso per Chrome mostrava ancora il vecchio nome dell'app.
