@@ -204,7 +204,8 @@
     this.item = function () { return items[i]; };
   };
   window.clipboardData = {
-    getData: function () { return electron.clipboard.readText(); },
+    /* copia tenuta dal processo principale (da Electron 44 la pagina non legge piu' gli appunti) */
+    getData: function () { return String(ipc.sendSync("clip-read") || ""); },
     /* scrittura dal processo principale, senza attendere: l'interfaccia non si blocca mai */
     setData: function (f, t) { ipc.send("clip-write", String(t)); return true; }
   };

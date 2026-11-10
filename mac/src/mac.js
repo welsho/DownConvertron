@@ -106,14 +106,11 @@
   /* incolla file copiati nel Finder (Cmd+C): elenco dei file dagli appunti */
   cvPasteFiles = function () {
     if (state.busy) return;
-    var list = [];
-    try {
-      var x = M.electron.clipboard.read("NSFilenamesPboardType") || "", m, re = /<string>([^<]+)<\/string>/g;
-      while ((m = re.exec(x))) list.push(m[1].replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&apos;/g, "'").replace(/&quot;/g, '"'));
-      if (!list.length) { var u = M.electron.clipboard.read("public.file-url") || ""; if (/^file:/.test(u)) list.push(decodeURIComponent(u.replace(/^file:\/\//, ""))); }
-    } catch (e) {}
-    if (!list.length) { showMsg("Negli appunti non ci sono file: selezionali nel Finder, premi Cmd+C e poi \u00abIncolla file\u00bb.", "err"); return; }
-    cvAddDropped(list);
+    /* gli appunti li legge il processo principale (Electron 44+: API asincrona), la risposta arriva dopo */
+    M.ipc.invoke("clip-files").then(function (list) {
+      if (!list || !list.length) { showMsg("Negli appunti non ci sono file: selezionali nel Finder, premi Cmd+C e poi \u00abIncolla file\u00bb.", "err"); return; }
+      if (!state.busy) cvAddDropped(list);
+    }, function () { showMsg("Negli appunti non ci sono file: selezionali nel Finder, premi Cmd+C e poi \u00abIncolla file\u00bb.", "err"); });
   };
   /* percorsi mostrati all'utente con le barre del Mac */
   extDir = function () { return M.P(DIR_APP) + "/chrome-extension"; };

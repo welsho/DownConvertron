@@ -8,7 +8,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 VER=$(grep -o 'version="[0-9.]*"' src/DownConvertron.hta | head -1 | grep -o '[0-9.]*')
-ELECTRON=33.4.11
+ELECTRON=45.2.3
 # su Windows (Git Bash) python3 spesso e' solo l'alias dello Store: usa python
 PY=python3; $PY -c "" 2>/dev/null || PY=python
 echo "== DownConvertron $VER"

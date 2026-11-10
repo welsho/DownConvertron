@@ -1,4 +1,4 @@
-DOWNCONVERTRON 7.0 per Mac / for Mac / 适用于 Mac  (Apple Silicon: M1, M2, M3, M4)  -  designed by Welsho
+DOWNCONVERTRON 7.0 per Mac / for Mac / 适用于 Mac  (Apple Silicon: M1, M2, M3, M4 - macOS 13+)  -  designed by Welsho
 
 === ITALIANO ===
 INSTALLAZIONE (una volta sola)

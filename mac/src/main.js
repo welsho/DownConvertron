@@ -35,6 +35,9 @@ function createWindow() {
     if (c === 0) e.preventDefault();
   });
   win.on("closed", () => { win = null; });
+  /* finestra di nuovo davanti (per esempio dopo un invio dall'estensione): copia degli appunti aggiornata subito */
+  win.on("focus", () => clipRefresh());
+  clipRefresh();
 }
 
 /* ---------- servizi richiesti dall'interfaccia (sincroni, come in Windows) ---------- */
@@ -67,7 +70,39 @@ ipcMain.on("set-bounds", (e, b) => {
 /* rispondo subito all'interfaccia e apro dopo: aprire file, link o scrivere negli appunti non deve mai bloccare la finestra */
 ipcMain.on("open-path", (e, p) => { e.returnValue = true; setImmediate(() => { shell.openPath(String(p || "")).catch(() => {}); }); });
 ipcMain.on("open-url", (e, u) => { e.returnValue = true; if (/^https:\/\//i.test(String(u))) setImmediate(() => { shell.openExternal(String(u)).catch(() => {}); }); });
-ipcMain.on("clip-write", (e, t) => { setImmediate(() => { try { clipboard.writeText(String(t || "")); } catch (x) {} }); });
+/* appunti: da Electron 44 la pagina non puo' piu' usarli e qui sono asincroni (Promise). Tengo una copia del testo
+   e la do subito all'interfaccia, che resta sincrona come in Windows; la copia si aggiorna dopo ogni lettura
+   (l'app controlla gli appunti ogni 1,5 s) e quando la finestra torna davanti. Durante una scrittura non la rileggo,
+   cosi' non torna il testo vecchio */
+let clipText = "", clipReading = false, clipWriting = 0, clipGen = 0;
+function clipRefresh() {
+  if (clipReading || clipWriting) return;
+  clipReading = true;
+  const gen = clipGen;   /* una scrittura arrivata mentre leggevo rende vecchia questa lettura */
+  Promise.resolve().then(() => clipboard.readText())
+    .then((t) => { if (!clipWriting && gen === clipGen) clipText = String(t || ""); }, () => {})
+    .then(() => { clipReading = false; });
+}
+ipcMain.on("clip-read", (e) => { e.returnValue = clipText; clipRefresh(); });
+ipcMain.on("clip-write", (e, t) => {
+  clipText = String(t || ""); clipWriting++; clipGen++;
+  setImmediate(() => {
+    Promise.resolve().then(() => clipboard.writeText(clipText)).catch(() => {})
+      .then(() => { clipWriting--; });
+  });
+});
+/* «Incolla file» (Cmd+C nel Finder): i file arrivano come text/uri-list (URI file://) */
+ipcMain.handle("clip-files", async () => {
+  const { fileURLToPath } = require("url");
+  try {
+    for (const it of await clipboard.read()) {
+      if ((it.types || []).indexOf("text/uri-list") < 0) continue;
+      const b = await it.getType("text/uri-list"), t = typeof b === "string" ? b : await b.text();
+      return t.split(/\r?\n/).filter((l) => /^file:/i.test(l)).map((l) => { try { return fileURLToPath(l); } catch (x) { return ""; } }).filter(Boolean);
+    }
+  } catch (x) {}
+  return [];
+});
 
 /* menu: serve anche per Copia/Incolla con Cmd+C / Cmd+V nei campi di testo */
 function buildMenu() {

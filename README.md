@@ -65,7 +65,7 @@ In alternativa **`DownConvertron.hta`** è l'app in un solo file: doppio clic e 
 
 > Windows SmartScreen o l'antivirus possono avvisarti perché il file non è firmato: è normale per i programmi open source distribuiti così. Il codice è tutto qui da leggere.
 
-### Mac (Apple Silicon: M1, M2, M3, M4)
+### Mac (Apple Silicon: M1, M2, M3, M4 · macOS 13 Ventura o successivo)
 1. Scarica **`DownConvertron-Mac-AppleSilicon.zip`**, aprilo e trascina **DownConvertron.app** in *Applicazioni*.
 2. Al primo avvio il Mac dice che non può verificare lo sviluppatore: *Impostazioni di Sistema → Privacy e sicurezza → Apri comunque*. Se dice "è danneggiato": `xattr -dr com.apple.quarantine /Applications/DownConvertron.app`
 3. Premi **Installa / aggiorna componenti**: yt-dlp, ffmpeg e Deno (circa 150 MB) in `~/Library/Application Support/DownConvertron/bin`, controllati con SHA-256. Niente Homebrew, niente password.
@@ -157,7 +157,7 @@ python3 tools/check.py     # controlli: JScript ES3, id, estensione, installer, 
 
 ### Install
 - **Windows 10/11**: download `DownConvertron-Setup.bat` from the [latest release](../../releases/latest) and double-click it. It installs yt-dlp, ffmpeg and Deno with winget, the app in `%LOCALAPPDATA%\Programs\DownConvertron`, and the shortcuts. No admin rights. `DownConvertron.hta` is the single-file version. SmartScreen or antivirus may warn because the file is unsigned.
-- **Mac (Apple Silicon)**: unzip `DownConvertron-Mac-AppleSilicon.zip`, move the app to Applications, then *System Settings → Privacy & Security → Open Anyway* (or `xattr -dr com.apple.quarantine /Applications/DownConvertron.app`). Press *Install / update components*.
+- **Mac (Apple Silicon, macOS 13 Ventura or later)**: unzip `DownConvertron-Mac-AppleSilicon.zip`, move the app to Applications, then *System Settings → Privacy & Security → Open Anyway* (or `xattr -dr com.apple.quarantine /Applications/DownConvertron.app`). Press *Install / update components*.
 - **Chrome extension**: press *Chrome extension* in the app; it opens Chrome's Extensions page and the folder to drag. Turn on *Developer mode* and drag the folder (once). Chrome does not let any program install extensions for you.
 
 Download only content you have the rights to use (your own, royalty-free, Creative Commons or licensed).
