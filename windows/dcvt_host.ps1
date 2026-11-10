@@ -7,7 +7,7 @@
 # Niente deve uscire su stdout oltre alla risposta.
 $ErrorActionPreference = 'Stop'
 function Reply($obj) {
-  $b = [Text.Encoding]::UTF8.GetBytes((ConvertTo-Json $obj -Compress))
+  $b = [Text.Encoding]::UTF8.GetBytes((ConvertTo-Json $obj -Compress -Depth 5))
   $out = [Console]::OpenStandardOutput()
   $out.Write([BitConverter]::GetBytes([int]$b.Length), 0, 4); $out.Write($b, 0, $b.Length); $out.Flush()
 }
@@ -23,7 +23,19 @@ try {
   if ($len -le 0 -or $len -gt 1572864) { throw 'messaggio troppo grande' }
   $msg = [Text.Encoding]::UTF8.GetString((ReadExact $in $len)) | ConvertFrom-Json
   $dir = Join-Path $env:APPDATA 'DownConvertron\cookies'
-  if ($msg.op -eq 'ping') { Reply @{ ok = $true; v = 1 }; exit 0 }
+  if ($msg.op -eq 'ping') { Reply @{ ok = $true; v = 2 }; exit 0 }
+  # link che hanno chiesto l'accesso (li scrive l'app a fine lavoro): l'estensione mostra "Riprova con il mio login"
+  if ($msg.op -eq 'richieste') {
+    $f = Join-Path $env:APPDATA 'DownConvertron\login_richiesto.txt'; $l = New-Object System.Collections.ArrayList
+    if ((Test-Path -LiteralPath $f) -and (Get-Item -LiteralPath $f).LastWriteTime -gt (Get-Date).AddHours(-24)) {
+      foreach ($r in [IO.File]::ReadAllLines($f, (New-Object Text.UTF8Encoding $false))) {
+        $p = $r.Split([char]9)
+        if ($p.Length -ge 2 -and $p[1] -match '^https?://') { $n = ''; if ($p.Length -ge 3) { $n = $p[2] }; [void]$l.Add(@{ t = $p[0]; url = $p[1]; nome = $n }) }
+        if ($l.Count -ge 50) { break }
+      }
+    }
+    Reply @{ ok = $true; links = @($l) }; exit 0
+  }
   if ($msg.op -ne 'cookies') { throw 'operazione sconosciuta' }
   $tok = [string]$msg.token; $data = [string]$msg.data
   if ($tok -notmatch '^[a-z0-9]{16,64}$') { throw 'token non valido' }

@@ -57,4 +57,8 @@ section { margin-top: 8px; }
 .piede { position: sticky; bottom: 0; z-index: 5; margin: 0 -10px -10px; padding: 0 10px 10px; background: linear-gradient(180deg, rgba(13,16,19,0.92), #0d1013 30%); }
 .badge.warn { color: #1a0d02; background: #ff8a1f; }
 .avviso { margin: 0 0 4px; padding: 3px 7px; border-radius: 7px; font-size: 10.5px; line-height: 1.35; color: #ffd2a8; background: #2a1606; border: 1px solid #5a2f0a; }
+.loginbox { margin-top: 8px; padding: 8px 9px; border-radius: 10px; background: #2a1606; border: 1px solid #ff8a1f; color: #ffd2a8; font-size: 11px; line-height: 1.4; }
+.loginbox .lt { font-weight: bold; color: #ffb36b; font-size: 12px; }
+.loginbox .ll { margin: 4px 0; max-height: 64px; overflow: auto; color: #e8eef2; font-size: 10.5px; word-break: break-all; }
+.loginbox .go { margin-top: 7px; height: 34px; }
 .nota.warn { color: #ff8a1f; font-weight: bold; }

@@ -36,9 +36,9 @@ COSA PROVARE
 [ ] 3. Download di un video normale (es. YouTube) e di solo audio.
 [ ] 4. Estensione: "Metti in lista" e "Scarica subito"; il logo apre l'app.
 [ ] 5. NOVITA': video con limite di eta' o privati. Entra nel sito con
-       Chrome, nell'estensione accendi "Usa il mio login" e accetta il
-       permesso, manda il video. Nel registro: "Login di Chrome ricevuto",
-       poi "riprovo con il login...", poi il download completato.
+       Chrome e manda il video; quando fallisce apri l'estensione, premi
+       "Riprova con il mio login" nel riquadro arancione e accetta il permesso
+       (solo la prima volta). Il download riparte da solo.
 [ ] 6. Immagini: dall'estensione e dai link; formati PNG, WebP, JPG.
 [ ] 7. Convertitore: video e immagini -> GIF / MP4 / ProRes / WebM, con la
        trasparenza conservata.
@@ -101,9 +101,9 @@ INSTALL
 
 WHAT TO TEST: the app starts; the four lights turn green; a normal video and
 audio-only download; the extension ("Add to list", "Download now", the logo
-opens the app); NEW: age-restricted or private videos with "Use my login" in
-the extension (the log should show "Chrome login received", "retrying with
-the Chrome login...", then the finished download); images; the converter
+opens the app); NEW: age-restricted or private videos (after the error, open the extension
+and press "Retry with my login" in the orange box; the download restarts);
+images; the converter
 (GIF / MP4 / ProRes / WebM, transparency kept); dragging files from Finder;
 Cmd+C in Finder + "Paste files"; everything on one screen; languages.
 

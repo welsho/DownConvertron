@@ -8,8 +8,8 @@
   "action": { "default_popup": "popup.html", "default_title": "DownConvertron",
               "default_icon": { "16": "icon16.png", "32": "icon32.png", "48": "icon48.png", "128": "icon128.png" } },
   "icons": { "16": "icon16.png", "32": "icon32.png", "48": "icon48.png", "128": "icon128.png" },
-  "permissions": ["tabs", "activeTab", "scripting", "clipboardWrite", "downloads"],
-  "optional_permissions": ["cookies", "nativeMessaging"],
+  "permissions": ["tabs", "activeTab", "scripting", "clipboardWrite", "downloads", "nativeMessaging"],
+  "optional_permissions": ["cookies"],
   "optional_host_permissions": ["<all_urls>"],
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuPcrf24IK8IrAotSpcLseXxeichpZzmHshao/VoSQ9ZXg1eaju8Ar7clGR4iDeBcl0Bb8ufqQ80bDiYydL87UkN9Iu/8LbJvG32hnYKeU5m/nLAavgDOJH12pg8YkHXOtmcYod64a2n9vWOVBaRmdmnTJjEHftP89PptgL+l27Witj6jn7HgESw+LGIEunc9riOp5mnwjFq9MmLdkBnk8lGYIoU2J0lna4J1lmtdvCU1paxJIvbEKsI3j+Q+H+LT8m8skXNd8m35EJJftILO+KICsFAYaiTu8uha7hn8N/qfJlI+9wj7PIi7twmX5h4kf/Q3Mn28PpAafVswpibuAwIDAQAB"
 }

@@ -62,6 +62,11 @@ var DCVT_TESTI = {
 "loginNessuno": "nessun login di Chrome per questi siti",
 "loginInviato": "login di Chrome passato all'app per {0} siti ({1} cookie)",
 "loginNoApp": "Login non passato: apri una volta DownConvertron 7.0 (registra il ponte con Chrome), poi rimanda. Dettaglio: {0}",
+"loginServe": "{0} link chiedono l'accesso al sito (limite di et\u00e0, privati o per abbonati)",
+"loginServeNota": "Entra nel sito con Chrome, poi premi il pulsante: passo all'app il tuo login di Chrome solo per questi link e l'app lo cancella a fine lavoro.",
+"loginRiprova": "Riprova con il mio login",
+"loginRiprovato": "{0} link rimandati all'app con il tuo login di Chrome: il download riparte da solo.",
+"loginNessunoNota": "Chrome non ha un login per questi siti: entra nel sito con Chrome, poi riprova.",
 "conLogin": " (con login)",
 "erroreDownload": "Download non riuscito: {0}"
 },
@@ -127,6 +132,11 @@ var DCVT_TESTI = {
 "loginNessuno": "no Chrome login for these sites",
 "loginInviato": "Chrome login passed to the app for {0} sites ({1} cookies)",
 "loginNoApp": "Login not passed: open DownConvertron 7.0 once (it registers the bridge with Chrome), then send again. Details: {0}",
+"loginServe": "{0} links require signing in to the site (age-restricted, private or members-only)",
+"loginServeNota": "Sign in to the site in Chrome, then press the button: your Chrome login goes to the app only for these links and the app deletes it when the job ends.",
+"loginRiprova": "Retry with my login",
+"loginRiprovato": "{0} links sent back to the app with your Chrome login: the download restarts by itself.",
+"loginNessunoNota": "Chrome has no login for these sites: sign in to the site in Chrome, then try again.",
 "conLogin": " (with login)",
 "erroreDownload": "Download failed: {0}"
 },
@@ -192,6 +202,11 @@ var DCVT_TESTI = {
 "loginNessuno": "Chrome \u4e2d\u6ca1\u6709\u8fd9\u4e9b\u7f51\u7ad9\u7684\u767b\u5f55\u4fe1\u606f",
 "loginInviato": "\u5df2\u5c06 {0} \u4e2a\u7f51\u7ad9\u7684 Chrome \u767b\u5f55\u4fe1\u606f\u4ea4\u7ed9\u5e94\u7528\uff08{1} \u4e2a Cookie\uff09",
 "loginNoApp": "\u672a\u80fd\u4f20\u9012\u767b\u5f55\u4fe1\u606f\uff1a\u8bf7\u5148\u6253\u5f00\u4e00\u6b21 DownConvertron 7.0\uff08\u5b83\u4f1a\u5411 Chrome \u6ce8\u518c\u6865\u63a5\u7a0b\u5e8f\uff09\uff0c\u7136\u540e\u91cd\u65b0\u53d1\u9001\u3002\u8be6\u60c5\uff1a{0}",
+"loginServe": "{0} \u4e2a\u94fe\u63a5\u9700\u8981\u767b\u5f55\u7f51\u7ad9\uff08\u5e74\u9f84\u9650\u5236\u3001\u79c1\u5bc6\u6216\u4f1a\u5458\u4e13\u5c5e\uff09",
+"loginServeNota": "\u5148\u5728 Chrome \u4e2d\u767b\u5f55\u8be5\u7f51\u7ad9\uff0c\u7136\u540e\u70b9\u51fb\u6309\u94ae\uff1a\u4f60\u7684 Chrome \u767b\u5f55\u4fe1\u606f\u53ea\u4f1a\u4e3a\u8fd9\u4e9b\u94fe\u63a5\u4ea4\u7ed9\u5e94\u7528\uff0c\u4efb\u52a1\u7ed3\u675f\u540e\u5e94\u7528\u4f1a\u5220\u9664\u5b83\u3002",
+"loginRiprova": "\u7528\u6211\u7684\u767b\u5f55\u91cd\u8bd5",
+"loginRiprovato": "\u5df2\u7528\u4f60\u7684 Chrome \u767b\u5f55\u4fe1\u606f\u628a {0} \u4e2a\u94fe\u63a5\u91cd\u65b0\u53d1\u9001\u7ed9\u5e94\u7528\uff1a\u4e0b\u8f7d\u4f1a\u81ea\u52a8\u91cd\u65b0\u5f00\u59cb\u3002",
+"loginNessunoNota": "Chrome \u4e2d\u6ca1\u6709\u8fd9\u4e9b\u7f51\u7ad9\u7684\u767b\u5f55\u4fe1\u606f\uff1a\u8bf7\u5148\u5728 Chrome \u4e2d\u767b\u5f55\u8be5\u7f51\u7ad9\uff0c\u7136\u540e\u91cd\u8bd5\u3002",
 "conLogin": "\uff08\u542b\u767b\u5f55\uff09",
 "erroreDownload": "\u4e0b\u8f7d\u5931\u8d25\uff1a{0}"
 }

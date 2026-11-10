@@ -73,6 +73,13 @@ T = {
  "loginNessuno": ["nessun login di Chrome per questi siti", "no Chrome login for these sites", "Chrome 中没有这些网站的登录信息"],
  "loginInviato": ["login di Chrome passato all'app per {0} siti ({1} cookie)", "Chrome login passed to the app for {0} sites ({1} cookies)", "已将 {0} 个网站的 Chrome 登录信息交给应用（{1} 个 Cookie）"],
  "loginNoApp":   ["Login non passato: apri una volta DownConvertron 7.0 (registra il ponte con Chrome), poi rimanda. Dettaglio: {0}", "Login not passed: open DownConvertron 7.0 once (it registers the bridge with Chrome), then send again. Details: {0}", "未能传递登录信息：请先打开一次 DownConvertron 7.0（它会向 Chrome 注册桥接程序），然后重新发送。详情：{0}"],
+ "loginServe":   ["{0} link chiedono l'accesso al sito (limite di età, privati o per abbonati)", "{0} links require signing in to the site (age-restricted, private or members-only)", "{0} 个链接需要登录网站（年龄限制、私密或会员专属）"],
+ "loginServeNota":["Entra nel sito con Chrome, poi premi il pulsante: passo all'app il tuo login di Chrome solo per questi link e l'app lo cancella a fine lavoro.",
+                  "Sign in to the site in Chrome, then press the button: your Chrome login goes to the app only for these links and the app deletes it when the job ends.",
+                  "先在 Chrome 中登录该网站，然后点击按钮：你的 Chrome 登录信息只会为这些链接交给应用，任务结束后应用会删除它。"],
+ "loginRiprova": ["Riprova con il mio login", "Retry with my login", "用我的登录重试"],
+ "loginRiprovato":["{0} link rimandati all'app con il tuo login di Chrome: il download riparte da solo.", "{0} links sent back to the app with your Chrome login: the download restarts by itself.", "已用你的 Chrome 登录信息把 {0} 个链接重新发送给应用：下载会自动重新开始。"],
+ "loginNessunoNota":["Chrome non ha un login per questi siti: entra nel sito con Chrome, poi riprova.", "Chrome has no login for these sites: sign in to the site in Chrome, then try again.", "Chrome 中没有这些网站的登录信息：请先在 Chrome 中登录该网站，然后重试。"],
  "conLogin":     [" (con login)", " (with login)", "（含登录）"],
  "erroreDownload":["Download non riuscito: {0}", "Download failed: {0}", "下载失败：{0}"],
 }

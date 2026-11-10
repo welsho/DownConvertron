@@ -1979,6 +1979,10 @@
   "en": "Repeats",
   "zh": "重复"
  },
+ "Riprova con il login di Chrome: lo uso subito per questi link, poi lo cancello.": {
+  "en": "Retry with the Chrome login: I use it right away for these links, then I delete it.",
+  "zh": "用 Chrome 登录重试：立即用于这些链接，之后删除。"
+ },
  "Riprova; se continua, premi «Report debug» e incollami il testo.": {
   "en": "Try again; if it keeps happening, press «Debug report» and paste me the text.",
   "zh": "请重试；若仍出现，请点击“调试报告”并把文本发给我。"
@@ -2743,6 +2747,10 @@
   "en": "{0} links added",
   "zh": "已添加 {0} 个链接"
  },
+ "{0} link chiedono l'accesso al sito: entra nel sito con Chrome, apri l'estensione DownConvertron e premi «Riprova con il mio login».": {
+  "en": "{0} links require signing in to the site: sign in to the site in Chrome, open the DownConvertron extension and press «Retry with my login».",
+  "zh": "{0} 个链接需要登录网站：先在 Chrome 中登录该网站，然后打开 DownConvertron 扩展并点击“用我的登录重试”。"
+ },
  "{0} link ricevuti dall'estensione Chrome{1}: controlla e premi Scarica quando vuoi.": {
   "en": "{0} links received from the Chrome extension{1}: check them and press Download when you want.",
   "zh": "已从 Chrome 扩展收到 {0} 个链接{1}：检查后随时点击“下载”。"
@@ -2803,9 +2811,9 @@
   "en": "→ Access denied by the site (403): the content may be private or require signing in. Try «Use Firefox login» or press «Install / update components».",
   "zh": "→ 网站拒绝访问 (403)：内容可能是私密的或需要登录。请尝试“使用 Firefox 登录”或点击“安装 / 更新组件”。"
  },
- "→ Il sito chiede l'accesso: nell'estensione Chrome accendi «Usa il mio login» e rimanda il link (oppure entra con Firefox e attiva «Usa login di Firefox»).": {
-  "en": "→ The site asks you to sign in: in the Chrome extension turn on «Use my login» and send the link again (or sign in with Firefox and turn on «Use Firefox login»).",
-  "zh": "→ 网站要求登录：在 Chrome 扩展中打开“使用我的登录”并重新发送链接（或用 Firefox 登录并打开“使用 Firefox 登录”）。"
+ "→ Il sito chiede l'accesso: entra nel sito con Chrome, apri l'estensione DownConvertron e premi «Riprova con il mio login» (oppure entra con Firefox e attiva «Usa login di Firefox»).": {
+  "en": "→ The site asks you to sign in: sign in to the site in Chrome, open the DownConvertron extension and press «Retry with my login» (or sign in with Firefox and turn on «Use Firefox login»).",
+  "zh": "→ 网站要求登录：先在 Chrome 中登录该网站，然后打开 DownConvertron 扩展并点击“用我的登录重试”（或用 Firefox 登录并打开“使用 Firefox 登录”）。"
  },
  "→ Il video non contiene la traccia richiesta.": {
   "en": "→ The video does not contain the requested track.",

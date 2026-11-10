@@ -330,7 +330,8 @@ async function scaricaSubito() {
    L'app li usa solo se il sito chiede l'accesso e li cancella a fine lavoro. I permessi (cookie, ponte, tutti i siti) sono
    opzionali: Chrome li chiede quando accendi l'interruttore e li tolgo quando lo spegni. */
 const PONTE = "com.welsho.downconvertron";
-const PERMESSI_LOGIN = { permissions: ["cookies", "nativeMessaging"], origins: ["<all_urls>"] };
+/* il ponte (nativeMessaging) e' un permesso fisso: serve anche a sapere quali link chiedono l'accesso. Facoltativi i cookie */
+const PERMESSI_LOGIN = { permissions: ["cookies"], origins: ["<all_urls>"] };
 /* dominio da cui leggere i cookie: www.youtube.com e youtu.be -> youtube.com, foo.bbc.co.uk -> bbc.co.uk */
 function dominioBase(u) {
   let h;
@@ -352,6 +353,10 @@ function rigaNetscape(c) {
 async function preparaLogin(urls) {
   if (!document.getElementById("usaLogin").checked) return "";
   if (!(await chrome.permissions.contains(PERMESSI_LOGIN).catch(() => false))) { mostraLogin(false); registra(t("loginNegato")); return ""; }
+  return mandaCookie(urls);
+}
+/* cookie di Chrome dei siti di questi link -> ponte -> token; "" se Chrome non ha cookie, { errore } se il ponte non risponde */
+async function mandaCookie(urls) {
   const domini = [...new Set(urls.map(dominioBase).filter(Boolean))], visti = new Set(), righe = [];
   for (const d of domini) {
     for (const c of await chrome.cookies.getAll({ domain: d }).catch(() => [])) {
@@ -375,6 +380,54 @@ async function preparaLogin(urls) {
   return token;
 }
 function mostraLogin(acceso) { document.getElementById("usaLogin").checked = acceso; memo("usaLogin", acceso ? "1" : "0"); }
+
+/* ---------- "Riprova con il mio login" ----------
+   L'app scrive i link finiti in errore perche' il sito chiede l'accesso; qui li chiedo al ponte all'apertura e,
+   se ci sono, mostro il riquadro. Il pulsante chiede il permesso dei cookie (solo la prima volta) e rimanda
+   quei link all'app con il login, da usare subito, e il download riparte da solo. */
+let richieste = [];
+async function controllaRichieste() {
+  try {
+    const r = await chrome.runtime.sendNativeMessage(PONTE, { op: "richieste" });
+    richieste = r && r.ok && Array.isArray(r.links) ? r.links.filter(l => /^https?:\/\//i.test(l.url || "")) : [];
+  } catch (e) { richieste = []; return; }      /* app non ancora aperta con questa versione: niente riquadro */
+  const box = document.getElementById("loginBox");
+  box.hidden = !richieste.length;
+  if (!richieste.length) return;
+  document.getElementById("loginTesto").textContent = t("loginServe", richieste.length);
+  const ll = document.getElementById("loginLista"); ll.textContent = "";
+  for (const l of richieste) { const d = document.createElement("div"); d.textContent = "\u2022 " + (l.nome || l.url); d.title = l.url; ll.appendChild(d); }
+}
+async function riprovaConLogin() {
+  const nota = document.getElementById("nota"), b = document.getElementById("loginRiprova");
+  const urls = richieste.map(l => l.url);
+  if (!urls.length) return;
+  b.disabled = true;
+  try {
+    let login = "";
+    try { login = await mandaCookie(urls); } catch (e) { login = { errore: t("loginNoApp", e.message || e) }; }
+    if (!login || login.errore) { nota.className = "nota err"; nota.textContent = login && login.errore ? login.errore : t("loginNessunoNota"); return; }
+    const h = ["#ext=" + VERS, "#lang=" + LANG, "#mode=app", "#cookies=" + login, "#login=retry"];
+    let lg = [];
+    try { lg = JSON.parse(memo("log") || "[]"); } catch (e) {}
+    for (const r of lg) h.push("#log=" + r);
+    const righe = richieste.map(l => { const nome = pulisciNome(l.nome), r = nome ? l.url + " | " + nome : l.url; return l.t === "img" ? "#img=" + r : r; });
+    registra(t("loginRiprovato", righe.length));
+    await navigator.clipboard.writeText(MARCATORE + "\n" + h.join("\n") + "\n" + righe.join("\n") + "\n");
+    memo("log", "[]");
+    nota.className = "nota ok"; nota.textContent = t("loginRiprovato", righe.length);
+    document.getElementById("loginBox").hidden = true; richieste = [];
+    apriApp("send");                               /* l'app viene davanti e riparte da sola */
+  } catch (e) { nota.className = "nota err"; nota.textContent = t("erroreAppunti", e.message || e); }
+  finally { b.disabled = false; }
+}
+document.getElementById("loginRiprova").onclick = () => {
+  /* il permesso va chiesto subito nel clic (Chrome lo vuole dentro il gesto) */
+  chrome.permissions.request(PERMESSI_LOGIN).then(ok => {
+    if (ok) riprovaConLogin();
+    else { const nota = document.getElementById("nota"); nota.className = "nota warn"; nota.textContent = t("loginNegato"); }
+  }, e => { const nota = document.getElementById("nota"); nota.className = "nota err"; nota.textContent = t("loginNegato") + " " + (e.message || e); });
+};
 
 /* avvia = true: "Scarica subito" (l'app mette in lista e avvia il download); false: "Metti in lista" */
 async function invia(avvia) {
@@ -428,8 +481,8 @@ for (const id of ["tutteFinestre", "usaTitoli", "apriDopo"]) {
 {
   const el = document.getElementById("usaLogin");
   el.checked = memo("usaLogin") === "1";
-  /* lo stato vero sono i permessi: se il popup si e' chiuso mentre Chrome chiedeva il permesso, il si' conta lo stesso */
-  chrome.permissions.contains(PERMESSI_LOGIN).then(ok => mostraLogin(!!ok), () => mostraLogin(false));
+  /* acceso solo se l'hai acceso tu e Chrome ha ancora il permesso (il permesso da solo puo' venire da "Riprova") */
+  if (el.checked) chrome.permissions.contains(PERMESSI_LOGIN).then(ok => { if (!ok) mostraLogin(false); }, () => mostraLogin(false));
   el.onchange = () => {
     if (el.checked) {
       chrome.permissions.request(PERMESSI_LOGIN).then(ok => {
@@ -448,3 +501,4 @@ document.getElementById("avvia").onclick = () => invia(true);
 document.getElementById("scaricaSubito").onclick = scaricaSubito;
 mostraModo();
 raccogli().then(([a, b]) => registra(t("logAperto", a, b)));
+controllaRichieste();

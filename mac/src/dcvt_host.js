@@ -17,7 +17,21 @@ const dirApp = process.platform === "darwin" ? path.join(os.homedir(), "Library"
   : path.join(process.env.APPDATA || path.join(os.homedir(), ".local", "share"), "DownConvertron");
 function handle(msg) {
   const dir = path.join(dirApp, "cookies");
-  if (msg.op === "ping") return { ok: true, v: 1 };
+  if (msg.op === "ping") return { ok: true, v: 2 };
+  /* link che hanno chiesto l'accesso (li scrive l'app a fine lavoro): l'estensione mostra «Riprova con il mio login» */
+  if (msg.op === "richieste") {
+    const f = path.join(dirApp, "login_richiesto.txt"), links = [];
+    try {
+      if (Date.now() - fs.statSync(f).mtimeMs < 24 * 3600 * 1000) {
+        for (const r of fs.readFileSync(f, "utf8").split(/\r?\n/)) {
+          const p = r.split("\t");
+          if (p.length >= 2 && /^https?:\/\//i.test(p[1])) links.push({ t: p[0], url: p[1], nome: p[2] || "" });
+          if (links.length >= 50) break;
+        }
+      }
+    } catch (e) { /* nessun file: nessuna richiesta */ }
+    return { ok: true, links };
+  }
   if (msg.op !== "cookies") throw new Error("operazione sconosciuta");
   const tok = String(msg.token || ""), data = String(msg.data || "");
   if (!/^[a-z0-9]{16,64}$/.test(tok)) throw new Error("token non valido");
