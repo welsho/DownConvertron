@@ -1,19 +1,59 @@
 # DownConvertron - controlli a ogni push e release automatica quando pubblichi un tag v* (es. v7.0)
+# Le action sono fissate allo SHA del commit (il tag accanto serve solo a leggerlo): un tag spostato non cambia la build.
 name: build
 on:
   push:
     branches: [main]
     tags: ['v*']
   pull_request:
+  # avvio a mano (scheda Actions -> build -> Run workflow): rifa' gli screenshot del README
+  workflow_dispatch:
 
 jobs:
+  screenshot:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1  # v7.1.0
+        with:
+          node-version: 24
+      - name: Electron, playwright, ffmpeg, yt-dlp e display virtuale
+        run: |
+          npm install --no-save --ignore-scripts electron@45.2.3 playwright@1.64.1
+          node node_modules/electron/install.js
+          npx playwright install --with-deps chromium
+          sudo apt-get update -qq && sudo apt-get install -y -qq xvfb ffmpeg fonts-noto-cjk
+          python3 -m pip install --user --break-system-packages -q yt-dlp Pillow
+      - name: Cartella home di esempio (/Users/creator, come sul Mac) con i video della lista
+        run: |
+          sudo mkdir -p /Users/creator/Videos/logo_sequence && sudo chown -R "$USER" /Users
+          V=/Users/creator/Videos
+          ffmpeg -v error -f lavfi -i "color=c=black@0.0:s=1920x1080:d=5,format=yuva444p10le,drawbox=x=120:y=820:w=900:h=140:color=0xf2c230@0.9:t=fill" -c:v prores_ks -profile:v 4444 "$V/lower-third alpha.mov"
+          ffmpeg -v error -f lavfi -i testsrc2=s=1920x1080:r=30:d=8 -f lavfi -i sine=d=8 -c:v libx264 -pix_fmt yuv420p -c:a aac -shortest "$V/broll city drone.mp4"
+          ffmpeg -v error -f lavfi -i testsrc2=s=3840x2160:r=25:d=6 -c:v libx264 -pix_fmt yuv420p "$V/broll sunset timelapse.mp4"
+          ffmpeg -v error -f lavfi -i "color=c=black@0.0:s=512x512:r=25:d=1.2,format=rgba,drawbox=x=96:y=96:w=320:h=320:color=0x39ff6a@1:t=fill" "$V/logo_sequence/logo_%04d.png"
+      - name: Screenshot dell'app (3 lingue), rotazione del mecha, estensione
+        run: |
+          python3 mac/build_mac.py build/mac-app
+          export PATH="$HOME/.local/bin:$PATH"
+          DCVT_TEST_HOME=/Users/creator xvfb-run -a -s "-screen 0 1920x1200x24" node tests/electron/docs.js docs/img
+          python3 tools/make_gif.py docs/img/_frames docs/img/mecha-rotazione.gif && rm -rf docs/img/_frames
+          node tests/electron/ext_shots.js docs/img
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9  # v7.0.2
+        with:
+          name: screenshot-readme
+          path: docs/img/
+          retention-days: 7
+
+
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1  # v7.1.0
         with:
-          node-version: 20
+          node-version: 24
       - name: Strumenti per i controlli (acorn per JScript ES3, Mono per il ricevitore C#)
         run: |
           npm install --no-save acorn@8
@@ -23,6 +63,10 @@ jobs:
           python3 tools/ext_texts.py
           python3 tools/embed.py
           git diff --exit-code -- src extension || { echo "::error::Parti generate non aggiornate: esegui python3 tools/ext_texts.py e python3 tools/embed.py e fai il commit"; exit 1; }
+      - name: Sorgente dell'app Mac (le sostituzioni di build_mac.py trovano ancora i testi dell'HTA)
+        run: |
+          python3 mac/build_mac.py build/mac-app
+          for f in build/mac-app/main.js build/mac-app/shim.js build/mac-app/mac.js; do node --check "$f"; done
       - name: Installer Windows
         run: python3 windows/build_installer.py dist
       - name: Controlli
@@ -35,16 +79,16 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1  # v7.1.0
         with:
-          node-version: 20
+          node-version: 24
       - name: Strumenti di build
-        run: npm install --no-save @electron/packager@18.3.6 acorn@8
+        run: npm install --no-save --ignore-scripts @electron/packager@20.3.0 acorn@8
       - name: Build (Windows + Mac Apple Silicon + estensione Chrome)
         run: ./build.sh
       - name: Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@8a0cd651e5b2365bd640854a3fa5dfc70e4875f3  # v3.0.4
         with:
           # in bozza: la pubblica Welsho dopo aver controllato i file; se ne manca uno la build fallisce
           draft: true

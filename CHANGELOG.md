@@ -1,6 +1,11 @@
 # Changelog
 
 ## 7.0 — DownConvertron
+- **Immagini SVG**: le semitrasparenze e i bordi sfumati non escono più scuri nelle conversioni in PNG, WebP e JPG (il decoder di ffmpeg dà i colori premoltiplicati: ora vengono riportati ai colori veri).
+- **Immagini protette contro il prelievo da altri siti**: l'estensione manda all'app la pagina da cui vengono le immagini e l'app la usa come Referer, come fa Chrome (indirizzo intero sullo stesso sito, solo il dominio verso altri siti).
+- **App Mac su Electron 45** (prima 33, non più supportato). Gli appunti, che servono a ricevere i link dall'estensione, passano dal processo principale come richiede Electron 44+. **Serve macOS 13 Ventura o successivo.** Il messaggio del permesso per Chrome mostrava ancora il vecchio nome dell'app.
+- **Build Mac**: si era rotta con le ultime traduzioni (una sostituzione Ctrl+V → Cmd+V trovava il testo tre volte); ora il CI genera l'app Mac a ogni push e se ne accorge subito.
+- **CI**: action fissate allo SHA del commit, Node 24; nuovo job manuale che rifà gli screenshot del README (app in 3 lingue, rotazione del mecha, estensione). Screenshot dell'estensione aggiornati alla 7.0.
 - **Immagini con impostazioni separate dal video**: nuovo riquadro «2b · Immagini» con il formato delle immagini (Originale, PNG, WebP, JPG), che vale per le immagini in lista e per quelle nuove; il menu di ogni riga resta per i casi singoli. Il pannello del video si chiama «2 · Video e audio» e, con solo immagini in lista, si attenua con la scritta «Non si applica alle immagini». Dall'estensione, le impostazioni video/audio cambiano solo se arrivano video; le immagini hanno il loro menu «Formato nell'app» e «Scarica subito» funziona anche con sole immagini e «Come nell'app».
 - **Immagini, correzioni dalla revisione** (provate con ffmpeg e curl reali):
   - download di nuovo funzionante con nomi utente Windows con accenti o caratteri cinesi (il file di configurazione di curl ora è in UTF-8);
