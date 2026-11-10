@@ -12,7 +12,7 @@
   DIR_APP = M.P(DIR_APP); DIR_APP_OLD = M.P(DIR_APP_OLD); DIR_APP_OLDER = M.P(DIR_APP_OLDER); DIR_APP_OLDEST = M.P(DIR_APP_OLDEST); DIR_TMP = M.P(DIR_TMP);
   FILE_SETTINGS = M.P(FILE_SETTINGS); FILE_ARCHIVE = M.P(FILE_ARCHIVE);
   state.folder = M.P(state.folder); cv.folder = M.P(cv.folder);
-  MIN_ZOOM = 0.7;                                   /* sul Mac le misure sono gia' in punti: niente correzione DPI */
+  MIN_ZOOM = 0.65;                                  /* come su Windows; sul Mac le misure sono gia' in punti */
   dpiRatio = function () { return 1; };
 
   /* ---------- programmi: prima la cartella dell'app (e quelle delle versioni precedenti), poi Homebrew, poi il PATH ---------- */
@@ -263,7 +263,7 @@
     state.setupVerb = st;
     setBusy(true, "setup");
     var cb = $("compBtn"); cb.disabled = false; cb.className = "btn sm"; cb.innerText = "Annulla installazione";
-    $("status").style.display = "block";
+    showStatus();
     $("overall").innerText = "Componenti: avvio dello scaricamento..."; $("fill").style.width = "0%"; $("pct").innerText = ""; $("spd").innerText = ""; $("file").innerText = "";
     runCommand('"/bin/sh" "' + script + '" "' + M.BIN + '"');
     return true;

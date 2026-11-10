@@ -1067,9 +1067,9 @@
   "en": "JPG image",
   "zh": "JPG 图片"
  },
- "Immagine JPG: file leggero e compatibile ovunque, senza trasparenza (lo sfondo trasparente diventa nero).": {
-  "en": "JPG image: a light file that works everywhere, without transparency (transparent background becomes black).",
-  "zh": "JPG 图片：体积小、兼容性最好，不支持透明（透明背景会变成黑色）。"
+ "Immagine JPG: file leggero e compatibile ovunque, senza trasparenza (lo sfondo trasparente diventa bianco).": {
+  "en": "JPG image: a light file that works everywhere, without transparency (transparent background becomes white).",
+  "zh": "JPG 图片：体积小、兼容性最好，不支持透明（透明背景会变成白色）。"
  },
  "Immagine PNG": {
   "en": "PNG image",

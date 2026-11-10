@@ -1,6 +1,9 @@
 # Changelog
 
 ## 7.0 — DownConvertron
+- **Layout in una schermata anche durante il lavoro**: lo zoom del mecha tiene conto fin dall'avvio del riquadro di avanzamento e di un messaggio. Prima, durante un download, il registro sotto i piedi veniva tagliato di circa 60 px e compariva la barra di scorrimento. A riposo il registro è più alto; su uno schermo 1080 il mecha è un po' più piccolo (zoom 0,73 invece di 0,80). Tolta anche la barra di scorrimento «vuota» che mshta mostrava all'avvio. Zoom minimo 0,65 (prima 0,80), così anche gli schermi un po' più bassi stanno in una schermata.
+- **Avvio**: il primo adattamento usava l'altezza della finestra non ancora ingrandita a tutto schermo.
+- **Convertitore, JPG da immagini trasparenti**: le parti trasparenti diventano bianche come nel downloader (prima nere).
 - **Download e conversioni, errore fantasma dopo la fine**: dopo un'immagine convertita (o un link riconosciuto come immagine dopo «Unsupported URL»), il controllo del processo ripartiva da solo. 20 secondi dopo la fine segnava come errore l'ultimo elemento riuscito («Il processo non è partito»), continuava senza fermarsi e faceva fallire anche le conversioni successive nel convertitore. Ora ogni controllo si ferma se non è più quello attivo.
 - **Immagini SVG**: le semitrasparenze e i bordi sfumati non escono più scuri nelle conversioni in PNG, WebP e JPG (il decoder di ffmpeg dà i colori premoltiplicati: ora vengono riportati ai colori veri).
 - **Immagini protette contro il prelievo da altri siti**: l'estensione manda all'app la pagina da cui vengono le immagini e l'app la usa come Referer, come fa Chrome (indirizzo intero sullo stesso sito, solo il dominio verso altri siti).
