@@ -175,9 +175,17 @@
   "en": "2 · Format and touch-ups",
   "zh": "2 · 格式与修饰"
  },
+ "2 · Video e audio": {
+  "en": "2 · Video and audio",
+  "zh": "2 · 视频和音频"
+ },
  "24 bit": {
   "en": "24-bit",
   "zh": "24 位"
+ },
+ "2b · Immagini": {
+  "en": "2b · Images",
+  "zh": "2b · 图片"
  },
  "3 volte": {
   "en": "3 times",
@@ -434,6 +442,10 @@
  "Avviso: il JPG non ha trasparenza, le parti trasparenti di {0} sono diventate bianche.": {
   "en": "Warning: JPG has no transparency, the transparent parts of {0} became white.",
   "zh": "注意：JPG 不支持透明，{0} 的透明部分已变为白色。"
+ },
+ "Avviso: {0} era un'immagine animata; in {1} resta solo il primo fotogramma (per tenerla animata scegli WebP o Originale).": {
+  "en": "Warning: {0} was an animated image; in {1} only the first frame remains (to keep it animated choose WebP or Original).",
+  "zh": "注意：{0} 是动图；在 {1} 中只保留第一帧（若要保留动画，请选择 WebP 或“原始”）。"
  },
  "Bassa": {
   "en": "Low",
@@ -851,6 +863,10 @@
   "en": "Image format: Original saves the file exactly as it is on the server, without re-encoding.",
   "zh": "图片格式：“原始”按服务器上的原样保存文件，不重新编码。"
  },
+ "Formato delle immagini": {
+  "en": "Image format",
+  "zh": "图片格式"
+ },
  "Formato di uscita": {
   "en": "Output format",
   "zh": "输出格式"
@@ -1087,6 +1103,10 @@
   "en": "Single images: they become a still clip (length in each image row).",
   "zh": "单张图片：会变成静帧片段（时长在每张图片的行中设置）。"
  },
+ "Immagini {0}": {
+  "en": "Images {0}",
+  "zh": "图片 {0}"
+ },
  "Importa da .txt": {
   "en": "Import .txt",
   "zh": "导入 .txt"
@@ -1231,6 +1251,10 @@
   "en": "JPG (no alpha)",
   "zh": "JPG（无透明）"
  },
+ "JPG (trasparenza su bianco)": {
+  "en": "JPG (transparency on white)",
+  "zh": "JPG（透明处变白）"
+ },
  "L'MP4 non ha il canale alfa:": {
   "en": "MP4 has no alpha channel:",
   "zh": "MP4 没有透明通道："
@@ -1306,6 +1330,10 @@
  "Lavoro in corso": {
   "en": "Work in progress",
   "zh": "正在处理"
+ },
+ "Le immagini si scaricano a parte, senza yt-dlp: qualità, codec e opzioni di «Video e audio» non le toccano. Il formato vale per le immagini in lista e si può cambiare anche riga per riga.": {
+  "en": "Images are downloaded separately, without yt-dlp: quality, codec and options of «Video and audio» do not affect them. The format applies to the images in the list and can also be changed row by row.",
+  "zh": "图片单独下载，不使用 yt-dlp：“视频和音频”的画质、编码器和选项不会影响图片。此格式适用于列表中的图片，也可以逐行更改。"
  },
  "Le sequenze di immagini non hanno audio: l'audio dei file viene tolto.": {
   "en": "Image sequences have no audio: the audio of the files is removed.",
@@ -1679,6 +1707,10 @@
   "en": "Cannot save the log: {0}",
   "zh": "无法保存日志：{0}"
  },
+ "Non si applica alle immagini": {
+  "en": "Does not apply to images",
+  "zh": "不适用于图片"
+ },
  "Numera tutti": {
   "en": "Number all",
   "zh": "全部编号"
@@ -1699,6 +1731,10 @@
   "en": "Original",
   "zh": "原始"
  },
+ "Originale (file del server, senza ricodifica)": {
+  "en": "Original (server file, no re-encoding)",
+  "zh": "原始（服务器文件，不重新编码）"
+ },
  "Originale (nessuna conversione)": {
   "en": "Original (no conversion)",
   "zh": "原始（不转换）"
@@ -1714,6 +1750,10 @@
  "PCM 24 bit (consigliato)": {
   "en": "PCM 24-bit (recommended)",
   "zh": "PCM 24 位（推荐）"
+ },
+ "PNG (con alfa)": {
+  "en": "PNG (with alpha)",
+  "zh": "PNG（保留透明）"
  },
  "PNG + alfa (senza perdita)": {
   "en": "PNG + alpha (lossless)",
@@ -2278,6 +2318,10 @@
  "WebM usa solo VP9/AV1 + Opus: H.264 non è compatibile e viene ignorato. Se un video non esiste in WebM viene convertito (più lento). La copertina non si può inserire in un WebM.": {
   "en": "WebM only uses VP9/AV1 + Opus: H.264 is not compatible and is ignored. If a video is not available in WebM it gets converted (slower). The cover cannot be embedded in a WebM.",
   "zh": "WebM 只使用 VP9/AV1 + Opus：H.264 不兼容，将被忽略。若视频没有 WebM 版本会进行转换（较慢）。WebM 无法嵌入封面。"
+ },
+ "WebP (con alfa)": {
+  "en": "WebP (with alpha)",
+  "zh": "WebP（保留透明）"
  },
  "WebP + alfa (leggero)": {
   "en": "WebP + alpha (light)",

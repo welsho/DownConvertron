@@ -10,7 +10,7 @@
 const VERS = "7.0";
 const MARCATORE = "#DCVT-LINKS v2";
 const FILE_DIRETTO = /\.(mp4|m4v|mov|webm|mkv|avi|m3u8|mpd|mp3|m4a|aac|ogg|opus|flac|wav)(\?|#|$)/i;
-const FILE_IMMAGINE = /\.(jpe?g|png|gif|webp|avif|bmp|tiff?|heic|svg)(\?|#|$)/i;
+const FILE_IMMAGINE = /\.(jpe?g|jfif|png|gif|webp|avif|bmp|tiff?|heic|svg)(\?|#|$)/i;
 const LANG = (typeof DCVT_LANG === "string" && DCVT_TESTI[DCVT_LANG]) ? DCVT_LANG : "it";
 let REGOLE = null;
 const voci = { schede: [], pagina: [], immagini: [] };
@@ -85,8 +85,6 @@ function mostraModo() {
   document.getElementById("qVideo").style.display = modo === "video" ? "flex" : "none";
   document.getElementById("qAudio").style.display = modo === "audio" ? "flex" : "none";
   document.getElementById("qApp").style.display = modo === "app" ? "block" : "none";
-  /* "Scarica subito" solo con le impostazioni rapide: con "Come nell'app" i link vanno solo in lista */
-  document.getElementById("avvia").style.display = modo === "app" ? "none" : "";
   aggiorna();
 }
 function testoScelto(id) { const s = document.getElementById(id); return s.options[s.selectedIndex] ? s.options[s.selectedIndex].text : s.value; }
@@ -95,9 +93,14 @@ function descriviModo() {
   if (modo === "audio") return t("mAudio") + " \u00b7 " + testoScelto("ap");
   return t("mApp");
 }
+/* "Scarica subito": con i video servono le impostazioni rapide (con "Come nell'app" vanno solo in lista);
+   le sole immagini partono sempre, con il loro formato separato */
+function soloImmagini() { const s = scelti(); return s.length > 0 && s.every(v => v.img); }
+function puoAvviare() { return modo !== "app" || soloImmagini(); }
 function intestazioni(avvia) {
   const h = ["#ext=" + VERS, "#lang=" + LANG, "#mode=" + modo];
-  if (avvia && modo !== "app") h.push("#start=1");                  /* l'app avvia il download da sola */
+  if (avvia) h.push("#start=1");                                    /* l'app avvia il download da sola */
+  if (scelti().some(v => v.img)) h.push("#imgfmt=" + document.getElementById("if").value);
   if (modo === "video") h.push("#quality=" + document.getElementById("vq").value, "#container=" + document.getElementById("vc").value);
   if (modo === "audio") { const [f, q] = document.getElementById("ap").value.split("|"); h.push("#afmt=" + f, "#aq=" + (q || "")); }
   let l = [];
@@ -121,7 +124,7 @@ function riga(v, lista) {
 function miniatura(v, box) {
   const d = document.createElement("label"); d.className = "thumb" + (v.scelto ? " on" : ""); d.title = v.url;
   const c = document.createElement("input"); c.type = "checkbox"; c.checked = v.scelto;
-  c.setAttribute("aria-label", v.titolo || nomeImmagine(v.url, "").replace(/^DownConvertron\//, ""));
+  c.setAttribute("aria-label", v.titolo || nomeImmagine(v.url, "").base.replace(/^DownConvertron\//, ""));
   c.onchange = () => { v.scelto = c.checked; d.className = "thumb" + (v.scelto ? " on" : ""); aggiorna(); };
   const im = document.createElement("img"); im.src = v.url; im.alt = v.titolo || ""; im.loading = "lazy"; im.referrerPolicy = "no-referrer";
   const dm = document.createElement("span"); dm.className = "dim"; dm.textContent = v.w && v.h ? v.w + "\u00d7" + v.h : "";
@@ -147,6 +150,7 @@ function aggiorna() {
   b.disabled = a.disabled = !n;
   b.textContent = n ? t("invia", n) : t("nessunoScelto");
   a.textContent = t("avvia", n);
+  a.style.display = puoAvviare() ? "" : "none";
   const ni = voci.immagini.filter(v => v.scelto).length, q = document.getElementById("scaricaSubito");
   q.disabled = !ni; q.textContent = t("salvaDownload") + (ni ? " (" + ni + ")" : "");
 }
@@ -185,15 +189,28 @@ async function raccogli() {
           };
           /* da un srcset la voce con il descrittore piu' grande (800w, 2x); i segnaposto data: non contano */
           const migliore = s => {
-            let best = "", bn = -1;
-            for (const p of String(s || "").split(/,\s+/)) { const a = p.trim().split(/\s+/), n = parseFloat(a[1]) || 1; if (a[0] && !/^data:/.test(a[0]) && n > bn) { best = a[0]; bn = n; } }
+            /* come lo standard HTML: l'URL va fino al primo spazio (puo' contenere virgole, es. Cloudinary);
+               i descrittori finiscono alla virgola, che separa le voci anche senza spazio ("a.jpg 1x,b.jpg 2x") */
+            s = String(s || "");
+            let best = "", bn = -1, i = 0;
+            while (i < s.length) {
+              while (i < s.length && /[\s,]/.test(s[i])) i++;
+              let j = i;
+              while (j < s.length && !/\s/.test(s[j])) j++;
+              let url = s.slice(i, j), desc = "";
+              if (/,$/.test(url)) url = url.replace(/,+$/, "");
+              else { let k = j; while (k < s.length && s[k] !== ",") k++; desc = s.slice(j, k); j = k + 1; }
+              i = j;
+              const n = parseFloat((/(\d+(?:\.\d+)?)[wx]/.exec(desc) || [])[1]) || 1;
+              if (url && !/^data:/.test(url) && n > bn) { best = url; bn = n; }
+            }
             return best;
           };
           /* fonte massima: la versione piu' grande dichiarata dalla pagina (srcset dell'immagine e delle <source> del <picture>),
              non quella che il browser ha scelto per lo schermo */
           const massima = i => {
             const s = [i.getAttribute("srcset") || ""];
-            if (i.parentElement && i.parentElement.tagName === "PICTURE") for (const so of i.parentElement.querySelectorAll("source[srcset]")) s.push(so.getAttribute("srcset"));
+            if (i.parentElement && i.parentElement.tagName === "PICTURE") for (const so of i.parentElement.querySelectorAll("source[srcset]:not([media])")) s.push(so.getAttribute("srcset"));
             return migliore(s.filter(Boolean).join(", "));
           };
           for (const i of document.images) {
@@ -255,7 +272,7 @@ async function apriApp(motivo) {
 }
 
 /* download rapido: le immagini scelte vanno subito nella cartella Download/DownConvertron (senza passare dall'app) */
-const EST_IMG = /\.(jpe?g|png|gif|webp|avif|bmp|tiff?|heic|svg)$/i;
+const EST_IMG = /\.(jpe?g|jfif|png|gif|webp|avif|bmp|tiff?|heic|svg)$/i;
 /* nome valido su Windows e Mac: niente caratteri vietati, ~ (Chrome lo rifiuta), caratteri invisibili, punti e spazi ai bordi */
 function nomeFile(s) {
   return String(s || "").replace(/\p{Cf}/gu, "").replace(/[<>:"\/\\|?*~\x00-\x1f]+/g, " ").replace(/\s+/g, " ").replace(/^[\s.]+|[\s.]+$/g, "");
@@ -279,6 +296,12 @@ chrome.downloads.onDeterminingFilename.addListener((item, suggest) => {
   const n = nomiInAttesa.get(item.url) || nomiInAttesa.get(item.finalUrl);
   if (!n) { suggest(); return; }
   nomiInAttesa.delete(item.url); nomiInAttesa.delete(item.finalUrl);
+  /* il server ha mandato una pagina (protezione hotlink, login): non la salvo come immagine */
+  if (/^(text\/html|application\/xhtml)/i.test(String(item.mime || ""))) {
+    suggest(); chrome.downloads.cancel(item.id);
+    const nota = document.getElementById("nota"); nota.className = "nota warn"; nota.textContent = n.base.replace(/^DownConvertron\//, "") + ": " + t("nonImmagine");
+    return;
+  }
   const est = EST_MIME[String(item.mime || "").toLowerCase()] || n.est || ".jpg";
   suggest({ filename: n.base + est, conflictAction: "uniquify" });
 });
@@ -309,7 +332,7 @@ async function invia(avvia) {
     righe.push(v.img ? "#img=" + riga : riga);
   }
   const nota = document.getElementById("nota");
-  avvia = avvia === true && modo !== "app";
+  avvia = avvia === true && puoAvviare();
   registra(t("logInviati", righe.length, descriviModo()) + (avvia ? " +start" : ""));
   try {
     await navigator.clipboard.writeText(MARCATORE + "\n" + intestazioni(avvia).join("\n") + "\n" + righe.join("\n") + "\n");
@@ -329,7 +352,7 @@ for (const el of document.querySelectorAll("[data-t]")) el.textContent = t(el.da
 for (const el of document.querySelectorAll("[data-tt]")) el.title = t(el.dataset.tt);
 document.getElementById("nota").textContent = t("notaInizio");
 for (const b of document.querySelectorAll(".seg button")) b.onclick = () => { modo = b.dataset.m; memo("modo", modo); mostraModo(); };
-for (const id of ["vq", "vc", "ap"]) {
+for (const id of ["vq", "vc", "ap", "if"]) {
   const el = document.getElementById(id), v = memo(id);
   if (v) el.value = v;
   el.onchange = () => memo(id, el.value);

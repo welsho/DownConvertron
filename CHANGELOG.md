@@ -1,6 +1,16 @@
 # Changelog
 
 ## 7.0 — DownConvertron
+- **Immagini con impostazioni separate dal video**: nuovo riquadro «2b · Immagini» con il formato delle immagini (Originale, PNG, WebP, JPG), che vale per le immagini in lista e per quelle nuove; il menu di ogni riga resta per i casi singoli. Il pannello del video si chiama «2 · Video e audio» e, con solo immagini in lista, si attenua con la scritta «Non si applica alle immagini». Dall'estensione, le impostazioni video/audio cambiano solo se arrivano video; le immagini hanno il loro menu «Formato nell'app» e «Scarica subito» funziona anche con sole immagini e «Come nell'app».
+- **Immagini, correzioni dalla revisione** (provate con ffmpeg e curl reali):
+  - download di nuovo funzionante con nomi utente Windows con accenti o caratteri cinesi (il file di configurazione di curl ora è in UTF-8);
+  - AVIF trasparenti convertiti senza perdere l'alfa (prima sfondo nero);
+  - GIF e APNG animati: in WebP restano animati, in PNG/JPG il registro avvisa che resta il primo fotogramma;
+  - un'immagine «Parziale» (originale salvato, conversione non riuscita) non viene riscaricata come doppione;
+  - link .jfif riconosciuti come immagini; dopo «Unsupported URL» la riga mostra il menu del formato e il controllo del tipo si ritenta se la rete non aveva risposto.
+- **Estensione**: `srcset` letto come fa il browser (virgole anche senza spazio, URL con virgole come Cloudinary), `<source media>` ignorate; «Salva nei Download» annulla il download se il server manda una pagina web al posto dell'immagine.
+- **Convertitore, animazioni da più immagini**: la palette della GIF usa tutte le immagini (prima l'ultima usciva con i colori sbagliati); valore iniziale di 2 immagini al secondo (prima 25: 5 foto davano 0,2 s).
+- **Build e release**: il CI controlla che le parti generate (testi, traduzioni, mecha) siano aggiornate; la release di GitHub nasce in bozza e fallisce se manca un file; header GPL in tutti i file.
 - **Immagini nel downloader, formato per riga**: ogni immagine in lista ha il suo menu. **Originale** (predefinito) salva il file così com'è sul server, byte per byte, senza ricodifica; **PNG**, **WebP** e **JPG** la convertono con ffmpeg dopo il download. PNG e WebP conservano l'alfa (WebP senza perdita, con perdita solo partendo da un JPG; una GIF animata resta animata in WebP). Con JPG le parti trasparenti diventano bianche e il registro lo avvisa. Se ffmpeg manca o la conversione fallisce, resta l'immagine originale (stato «Parziale» con il motivo).
 - **Estensione, fonte massima**: per ogni immagine si prende la versione più grande dichiarata dalla pagina (`srcset` dell'immagine e delle `<source>` del `<picture>`), non quella che il browser ha scelto per lo schermo.
 - **Estensione, «Salva nei Download»**: un'immagine senza estensione nell'URL prende l'estensione dal tipo dichiarato dal server (un WebP non viene più salvato come .jpg).

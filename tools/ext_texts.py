@@ -5,7 +5,7 @@ import json, os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 T = {
  "apri":         ["Apri DownConvertron", "Open DownConvertron", "打开 DownConvertron"],
- "comeScaricare":["Come scaricare", "How to download", "下载方式"],
+ "comeScaricare":["Video e audio: come scaricarli", "Video and audio: how to download", "视频和音频：下载方式"],
  "mApp":         ["Come nell'app", "As in the app", "沿用应用设置"],
  "mVideo":       ["Video", "Video", "视频"],
  "mAudio":       ["Solo audio", "Audio only", "仅音频"],
@@ -49,6 +49,11 @@ T = {
  "nessunaImg":   ["Nessuna immagine grande in questa pagina.", "No large images on this page.", "本页没有大尺寸图片。"],
  "salvaDownload":["Salva nei Download", "Save to Downloads", "保存到“下载”"],
  "nomeImg":      ["immagine", "image", "图片"],
+ "fmtImg":       ["Formato nell'app", "Format in the app", "应用中的格式"],
+ "fmtImgTt":     ["Formato delle immagini inviate all'app (separato dal video). «Salva nei Download» salva sempre il file originale.", "Format of the images sent to the app (separate from video). «Save to Downloads» always saves the original file.", "发送到应用的图片格式（与视频分开）。“保存到‘下载’”始终保存原始文件。"],
+ "fOrig":        ["Originale", "Original", "原始"],
+ "fJpg":         ["JPG (trasparenza su bianco)", "JPG (transparency on white)", "JPG（透明处变白）"],
+ "nonImmagine":  ["non è un'immagine (pagina web)", "not an image (web page)", "不是图片（网页）"],
  "nonRiuscite":  ["{0} non riuscite: {1}", "{0} failed: {1}", "{0} 张失败：{1}"],
  "kCanale":      ["canale", "channel", "频道"],
  "kDiretta":     ["diretta", "live", "直播"],
