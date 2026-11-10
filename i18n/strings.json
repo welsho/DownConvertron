@@ -255,6 +255,10 @@
   "en": "<b>Google Drive on Mac</b>: in the Finder under <b>Google Drive</b>.",
   "zh": "<b>Mac 上的 Google Drive</b>：在访达的 <b>Google Drive</b> 下。"
  },
+ "<b>Hai gi&agrave; una DownConvertron in Chrome:</b> prima premi <b>Rimuovi</b> su quella vecchia, poi caricala di nuovo come sopra. Questa versione ha un nuovo identificativo (serve a «Usa il mio login»).": {
+  "en": "<b>You already have a DownConvertron in Chrome:</b> first press <b>Remove</b> on the old one, then load it again as above. This version has a new ID (needed for «Use my login»).",
+  "zh": "<b>Chrome 中已有旧的 DownConvertron：</b>请先在旧扩展上点击<b>移除</b>，然后按上面的步骤重新加载。此版本有新的标识（“使用我的登录”需要）。"
+ },
  "<b>Una volta sola</b>, nella pagina <b>Estensioni</b> di Chrome": {
   "en": "<b>Only once</b>, on the Chrome <b>Extensions</b> page",
   "zh": "<b>只需一次</b>，在 Chrome 的<b>扩展程序</b>页面"
@@ -542,6 +546,10 @@
  "Cartella dell'estensione Chrome aggiornata alla {0} (era {1}).": {
   "en": "Chrome extension folder updated to {0} (was {1}).",
   "zh": "Chrome 扩展文件夹已更新到 {0}（原为 {1}）。"
+ },
+ "Cartella dell'estensione Chrome aggiornata con i file nuovi di questa versione: ricaricala in Chrome (spia COMPONENTI).": {
+  "en": "Chrome extension folder updated with this version's new files: reload it in Chrome (COMPONENTS light).",
+  "zh": "Chrome 扩展文件夹已更新为此版本的新文件：请在 Chrome 中重新加载（组件指示灯）。"
  },
  "Cartella dell'estensione Chrome pronta: {0}": {
   "en": "Chrome extension folder ready: {0}",
