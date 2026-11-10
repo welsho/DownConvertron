@@ -283,6 +283,10 @@
   "en": "AVI: old format, for dated players and programs. H.264 video copied losslessly (up to 1080p on YouTube), audio converted to MP3. No cover; subtitles stay separate files.",
   "zh": "AVI：旧格式，适用于老旧播放器和程序。H.264 视频无损复制（YouTube 最高 1080p），音频转为 MP3。无封面；字幕保存为单独文件。"
  },
+ "Accesso negato (errore {0}): il sito non lascia scaricare l'immagine da fuori. Prova a mandarla con l'estensione Chrome dalla pagina in cui si trova.": {
+  "en": "Access denied (error {0}): the site does not allow downloading the image from outside. Try sending it with the Chrome extension from the page it is on.",
+  "zh": "访问被拒绝（错误 {0}）：该网站不允许从外部下载图片。请在图片所在的页面用 Chrome 扩展发送。"
+ },
  "Adattamento": {
   "en": "Fit",
   "zh": "适配"
@@ -642,6 +646,10 @@
  "Con «Originale» e «WebM» l'audio viene copiato così com'è: bitrate, frequenza, canali e volume non si applicano.": {
   "en": "With «Original» and «WebM» the audio is copied as is: bitrate, sample rate, channels and volume do not apply.",
   "zh": "选择“原始”和“WebM”时音频按原样复制：码率、采样率、声道和音量设置不生效。"
+ },
+ "Connessione sicura non riuscita (certificato del sito non valido).": {
+  "en": "Secure connection failed (the site's certificate is not valid).",
+  "zh": "安全连接失败（网站证书无效）。"
  },
  "Conversione annullata. I file non completati restano in lista.": {
   "en": "Conversion cancelled. Unfinished files stay in the list.",
@@ -1031,6 +1039,14 @@
   "en": "The drag receiver was starting: drag the files again.",
   "zh": "拖放接收器刚才在启动：请再次拖入文件。"
  },
+ "Il server ha risposto con l'errore {0}.": {
+  "en": "The server responded with error {0}.",
+  "zh": "服务器返回错误 {0}。"
+ },
+ "Il server non risponde (tempo scaduto).": {
+  "en": "The server is not responding (timed out).",
+  "zh": "服务器无响应（超时）。"
+ },
  "Il tuo ffmpeg non ha il codec": {
   "en": "Your ffmpeg lacks the codec",
   "zh": "你的 ffmpeg 缺少编码器"
@@ -1086,6 +1102,10 @@
  "Immagine non scaricata (link scaduto o protetto?).": {
   "en": "Image not downloaded (expired or protected link?).",
   "zh": "图片未下载（链接过期或受保护？）。"
+ },
+ "Immagine non trovata (errore 404): il link è scaduto o sbagliato.": {
+  "en": "Image not found (error 404): the link has expired or is wrong.",
+  "zh": "未找到图片（错误 404）：链接已过期或有误。"
  },
  "Immagine singola (file)": {
   "en": "Single image (file)",
@@ -2114,6 +2134,10 @@
  "Sfondo rimosso con il chroma key.": {
   "en": "Background removed with chroma key.",
   "zh": "已用抠像去除背景。"
+ },
+ "Sito non raggiungibile: controlla l'indirizzo e la connessione.": {
+  "en": "Site unreachable: check the address and your connection.",
+  "zh": "无法访问网站：请检查地址和网络连接。"
  },
  "Social verticale 1080×1920 · MP4": {
   "en": "Vertical social 1080×1920 · MP4",
