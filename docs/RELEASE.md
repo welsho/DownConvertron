@@ -1,4 +1,4 @@
-## DownConvertron 7.0 beta 1
+## DownConvertron 7.0 beta 2
 
 English · [Italiano](#italiano)
 
