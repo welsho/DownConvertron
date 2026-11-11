@@ -41,7 +41,7 @@ Yes, the interface is a mecha. It turns around when you drop a file on it.
 
 **4 · Loops, stingers and vertical clips.** Trim, *Forward-backward* for a seamless loop, *Repeats* to make it longer, *Canvas 1080×1920* with *Whole, transparent borders*.
 
-**5 · Music and voice-over.** *Audio only*: WAV for editing, MP3 for drafts, or the original track with no conversion.
+**5 · SFX, music and voice-over.** *Audio only*: WAV for editing, MP3 for drafts, or the original track with no conversion. Sound effects download in bulk like everything else: tick the tabs, or paste the list of links.
 
 ## Install
 

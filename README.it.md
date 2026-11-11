@@ -41,7 +41,7 @@ Sì, l'interfaccia è un mecha. Si gira quando gli trascini sopra un file.
 
 **4 · Loop, stinger e clip verticali.** Taglio, *Avanti-indietro* per un loop senza stacco, *Ripetizioni* per allungarlo, *Tela 1080×1920* con *Intero, bordi trasparenti*.
 
-**5 · Musica e voice-over.** *Solo audio*: WAV per il montaggio, MP3 per le bozze, oppure la traccia originale senza conversione.
+**5 · SFX, musica e voice-over.** *Solo audio*: WAV per il montaggio, MP3 per le bozze, oppure la traccia originale senza conversione. Gli effetti sonori si scaricano in blocco come tutto il resto: spunta le schede, oppure incolla la lista dei link.
 
 ## Installazione
 
