@@ -88,10 +88,11 @@ I file delle release sono costruiti da GitHub Actions a partire dal codice del t
 
 | Parte | Stato |
 |---|---|
-| App Windows: download, conversione, immagini | Provata dall'autore e dai beta tester su PC Windows, più le prove automatiche dello stesso codice in Electron su Linux |
-| Estensione Chrome: link e immagini | Prove automatiche in Chromium su Linux |
-| Estensione Chrome: «Usa il mio login» | Provato con un server di prova locale (rifiutato → nuovo tentativo con il login → scaricato), per un video e per un'immagine. Non ancora provato con siti veri in un profilo Chrome vero |
-| App Mac (Apple Silicon) | Provata dai beta tester su Mac Apple Silicon, più le prove automatiche del codice dell'interfaccia in Electron su Linux |
+| App Windows: download, convertitore, immagini | Provata dall'autore e dai beta tester su PC Windows, più le prove automatiche dello stesso codice in Electron su Linux |
+| Estensione Chrome: link e immagini | Provata dai beta tester in Chrome su Windows e su Mac, più le prove automatiche in Chromium su Linux |
+| Estensione Chrome: «Usa il mio login» | Provato dai beta tester in Chrome, più un server di prova locale (rifiutato → nuovo tentativo con il login → scaricato) per un video e per un'immagine |
+| App Mac (Apple Silicon): download, immagini | Provata dai beta tester su Mac Apple Silicon, più le prove automatiche del codice dell'interfaccia in Electron su Linux |
+| App Mac (Apple Silicon): convertitore | Provato dai beta tester su Mac Apple Silicon: formati con alfa, sequenze, dalle immagini all'animazione, taglio e gli altri ritocchi |
 | Schermi più bassi di circa 950 px | La finestra scorre invece di stare in una schermata |
 
 Hai trovato un problema? [Apri una segnalazione](https://github.com/welsho/DownConvertron/issues/new/choose).

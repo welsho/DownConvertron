@@ -16,10 +16,11 @@ About the number: 7.0 comes from the internal versions. This is the first public
 ### What has been tested
 | Part | Status |
 |---|---|
-| Windows app: download, conversion, images | Tried by the author and by beta testers on Windows PCs, plus automated tests of the same code in Electron on Linux |
-| Chrome extension: links and images | Automated tests in Chromium on Linux |
-| Chrome extension: "Use my login" | Tried against a local test server only. Not yet tried with real sites in a real Chrome profile |
-| Mac app (Apple Silicon) | Tried by beta testers on Apple Silicon Macs |
+| Windows app: download, converter, images | Tried by the author and by beta testers on Windows PCs, plus automated tests of the same code in Electron on Linux |
+| Chrome extension: links and images | Tried by beta testers in Chrome on Windows and on Mac, plus automated tests in Chromium on Linux |
+| Chrome extension: "Use my login" | Tried by beta testers in Chrome, plus a local test server (refused → retried with the login → downloaded) for a video and for an image |
+| Mac app (Apple Silicon): download, images | Tried by beta testers on Apple Silicon Macs, plus automated tests of the interface code in Electron on Linux |
+| Mac app (Apple Silicon): converter | Tried by beta testers on Apple Silicon Macs: formats with alpha, sequences, images to animation, trim and the other touch-ups |
 | Screens less than about 950 px high | The window scrolls |
 
 ### Known issues
@@ -79,10 +80,11 @@ Sul numero: 7.0 viene dalle versioni interne. Questa è la prima pubblica.
 ### Cosa è stato provato
 | Parte | Stato |
 |---|---|
-| App Windows: download, conversione, immagini | Provata dall'autore e dai beta tester su PC Windows, più le prove automatiche dello stesso codice in Electron su Linux |
-| Estensione Chrome: link e immagini | Prove automatiche in Chromium su Linux |
-| Estensione Chrome: «Usa il mio login» | Provato solo con un server di prova locale. Non ancora provato con siti veri in un profilo Chrome vero |
-| App Mac (Apple Silicon) | Provata dai beta tester su Mac Apple Silicon |
+| App Windows: download, convertitore, immagini | Provata dall'autore e dai beta tester su PC Windows, più le prove automatiche dello stesso codice in Electron su Linux |
+| Estensione Chrome: link e immagini | Provata dai beta tester in Chrome su Windows e su Mac, più le prove automatiche in Chromium su Linux |
+| Estensione Chrome: «Usa il mio login» | Provato dai beta tester in Chrome, più un server di prova locale (rifiutato → nuovo tentativo con il login → scaricato) per un video e per un'immagine |
+| App Mac (Apple Silicon): download, immagini | Provata dai beta tester su Mac Apple Silicon, più le prove automatiche del codice dell'interfaccia in Electron su Linux |
+| App Mac (Apple Silicon): convertitore | Provato dai beta tester su Mac Apple Silicon: formati con alfa, sequenze, dalle immagini all'animazione, taglio e gli altri ritocchi |
 | Schermi più bassi di circa 950 px | La finestra scorre |
 
 ### Limiti noti

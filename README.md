@@ -88,10 +88,11 @@ Release files are built by GitHub Actions from the tagged source and listed with
 
 | Part | Status |
 |---|---|
-| Windows app: download, conversion, images | Tried by the author and by beta testers on Windows PCs, plus automated tests of the same code in Electron on Linux |
-| Chrome extension: links and images | Automated tests in Chromium on Linux |
-| Chrome extension: "Use my login" | Tried against a local test server (refused → retried with the login → downloaded), for a video and for an image. Not yet tried with real sites in a real Chrome profile |
-| Mac app (Apple Silicon) | Tried by beta testers on Apple Silicon Macs, plus automated tests of the interface code in Electron on Linux |
+| Windows app: download, converter, images | Tried by the author and by beta testers on Windows PCs, plus automated tests of the same code in Electron on Linux |
+| Chrome extension: links and images | Tried by beta testers in Chrome on Windows and on Mac, plus automated tests in Chromium on Linux |
+| Chrome extension: "Use my login" | Tried by beta testers in Chrome, plus a local test server (refused → retried with the login → downloaded) for a video and for an image |
+| Mac app (Apple Silicon): download, images | Tried by beta testers on Apple Silicon Macs, plus automated tests of the interface code in Electron on Linux |
+| Mac app (Apple Silicon): converter | Tried by beta testers on Apple Silicon Macs: formats with alpha, sequences, images to animation, trim and the other touch-ups |
 | Screens less than about 950 px high | The window scrolls instead of fitting in one screen |
 
 Found a problem? [Open an issue](https://github.com/welsho/DownConvertron/issues/new/choose).
