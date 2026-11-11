@@ -6,12 +6,19 @@ on:
     branches: [main]
     tags: ['v*']
   pull_request:
-  # avvio a mano (scheda Actions -> build -> Run workflow): rifa' gli screenshot del README
+  # avvio a mano (scheda Actions -> build -> Run workflow):
+  #  - senza niente: rifa' gli screenshot del README
+  #  - con un tag gia' pubblicato (es. v7.0-beta.2): rifa' la build e la release in bozza di quel tag
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Tag di cui rifare build e release in bozza (vuoto = solo screenshot)"
+        required: false
+        default: ""
 
 jobs:
   screenshot:
-    if: github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch' && inputs.release_tag == ''
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
@@ -73,13 +80,17 @@ jobs:
         run: python3 tools/check.py
 
   release:
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.release_tag != '')
     needs: check
-    runs-on: macos-14
+    runs-on: macos-latest
+    env:
+      REL_TAG: ${{ inputs.release_tag || github.ref_name }}
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          ref: ${{ inputs.release_tag || github.ref }}
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1  # v7.1.0
         with:
           node-version: 24
@@ -98,7 +109,8 @@ jobs:
           # in bozza: la pubblica Welsho dopo aver controllato i file; se ne manca uno la build fallisce
           draft: true
           # un tag con il trattino (es. v7.0-beta.1) e' una pre-release
-          prerelease: ${{ contains(github.ref_name, '-') }}
+          tag_name: ${{ env.REL_TAG }}
+          prerelease: ${{ contains(env.REL_TAG, '-') }}
           fail_on_unmatched_files: true
           files: |
             dist/DownConvertron-Setup.bat
