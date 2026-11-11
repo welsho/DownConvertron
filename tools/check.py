@@ -100,7 +100,7 @@ if mcs:
     d = tempfile.mkdtemp()
     r = subprocess.run([mcs] + ([] if mcs.lower().endswith('csc.exe') else ['-langversion:5']) + ['-target:library', '-r:System.Windows.Forms.dll', '-r:System.Drawing.dll', '-out:' + os.path.join(d, 'r.dll'),
                         os.path.join(ROOT, 'windows', 'Ricevitore.cs')], capture_output=True, text=True)
-    (ok('ricevitore C# 5 compilato') if r.returncode == 0 else bad('ricevitore C#: ' + r.stdout[-400:]))
+    (ok('ricevitore C# 5 compilato') if r.returncode == 0 else bad('ricevitore C#: ' + ' | '.join([l for l in (r.stdout + r.stderr).splitlines() if 'error' in l][:4] or [(r.stdout + r.stderr)[-400:]])))
 else: print('  --  mcs (Mono) / csc.exe non trovato: compilazione del ricevitore non controllata')
 print('\nRISULTATO: ' + ('TUTTO OK' if not errors else '%d PROBLEMI' % len(errors)))
 sys.exit(1 if errors else 0)

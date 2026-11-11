@@ -57,7 +57,7 @@ jobs:
       - name: Strumenti per i controlli (acorn per JScript ES3, Mono per il ricevitore C#)
         run: |
           npm install --no-save acorn@8
-          sudo apt-get update -qq && sudo apt-get install -y -qq mono-mcs
+          sudo apt-get update -qq && sudo apt-get install -y -qq mono-mcs libmono-system-windows-forms4.0-cil libmono-system-drawing4.0-cil
       - name: Parti generate aggiornate (testi dell'estensione, traduzioni, mecha, file incorporati nell'HTA)
         run: |
           python3 tools/ext_texts.py
