@@ -104,7 +104,7 @@ L'app prepara da sola la cartella dell'estensione all'avvio (anche se usi solo l
 - Su Windows niente diritti di amministratore: la voce di registro principale è `HKCU\Software\Classes\downconvertron` (serve al logo dell'estensione per aprire l'app).
 - Nessun dato dell'utente nella riga di comando: link e opzioni passano a yt-dlp tramite file temporanei.
 - L'estensione legge le schede solo quando la apri e non invia nulla in rete: copia i link negli appunti, l'app li riconosce dall'intestazione.
-- **Usa il mio login** è acceso di base (si può spegnere). Acceso, passa all'app i cookie di Chrome dei soli siti inviati, attraverso un ponte locale che accetta solo questa estensione; l'app li tiene in un file della sua cartella dati solo per quell'invio e li usa solo se il sito chiede l'accesso. Il ponte ha una sola voce di registro, per il tuo utente: `HKCU\Software\Google\Chrome\NativeMessagingHosts\com.welsho.downconvertron`.
+- **Usa il mio login** è acceso di base (si può spegnere). Acceso, passa all'app i cookie di Chrome dei soli siti inviati, attraverso un ponte locale che accetta solo questa estensione; l'app li tiene in un file della sua cartella dati (`cookies`) e li usa solo se il sito chiede l'accesso. Il file viene cancellato a fine download, quando togli i link dalla lista, alla chiusura dell'app, e comunque dopo 30 minuti se i link restano in lista senza essere scaricati; se l'app è chiusa lo toglie il ponte, alla prima apertura dell'estensione dopo 10 minuti. Il ponte ha una sola voce di registro, per il tuo utente: `HKCU\Software\Google\Chrome\NativeMessagingHosts\com.welsho.downconvertron`.
 
 ## Per sviluppatori
 

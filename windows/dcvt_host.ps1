@@ -23,6 +23,16 @@ try {
   if ($len -le 0 -or $len -gt 1572864) { throw 'messaggio troppo grande' }
   $msg = [Text.Encoding]::UTF8.GetString((ReadExact $in $len)) | ConvertFrom-Json
   $dir = Join-Path $env:APPDATA 'DownConvertron\cookies'
+  # login rimasti su disco senza nessuno che li usi, a ogni chiamata (anche la semplice apertura del popup):
+  # l'app, finche' ne ha in uso, aggiorna cookies\in_uso ogni minuto. Se quel file manca o e' fermo da 5 minuti
+  # l'app e' chiusa o non li usa piu': via i login piu' vecchi di 10 minuti. In ogni caso, via dopo 6 ore.
+  try {
+    if (Test-Path -LiteralPath $dir) {
+      $viva = Join-Path $dir 'in_uso'; $lim = (Get-Date).AddHours(-6)
+      if (-not ((Test-Path -LiteralPath $viva) -and (Get-Item -LiteralPath $viva).LastWriteTime -gt (Get-Date).AddMinutes(-5))) { $lim = (Get-Date).AddMinutes(-10) }
+      Get-ChildItem -LiteralPath $dir -Filter '*.txt' -ErrorAction SilentlyContinue | Where-Object { $_.LastWriteTime -lt $lim } | Remove-Item -Force -ErrorAction SilentlyContinue
+    }
+  } catch {}
   if ($msg.op -eq 'ping') { Reply @{ ok = $true; v = 2 }; exit 0 }
   # link che hanno chiesto l'accesso (li scrive l'app a fine lavoro): l'estensione mostra "Riprova con il mio login"
   if ($msg.op -eq 'richieste') {
@@ -88,11 +98,10 @@ try {
   }
   if ($msg.op -ne 'cookies') { throw 'operazione sconosciuta' }
   $tok = [string]$msg.token; $data = [string]$msg.data
-  if ($tok -notmatch '^[a-z0-9]{16,64}$') { throw 'token non valido' }
+  # solo minuscole e cifre, senza a-capo finale (-cnotmatch distingue le maiuscole, \z non accetta l'a-capo)
+  if ($tok -cnotmatch '\A[a-z0-9]{16,64}\z') { throw 'token non valido' }
   if (-not $data.StartsWith('# Netscape HTTP Cookie File')) { throw 'dati non validi' }
   if (-not (Test-Path -LiteralPath $dir)) { New-Item -ItemType Directory -Force -Path $dir | Out-Null }
-  # login vecchi rimasti (app chiusa di colpo): via dopo 6 ore
-  Get-ChildItem -LiteralPath $dir -Filter '*.txt' -ErrorAction SilentlyContinue | Where-Object { $_.LastWriteTime -lt (Get-Date).AddHours(-6) } | Remove-Item -Force -ErrorAction SilentlyContinue
   [IO.File]::WriteAllText((Join-Path $dir ($tok + '.txt')), $data, (New-Object Text.UTF8Encoding $false))
   Reply @{ ok = $true }
 } catch {

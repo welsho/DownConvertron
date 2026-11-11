@@ -17,6 +17,16 @@ const dirApp = process.platform === "darwin" ? path.join(os.homedir(), "Library"
   : path.join(process.env.APPDATA || path.join(os.homedir(), ".local", "share"), "DownConvertron");
 function handle(msg) {
   const dir = path.join(dirApp, "cookies");
+  /* login rimasti su disco senza nessuno che li usi, a ogni chiamata (anche la semplice apertura del popup):
+     l'app, finche' ne ha in uso, aggiorna cookies/in_uso ogni minuto. Se quel file manca o e' fermo da 5 minuti
+     l'app e' chiusa o non li usa piu': via i login piu' vecchi di 10 minuti. In ogni caso, via dopo 6 ore. */
+  try {
+    let lim = 6 * 3600 * 1000;
+    try { if (Date.now() - fs.statSync(path.join(dir, "in_uso")).mtimeMs > 5 * 60 * 1000) lim = 10 * 60 * 1000; } catch (e) { lim = 10 * 60 * 1000; }
+    for (const f of fs.readdirSync(dir)) {
+      try { const p = path.join(dir, f); if (/\.txt$/.test(f) && Date.now() - fs.statSync(p).mtimeMs > lim) fs.unlinkSync(p); } catch (e) {}
+    }
+  } catch (e) { /* nessuna cartella: niente da togliere */ }
   if (msg.op === "ping") return { ok: true, v: 2 };
   /* link che hanno chiesto l'accesso (li scrive l'app a fine lavoro): l'estensione mostra «Riprova con il mio login» */
   if (msg.op === "richieste") {
@@ -45,10 +55,6 @@ function handle(msg) {
   if (!/^[a-z0-9]{16,64}$/.test(tok)) throw new Error("token non valido");
   if (data.indexOf("# Netscape HTTP Cookie File") !== 0) throw new Error("dati non validi");
   fs.mkdirSync(dir, { recursive: true, mode: 0o700 });
-  /* login vecchi rimasti (app chiusa di colpo): via dopo 6 ore */
-  for (const f of fs.readdirSync(dir)) {
-    try { const p = path.join(dir, f); if (/\.txt$/.test(f) && Date.now() - fs.statSync(p).mtimeMs > 6 * 3600 * 1000) fs.unlinkSync(p); } catch (e) {}
-  }
   fs.writeFileSync(path.join(dir, tok + ".txt"), data, { encoding: "utf8", mode: 0o600 });
   return { ok: true };
 }
