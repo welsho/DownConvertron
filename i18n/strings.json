@@ -1291,9 +1291,9 @@
   "en": "The Chrome extension is at version {0}: press «Chrome extension» to update it to {1}.",
   "zh": "Chrome 扩展版本为 {0}：点击“Chrome 扩展”更新到 {1}。"
  },
- "L'estensione riconosce gli oltre 1.700 siti di yt-dlp; legge le schede solo quando la apri e non invia nulla in rete.": {
-  "en": "The extension recognizes the 1,700+ sites of yt-dlp; it reads the tabs only when you open it and sends nothing over the network.",
-  "zh": "扩展可识别 yt-dlp 支持的 1700 多个网站；只在你打开它时读取标签页，不会向网络发送任何内容。"
+ "L'estensione riconosce gli oltre 1.700 siti di yt-dlp e legge le schede solo quando la apri. Non manda i tuoi dati a nessun server: carica le miniature delle immagini della pagina e parla con l'app sul tuo computer.": {
+  "en": "The extension recognises the 1,700+ sites of yt-dlp and reads your tabs only when you open it. It sends your data to no server: it loads the thumbnails of the page's images and talks to the app on your computer.",
+  "zh": "扩展可识别 yt-dlp 支持的 1700 多个网站，只在你打开它时读取标签页。它不会把你的数据发送到任何服务器：只加载页面图片的缩略图，并与你电脑上的应用通信。"
  },
  "L'installazione dei componenti è in corso: se chiudi continuerà in background, ma non vedrai l'esito.": {
   "en": "Components are being installed: if you close it will continue in the background, but you will not see the result.",

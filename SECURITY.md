@@ -51,7 +51,6 @@ Out of scope: bugs in yt-dlp, FFmpeg, Deno, Electron or Chrome (please report th
 - **Install / update components** downloads the latest yt-dlp and Deno from their GitHub releases and ffmpeg and ffprobe from ffmpeg.martin-riedl.de, into `~/Library/Application Support/DownConvertron/bin`. Each file is compared with the SHA-256 published by its source; a file that does not match is discarded. If the source publishes no checksum, the check is skipped and the log says so. The quarantine mark is then removed from that `bin` folder.
 - At every start it copies the bridge to `~/Library/Application Support/DownConvertron/nmhost` and writes `NativeMessagingHosts/com.welsho.downconvertron.json` in the profile folder of Google Chrome, Chrome Beta and Chromium, where those folders exist.
 - To open Chrome's Extensions page it uses AppleScript: the first time, macOS asks whether DownConvertron may control Chrome.
-- The Mac app has never been run on a real Mac. What is written here comes from the code.
 
 ### Network
 
@@ -176,7 +175,6 @@ Non rientrano: i difetti di yt-dlp, FFmpeg, Deno, Electron o Chrome (vanno segna
 - **Installa / aggiorna componenti** scarica le ultime versioni di yt-dlp e Deno dalle loro release su GitHub, e ffmpeg e ffprobe da ffmpeg.martin-riedl.de, in `~/Library/Application Support/DownConvertron/bin`. Ogni file viene confrontato con l'impronta SHA-256 pubblicata dalla sua fonte; un file che non corrisponde viene scartato. Se la fonte non pubblica l'impronta, il controllo viene saltato e il registro lo dice. Poi dalla cartella `bin` viene tolto il contrassegno di quarantena.
 - A ogni avvio copia il ponte in `~/Library/Application Support/DownConvertron/nmhost` e scrive `NativeMessagingHosts/com.welsho.downconvertron.json` nella cartella del profilo di Google Chrome, Chrome Beta e Chromium, dove quelle cartelle esistono.
 - Per aprire la pagina Estensioni di Chrome usa AppleScript: la prima volta macOS chiede se DownConvertron può controllare Chrome.
-- L'app per Mac non è mai stata avviata su un Mac vero. Quello che è scritto qui viene dal codice.
 
 ### Rete
 

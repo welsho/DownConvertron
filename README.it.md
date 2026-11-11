@@ -9,7 +9,7 @@ Un front end per yt-dlp e ffmpeg, pensato per creator, streamer e video maker.
 - **Converti e conserva la trasparenza**: WebM VP9 + alfa, ProRes 4444, HAP Alpha, WebP e APNG animati, sequenze PNG/TIFF/EXR.
 - **Dalle immagini agli overlay**: più immagini diventano un'animazione o una sequenza, pronta per OBS, Premiere, Resolve e i ledwall.
 
-**7.0 beta** · Windows 10/11 · macOS 13+ su Apple Silicon (sperimentale) · Estensione Chrome · [Cosa è stato provato](#stato)
+**7.0 beta** · Windows 10/11 · macOS 13+ su Apple Silicon · Estensione Chrome · [Cosa è stato provato](#stato)
 
 [Scarica](https://github.com/welsho/DownConvertron/releases) · Interfaccia in italiano, inglese e 简体中文
 
@@ -17,7 +17,7 @@ Un front end per yt-dlp e ffmpeg, pensato per creator, streamer e video maker.
 [![release](https://img.shields.io/github/v/release/welsho/DownConvertron?include_prereleases)](https://github.com/welsho/DownConvertron/releases)
 [![license](https://img.shields.io/github/license/welsho/DownConvertron)](LICENSE)
 
-<img src="docs/img/app-it-converti.png" width="760" alt="DownConvertron: il convertitore, con i formati con alfa">
+<img src="docs/img/apertura-it.png" width="900" alt="Spunti le schede nell'estensione Chrome, l'app scarica la lista in blocco, poi converte conservando il canale alfa">
 
 Sì, l'interfaccia è un mecha. Si gira quando gli trascini sopra un file.
 
@@ -45,7 +45,7 @@ Sì, l'interfaccia è un mecha. Si gira quando gli trascini sopra un file.
 
 ## Installazione
 
-Tutti i file sono nella [pagina delle release](https://github.com/welsho/DownConvertron/releases). È una pre-release: **Windows è la piattaforma provata; l'app per Mac è un'anteprima, non ancora provata su un Mac vero: cerchiamo tester.** I dettagli sono in [Stato](#stato).
+Tutti i file sono nella [pagina delle release](https://github.com/welsho/DownConvertron/releases). È una pre-release: l'app per Windows e l'app per Mac sono state provate dai beta tester. I dettagli sono in [Stato](#stato).
 
 ### Windows 10 / 11
 1. Scarica `DownConvertron-Setup.bat` e aprilo con un doppio clic.
@@ -54,13 +54,13 @@ Tutti i file sono nella [pagina delle release](https://github.com/welsho/DownCon
 
 L'installer ha bisogno di *Programma di installazione app* (winget), che Windows 10 e 11 di norma includono. L'app non chiede diritti di amministratore. Non vuoi installare? `DownConvertron.hta` è tutta l'app in un solo file: doppio clic, poi **Installa / aggiorna componenti**.
 
-### Mac (Apple Silicon, macOS 13 o successivo) · anteprima
+### Mac (Apple Silicon, macOS 13 o successivo)
 1. Scarica `DownConvertron-Mac-AppleSilicon.zip`, aprilo e trascina **DownConvertron.app** in *Applicazioni*.
 2. Aprila. Il Mac dice che non può verificare lo sviluppatore, oppure che l'app è danneggiata. Non è firmata con un Developer ID Apple e non è notarizzata: il messaggio vuol dire questo. Vai in *Impostazioni di Sistema → Privacy e sicurezza → Apri comunque*.
 3. Se il Mac rifiuta ancora, apri il Terminale ed esegui `xattr -dr com.apple.quarantine /Applications/DownConvertron.app`. Toglie il contrassegno che macOS mette ai file scaricati; non cambia nient'altro.
 4. Premi **Installa / aggiorna componenti**: yt-dlp, ffmpeg e Deno (circa 150 MB) vanno in `~/Library/Application Support/DownConvertron/bin`. Niente Homebrew, niente password.
 
-Questi passaggi non sono ancora stati provati su un Mac vero. Se li provi, [facci sapere com'è andata](https://github.com/welsho/DownConvertron/issues/new/choose).
+Se un passaggio non va come scritto, [facci sapere com'è andata](https://github.com/welsho/DownConvertron/issues/new/choose).
 
 ### Estensione Chrome
 1. Nell'app premi **Estensione Chrome**: prepara la cartella dell'estensione, apre la pagina *Estensioni* di Chrome e mostra la cartella da caricare.
@@ -88,14 +88,13 @@ I file delle release sono costruiti da GitHub Actions a partire dal codice del t
 
 | Parte | Stato |
 |---|---|
-| App Windows: download, conversione, immagini | Costruita e provata su un solo PC con Windows 11, più le prove automatiche dello stesso codice in Electron su Linux. Non ancora confermata su altri PC |
-| Windows: ancora da confermare su PC veri | Programma nativo del trascinamento · spia COMPONENTI e apertura automatica della pagina Estensioni di Chrome · logo dell'estensione che apre l'app · download delle immagini con `curl.exe` di Windows · installazione dei componenti con winget dalle spie · layout con scala dello schermo al 100%, 125% e 150% |
+| App Windows: download, conversione, immagini | Provata dall'autore e dai beta tester su PC Windows, più le prove automatiche dello stesso codice in Electron su Linux |
 | Estensione Chrome: link e immagini | Prove automatiche in Chromium su Linux |
 | Estensione Chrome: «Usa il mio login» | Provato con un server di prova locale (rifiutato → nuovo tentativo con il login → scaricato), per un video e per un'immagine. Non ancora provato con siti veri in un profilo Chrome vero |
-| App Mac (Apple Silicon) | Anteprima. Mai avviata su un Mac vero; il codice dell'interfaccia è quello provato in Electron su Linux |
+| App Mac (Apple Silicon) | Provata dai beta tester su Mac Apple Silicon, più le prove automatiche del codice dell'interfaccia in Electron su Linux |
 | Schermi più bassi di circa 950 px | La finestra scorre invece di stare in una schermata |
 
-Hai trovato un problema, o l'hai provata su un Mac? [Apri una issue](https://github.com/welsho/DownConvertron/issues/new/choose).
+Hai trovato un problema? [Apri una segnalazione](https://github.com/welsho/DownConvertron/issues/new/choose).
 
 ## Formati
 
@@ -161,6 +160,10 @@ Nell'app c'è anche l'opzione **Usa login di Firefox**. È spenta di base e non 
 - Il layout è pensato per stare in una schermata a 1080 px di altezza. Sotto i 950 px circa la finestra scorre.
 - Quando un sito smette di funzionare, la prima cosa da fare è aggiornare yt-dlp (clic sulla spia REATTORE). Il supporto dei siti è lavoro di yt-dlp, non nostro: per favore non chiedere al progetto yt-dlp assistenza su DownConvertron.
 - I contenuti protetti da DRM non sono supportati.
+- **Limite noto, HTA in file unico (Windows)**: se usi `DownConvertron.hta` senza installare e l'app viene aperta dall'estensione, un doppio clic successivo sul file può aprire una seconda finestra. Aprila sempre in un modo solo, oppure installala con il Setup.
+- **Limite noto, programmi di sicurezza (Windows)**: l'estensione parla con l'app attraverso un piccolo script PowerShell che Chrome avvia, nascosto, a ogni apertura del popup. Per aprire l'app o portarla in primo piano, quello script avvia `mshta.exe` e simula il tasto Alt. Alcuni antivirus possono segnalarlo o bloccarlo. Se viene bloccato, l'estensione ripiega sul link `downconvertron://` e manda i link senza il login, avvisandoti.
+- **Limite noto, cookie sui domini condivisi**: per un link su un dominio di hosting condiviso (`nome.github.io`, `nome.blogspot.com`, un bucket su `amazonaws.com` e simili), «Usa il mio login» passa i cookie di tutto il dominio superiore, non solo quelli di quel sito.
+- **Limite noto, altri browser Chromium (Windows)**: il ponte locale è registrato solo per Google Chrome. In Edge, Brave e negli altri l'estensione manda comunque i link, ma il login e l'apertura dell'app attraverso il ponte non funzionano.
 - Le battute del mecha restano in italiano. È voluto: fa parte del personaggio.
 
 ## Uso responsabile
@@ -178,7 +181,7 @@ DownConvertron è un progetto indipendente, non affiliato né approvato da yt-dl
 
 <table>
 <tr>
-<td width="50%"><img src="docs/img/app-en-convert.png" alt="English interface"><br><sub>Il convertitore, in inglese.</sub></td>
+<td width="50%"><img src="docs/img/app-it-converti.png" alt="Il convertitore, con i formati con alfa"><br><sub>Il convertitore: formati con alfa, ritocchi, preset.</sub></td>
 <td width="50%"><img src="docs/img/app-it-download.png" alt="Scheda Scarica da link"><br><sub>La scheda del download.</sub></td>
 </tr>
 </table>

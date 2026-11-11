@@ -16,19 +16,24 @@ About the number: 7.0 comes from the internal versions. This is the first public
 ### What has been tested
 | Part | Status |
 |---|---|
-| Windows app: download, conversion, images | Built and tried on one Windows 11 PC, plus automated tests of the same code in Electron on Linux. Not yet confirmed on other PCs |
-| Windows: still to confirm on real PCs | Native drag-and-drop helper · COMPONENTS light and the automatic opening of Chrome's Extensions page · extension logo opening the app · image downloads through Windows' `curl.exe` · installing components with winget from the lights · layout at 100%, 125% and 150% display scale |
+| Windows app: download, conversion, images | Tried by the author and by beta testers on Windows PCs, plus automated tests of the same code in Electron on Linux |
 | Chrome extension: links and images | Automated tests in Chromium on Linux |
 | Chrome extension: "Use my login" | Tried against a local test server only. Not yet tried with real sites in a real Chrome profile |
-| Mac app (Apple Silicon) | **Preview. Not yet tried on a real Mac: testers wanted** |
+| Mac app (Apple Silicon) | Tried by beta testers on Apple Silicon Macs |
 | Screens less than about 950 px high | The window scrolls |
+
+### Known issues
+- **Single-file HTA (Windows)**: if you use `DownConvertron.hta` without installing and the extension opens the app, a later double-click on the file can open a second window. Open it one way only, or install it with the Setup.
+- **Security programs (Windows)**: the extension talks to the app through a small PowerShell script that Chrome starts, hidden, every time you open the popup. To open the app or bring it to the front, that script starts `mshta.exe` and simulates the Alt key. Some antivirus programs may flag or block this. When it is blocked, the extension falls back to the `downconvertron://` link and sends the links without the login, and says so.
+- **Cookies on shared domains**: for a link on a shared hosting domain (`name.github.io`, `name.blogspot.com`, a bucket on `amazonaws.com` and similar), "Use my login" passes the cookies of the whole parent domain, not only those of that one site.
+- **Other Chromium browsers (Windows)**: the local bridge is registered for Google Chrome only. In Edge, Brave and the others the extension still sends links, but the login and opening the app through the bridge do not work.
 
 ### Files
 | File | What it is |
 |---|---|
 | `DownConvertron-Setup.bat` | Installer for Windows 10/11. Recommended on Windows |
 | `DownConvertron.hta` | The Windows app in one file, without installing |
-| `DownConvertron-Mac-AppleSilicon.zip` | Mac app for Apple Silicon, macOS 13 or later. Preview, not yet tried on a real Mac |
+| `DownConvertron-Mac-AppleSilicon.zip` | Mac app for Apple Silicon, macOS 13 or later |
 | `DownConvertron-ChromeExtension.zip` | The Chrome extension, for those who want to inspect it. You do not need to download it: the app already contains it (**Chrome extension** button) |
 | `SHA256SUMS.txt` | SHA-256 checksums of the files above |
 
@@ -50,7 +55,7 @@ Compare each file with its line in `SHA256SUMS.txt`:
 
 The files were built by GitHub Actions from this tag. Source code: this tag. Licence: GPL-3.0-or-later.
 
-Download only content you have the right to use. Problems, or a report from a real Mac: [open an issue](https://github.com/welsho/DownConvertron/issues/new/choose). Full history (in Italian): [CHANGELOG.md](https://github.com/welsho/DownConvertron/blob/main/CHANGELOG.md).
+Download only content you have the right to use. Problems: [open an issue](https://github.com/welsho/DownConvertron/issues/new/choose). Full history (in Italian): [CHANGELOG.md](https://github.com/welsho/DownConvertron/blob/main/CHANGELOG.md).
 
 If you had an earlier version (DownLTransFMecchazzi, Mecchazzi, Scarica Video), the installer removes it and the app picks up its settings.
 
@@ -74,19 +79,24 @@ Sul numero: 7.0 viene dalle versioni interne. Questa è la prima pubblica.
 ### Cosa è stato provato
 | Parte | Stato |
 |---|---|
-| App Windows: download, conversione, immagini | Costruita e provata su un solo PC con Windows 11, più le prove automatiche dello stesso codice in Electron su Linux. Non ancora confermata su altri PC |
-| Windows: ancora da confermare su PC veri | Programma nativo del trascinamento · spia COMPONENTI e apertura automatica della pagina Estensioni di Chrome · logo dell'estensione che apre l'app · download delle immagini con `curl.exe` di Windows · installazione dei componenti con winget dalle spie · layout con scala dello schermo al 100%, 125% e 150% |
+| App Windows: download, conversione, immagini | Provata dall'autore e dai beta tester su PC Windows, più le prove automatiche dello stesso codice in Electron su Linux |
 | Estensione Chrome: link e immagini | Prove automatiche in Chromium su Linux |
 | Estensione Chrome: «Usa il mio login» | Provato solo con un server di prova locale. Non ancora provato con siti veri in un profilo Chrome vero |
-| App Mac (Apple Silicon) | **Anteprima. Non ancora provata su un Mac vero: cerchiamo tester** |
+| App Mac (Apple Silicon) | Provata dai beta tester su Mac Apple Silicon |
 | Schermi più bassi di circa 950 px | La finestra scorre |
+
+### Limiti noti
+- **HTA in file unico (Windows)**: se usi `DownConvertron.hta` senza installare e l'app viene aperta dall'estensione, un doppio clic successivo sul file può aprire una seconda finestra. Aprila sempre in un modo solo, oppure installala con il Setup.
+- **Programmi di sicurezza (Windows)**: l'estensione parla con l'app attraverso un piccolo script PowerShell che Chrome avvia, nascosto, a ogni apertura del popup. Per aprire l'app o portarla in primo piano, quello script avvia `mshta.exe` e simula il tasto Alt. Alcuni antivirus possono segnalarlo o bloccarlo. Se viene bloccato, l'estensione ripiega sul link `downconvertron://` e manda i link senza il login, avvisandoti.
+- **Cookie sui domini condivisi**: per un link su un dominio di hosting condiviso (`nome.github.io`, `nome.blogspot.com`, un bucket su `amazonaws.com` e simili), «Usa il mio login» passa i cookie di tutto il dominio superiore, non solo quelli di quel sito.
+- **Altri browser Chromium (Windows)**: il ponte locale è registrato solo per Google Chrome. In Edge, Brave e negli altri l'estensione manda comunque i link, ma il login e l'apertura dell'app attraverso il ponte non funzionano.
 
 ### File
 | File | Cos'è |
 |---|---|
 | `DownConvertron-Setup.bat` | Installer per Windows 10/11. Consigliato su Windows |
 | `DownConvertron.hta` | L'app per Windows in un solo file, senza installare |
-| `DownConvertron-Mac-AppleSilicon.zip` | App per Mac Apple Silicon, macOS 13 o successivo. Anteprima, non ancora provata su un Mac vero |
+| `DownConvertron-Mac-AppleSilicon.zip` | App per Mac Apple Silicon, macOS 13 o successivo |
 | `DownConvertron-ChromeExtension.zip` | L'estensione Chrome, per chi vuole ispezionarla. Non serve scaricarla: è già dentro l'app (pulsante **Estensione Chrome**) |
 | `SHA256SUMS.txt` | Impronte SHA-256 dei file qui sopra |
 
@@ -108,7 +118,7 @@ Confronta ogni file con la sua riga in `SHA256SUMS.txt`:
 
 I file sono stati costruiti da GitHub Actions a partire da questo tag. Codice sorgente: questo tag. Licenza: GPL-3.0-or-later.
 
-Scarica solo contenuti che hai il diritto di usare. Problemi, o un riscontro da un Mac vero: [apri una issue](https://github.com/welsho/DownConvertron/issues/new/choose). Storia completa: [CHANGELOG.md](https://github.com/welsho/DownConvertron/blob/main/CHANGELOG.md).
+Scarica solo contenuti che hai il diritto di usare. Problemi: [apri una issue](https://github.com/welsho/DownConvertron/issues/new/choose). Storia completa: [CHANGELOG.md](https://github.com/welsho/DownConvertron/blob/main/CHANGELOG.md).
 
 Se avevi una versione precedente (DownLTransFMecchazzi, Mecchazzi, Scarica Video), l'installer la toglie e l'app ne riprende le impostazioni.
 
