@@ -1,4 +1,4 @@
-# DownConvertron - controlli a ogni push e release automatica quando pubblichi un tag v* (es. v7.0)
+# DownConvertron - controlli a ogni push e release automatica quando pubblichi un tag v* (es. v7.0, o v7.0-beta.1 per una pre-release)
 # Le action sono fissate allo SHA del commit (il tag accanto serve solo a leggerlo): un tag spostato non cambia la build.
 name: build
 on:
@@ -87,15 +87,23 @@ jobs:
         run: npm install --no-save --ignore-scripts @electron/packager@20.3.0 acorn@8
       - name: Build (Windows + Mac Apple Silicon + estensione Chrome)
         run: ./build.sh
+      - name: Impronte SHA-256 dei file della release
+        run: |
+          cd dist
+          shasum -a 256 DownConvertron-Setup.bat DownConvertron.hta DownConvertron-Mac-AppleSilicon.zip DownConvertron-ChromeExtension.zip > SHA256SUMS.txt
+          cat SHA256SUMS.txt
       - name: Release
         uses: softprops/action-gh-release@8a0cd651e5b2365bd640854a3fa5dfc70e4875f3  # v3.0.4
         with:
           # in bozza: la pubblica Welsho dopo aver controllato i file; se ne manca uno la build fallisce
           draft: true
+          # un tag con il trattino (es. v7.0-beta.1) e' una pre-release
+          prerelease: ${{ contains(github.ref_name, '-') }}
           fail_on_unmatched_files: true
           files: |
             dist/DownConvertron-Setup.bat
             dist/DownConvertron.hta
             dist/DownConvertron-Mac-AppleSilicon.zip
             dist/DownConvertron-ChromeExtension.zip
+            dist/SHA256SUMS.txt
           body_path: docs/RELEASE.md

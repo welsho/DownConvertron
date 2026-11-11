@@ -1,21 +1,115 @@
-## DownConvertron 7.0 · designed by Welsho
+## DownConvertron 7.0 beta 1
 
-Primo rilascio pubblico con il nuovo nome (prima: DownLTransFMecchazzi 5, Mecchazzi 4, Scarica Video). Impostazioni, preset e archivio delle versioni precedenti vengono ripresi da soli.
+English · [Italiano](#italiano)
 
-**File**
-- `DownConvertron-Setup.bat` — installer per Windows 10/11 (componenti con winget, icone, collegamento per l'estensione)
-- `DownConvertron.hta` — app per Windows in un solo file
-- `DownConvertron-Mac-AppleSilicon.zip` — app per Mac M1/M2/M3/M4 (firma ad-hoc: vedi LEGGIMI-README)
-- `DownConvertron-ChromeExtension.zip` — estensione Chrome (è anche dentro l'app: pulsante *Estensione Chrome*)
+First public release, as a **pre-release**. DownConvertron downloads video, audio and images from the web in bulk and converts them without losing the alpha channel. It is a front end for yt-dlp and ffmpeg, made for creators, streamers and video makers. Interface in Italian, English and Simplified Chinese.
 
-**Novità**
-- Interfaccia in italiano, inglese e cinese semplificato, con lo slot della lingua sotto le fessure del casco
-- Schermo di stato sotto i piedi del mecha con il registro completo di app, estensione e strumenti
-- Spie reali REATTORE · LINK · ENCODER · COMPONENTI: rosse se qualcosa manca o va aggiornato, clic per sistemare
-- Estensione Chrome: mini interfaccia Video / Solo audio, **Metti in lista** o **Scarica subito**, il logo apre l'app (`downconvertron://`), registro inviato all'app
-- Immagini della pagina nell'estensione: le mandi all'app (anche se il link non ha estensione) o le scarichi subito
-- Trascinamento su Windows con ricevitore nativo: tutti i file e le cartelle, anteprima dei file sotto il puntatore e scritta «Copia in DownConvertron»
-- Il mecha ruota sull'asse in modo fluido e apre la botola quando trascini un file
-- Convertitore e immagini: un'immagine → clip ferma (durata a scelta) o PNG/WebP/TIFF/JPG; più immagini → un'animazione (immagini al secondo a scelta) o immagini separate, da file, cartella, trascinamento, appunti o link
+About the number: 7.0 comes from the internal versions. This is the first public one.
 
-Storia completa / full history: CHANGELOG.md nel repository.
+### What it does
+- **Bulk download**: lists of links, or your open tabs and the images of a page through the Chrome extension, with **Add to list** or **Download now**. Video, audio only, images.
+- **Images**: from direct links, as they are or as PNG, WebP, JPG.
+- **Conversion that keeps alpha**: WebM VP9 + alpha, ProRes 4444, HAP Alpha, animated WebP and APNG, PNG/TIFF/EXR sequences. Formats without alpha (MP4, JPG) are labelled as such.
+- **Images to animation**: several images become one animation; one image becomes a still clip.
+- Trim, forward-backward loops, vertical canvas with transparent borders, chroma key, checkerboard preview.
+
+### What has been tested
+| Part | Status |
+|---|---|
+| Windows app: download, conversion, images | Built and tried on one Windows 11 PC, plus automated tests of the same code in Electron on Linux. Not yet confirmed on other PCs |
+| Windows: still to confirm on real PCs | Native drag-and-drop helper · COMPONENTS light and the automatic opening of Chrome's Extensions page · extension logo opening the app · image downloads through Windows' `curl.exe` · installing components with winget from the lights · layout at 100%, 125% and 150% display scale |
+| Chrome extension: links and images | Automated tests in Chromium on Linux |
+| Chrome extension: "Use my login" | Tried against a local test server only. Not yet tried with real sites in a real Chrome profile |
+| Mac app (Apple Silicon) | **Preview. Not yet tried on a real Mac: testers wanted** |
+| Screens less than about 950 px high | The window scrolls |
+
+### Files
+| File | What it is |
+|---|---|
+| `DownConvertron-Setup.bat` | Installer for Windows 10/11. Recommended on Windows |
+| `DownConvertron.hta` | The Windows app in one file, without installing |
+| `DownConvertron-Mac-AppleSilicon.zip` | Mac app for Apple Silicon, macOS 13 or later. Preview, not yet tried on a real Mac |
+| `DownConvertron-ChromeExtension.zip` | The Chrome extension, for those who want to inspect it. You do not need to download it: the app already contains it (**Chrome extension** button) |
+| `SHA256SUMS.txt` | SHA-256 checksums of the files above |
+
+### Before you install
+- **None of these files is signed.** Windows SmartScreen will ask for confirmation (*More info → Run anyway*) and some antivirus programs will flag the installer: it is a `.bat` that runs a PowerShell script stored inside itself. What it does, item by item, is in [SECURITY.md](https://github.com/welsho/DownConvertron/blob/main/SECURITY.md).
+- **Mac**: macOS will say that it cannot verify the developer, or that the app is damaged. The app is not signed with an Apple Developer ID and not notarized; that is what the message means. Open *System Settings → Privacy & Security → Open Anyway*. If macOS still refuses, run `xattr -dr com.apple.quarantine /Applications/DownConvertron.app` in Terminal: it removes the mark macOS puts on downloaded files, nothing else.
+- **Chrome extension**: loaded by hand in Developer mode, from the folder the app prepares. It is not on the Chrome Web Store.
+- The app installs yt-dlp, ffmpeg and Deno from their own sources (winget on Windows). It does not include them.
+
+### Login and permissions
+The extension has fixed permissions for tabs, the active page, the clipboard, downloads, cookies, all sites, and a local bridge to the app.
+
+**"Use my login" is on by default** and can be switched off in the extension. While it is on, every time you send links the extension also passes Chrome's cookies for the sites of those links to the app, through the local bridge. They are written to an unencrypted file in the app's data folder, used only if the site asks you to sign in, and deleted when the download ends, as soon as no link in the list needs them, after 30 minutes if the links are left waiting, and when you close the app. While that file exists, whoever has it has access to your account on that site. It is meant for videos you can already watch with your own account. Details in the [README](https://github.com/welsho/DownConvertron/blob/main/README.md#chrome-extension-permissions-and-login).
+
+### Checking the files
+Compare each file with its line in `SHA256SUMS.txt`:
+- Windows (PowerShell): `Get-FileHash .\DownConvertron-Setup.bat -Algorithm SHA256`
+- Mac (Terminal): `shasum -a 256 DownConvertron-Mac-AppleSilicon.zip`
+
+The files were built by GitHub Actions from this tag. Source code: this tag. Licence: GPL-3.0-or-later.
+
+Download only content you have the right to use. Problems, or a report from a real Mac: [open an issue](https://github.com/welsho/DownConvertron/issues/new/choose). Full history (in Italian): [CHANGELOG.md](https://github.com/welsho/DownConvertron/blob/main/CHANGELOG.md).
+
+If you had an earlier version (DownLTransFMecchazzi, Mecchazzi, Scarica Video), the installer removes it and the app picks up its settings.
+
+designed by **Welsho**
+
+---
+
+## Italiano
+
+Prima release pubblica, come **pre-release**. DownConvertron scarica in blocco dal web video, audio e immagini e li converte senza perdere il canale alfa. È un front end per yt-dlp e ffmpeg, pensato per creator, streamer e video maker. Interfaccia in italiano, inglese e cinese semplificato.
+
+Sul numero: 7.0 viene dalle versioni interne. Questa è la prima pubblica.
+
+### Cosa fa
+- **Download in blocco**: liste di link, oppure le schede aperte e le immagini di una pagina dall'estensione Chrome, con **Metti in lista** o **Scarica subito**. Video, solo audio, immagini.
+- **Immagini**: dai link diretti, così come sono oppure in PNG, WebP, JPG.
+- **Conversione che conserva l'alfa**: WebM VP9 + alfa, ProRes 4444, HAP Alpha, WebP e APNG animati, sequenze PNG/TIFF/EXR. I formati senza alfa (MP4, JPG) sono indicati come tali.
+- **Dalle immagini all'animazione**: più immagini diventano un'animazione; una sola immagine diventa una clip ferma.
+- Taglio, avanti-indietro, tela verticale con bordi trasparenti, chroma key, anteprima su scacchiera.
+
+### Cosa è stato provato
+| Parte | Stato |
+|---|---|
+| App Windows: download, conversione, immagini | Costruita e provata su un solo PC con Windows 11, più le prove automatiche dello stesso codice in Electron su Linux. Non ancora confermata su altri PC |
+| Windows: ancora da confermare su PC veri | Programma nativo del trascinamento · spia COMPONENTI e apertura automatica della pagina Estensioni di Chrome · logo dell'estensione che apre l'app · download delle immagini con `curl.exe` di Windows · installazione dei componenti con winget dalle spie · layout con scala dello schermo al 100%, 125% e 150% |
+| Estensione Chrome: link e immagini | Prove automatiche in Chromium su Linux |
+| Estensione Chrome: «Usa il mio login» | Provato solo con un server di prova locale. Non ancora provato con siti veri in un profilo Chrome vero |
+| App Mac (Apple Silicon) | **Anteprima. Non ancora provata su un Mac vero: cerchiamo tester** |
+| Schermi più bassi di circa 950 px | La finestra scorre |
+
+### File
+| File | Cos'è |
+|---|---|
+| `DownConvertron-Setup.bat` | Installer per Windows 10/11. Consigliato su Windows |
+| `DownConvertron.hta` | L'app per Windows in un solo file, senza installare |
+| `DownConvertron-Mac-AppleSilicon.zip` | App per Mac Apple Silicon, macOS 13 o successivo. Anteprima, non ancora provata su un Mac vero |
+| `DownConvertron-ChromeExtension.zip` | L'estensione Chrome, per chi vuole ispezionarla. Non serve scaricarla: è già dentro l'app (pulsante **Estensione Chrome**) |
+| `SHA256SUMS.txt` | Impronte SHA-256 dei file qui sopra |
+
+### Prima di installare
+- **Nessuno di questi file è firmato.** Windows SmartScreen chiede una conferma (*Ulteriori informazioni → Esegui comunque*) e alcuni antivirus segnaleranno l'installer: è un `.bat` che esegue uno script PowerShell contenuto al suo interno. Cosa fa, voce per voce, è scritto in [SECURITY.md](https://github.com/welsho/DownConvertron/blob/main/SECURITY.md#sicurezza).
+- **Mac**: macOS dirà che non può verificare lo sviluppatore, oppure che l'app è danneggiata. L'app non è firmata con un Developer ID Apple e non è notarizzata: il messaggio vuol dire questo. Apri *Impostazioni di Sistema → Privacy e sicurezza → Apri comunque*. Se il Mac rifiuta ancora, esegui nel Terminale `xattr -dr com.apple.quarantine /Applications/DownConvertron.app`: toglie il contrassegno che macOS mette ai file scaricati, nient'altro.
+- **Estensione Chrome**: si carica a mano in Modalità sviluppatore, dalla cartella che prepara l'app. Non è sul Chrome Web Store.
+- L'app installa yt-dlp, ffmpeg e Deno dalle loro fonti (winget su Windows). Non li include.
+
+### Login e permessi
+L'estensione ha permessi fissi per le schede, la pagina attiva, gli appunti, i download, i cookie, tutti i siti e un ponte locale verso l'app.
+
+**«Usa il mio login» è acceso di base** e si può spegnere nell'estensione. Finché è acceso, ogni volta che mandi dei link l'estensione passa all'app anche i cookie di Chrome dei siti di quei link, attraverso il ponte locale. Vengono scritti in un file non cifrato nella cartella dati dell'app, usati solo se il sito chiede l'accesso, e cancellati a fine download, appena nessun link in lista li usa, dopo 30 minuti se i link restano fermi, e quando chiudi l'app. Finché quel file esiste, chi lo ha ha l'accesso al tuo account su quel sito. Serve per i video a cui hai già accesso con il tuo account. I dettagli sono nel [README](https://github.com/welsho/DownConvertron/blob/main/README.it.md#estensione-chrome-permessi-e-login).
+
+### Controllare i file
+Confronta ogni file con la sua riga in `SHA256SUMS.txt`:
+- Windows (PowerShell): `Get-FileHash .\DownConvertron-Setup.bat -Algorithm SHA256`
+- Mac (Terminale): `shasum -a 256 DownConvertron-Mac-AppleSilicon.zip`
+
+I file sono stati costruiti da GitHub Actions a partire da questo tag. Codice sorgente: questo tag. Licenza: GPL-3.0-or-later.
+
+Scarica solo contenuti che hai il diritto di usare. Problemi, o un riscontro da un Mac vero: [apri una issue](https://github.com/welsho/DownConvertron/issues/new/choose). Storia completa: [CHANGELOG.md](https://github.com/welsho/DownConvertron/blob/main/CHANGELOG.md).
+
+Se avevi una versione precedente (DownLTransFMecchazzi, Mecchazzi, Scarica Video), l'installer la toglie e l'app ne riprende le impostazioni.
+
+designed by **Welsho**

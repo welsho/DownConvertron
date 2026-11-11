@@ -28,13 +28,13 @@ const server = http.createServer((req, res) => {
 /* API chrome finta: due schede di siti video, una pagina con un link YouTube e quattro immagini grandi */
 function finto(base) {
   const schede = [
-    { id: 1, url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', title: 'Intro b-roll - YouTube' },
+    { id: 1, url: 'https://www.youtube.com/watch?v=aqz-KE-bpKQ', title: 'Big Buck Bunny - YouTube' },
     { id: 2, url: 'https://vimeo.com/76979871', title: 'Timelapse citta' },
     { id: 3, url: 'https://www.example.com/galleria-foto', title: 'Galleria', active: true }];
   window.chrome = {
     tabs: { query: async (q) => (q && q.active ? [schede[2]] : schede), update: async () => {}, create: async () => {} },
     scripting: { executeScript: async () => [{ result: {
-      link: [['https://www.youtube.com/watch?v=aqz-KE-bpKQ', 'Big Buck Bunny']],
+      link: [['https://www.youtube.com/watch?v=eRsGyueVLvQ', 'Sintel']],
       img: [0, 1, 2, 3].map((n) => [base + '/pic/' + n + '.svg', 'foto ' + (n + 1), [1920, 1280, 2400, 1600][n], [1080, 853, 1600, 900][n]]) } }] },
     downloads: { download: async () => 1, cancel: () => {}, onDeterminingFilename: { addListener: () => {} } }
   };

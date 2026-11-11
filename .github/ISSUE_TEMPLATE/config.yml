@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability / Vulnerabilità di sicurezza
+    url: https://github.com/welsho/DownConvertron/security/advisories/new
+    about: Please report it privately, not in a public issue. / Segnalala in privato, non in una issue pubblica.
+  - name: What the software does on your computer / Cosa fa il programma sul tuo computer
+    url: https://github.com/welsho/DownConvertron/blob/main/SECURITY.md
+    about: Installer, HTA, Mac app, extension permissions, cookies. / Installer, HTA, app Mac, permessi dell'estensione, cookie.
+  - name: A site fails with yt-dlp alone too / Un sito non va nemmeno con yt-dlp da solo
+    url: https://github.com/yt-dlp/yt-dlp/issues
+    about: Site support is yt-dlp's work. Follow their issue rules and do not ask them for help with DownConvertron. / Il supporto dei siti è lavoro di yt-dlp. Segui le loro regole e non chiedere a loro assistenza su DownConvertron.

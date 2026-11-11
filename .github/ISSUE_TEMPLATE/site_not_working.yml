@@ -1,0 +1,77 @@
+name: A site does not work / Un sito non funziona
+description: A link does not download, or downloads in the wrong way. / Un link non si scarica, o si scarica nel modo sbagliato.
+labels: ["site"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Read this first.** DownConvertron downloads video and audio through [yt-dlp](https://github.com/yt-dlp/yt-dlp). Sites change often, and most failures are fixed by a newer yt-dlp.
+
+        1. In the app, click the **REACTOR** light to update yt-dlp, then try again.
+        2. If it still fails, try the same link with yt-dlp alone, from a terminal: `yt-dlp "LINK"`.
+        3. If yt-dlp alone fails too, the problem belongs to yt-dlp, not to DownConvertron: look for it in [their issues](https://github.com/yt-dlp/yt-dlp/issues), follow their rules, and please do not ask them for help with DownConvertron.
+        4. If yt-dlp alone works and DownConvertron does not, fill in this form.
+
+        ---
+
+        **Leggi prima qui.** DownConvertron scarica video e audio attraverso [yt-dlp](https://github.com/yt-dlp/yt-dlp). I siti cambiano spesso, e la maggior parte degli errori si risolve con uno yt-dlp più recente.
+
+        1. Nell'app clicca la spia **REATTORE** per aggiornare yt-dlp, poi riprova.
+        2. Se non va ancora, prova lo stesso link con yt-dlp da solo, da un terminale: `yt-dlp "LINK"`.
+        3. Se anche yt-dlp da solo non funziona, il problema riguarda yt-dlp e non DownConvertron: cercalo nelle [loro issue](https://github.com/yt-dlp/yt-dlp/issues), segui le loro regole e per favore non chiedere a loro assistenza su DownConvertron.
+        4. Se yt-dlp da solo funziona e DownConvertron no, compila questo modulo.
+  - type: input
+    id: site
+    attributes:
+      label: Site / Sito
+      description: The site, and a link that shows the problem if you can share it. Do not post links to private content. / Il sito, e un link che mostra il problema se puoi condividerlo. Non pubblicare link a contenuti privati.
+      placeholder: https://example.com/video/123
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What you were downloading / Cosa stavi scaricando
+      options:
+        - Video
+        - Audio only / Solo audio
+        - Image / Immagine
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: DownConvertron version and system / Versione di DownConvertron e sistema
+      placeholder: v7.0-beta.1, Windows 11
+    validations:
+      required: true
+  - type: input
+    id: ytdlp
+    attributes:
+      label: yt-dlp version / Versione di yt-dlp
+      description: The output of `yt-dlp --version`. Not needed for images. / Quello che risponde `yt-dlp --version`. Non serve per le immagini.
+    validations:
+      required: false
+  - type: textarea
+    id: error
+    attributes:
+      label: Error shown by the app / Errore mostrato dall'app
+      description: |
+        The message in the row of the list, and the log (ERRORS tab → COPY).
+        Il messaggio nella riga della lista, e il registro (scheda ERRORI → COPIA).
+      render: text
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks / Controlli
+      options:
+        - label: I updated yt-dlp (REACTOR light) and tried again. / Ho aggiornato yt-dlp (spia REATTORE) e ho riprovato.
+          required: true
+        - label: For video and audio, the same link works with yt-dlp alone. / Per video e audio, lo stesso link funziona con yt-dlp da solo.
+          required: false
+        - label: It is content I am allowed to download, and it is not DRM-protected. / È un contenuto che ho il diritto di scaricare, e non è protetto da DRM.
+          required: true
+        - label: I have read the log before pasting it (links, folder names). / Ho letto il registro prima di incollarlo (link, nomi di cartelle).
+          required: true

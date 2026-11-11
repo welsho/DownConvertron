@@ -31,7 +31,7 @@ const L = require('./lib'); const fs = require('fs'); const path = require('path
   await fire('dragenter'); await w.waitForTimeout(2600);
   console.log('ricevitore morto:', await w.evaluate(() => $('dropOv').style.display + ' helper=' + DROP.helper));
   // link di testo
-  await w.evaluate(() => { const dt = new DataTransfer(); dt.setData('text/plain', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'); document.dispatchEvent(new DragEvent('dragenter', { dataTransfer: dt, bubbles: true })); });
+  await w.evaluate(() => { const dt = new DataTransfer(); dt.setData('text/plain', 'https://www.youtube.com/watch?v=aqz-KE-bpKQ'); document.dispatchEvent(new DragEvent('dragenter', { dataTransfer: dt, bubbles: true })); });
   await w.waitForTimeout(300);
   console.log('link:', await w.evaluate(() => $('dropOv').className + ' ' + $('dropL1').textContent));
   console.log('errori pagina:', w.errs.filter(e => !/favicon/.test(e)).slice(0, 5));

@@ -1412,7 +1412,7 @@ function buildRow(it, idx) {
   var body = document.createElement("div"); body.className = "body";
   var url = document.createElement("div"); url.className = "url"; url.innerText = it.url; url.title = it.url;
   var name = document.createElement("input"); name.className = "name lockable"; name.type = "text";
-  name.placeholder = "Nome file (vuoto = titolo originale)"; name.value = it.name; name.maxLength = MAX_NAME_LEN;
+  name.placeholder = T("Nome file (vuoto = titolo originale)"); name.value = it.name; name.maxLength = MAX_NAME_LEN;
   name.disabled = state.busy;
   name.onchange = function () { it.name = cleanName(this.value); this.value = it.name; };
   body.appendChild(url); body.appendChild(name);
@@ -2746,7 +2746,7 @@ function cvRow(it, idx) {
   var body = document.createElement("div"); body.className = "body";
   var ttl = document.createElement("div"); ttl.className = "ttl"; ttl.innerText = it.title; ttl.title = it.path || it.url;
   var name = document.createElement("input"); name.className = "name lockable"; name.type = "text";
-  name.placeholder = "Nome del file (vuoto = nome originale)"; name.value = it.name; name.maxLength = MAX_NAME_LEN; name.disabled = state.busy;
+  name.placeholder = T("Nome del file (vuoto = nome originale)"); name.value = it.name; name.maxLength = MAX_NAME_LEN; name.disabled = state.busy;
   name.onchange = function () { it.name = cleanName(this.value).replace(/%/g, ""); this.value = it.name; };
   var inf = document.createElement("div"); inf.className = "info";
   if (it.info && it.info.ok && it.info.alpha) {

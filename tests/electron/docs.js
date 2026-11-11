@@ -8,7 +8,7 @@ const L = require('./lib'); const fs = require('fs'); const path = require('path
   await w.setViewportSize({ width: 1180, height: 1180 });
   const H = process.env.DCVT_TEST_HOME;
   await w.evaluate(h => {
-    parseText("https://www.youtube.com/watch?v=dQw4w9WgXcQ | intro b-roll\nhttps://vimeo.com/76979871 | timelapse citta\nhttps://www.instagram.com/reel/C1abcDEF/ | overlay fire");
+    parseText("https://www.youtube.com/watch?v=aqz-KE-bpKQ | intro b-roll\nhttps://vimeo.com/76979871 | timelapse citta\nhttps://www.instagram.com/reel/C1abcDEF/ | overlay fire");
     cvAddPaths([h + "/Videos/lower-third alpha.mov", h + "/Videos/broll city drone.mp4", h + "/Videos/broll sunset timelapse.mp4", h + "/Videos/logo_sequence"], true);
     setSelect($("cvFmt"), "prores"); cvCheck(); SYSST.net = true; EXTCHK.st = "ok"; EXTCHK.ver = APP_VER; EXTCHK.prof = "Default"; EXTCHK.at = 9e15; sysRender();
   }, H);
@@ -21,7 +21,7 @@ const L = require('./lib'); const fs = require('fs'); const path = require('path
       logEvent("app", T("DownConvertron {0} avviata. Cartella dati: {1}", APP_VER, DIR_APP));
       sysRender();
       logEvent("ext", T("Estensione {0}: {1} link ricevuti, {2} nuovi in lista{3}.", "7.0", 3, 3, " \u2022 " + T("Video {0} {1}", "MOV", "4K (2160p)")), "ok");
-      logEvent("tool", "[youtube] dQw4w9WgXcQ: Downloading webpage");
+      logEvent("tool", "[youtube] aqz-KE-bpKQ: Downloading webpage");
       logEvent("tool", "[download] Destination: intro b-roll.mov");
       logEvent("app", T("Completato") + ": intro b-roll", "ok");
     }, [lang, tab]);

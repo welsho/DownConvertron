@@ -1,0 +1,70 @@
+name: Bug report / Segnalazione di un difetto
+description: Something in the app, the installer or the Chrome extension does not work. / Qualcosa nell'app, nell'installer o nell'estensione Chrome non funziona.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        English or Italian, as you prefer. / In inglese o in italiano, come preferisci.
+
+        **A site that does not download?** Use the other form, "A site does not work". / **Un sito che non si scarica?** Usa l'altro modulo, «Un sito non funziona».
+        **A security problem?** Do not write it here: Security tab → Report a vulnerability. / **Un problema di sicurezza?** Non scriverlo qui: scheda Security → Report a vulnerability.
+  - type: dropdown
+    id: part
+    attributes:
+      label: Part / Parte
+      options:
+        - Windows app (installed with Setup.bat)
+        - Windows app (single-file .hta)
+        - Windows installer
+        - Mac app
+        - Chrome extension
+        - Other / Altro
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: DownConvertron version / Versione di DownConvertron
+      description: The release you downloaded, for example v7.0-beta.1. / La release che hai scaricato, per esempio v7.0-beta.1.
+      placeholder: v7.0-beta.1
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: System / Sistema
+      description: Windows 10 or 11, or the macOS version and the Mac model. Screen resolution and display scale help with layout problems. / Windows 10 o 11, oppure la versione di macOS e il modello di Mac. Risoluzione e scala dello schermo aiutano per i problemi di layout.
+      placeholder: Windows 11, 1920x1080, 125%
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: What you did / Cosa hai fatto
+      description: Step by step, so that it can be repeated. / Passo per passo, in modo che si possa ripetere.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected, and what happened instead / Cosa ti aspettavi, e cosa è successo invece
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Log / Registro
+      description: |
+        In the app, on the status screen under the mecha's feet: ERRORS (or ALL) tab, then COPY. The "Debug report" button gives more detail.
+        Nell'app, sullo schermo di stato sotto i piedi del mecha: scheda ERRORI (o TUTTO), poi COPIA. Il pulsante «Report debug» dà più dettagli.
+      render: text
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before sending / Prima di inviare
+      options:
+        - label: I have read the log before pasting it. It can contain the links I downloaded and the names of my folders. / Ho letto il registro prima di incollarlo. Può contenere i link che ho scaricato e i nomi delle mie cartelle.
+          required: true
+        - label: I have not pasted cookie files or passwords. / Non ho incollato file di cookie né password.
+          required: true
