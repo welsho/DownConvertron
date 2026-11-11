@@ -186,6 +186,8 @@ DownConvertron è un progetto indipendente, non affiliato né approvato da yt-dl
 </tr>
 </table>
 
+<p align="center"><img src="docs/img/mecha-rotazione.gif" alt="Il mecha si gira quando trascini un file" width="520"><br><sub>Trascini un file sulla finestra: il mecha si gira e apre la botola tra le gambe.</sub></p>
+
 - **Spie**: REATTORE (yt-dlp), LINK (Deno e connessione), ENCODER (ffmpeg e i suoi codec), COMPONENTI (l'estensione Chrome, come risulta dal profilo di Chrome). Verdi se tutto è a posto, rosse se qualcosa manca, non parte o è vecchio (yt-dlp con più di 60 giorni). Clic su una spia per installare o aggiornare quella parte.
 - **Schermo di stato**: sotto i piedi del mecha, il registro completo di app, estensione e strumenti, con i filtri (TUTTO, APP, ESTENSIONE, STRUMENTI, ERRORI), COPIA e SALVA. Il pulsante **Report debug** raccoglie quello che serve per una segnalazione.
 - **Lingua**: IT · EN · 中文 nello slot sotto le fessure del casco. L'estensione segue la lingua dell'app.

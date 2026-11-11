@@ -186,6 +186,8 @@ DownConvertron is an independent project, not affiliated with or endorsed by yt-
 </tr>
 </table>
 
+<p align="center"><img src="docs/img/mecha-rotazione.gif" alt="The mecha turns around when you drag a file" width="520"><br><sub>Drag a file onto the window: the mecha turns around and opens the hatch between its legs.</sub></p>
+
 - **Lights**: REACTOR (yt-dlp), LINK (Deno and connection), ENCODER (ffmpeg and its codecs), COMPONENTS (the Chrome extension, as found in Chrome's profile). Green when all is well, red when something is missing, does not start or is outdated (yt-dlp older than 60 days). Click a light to install or update that part.
 - **Status screen**: under the mecha's feet, the full log of app, extension and tools, with filters (ALL, APP, EXTENSION, TOOLS, ERRORS), COPY and SAVE. The **Debug report** button collects what is needed for a bug report.
 - **Language**: IT · EN · 中文 in the slot under the helmet vents. The extension follows the app's language.
