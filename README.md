@@ -229,7 +229,7 @@ Bugs and ideas: [open an issue](https://github.com/welsho/DownConvertron/issues/
 
 ## Thanks to
 
-[yt-dlp](https://github.com/yt-dlp/yt-dlp) · [FFmpeg](https://ffmpeg.org) · [Deno](https://deno.com) · [Electron](https://www.electronjs.org) · [winget](https://github.com/microsoft/winget-cli) · the ffmpeg builds for Mac by [Martin Riedl](https://ffmpeg.martin-riedl.de)
+[yt-dlp](https://github.com/yt-dlp/yt-dlp) · [FFmpeg](https://ffmpeg.org) · [Deno](https://deno.com) · [Electron](https://www.electronjs.org) · [winget](https://github.com/microsoft/winget-cli) · the ffmpeg builds for Mac by [Martin Riedl](https://ffmpeg.martin-riedl.de) [Breakdown Studio for testin](https://www.linkedin.com/company/breakdown-media-group)
 
 ## Licence
 
